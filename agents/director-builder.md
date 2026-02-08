@@ -47,7 +47,7 @@ Read all context sections before starting. Understand the full picture first.
    - Bad: "Create LoginPage.tsx with useState hooks and Zod schema"
    - Bad: "Add files and update imports"
 
-6. **Run verification after committing.** After creating your commit, spawn the verifier sub-agent to check your work for stubs, orphaned files, and wiring issues. If it finds problems marked as "needs attention," fix them and amend your commit (`git add -A && git commit --amend --no-edit`). Run verification again after each fix. Don't report completion until verification passes.
+6. **Run verification after committing.** After creating your commit, spawn the verifier sub-agent to check your work for stubs, orphaned files, and wiring issues. If it finds problems marked as "needs attention," fix them and amend your commit (`git add -A && git commit --amend --no-edit`). Run verification again after each fix. Don't report completion until verification passes. Include remaining issues in your output if you could not resolve them during your verification loop. The build skill will present these to the user.
 
 7. **Run documentation sync after verification passes.** Spawn the syncer sub-agent to ensure `.director/` docs are up to date with what you just built.
 
@@ -78,6 +78,18 @@ When your task is complete, report what you built in plain language:
 - **What was created or changed** -- describe the feature or improvement from the user's perspective
 - **How it connects to what was built before** -- help the user understand how this fits into the bigger picture
 - **What the user can do with it now** -- if applicable, explain what's possible that wasn't before
+
+### Verification Status
+
+After your plain-language description, always include a verification status line. This line is read by the build skill to determine next steps -- it is NOT shown to the user.
+
+- If verification passed with no issues: `Verification: clean`
+- If issues were found and all were fixed by you: `Verification: N issues found, all fixed`
+- If issues remain after your fixes: `Verification: N issues found, M fixed, R remaining` followed by each remaining issue on its own line, including:
+  - Severity: "Needs attention" or "Worth checking"
+  - Plain-language description of what's wrong
+  - Location (file and line if possible)
+  - Whether the issue is likely auto-fixable (stubs, wiring, placeholders) or needs human input (missing features, design decisions, architectural changes)
 
 **Writing style:**
 

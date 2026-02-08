@@ -229,17 +229,15 @@ After the builder completes and returns its output, continue to Step 8.
 
 ## Step 8: Verify builder results
 
-Check whether the builder completed successfully:
+Check whether the builder completed successfully and surface any remaining verification issues.
 
 ### 8a: Check for a new commit
 
 Run `git log --oneline -1` and compare it to the most recent commit from before Step 7.
 
-**If a new commit exists:** The builder completed its work. Continue to Step 9.
+**If a new commit exists:** The builder completed its work. Continue to 8b.
 
-### 8b: Handle no commit
-
-If no new commit was created:
+**If no new commit was created:**
 
 1. Run `git status --porcelain` to check for modified files.
 
@@ -250,6 +248,67 @@ If no new commit was created:
 3. **If no files were modified:**
    Tell the user: "The task didn't get started. This might be a tricky one -- want to try again, or take a different approach?"
    **Stop here.**
+
+### 8b: Parse verification results
+
+Read the builder's output for the verification status line:
+
+- **If "Verification: clean"** -- verification passed. Continue silently to Step 9. Do NOT show any verification message to the user. Tier 1 is invisible unless issues are found.
+- **If "Verification: N issues found, all fixed"** -- the builder handled everything internally. Continue silently to Step 9.
+- **If "Verification: N issues found, M fixed, R remaining"** -- issues survived the builder's pass. Continue to 8c.
+
+### 8c: Present remaining issues to user
+
+Classify each remaining issue from the builder's output.
+
+Group into two sections:
+
+**"Needs attention"** section -- blocking issues that should be fixed:
+Present each with: what + why + where. Use a confident assistant voice -- direct and efficient.
+Example: "The settings page has placeholder content in the header section -- users would see 'TODO' text."
+
+**"Worth checking"** section -- informational items:
+Present with a plain-language description.
+
+For each "Needs attention" issue, check whether it was marked auto-fixable by the builder/verifier:
+- **Auto-fixable issues:** stubs, broken wiring, placeholder content, missing imports
+- **Report-only issues:** missing features, design decisions, architectural changes, human judgment needed
+
+If ANY auto-fixable issues exist:
+
+> "I can fix [N] of these automatically. Want me to try?"
+
+Wait for the user's response.
+
+- If user approves: continue to 8d.
+- If user declines: note the issues and continue to Step 9.
+
+### 8d: Auto-fix retry loop
+
+For each auto-fixable "Needs attention" issue, run a fix cycle:
+
+1. Show a progress update: "Investigating the issue..."
+2. Spawn `director-debugger` via Task tool with assembled context:
+   ```xml
+   <task>[Original task file content]</task>
+   <issues>[The specific issue being fixed, with location and context]</issues>
+   <instructions>Fix this issue. This is attempt [N] of [max]. [If retry 2+: "Previous attempt tried [X] but it didn't work. Try a different approach."]</instructions>
+   ```
+3. Read the debugger's output text. Find the line starting with `Status:` and match the value after the colon to determine the next action:
+   - **If the value is "Fixed"** -- show "Found the cause... Applying fix (attempt N of max)... Fixed!" Then spawn `director-verifier` via Task tool to re-check the specific area. If re-check passes, run `git add -A && git commit --amend --no-edit` to include the fix in the task commit. Move to the next issue.
+   - **If the value is "Needs more work"** -- increment the retry counter. If under max retries, show "Trying a different approach (attempt N of max)..." and loop back to step 1.
+   - **If the value is "Needs manual attention"** -- stop retrying this issue. Report what the debugger found and suggest next steps.
+   - **If no `Status:` line is found in the output** -- treat as "Needs manual attention" (defensive fallback).
+
+4. If max retries reached for an issue, explain what was tried and suggest a manual fix:
+   > "I tried [N] approaches to fix [issue description] but couldn't resolve it. Here's what I found: [debugger's diagnosis]. You might want to [suggestion]."
+
+Retry cap per issue (Claude's Discretion -- decide based on issue complexity):
+- Simple wiring fixes (missing import, wrong path): 2 retries max
+- Placeholder/stub replacement: 3 retries max
+- Complex integration issues: 3-5 retries max
+
+After all auto-fixable issues are addressed (fixed or given up), continue to Step 9.
 
 ## Step 9: Post-task sync verification
 
@@ -284,9 +343,9 @@ Wait for the user's response before making any changes to VISION.md or GAMEPLAN.
 
 **If no drift:** Continue silently to Step 10.
 
-## Step 10: Post-task summary
+## Step 10: Post-task summary and boundary check
 
-Present the user with a summary of what was built. Follow the LOCKED format: plain-language paragraph followed by a structured bullet list.
+Present the user with a summary of what was built, then check for step/goal boundaries and trigger Tier 2 behavioral verification when appropriate.
 
 ### 10a: Get change details
 
@@ -319,21 +378,90 @@ End with:
 
 > Progress saved. You can type `/director:undo` to go back.
 
-### 10d: Step and goal progress
+### 10d: Step and goal boundary detection
 
-Check if the current step is now complete (all task files in the step's tasks/ directory end in `.done.md`).
+After presenting the post-task summary:
 
-**If the step is complete:**
+1. List all files in the current step's `tasks/` directory.
+2. Count total `.md` files (both regular and `.done.md`) and count `.done.md` files specifically.
+3. If NOT all task files end in `.done.md`: the step is incomplete.
+   > "Next up: [next task name from the first non-.done.md file]. Want to keep building?"
+   Stop here.
 
-> "[Step name] is done! You're [X] of [Y] steps through [goal name]."
+4. If ALL task files end in `.done.md`: the step is complete.
+   Check whether all steps in the current goal directory are complete (each step's `tasks/` directory has all `.done.md` files).
+   - If all steps complete: GOAL IS COMPLETE -- use the goal-level flow in 10f.
+   - If not all steps complete: STEP COMPLETE ONLY -- use the step-level flow in 10e.
 
-Check if the goal is also complete (all steps done). If so:
+### 10e: Tier 2 behavioral checklist (step complete)
 
-> "[Goal name] is complete! That's a big milestone."
+When a step is complete, generate a behavioral checklist for the user to verify:
 
-**If more tasks remain in the step:**
+1. Read the completed step's `STEP.md`
+2. Read all `.done.md` task files in the step (to understand what was actually built)
+3. Read `.director/VISION.md` for overall project context
+4. Read `git log --oneline` for commits in this step's tasks (to capture what was actually done vs. planned)
 
-> "Next up: [next task name]. Want to keep building?"
+Generate a behavioral checklist where each item is something the user can try and observe. Write items as plain-language instructions: "Try X. What happens?" or "Open Y and check that Z." Size the checklist based on step complexity (Claude's Discretion: small steps with 2-3 tasks get 3-5 items, larger steps get 5-8 items).
+
+Present the checklist:
+
+> "[Step name] is done! Here's a quick checklist to make sure everything works:
+>
+> 1. [Testable action with expected result]
+> 2. [Testable action with expected result]
+> ...
+>
+> Try these out and let me know how they go!"
+
+Wait for the user's response. Interpret their natural-language answers to determine which items passed and which failed.
+
+**If ALL items pass:**
+> "[Outcome statement]! That's [step name] done -- you're [X] of [Y] steps through [goal name]."
+
+**If SOME items fail (lead with wins):**
+> "[N] of [M] checks passed! [Items that failed] need attention:
+> - [Issue description with why it matters]"
+
+If failed items are auto-fixable, offer auto-fix (same consent flow as 8c/8d).
+If not auto-fixable, describe the issue and suggest what to do.
+
+The checklist is guidance, not a gate. If the user wants to continue building without completing the checklist, let them.
+
+### 10f: Tier 2 behavioral checklist (goal complete)
+
+When a goal is complete, this is a bigger moment:
+
+1. Read the goal's `GOAL.md` (if it exists)
+2. Read all step `STEP.md` files in the goal
+3. Read all `.done.md` task files across all steps
+4. Read `.director/VISION.md`
+
+Generate a broader behavioral checklist that tests cross-step integration. These items should verify that features from different steps work together.
+
+Present with a summary of everything built:
+
+> "[Goal name] is complete! Here's everything that was built:
+> - [Step 1 summary -- one sentence about what it delivered]
+> - [Step 2 summary]
+> - ...
+>
+> Let's verify everything works together:
+>
+> 1. [Goal-level testable action]
+> 2. [Goal-level testable action]
+> ...
+>
+> Try these out and let me know!"
+
+Wait for the user's response. Process results the same as the step-level checklist.
+
+**If all pass:**
+> "That's a big milestone -- [goal name] is done! [Total progress: X of Y goals complete]. [What's next: brief description of next goal, or 'Your project is complete!' if all goals done]."
+
+**If some fail:** Lead with wins, flag issues, offer auto-fix if applicable.
+
+**IMPORTANT:** The celebration message comes AFTER Tier 2 results are in, not before. Celebrate the outcome ("User authentication is working!"), not just the task completion.
 
 ---
 

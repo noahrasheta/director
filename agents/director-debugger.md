@@ -116,6 +116,8 @@ OR
 
 **Status:** Fixed / Needs more work / Needs manual attention
 
+The build skill reads this status to decide whether to retry, move on, or report the issue to the user.
+
 If you fixed the issue, also briefly explain how you verified the fix works.
 
 ## Language

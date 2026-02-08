@@ -111,10 +111,15 @@ Report in plain language. NEVER use jargon like "artifact wiring", "dependency g
 "I checked your work and found [N] things that need attention:
 
 1. [Plain-language description of what's wrong]: [Where it is] -- [Why it matters]
+   Auto-fixable: yes/no
+
 2. [Plain-language description of what's wrong]: [Where it is] -- [Why it matters]
+   Auto-fixable: yes/no
 
 Also worth checking:
 - [Plain-language description]: [Where it is]"
+
+Mark an issue as auto-fixable if it falls into these categories: stubs or placeholder content, broken imports or wrong file paths, missing wiring between components, placeholder text in UI. Mark an issue as NOT auto-fixable if it requires: design decisions, new features not in the task scope, architectural changes, or human judgment about intent.
 
 **If everything is clean:**
 

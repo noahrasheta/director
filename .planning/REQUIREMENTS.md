@@ -60,17 +60,17 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Verification
 
-- [ ] **VRFY-01**: Tier 1 structural verification runs after every task — AI reads code checking files exist, contain real implementation, and are wired together
-- [ ] **VRFY-02**: Tier 1 detects stubs and placeholders (TODO comments, empty returns, placeholder text, components that render nothing, hardcoded data)
-- [ ] **VRFY-03**: Tier 1 detects orphaned code (files that exist but aren't imported or used)
-- [ ] **VRFY-04**: Tier 1 is invisible to user unless issues found — "The login page was created but it's not connected to anything yet. Want me to fix this?"
-- [ ] **VRFY-05**: Tier 2 behavioral verification runs at step/goal boundaries — generates plain-language acceptance criteria checklist
-- [ ] **VRFY-06**: Tier 2 checklist format — user tries things and reports back ("Try logging in with a wrong password. What happens?")
-- [ ] **VRFY-07**: When issues found, explains what went wrong in plain language, never blames user, suggests clear next action
-- [ ] **VRFY-08**: Auto-fix capability — spawns debugger agents to investigate and create fix plans
-- [ ] **VRFY-09**: Maximum 3-5 retry cycles before stopping and explaining what needs manual attention
-- [ ] **VRFY-10**: `/director:inspect` runs full verification on demand
-- [ ] **VRFY-11**: Celebrates completion when verification passes ("Step 2 is complete! You're 3 of 5 steps through your first goal.")
+- [x] **VRFY-01**: Tier 1 structural verification runs after every task — AI reads code checking files exist, contain real implementation, and are wired together
+- [x] **VRFY-02**: Tier 1 detects stubs and placeholders (TODO comments, empty returns, placeholder text, components that render nothing, hardcoded data)
+- [x] **VRFY-03**: Tier 1 detects orphaned code (files that exist but aren't imported or used)
+- [x] **VRFY-04**: Tier 1 is invisible to user unless issues found — "The login page was created but it's not connected to anything yet. Want me to fix this?"
+- [x] **VRFY-05**: Tier 2 behavioral verification runs at step/goal boundaries — generates plain-language acceptance criteria checklist
+- [x] **VRFY-06**: Tier 2 checklist format — user tries things and reports back ("Try logging in with a wrong password. What happens?")
+- [x] **VRFY-07**: When issues found, explains what went wrong in plain language, never blames user, suggests clear next action
+- [x] **VRFY-08**: Auto-fix capability — spawns debugger agents to investigate and create fix plans
+- [x] **VRFY-09**: Maximum 3-5 retry cycles before stopping and explaining what needs manual attention
+- [x] **VRFY-10**: `/director:inspect` runs full verification on demand
+- [x] **VRFY-11**: Celebrates completion when verification passes ("Step 2 is complete! You're 3 of 5 steps through your first goal.")
 
 ### Progress & Continuity
 

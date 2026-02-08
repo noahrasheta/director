@@ -107,8 +107,8 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 05-01-PLAN.md -- Agent output updates: builder verification status, verifier auto-fixable classification, debugger status consistency
-- [ ] 05-02-PLAN.md -- Build skill post-task verification flow: issue surfacing, auto-fix retry loop, boundary detection, Tier 2 checklists
+- [x] 05-01-PLAN.md -- Agent output updates: builder verification status, verifier auto-fixable classification, debugger status consistency
+- [x] 05-02-PLAN.md -- Build skill post-task verification flow: issue surfacing, auto-fix retry loop, boundary detection, Tier 2 checklists
 - [x] 05-03-PLAN.md -- Inspect skill rewrite: scope-aware on-demand verification with Tier 1, Tier 2, auto-fix, and celebration
 
 ### Phase 6: Progress & Continuity
@@ -216,7 +216,7 @@ Note: Phases 5, 6, 7, and 8 all depend on Phase 4 and can potentially be worked 
 | 2. Onboarding | 2/2 | Complete | 2026-02-08 |
 | 3. Planning | 2/2 | Complete | 2026-02-08 |
 | 4. Execution | 2/2 | Complete | 2026-02-08 |
-| 5. Verification | 0/3 | Not started | - |
+| 5. Verification | 3/3 | Complete | 2026-02-08 |
 | 6. Progress & Continuity | 0/5 | Not started | - |
 | 7. Quick Mode & Ideas | 0/4 | Not started | - |
 | 8. Pivot & Brainstorm | 0/7 | Not started | - |
@@ -225,4 +225,4 @@ Note: Phases 5, 6, 7, and 8 all depend on Phase 4 and can potentially be worked 
 
 ---
 *Roadmap created: 2026-02-07*
-*Last updated: 2026-02-08 -- Phase 5 planned*
+*Last updated: 2026-02-08 -- Phase 5 complete*

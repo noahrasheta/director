@@ -38,21 +38,13 @@ Wait for the user's response. If they agree, proceed as if they invoked `/direct
 
 If GAMEPLAN.md contains only template/placeholder text and no actual goal definitions, this is **NEW gameplan mode**. Continue to Handle Arguments below.
 
-If GAMEPLAN.md has real content (actual goal names with descriptions, steps listed, etc.), this is **UPDATE mode**.
-
-**For update mode:** Say something conversational like:
-
-> "I can see you already have a gameplan. Updating an existing gameplan will be available in a future update."
-
-If `$ARGUMENTS` is non-empty, acknowledge it:
-
-> "Noted -- you want to [arguments]. Once gameplan updates are ready, I'll be able to work that into your existing plan."
-
-Wait for the user's response. Do not continue further.
+If GAMEPLAN.md has real content (actual goal names with descriptions, steps listed, etc.), this is **UPDATE mode**. Skip to the Update Mode section below.
 
 ---
 
-## Handle Arguments
+## Handle Arguments (New Gameplan Mode)
+
+This section applies only in **new gameplan mode**. Update mode has its own argument handling.
 
 If `$ARGUMENTS` is non-empty, acknowledge it before proceeding:
 
@@ -368,6 +360,172 @@ Do NOT list file paths, directory structures, or technical details. The user jus
 After the wrap-up, suggest the next action:
 
 > "Ready to start building? You can do that with `/director:build`."
+
+Wait for the user's response. Do not auto-execute the next command.
+
+---
+
+## Update Mode
+
+This section applies when the project already has a gameplan with real content (UPDATE mode detected above). The update flow re-evaluates the entire gameplan holistically, presents what changed, gets explicit approval, and writes updated files -- all while keeping completed work safe.
+
+### Handle Arguments (Update Mode)
+
+If `$ARGUMENTS` is non-empty, acknowledge it as the focus for this update:
+
+> "You want to [arguments]. Let me look at your current gameplan and see how that fits in."
+
+Use the inline text as the primary context for what changed, but still re-evaluate the gameplan holistically. Even a focused request like "add payment processing" may affect ordering, grouping, or other parts of the plan.
+
+If `$ARGUMENTS` is empty, ask what prompted the update:
+
+> "What's changed? New features to add, something to reorganize, or just want to review the plan?"
+
+Wait for the user's response before continuing.
+
+### Load Existing Gameplan
+
+Read the current state of the gameplan:
+
+1. **Read `.director/GAMEPLAN.md`** for the overview -- goals listed, current focus, general structure.
+2. **Scan the `.director/goals/` directory** to understand the full structure: read each GOAL.md, STEP.md, and task files to build a picture of what exists.
+3. **Identify completed work** -- any goals, steps, or tasks that are marked as done or complete in their Status sections. These are FROZEN and will not be touched.
+4. **Identify pending work** -- goals, steps, and tasks that are still in progress or not started. These may be modified, reordered, or removed during the update.
+
+### Freeze Completed Work
+
+Goals, steps, or tasks that are already done are FROZEN during updates. They are never removed, reordered, or modified.
+
+If new context from the user would logically require changes to completed work, flag it conversationally:
+
+> "[Completed item] was already finished, but [new requirement] might need some adjustments to it. Want to add a task for that?"
+
+Do NOT silently remove or modify completed items. The user must explicitly agree to any work that revisits something already done.
+
+### Check for Open Questions
+
+Before re-evaluating, scan VISION.md for `[UNCLEAR]` markers, just as in new gameplan mode. Present any found and offer to resolve or defer them.
+
+### Re-evaluate and Generate Updated Goals
+
+Read the full content of VISION.md to understand the current vision state. Compare the existing goals against the vision plus any new context from the user (via `$ARGUMENTS` or the conversation).
+
+Generate an updated goal set following the same Planning Rules from the new gameplan flow (Rule 1 through Rule 6 still apply).
+
+Present updated goals together, highlighting what changed:
+
+> Here's how I'd update your goals:
+>
+> 1. **[Existing goal -- unchanged]** -- [Same description]
+> 2. **[Modified goal]** -- [Updated description] *(was: [old description])*
+> 3. **[New goal]** -- [Why this was added]
+>
+> [If any goals are being removed:]
+> I'd suggest removing **[goal name]** because [reason].
+>
+> [If completed goals exist:]
+> Already done: **[completed goal]** -- keeping as-is.
+>
+> What do you think?
+
+Wait for the user's response. If they give feedback (add, remove, rename, reorder), adjust the goal set and re-present. Iterate until the user approves.
+
+**Important:** Do NOT generate the updated Steps and Tasks yet. Goal changes must be approved first -- same two-phase flow as new gameplan mode.
+
+### Generate Updated Hierarchy
+
+After the user approves the updated goals, generate the full updated Steps and Tasks.
+
+For each goal in the approved set:
+
+- **Completed goals:** Keep all steps and tasks exactly as they are. Do not modify, reorder, or remove anything inside a completed goal.
+- **Pending/modified goals:** Generate updated Steps and Tasks following the Planning Rules. Existing pending items may be reordered, modified, or removed. New items are added where they fit.
+- **New goals:** Generate Steps and Tasks from scratch, same as new gameplan mode.
+
+Order everything following vertical slices (Rule 6) and what's needed first (Rule 4). Re-evaluate which tasks are "Ready" based on the updated structure -- new work may change what's ready and what's blocked.
+
+### Present Delta Summary
+
+Before showing the full updated outline, present a delta summary so the user can see exactly what changed:
+
+> Here's what I'd change:
+>
+> **Added:**
+> - [New item with explanation of why]
+>
+> **Changed:**
+> - [Modified item: was X, now Y, because Z]
+>
+> **Removed:**
+> - [Removed item with reasoning]
+>
+> **Reordered:**
+> - [Item moved: was in Step X, now in Step Y, because Z]
+>
+> **Already done (keeping as-is):**
+> - [Completed items preserved]
+
+Every removal must be explicitly stated with reasoning. No silent deletions.
+
+The "Already done" section reassures the user that completed work is safe. Always include it, even if just to say "Nothing completed yet."
+
+After the delta summary, present the full updated outline (same format as new gameplan mode -- goals, steps, tasks with one-line descriptions and size indicators):
+
+> Here's the complete updated gameplan:
+>
+> **Goal 1: [Goal Name]** [done]
+>
+>   Step 1: [Step name] [done]
+>     - [Task name] (size) -- Done
+>
+> **Goal 2: [Goal Name]** [updated]
+>
+>   Step 1: [Step name]
+>     - [Task name] (size) -- Ready
+>     - [New task name] (size) -- Needs [capability]
+>
+>   Step 2: [New step name]
+>     - [Task name] (size) -- Needs [capability]
+>
+> **Goal 3: [Goal Name]** [new]
+>
+>   Step 1: [Step name]
+>     - [Task name] (size) -- Needs [capability from Goal 2]
+>
+> Does this look good?
+
+Wait for explicit approval. If the user gives feedback, adjust and re-present. Iterate until they approve.
+
+**Important:** Do NOT write any files until the user explicitly approves this outline.
+
+### Write Updated Files
+
+After the user approves the full updated outline, write the updated gameplan files.
+
+**Rewrite `.director/GAMEPLAN.md`** with the updated overview, goals list, and current focus (same format as new gameplan mode).
+
+**For each goal, step, and task in the approved outline:**
+
+- **Completed items:** Do not touch their files. Leave them exactly as they are.
+- **Modified items:** Overwrite the existing GOAL.md, STEP.md, or task file with updated content.
+- **New items:** Create new directories and files following the same naming conventions (zero-padded numbers, kebab-case slugs).
+- **Removed items:** Delete the files and directories. But NEVER delete files for completed items -- if something is marked done, it stays regardless of what the updated plan says.
+
+Use the same file templates and directory structure as new gameplan mode. Use Bash for `mkdir -p` to create directories and the Write tool for file content. Do NOT narrate each file path or operation to the user.
+
+### Update Mode Wrap-Up
+
+After all files are written, tell the user conversationally:
+
+> "Your gameplan is updated. [Brief summary of what changed -- e.g., 'Added 2 new steps for payment processing and moved the settings page after the dashboard.']"
+
+Do NOT list file paths, directory structures, or technical details.
+
+### Suggest Next Step (Update Mode)
+
+After the wrap-up, suggest the next action:
+
+> "Ready to keep building? You can pick up where you left off with `/director:build`."
 
 Wait for the user's response. Do not auto-execute the next command.
 

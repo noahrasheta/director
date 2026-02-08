@@ -16,7 +16,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 2: Onboarding** - Interview-based project setup that generates VISION.md for new and existing projects
 - [x] **Phase 3: Planning** - Gameplan creation that breaks vision into Goals, Steps, and Tasks with dependencies
 - [x] **Phase 4: Execution** - Fresh-context task execution with atomic commits and documentation sync
-- [ ] **Phase 5: Verification** - Three-tier verification: structural code reading, behavioral checklists, and auto-fix
+- [x] **Phase 5: Verification** - Three-tier verification: structural code reading, behavioral checklists, and auto-fix
 - [ ] **Phase 6: Progress & Continuity** - Status display, state persistence, session resume, and cost tracking
 - [ ] **Phase 7: Quick Mode & Ideas** - Lightweight escape hatches for small changes and idea capture
 - [ ] **Phase 8: Pivot & Brainstorm** - Context-heavy workflows for requirement changes and open-ended exploration
@@ -109,7 +109,7 @@ Plans:
 Plans:
 - [ ] 05-01-PLAN.md -- Agent output updates: builder verification status, verifier auto-fixable classification, debugger status consistency
 - [ ] 05-02-PLAN.md -- Build skill post-task verification flow: issue surfacing, auto-fix retry loop, boundary detection, Tier 2 checklists
-- [ ] 05-03-PLAN.md -- Inspect skill rewrite: scope-aware on-demand verification with Tier 1, Tier 2, auto-fix, and celebration
+- [x] 05-03-PLAN.md -- Inspect skill rewrite: scope-aware on-demand verification with Tier 1, Tier 2, auto-fix, and celebration
 
 ### Phase 6: Progress & Continuity
 **Goal**: Users always know where they are, what happened, and what is next -- even after closing their terminal and coming back days later

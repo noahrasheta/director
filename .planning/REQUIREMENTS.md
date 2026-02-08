@@ -225,38 +225,38 @@ Deferred to future release. Tracked but not in current roadmap.
 | FLEX-01 | Phase 7 | Pending |
 | FLEX-02 | Phase 7 | Pending |
 | FLEX-03 | Phase 7 | Pending |
-| FLEX-04 | Phase 7 | Pending |
-| FLEX-05 | Phase 7 | Pending |
-| FLEX-06 | Phase 7 | Pending |
-| FLEX-07 | Phase 7 | Pending |
-| FLEX-08 | Phase 7 | Pending |
-| FLEX-09 | Phase 7 | Pending |
+| FLEX-04 | Phase 8 | Pending |
+| FLEX-05 | Phase 8 | Pending |
+| FLEX-06 | Phase 8 | Pending |
+| FLEX-07 | Phase 8 | Pending |
+| FLEX-08 | Phase 8 | Pending |
+| FLEX-09 | Phase 8 | Pending |
 | FLEX-10 | Phase 7 | Pending |
 | FLEX-11 | Phase 7 | Pending |
 | FLEX-12 | Phase 7 | Pending |
-| FLEX-13 | Phase 7 | Pending |
-| FLEX-14 | Phase 7 | Pending |
-| FLEX-15 | Phase 7 | Pending |
-| FLEX-16 | Phase 7 | Pending |
-| FLEX-17 | Phase 7 | Pending |
-| CMDI-01 | Phase 8 | Pending |
-| CMDI-02 | Phase 8 | Pending |
-| CMDI-03 | Phase 8 | Pending |
-| CMDI-04 | Phase 8 | Pending |
-| CMDI-05 | Phase 8 | Pending |
-| CMDI-06 | Phase 8 | Pending |
-| CMDI-07 | Phase 8 | Pending |
-| CMDI-08 | Phase 8 | Pending |
-| CMDI-09 | Phase 8 | Pending |
-| DIST-01 | Phase 9 | Pending |
-| DIST-02 | Phase 9 | Pending |
-| DIST-03 | Phase 9 | Pending |
+| FLEX-13 | Phase 8 | Pending |
+| FLEX-14 | Phase 8 | Pending |
+| FLEX-15 | Phase 8 | Pending |
+| FLEX-16 | Phase 8 | Pending |
+| FLEX-17 | Phase 8 | Pending |
+| CMDI-01 | Phase 9 | Pending |
+| CMDI-02 | Phase 9 | Pending |
+| CMDI-03 | Phase 9 | Pending |
+| CMDI-04 | Phase 9 | Pending |
+| CMDI-05 | Phase 9 | Pending |
+| CMDI-06 | Phase 9 | Pending |
+| CMDI-07 | Phase 9 | Pending |
+| CMDI-08 | Phase 9 | Pending |
+| CMDI-09 | Phase 9 | Pending |
+| DIST-01 | Phase 10 | Pending |
+| DIST-02 | Phase 10 | Pending |
+| DIST-03 | Phase 10 | Pending |
 
 **Coverage:**
-- v1 requirements: 82 total
-- Mapped to phases: 82
-- Unmapped: 0 ✓
+- v1 requirements: 88 total
+- Mapped to phases: 88
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-02-07*
-*Last updated: 2026-02-07 after initial definition*
+*Last updated: 2026-02-07 after roadmap creation*

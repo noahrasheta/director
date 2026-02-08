@@ -56,15 +56,11 @@ Plans:
   3. Ambiguous answers are flagged with `[UNCLEAR]` markers and clarified before proceeding
   4. After the interview completes, `.director/VISION.md` exists with a plain-language summary of project purpose, target users, key features, tech stack, deployment plan, and success criteria
   5. Running `/director:onboard` on an existing codebase maps the project (architecture, tech stack, file structure) and presents findings in plain language with delta format for desired changes
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 02-01: New project detection and interview flow
-- [ ] 02-02: Adaptive questioning and UNCLEAR markers
-- [ ] 02-03: VISION.md generation
-- [ ] 02-04: Brownfield project mapping with sub-agents
-- [ ] 02-05: Brownfield findings presentation and delta format
-- [ ] 02-06: Project structure initialization from onboarding
+- [ ] 02-01-PLAN.md -- Greenfield onboarding: detection, adaptive interview, VISION.md generation
+- [ ] 02-02-PLAN.md -- Brownfield onboarding: mapper spawning, findings presentation, delta-format vision
 
 ### Phase 3: Planning
 **Goal**: Users have a complete, reviewable gameplan that breaks their vision into ordered Goals, Steps, and Tasks with dependency awareness
@@ -229,7 +225,7 @@ Note: Phases 5, 6, 7, and 8 all depend on Phase 4 and can potentially be worked 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Plugin Foundation | 7/7 | Complete | 2026-02-08 |
-| 2. Onboarding | 0/6 | Not started | - |
+| 2. Onboarding | 0/2 | Not started | - |
 | 3. Planning | 0/6 | Not started | - |
 | 4. Execution | 0/7 | Not started | - |
 | 5. Verification | 0/6 | Not started | - |
@@ -241,4 +237,4 @@ Note: Phases 5, 6, 7, and 8 all depend on Phase 4 and can potentially be worked 
 
 ---
 *Roadmap created: 2026-02-07*
-*Last updated: 2026-02-07*
+*Last updated: 2026-02-08*

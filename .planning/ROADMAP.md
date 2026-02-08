@@ -13,7 +13,7 @@ Director delivers a complete vibe coding workflow in 10 phases, starting with th
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Plugin Foundation** - Plugin manifest, folder structure, agent/command registration, templates, and configuration
-- [ ] **Phase 2: Onboarding** - Interview-based project setup that generates VISION.md for new and existing projects
+- [x] **Phase 2: Onboarding** - Interview-based project setup that generates VISION.md for new and existing projects
 - [ ] **Phase 3: Planning** - Gameplan creation that breaks vision into Goals, Steps, and Tasks with dependencies
 - [ ] **Phase 4: Execution** - Fresh-context task execution with atomic commits and documentation sync
 - [ ] **Phase 5: Verification** - Three-tier verification: structural code reading, behavioral checklists, and auto-fix
@@ -59,8 +59,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 02-01-PLAN.md -- Greenfield onboarding: detection, adaptive interview, VISION.md generation
-- [ ] 02-02-PLAN.md -- Brownfield onboarding: mapper spawning, findings presentation, delta-format vision
+- [x] 02-01-PLAN.md -- Greenfield onboarding: detection, adaptive interview, VISION.md generation
+- [x] 02-02-PLAN.md -- Brownfield onboarding: mapper spawning, findings presentation, delta-format vision
 
 ### Phase 3: Planning
 **Goal**: Users have a complete, reviewable gameplan that breaks their vision into ordered Goals, Steps, and Tasks with dependency awareness
@@ -225,7 +225,7 @@ Note: Phases 5, 6, 7, and 8 all depend on Phase 4 and can potentially be worked 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Plugin Foundation | 7/7 | Complete | 2026-02-08 |
-| 2. Onboarding | 0/2 | Not started | - |
+| 2. Onboarding | 2/2 | Complete | 2026-02-08 |
 | 3. Planning | 0/6 | Not started | - |
 | 4. Execution | 0/7 | Not started | - |
 | 5. Verification | 0/6 | Not started | - |
@@ -237,4 +237,4 @@ Note: Phases 5, 6, 7, and 8 all depend on Phase 4 and can potentially be worked 
 
 ---
 *Roadmap created: 2026-02-07*
-*Last updated: 2026-02-08*
+*Last updated: 2026-02-08 — Phase 2 complete*

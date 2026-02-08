@@ -29,7 +29,7 @@ The onboard template uses a different format with placeholder text like:
 - `_What are you calling this project?_`
 - `_One or two sentences about what this project does, in plain language._`
 
-**Detection rule:** If VISION.md contains either type of placeholder text -- or if headings have no substantive content beneath them (just blank lines, italic prompts, or template markers) -- the project has NOT been onboarded yet. Proceed to Step 2.
+**Detection rule:** If VISION.md contains either type of placeholder text -- or if headings have no substantive content beneath them (just blank lines, italic prompts, or template markers) -- the project has NOT been onboarded yet. Proceed to Detect Project Type.
 
 **If VISION.md has real content** (substantive text under headings -- actual project descriptions, feature lists, tech choices, not just placeholders):
 
@@ -37,9 +37,17 @@ The user has already onboarded. Check whether there are existing codebase files 
 
 Say something like:
 
-> "You already have a vision document. Want to update it, or would you like me to look through your existing code first to make sure everything is captured?"
+> "You already have a vision document. Want to update it, or would you like me to look through your existing code to make sure everything is captured?"
 
-Wait for the user's response before proceeding. If they want to update, go to Step 3 (the interview) with their existing vision as context -- skip questions that are already answered and focus on gaps. If they want code mapping, let them know that feature is coming soon and offer to update their vision instead.
+Wait for the user's response before proceeding.
+
+**If they want to update their vision:**
+
+Go to the Greenfield Interview section with their existing vision as context. Follow interviewer rule 7: adapt to what's already known -- skip questions that are already answered in the existing vision and focus on gaps, changes, and new information. This is an update conversation, not a redo.
+
+**If they want to map their code:**
+
+Spawn the director-mapper agent to analyze the codebase (see the Mapper Spawning section below for the exact process). Once the mapper returns and findings are presented, ask the user if anything in the findings changes what they want to build or suggests updates to their vision. If yes, walk them through updating the relevant parts of their vision document. If the vision looks accurate, confirm and move on.
 
 ---
 
@@ -54,15 +62,15 @@ Check for existing source files beyond `.director/` by looking at the project ro
 
 If any of these exist, this is an **existing project** (brownfield). Say something like:
 
-> "I see you have existing code here. Full support for mapping existing projects is coming soon. For now, let's start with an interview about your project so I can understand what you're building and where you want to take it."
+> "I see you already have code here. Let me take a look at what you've built so far."
 
-Then proceed to Step 3 (the interview). The brownfield interview should acknowledge the existing code and focus on what the user wants to change or build next, rather than starting from scratch.
+Then proceed to the Brownfield section below.
 
 If none of these exist, this is a **new project** (greenfield). Say something like:
 
 > "Let's figure out what you're building. I'll ask you some questions one at a time -- just answer naturally, and I'll put together a vision document from our conversation."
 
-Then proceed to Step 3.
+Then proceed to Handle Initial Context from Arguments.
 
 ---
 
@@ -161,11 +169,98 @@ When you've covered all relevant sections (or the user signals they're ready to 
 
 > "I think I have a good picture. Let me put together your vision document."
 
-Then proceed to Step 5.
+Then proceed to Generate Vision Document.
+
+---
+
+## Brownfield
+
+This section handles projects that already have code. The flow is: map the codebase, present findings, get confirmation, then run an adapted interview focused on what the user wants to change.
+
+### Mapper Spawning
+
+Tell the user you're going to look at their code. Then spawn the director-mapper agent using the Task tool. Pass it these instructions wrapped in XML boundary tags:
+
+```
+<instructions>
+Map this codebase completely. Report your findings using your standard output format:
+- What you found (1-2 sentence summary)
+- Built with (tech stack in plain language)
+- What it can do (feature inventory as user capabilities)
+- How it's organized (project structure overview)
+- Things worth noting (observations about codebase health)
+</instructions>
+```
+
+Run the mapper in the foreground (not background) -- the user needs the results before the interview can begin.
+
+### Findings Presentation
+
+Once the mapper returns, present the findings to the user in plain language. Format the output conversationally:
+
+> "Here's what I see in your project:"
+
+Then present the mapper findings organized under clear headings. Use the mapper's own structure (What I found, Built with, What it can do, How it's organized, Things worth noting) but present it as a natural summary, not a report.
+
+After presenting, ask the user to confirm or correct:
+
+> "Does this look right? Anything I missed or got wrong?"
+
+Wait for the user to respond. Incorporate any corrections they provide into your understanding of the project before moving on to the interview.
+
+### Brownfield Interview
+
+After the user confirms the mapping, conduct a modified interview. This follows the same rules as the greenfield interview (one question at a time, multiple choice, confirm understanding, flag ambiguity), but with key adaptations for existing projects:
+
+**What to skip (the mapper already answered these):**
+- Do NOT ask "What are you building?" -- the mapper already described it
+- Do NOT ask about tech stack -- the mapper already identified it (unless the user wants to change it)
+- Do NOT ask about project architecture -- the mapper already analyzed it
+
+**What to focus on:**
+- Acknowledge what already exists -- start from what the mapper found, not from scratch
+- Ask what they want to CHANGE, not what they want to BUILD -- the project exists, focus on what's next
+- Present findings as observations -- "Here's what I see" not "Here's what you have"
+- Identify gaps between what exists and what the user wants -- those gaps become the vision
+
+**Brownfield interview sections (7 sections, adapted from the 8 greenfield sections):**
+
+**1. What do you want to change or add?**
+This is the core question. The project exists -- what's the delta? Ask something like: "Now that I've seen what you have, what do you want to change or add next?" This replaces the greenfield "What are you building?" section.
+
+**2. Who is this for?**
+Skip if the answer is obvious from the existing code (e.g., the app clearly has user accounts and a specific audience). Only ask if the target audience is unclear or might be changing.
+
+**3. New features needed**
+What capabilities should be added that don't exist yet? Start by asking for the top priorities. Compare against what the mapper found -- don't ask about features that already work.
+
+**4. Tech stack changes**
+Only ask if the user mentioned wanting to change something, or if the mapper found concerning patterns (e.g., very outdated versions). Frame it as: "The project is using [tech]. Are you happy with that, or is there anything you'd like to switch?"
+
+**5. What does "done" look like for this round of work?**
+This is about the current set of changes, not the entire project. What would make them say this round of improvements is complete? Push for specifics.
+
+**6. Decisions already made about the changes**
+Ask if they've already decided on approaches for any of the changes they described. Don't redo their decisions.
+
+**7. Anything you're unsure about?**
+Same as greenfield -- give space for unknowns and concerns. Mark unresolved items with [UNCLEAR].
+
+Target 5-10 questions total for brownfield (shorter than greenfield since much is already known from the mapper).
+
+### Brownfield Interview Wrap-Up
+
+When you've covered the relevant sections:
+
+> "Got it. Let me put together a vision document that captures where your project is and where you want to take it."
+
+Then proceed to Generate Brownfield Vision.
 
 ---
 
 ## Generate Vision Document
+
+This section handles vision generation for **greenfield** projects.
 
 After the interview completes, generate a vision document following the canonical structure from `skills/onboard/templates/vision-template.md`. Fill in every section with what you learned from the interview:
 
@@ -216,6 +311,76 @@ Show the full document content. Wait for the user to review it.
 
 If the user requests changes, make them and present the updated version. Keep iterating until the user confirms it looks right.
 
+Then proceed to Save and Next Steps.
+
+---
+
+## Generate Brownfield Vision
+
+This section handles vision generation for **existing project** (brownfield) onboarding.
+
+After the brownfield interview completes, generate a vision document following the same canonical template structure but with brownfield-specific content that captures both the current state and desired changes.
+
+```
+# Vision
+
+## Project Name
+[Name from existing project -- confirm with user during interview]
+
+## What It Does
+[Summary combining what the mapper found with the user's vision for changes. Describe the project as it will be after the planned work, not just as it is now.]
+
+## Who It's For
+[Target users -- from interview, or from mapper findings if obvious]
+
+## Key Features
+
+### Existing
+- [Feature the mapper found that is staying as-is]
+- [Another existing feature that works and isn't changing]
+
+### Adding
+- [New feature the user wants to build]
+- [Another new capability from the interview]
+
+### Changing
+- [Existing feature that needs modification -- describe the change]
+- [Another feature being updated]
+
+### Removing
+- [Feature being removed, if any -- include why]
+
+## Tech Stack
+[Current tech from mapper findings + any changes from interview. Note what's staying and what's changing.]
+
+## Success Looks Like
+[What "done" means for this round of changes -- from the interview]
+
+## Decisions Made
+
+| Decision | Why |
+|----------|-----|
+| [Existing decision from codebase] | [Why it was originally made, if apparent] |
+| [New decision from interview] | [User's reasoning] |
+
+## Open Questions
+- [UNCLEAR] [Question still unresolved -- these will be addressed during planning]
+```
+
+The Key Features section uses a delta format to clearly separate what exists from what's being added, changed, or removed. This makes it easy to see at a glance what work needs to happen.
+
+**Language note:** Use the section labels (Existing, Adding, Changing, Removing) in the vision document itself, but keep the conversation natural. Say things like "You have user accounts already, and you want to add a dashboard" -- not "EXISTING: user accounts, ADDING: dashboard."
+
+Present the complete brownfield vision to the user:
+
+> "Here's what I captured. It shows what you have now and what you want to change. Take a look and let me know if anything needs adjusting."
+
+Show the full document content. Wait for the user to review it.
+
+If the user requests changes, make them and present the updated version. Keep iterating until the user confirms it looks right.
+
+Then proceed to Save and Next Steps.
+
 ---
 
 ## Save and Next Steps
@@ -247,5 +412,6 @@ Throughout the entire onboarding flow, follow these rules:
 - **Celebrate naturally:** "Nice choice" or "That's a solid stack" -- not forced enthusiasm
 - **Match the user's energy:** If they're excited, be excited. If they're focused, be focused.
 - **Never use developer jargon in output:** No dependencies, artifacts, integration, repositories, branches, commits, schemas, endpoints, middleware. Use plain language equivalents.
+- **Present mapper findings as collaborative observations, not judgments:** "I see that the project uses React" not "The codebase is built with React." Observations, not assessments.
 
 $ARGUMENTS

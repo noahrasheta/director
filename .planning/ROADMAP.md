@@ -104,15 +104,12 @@ Plans:
   3. At step and goal boundaries, Tier 2 behavioral verification generates a plain-language checklist the user works through ("Try logging in with a wrong password. What happens?")
   4. When issues are found, Director spawns debugger agents to investigate and create fix plans, retrying up to 3-5 cycles before stopping and explaining what needs manual attention
   5. Running `/director:inspect` triggers full verification on demand, and passing verification celebrates progress ("Step 2 is complete! You're 3 of 5 steps through your first goal.")
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 05-01: Tier 1 structural verification (stubs, placeholders, orphans)
-- [ ] 05-02: Tier 1 invisible reporting and plain-language issue descriptions
-- [ ] 05-03: Tier 2 behavioral checklist generation
-- [ ] 05-04: Tier 2 user interaction flow
-- [ ] 05-05: Debugger agent and auto-fix with retry cap
-- [ ] 05-06: On-demand inspect command and completion celebration
+- [ ] 05-01-PLAN.md -- Agent output updates: builder verification status, verifier auto-fixable classification, debugger status consistency
+- [ ] 05-02-PLAN.md -- Build skill post-task verification flow: issue surfacing, auto-fix retry loop, boundary detection, Tier 2 checklists
+- [ ] 05-03-PLAN.md -- Inspect skill rewrite: scope-aware on-demand verification with Tier 1, Tier 2, auto-fix, and celebration
 
 ### Phase 6: Progress & Continuity
 **Goal**: Users always know where they are, what happened, and what is next -- even after closing their terminal and coming back days later
@@ -219,7 +216,7 @@ Note: Phases 5, 6, 7, and 8 all depend on Phase 4 and can potentially be worked 
 | 2. Onboarding | 2/2 | Complete | 2026-02-08 |
 | 3. Planning | 2/2 | Complete | 2026-02-08 |
 | 4. Execution | 2/2 | Complete | 2026-02-08 |
-| 5. Verification | 0/6 | Not started | - |
+| 5. Verification | 0/3 | Not started | - |
 | 6. Progress & Continuity | 0/5 | Not started | - |
 | 7. Quick Mode & Ideas | 0/4 | Not started | - |
 | 8. Pivot & Brainstorm | 0/7 | Not started | - |
@@ -228,4 +225,4 @@ Note: Phases 5, 6, 7, and 8 all depend on Phase 4 and can potentially be worked 
 
 ---
 *Roadmap created: 2026-02-07*
-*Last updated: 2026-02-08 -- Phase 4 complete*
+*Last updated: 2026-02-08 -- Phase 5 planned*

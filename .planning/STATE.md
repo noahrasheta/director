@@ -5,33 +5,33 @@
 See: .planning/PROJECT.md (updated 2026-02-07)
 
 **Core value:** Vibe coders can go from idea to working product through a guided, plain-language workflow (Blueprint / Build / Inspect) that gives them professional development structure without requiring them to think like a developer.
-**Current focus:** Phase 2 - Onboarding
+**Current focus:** Phase 2 - Onboarding (Complete)
 
 ## Current Position
 
 Phase: 2 of 10 (Onboarding)
-Plan: 1 of 2 in current phase
-Status: In progress
-Last activity: 2026-02-08 -- Completed 02-01-PLAN.md
+Plan: 2 of 2 in current phase
+Status: Phase complete
+Last activity: 2026-02-08 -- Completed 02-02-PLAN.md
 
-Progress: [████████░░] ~80% through Phase 2 plan 1
+Progress: [█████████░] ~90% Phase 2 complete (all plans done)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 8
+- Total plans completed: 9
 - Average duration: ~3m
-- Total execution time: ~25 minutes
+- Total execution time: ~28 minutes
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-plugin-foundation | 7/7 | ~21.5m | ~3m |
-| 02-onboarding | 1/2 | 3m 39s | 3m 39s |
+| 02-onboarding | 2/2 | 6m 34s | 3m 17s |
 
 **Recent Trend:**
-- Last 5 plans: 01-04 (3m 15s), 01-05 (3m 28s), 01-06 (3m), 01-07 (3m), 02-01 (3m 39s)
+- Last 5 plans: 01-05 (3m 28s), 01-06 (3m), 01-07 (3m), 02-01 (3m 39s), 02-02 (2m 55s)
 - Trend: stable
 
 *Updated after each plan completion*
@@ -75,6 +75,10 @@ Recent decisions affecting current work:
 - [02-01]: Interview runs inline (Approach A) rather than spawning interviewer as sub-agent -- simpler, more natural conversation
 - [02-01]: Brownfield detection present but temporarily redirects to greenfield interview (full brownfield is Plan 02-02)
 - [02-01]: Dual-template detection handles both init-script and onboard template placeholders
+- [02-02]: Mapper runs in foreground (not background) so user sees findings before interview begins
+- [02-02]: Brownfield interview has 7 sections adapted from 8 greenfield sections, skipping mapper-answered questions
+- [02-02]: Delta format uses Existing/Adding/Changing/Removing labels in VISION.md Key Features
+- [02-02]: Already-onboarded re-entry path fully functional with both update and map options
 
 ### Pending Todos
 
@@ -89,5 +93,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-08
-Stopped at: Completed 02-01-PLAN.md (Greenfield onboarding workflow)
+Stopped at: Completed 02-02-PLAN.md (Brownfield onboarding workflow -- Phase 2 complete)
 Resume file: None

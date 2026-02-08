@@ -10,27 +10,27 @@ See: .planning/PROJECT.md (updated 2026-02-07)
 ## Current Position
 
 Phase: 1 of 10 (Plugin Foundation)
-Plan: 3 of 7 in current phase
+Plan: 4 of 7 in current phase
 Status: In progress
-Last activity: 2026-02-08 -- Completed 01-03-PLAN.md
+Last activity: 2026-02-08 -- Completed 01-04-PLAN.md
 
-Progress: [███░░░░░░░] ~33%
+Progress: [████░░░░░░] ~43%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 3
+- Total plans completed: 4
 - Average duration: ~3m
-- Total execution time: ~8.5 minutes
+- Total execution time: ~12 minutes
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-plugin-foundation | 3/7 | ~8.5m | ~2m 50s |
+| 01-plugin-foundation | 4/7 | ~12m | ~3m |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (1m 52s), 01-02 (4m), 01-03 (2m 31s)
+- Last 5 plans: 01-01 (1m 52s), 01-02 (4m), 01-03 (2m 31s), 01-04 (3m 15s)
 - Trend: stable
 
 *Updated after each plan completion*
@@ -58,6 +58,10 @@ Recent decisions affecting current work:
 - [01-03]: Blueprint routing redirects to onboard conversationally when vision is missing
 - [01-03]: Config defaults template uses nested object format for agent models (matching plan spec)
 - [01-03]: All routing messages follow four-step pattern: state situation, explain why, suggest action, wait for response
+- [01-04]: All routing messages are conversational ("Want to..." not "Run /director:...")
+- [01-04]: Idea skill is partially functional in Phase 1 -- actually captures ideas to IDEAS.md
+- [01-04]: Build skill has exact multi-step routing: project -> vision -> gameplan -> ready task
+- [01-04]: Status and resume use dynamic context injection to load STATE.md at invocation time
 
 ### Pending Todos
 
@@ -72,5 +76,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-08
-Stopped at: Completed 01-03-PLAN.md (Blueprint-Group Skills)
+Stopped at: Completed 01-04-PLAN.md (Remaining Slash Command Skills)
 Resume file: None

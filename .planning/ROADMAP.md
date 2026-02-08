@@ -88,16 +88,11 @@ Plans:
   3. After each task completes, a documentation sync agent checks `.director/` docs against codebase state and reports what was built in plain language
   4. The builder agent can spawn sub-agents for research, exploration, and verification within a single task
   5. Documentation sync catches changes made outside Director's workflow
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 04-01: Ready task identification and selection
-- [ ] 04-02: Context assembly with XML boundary tags
-- [ ] 04-03: Fresh agent window spawning and builder execution
-- [ ] 04-04: Atomic git commits with plain-language abstraction
-- [ ] 04-05: Sub-agent spawning within tasks
-- [ ] 04-06: Documentation sync agent
-- [ ] 04-07: Post-task reporting
+- [ ] 04-01-PLAN.md -- Agent updates: builder gets researcher tool, syncer gets .done.md rename and amend-commit awareness
+- [ ] 04-02-PLAN.md -- Build skill rewrite: complete 10-step execution pipeline (routing, task selection, context assembly, builder spawning, atomic commit, doc sync, post-task summary)
 
 ### Phase 5: Verification
 **Goal**: Users can trust that what was built actually works -- through automatic structural checks, guided behavioral testing, and auto-fix for issues found
@@ -223,7 +218,7 @@ Note: Phases 5, 6, 7, and 8 all depend on Phase 4 and can potentially be worked 
 | 1. Plugin Foundation | 7/7 | Complete | 2026-02-08 |
 | 2. Onboarding | 2/2 | Complete | 2026-02-08 |
 | 3. Planning | 2/2 | Complete | 2026-02-08 |
-| 4. Execution | 0/7 | Not started | - |
+| 4. Execution | 0/2 | Not started | - |
 | 5. Verification | 0/6 | Not started | - |
 | 6. Progress & Continuity | 0/5 | Not started | - |
 | 7. Quick Mode & Ideas | 0/4 | Not started | - |
@@ -233,4 +228,4 @@ Note: Phases 5, 6, 7, and 8 all depend on Phase 4 and can potentially be worked 
 
 ---
 *Roadmap created: 2026-02-07*
-*Last updated: 2026-02-08 -- Phase 3 complete*
+*Last updated: 2026-02-08 -- Phase 4 planned*

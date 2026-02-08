@@ -35,15 +35,16 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Config.json contains sensible defaults and the user did not have to edit any configuration file
   4. All ~8 agent definitions exist and are loadable by Claude Code (interviewer, planner, researcher, mapper, builder, verifier, debugger, syncer)
   5. All artifact templates produce well-structured Markdown when rendered, and XML boundary tags are present in agent context assembly but invisible to users
-**Plans**: TBD
+**Plans**: 7 plans
 
 Plans:
-- [ ] 01-01: Plugin manifest and command registration
-- [ ] 01-02: Folder structure initialization and config defaults
-- [ ] 01-03: Agent definitions and tool permissions
-- [ ] 01-04: Templates and reference docs
-- [ ] 01-05: Hybrid formatting layer (Markdown/XML/JSON)
-- [ ] 01-06: Git initialization and abstraction layer
+- [ ] 01-01-PLAN.md -- Plugin manifest, init script, hooks, and plugin CLAUDE.md
+- [ ] 01-02-PLAN.md -- Reference docs (terminology, plain-language, verification, context management)
+- [ ] 01-03-PLAN.md -- Help skill (functional) + onboard and blueprint skills with templates
+- [ ] 01-04-PLAN.md -- Remaining 8 skills (build, quick, inspect, status, resume, brainstorm, pivot, idea)
+- [ ] 01-05-PLAN.md -- Agents: interviewer, planner, researcher, mapper
+- [ ] 01-06-PLAN.md -- Agents: builder, verifier, debugger, syncer
+- [ ] 01-07-PLAN.md -- Marketplace manifest + integration verification
 
 ### Phase 2: Onboarding
 **Goal**: Users can go from zero to a complete Vision document through a guided, adaptive interview -- for both new and existing projects
@@ -227,7 +228,7 @@ Note: Phases 5, 6, 7, and 8 all depend on Phase 4 and can potentially be worked 
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Plugin Foundation | 0/6 | Not started | - |
+| 1. Plugin Foundation | 0/7 | Planning complete | - |
 | 2. Onboarding | 0/6 | Not started | - |
 | 3. Planning | 0/6 | Not started | - |
 | 4. Execution | 0/7 | Not started | - |

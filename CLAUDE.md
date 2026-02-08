@@ -15,7 +15,7 @@ Director is an opinionated, spec-driven orchestration framework for vibe coders 
 ## Key Design Decisions
 
 - **Target audience is vibe coders.** Director serves solo builders who use AI to build software — people who think in outcomes, not syntax. All user-facing language must be plain English. Never use jargon like "dependencies", "artifact wiring", "worktrees", or "integration testing" in user-facing output.
-- **Director's own terminology hierarchy:** Project > Goals > Steps > Tasks > Actions (Actions are invisible to users). Director uses its own vocabulary designed around how vibe coders think about projects. See `PRD.md` §5 for the full term mapping.
+- **Director's own terminology hierarchy:** Project > Goals > Steps > Tasks > Actions (Actions are invisible to users). Director uses its own vocabulary designed around how vibe coders think about projects. See `docs/design/PRD.md` §5 for the full term mapping.
 - **Fresh AI context per task** — each task gets a new agent window with targeted context (VISION.md + relevant STEP.md + task file + recent git history). Never accumulate full conversation history.
 - **Sub-agents from day one** — Director's lead agent spawns sub-agents for codebase exploration, research, verification, and debugging. These can run in parallel within a single task. This is distinct from Agent Teams (Phase 3), which coordinate multiple specialized teams across tasks simultaneously.
 - **Atomic git commits** — one commit per task, enabling independent revertability.
@@ -84,21 +84,23 @@ All state lives in `.director/` (similar to GSD's `.planning/`):
 
 ## Repository Contents
 
-This repo currently contains only design documents:
+Design documents live in `docs/design/`:
 
 | File | Purpose |
 |---|---|
-| `DIRECTOR.md` | Project README/manifesto |
-| `PRD.md` | Full product requirements document (the primary reference) |
-| `research-competitive-analysis.md` | Analysis of 8 competing frameworks |
-| `research-director-brainstorm.md` | Foundation brainstorm document |
-| `research-followup-questions.md` | Deep-dive Q&A on design decisions |
-| `research-opus-46-strategy.md` | Opus 4.6 capability integration plan |
-| `docs-notes.md` | Raw material for future user guide (living document) |
+| `docs/design/DIRECTOR.md` | Project README/manifesto |
+| `docs/design/PRD.md` | Full product requirements document (the primary reference) |
+| `docs/design/research-competitive-analysis.md` | Analysis of 8 competing frameworks |
+| `docs/design/research-director-brainstorm.md` | Foundation brainstorm document |
+| `docs/design/research-followup-questions.md` | Deep-dive Q&A on design decisions |
+| `docs/design/research-opus-46-strategy.md` | Opus 4.6 capability integration plan |
+| `docs/design/docs-notes.md` | Raw material for future user guide (living document) |
+
+Reference material lives in `docs/resources/`.
 
 ## Living Documents
 
-- **`docs-notes.md`** is a living document for future user guide material. During brainstorming sessions, whenever a workflow explanation, command usage example, FAQ-style answer, or conceptual insight is generated that would help new users understand Director, append it to `docs-notes.md` under the appropriate section. Don't wait for the user to ask — if the conversation produces user-guide-worthy content, capture it.
+- **`docs/design/docs-notes.md`** is a living document for future user guide material. During brainstorming sessions, whenever a workflow explanation, command usage example, FAQ-style answer, or conceptual insight is generated that would help new users understand Director, append it to `docs/design/docs-notes.md` under the appropriate section. Don't wait for the user to ask — if the conversation produces user-guide-worthy content, capture it.
 
 ## Build Strategy
 

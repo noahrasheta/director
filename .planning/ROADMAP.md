@@ -15,7 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: Plugin Foundation** - Plugin manifest, folder structure, agent/command registration, templates, and configuration
 - [x] **Phase 2: Onboarding** - Interview-based project setup that generates VISION.md for new and existing projects
 - [x] **Phase 3: Planning** - Gameplan creation that breaks vision into Goals, Steps, and Tasks with dependencies
-- [ ] **Phase 4: Execution** - Fresh-context task execution with atomic commits and documentation sync
+- [x] **Phase 4: Execution** - Fresh-context task execution with atomic commits and documentation sync
 - [ ] **Phase 5: Verification** - Three-tier verification: structural code reading, behavioral checklists, and auto-fix
 - [ ] **Phase 6: Progress & Continuity** - Status display, state persistence, session resume, and cost tracking
 - [ ] **Phase 7: Quick Mode & Ideas** - Lightweight escape hatches for small changes and idea capture
@@ -91,8 +91,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 04-01-PLAN.md -- Agent updates: builder gets researcher tool, syncer gets .done.md rename and amend-commit awareness
-- [ ] 04-02-PLAN.md -- Build skill rewrite: complete 10-step execution pipeline (routing, task selection, context assembly, builder spawning, atomic commit, doc sync, post-task summary)
+- [x] 04-01-PLAN.md -- Agent updates: builder gets researcher tool, syncer gets .done.md rename and amend-commit awareness
+- [x] 04-02-PLAN.md -- Build skill rewrite: complete 10-step execution pipeline (routing, task selection, context assembly, builder spawning, atomic commit, doc sync, post-task summary)
 
 ### Phase 5: Verification
 **Goal**: Users can trust that what was built actually works -- through automatic structural checks, guided behavioral testing, and auto-fix for issues found
@@ -218,7 +218,7 @@ Note: Phases 5, 6, 7, and 8 all depend on Phase 4 and can potentially be worked 
 | 1. Plugin Foundation | 7/7 | Complete | 2026-02-08 |
 | 2. Onboarding | 2/2 | Complete | 2026-02-08 |
 | 3. Planning | 2/2 | Complete | 2026-02-08 |
-| 4. Execution | 0/2 | Not started | - |
+| 4. Execution | 2/2 | Complete | 2026-02-08 |
 | 5. Verification | 0/6 | Not started | - |
 | 6. Progress & Continuity | 0/5 | Not started | - |
 | 7. Quick Mode & Ideas | 0/4 | Not started | - |
@@ -228,4 +228,4 @@ Note: Phases 5, 6, 7, and 8 all depend on Phase 4 and can potentially be worked 
 
 ---
 *Roadmap created: 2026-02-07*
-*Last updated: 2026-02-08 -- Phase 4 planned*
+*Last updated: 2026-02-08 -- Phase 4 complete*

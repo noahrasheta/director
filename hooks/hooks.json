@@ -1,0 +1,11 @@
+{
+  "hooks": [
+    {
+      "event": "SessionStart",
+      "matcher": "startup",
+      "command": "${CLAUDE_PLUGIN_ROOT}/scripts/session-start.sh",
+      "timeout": 5,
+      "statusMessage": "Loading Director..."
+    }
+  ]
+}

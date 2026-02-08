@@ -9,28 +9,29 @@ See: .planning/PROJECT.md (updated 2026-02-07)
 
 ## Current Position
 
-Phase: 1 of 10 (Plugin Foundation) -- COMPLETE
-Plan: 7 of 7 in current phase
-Status: Phase complete
-Last activity: 2026-02-08 -- Completed 01-07-PLAN.md
+Phase: 2 of 10 (Onboarding)
+Plan: 1 of 2 in current phase
+Status: In progress
+Last activity: 2026-02-08 -- Completed 02-01-PLAN.md
 
-Progress: [███████░░░] ~70% of Phase 1 milestone
+Progress: [████████░░] ~80% through Phase 2 plan 1
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 7
+- Total plans completed: 8
 - Average duration: ~3m
-- Total execution time: ~21.5 minutes
+- Total execution time: ~25 minutes
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-plugin-foundation | 7/7 | ~21.5m | ~3m |
+| 02-onboarding | 1/2 | 3m 39s | 3m 39s |
 
 **Recent Trend:**
-- Last 5 plans: 01-03 (2m 31s), 01-04 (3m 15s), 01-05 (3m 28s), 01-06 (3m), 01-07 (3m)
+- Last 5 plans: 01-04 (3m 15s), 01-05 (3m 28s), 01-06 (3m), 01-07 (3m), 02-01 (3m 39s)
 - Trend: stable
 
 *Updated after each plan completion*
@@ -71,6 +72,9 @@ Recent decisions affecting current work:
 - [01-07]: Marketplace manifest uses GitHub source type with min_claude_code_version 1.0.33
 - [01-07]: README targets vibe coders, not developers -- consistent with Director's audience
 - [01-07]: Plugin verified working: all 11 commands register, all 8 agents load, routing works
+- [02-01]: Interview runs inline (Approach A) rather than spawning interviewer as sub-agent -- simpler, more natural conversation
+- [02-01]: Brownfield detection present but temporarily redirects to greenfield interview (full brownfield is Plan 02-02)
+- [02-01]: Dual-template detection handles both init-script and onboard template placeholders
 
 ### Pending Todos
 
@@ -85,5 +89,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-08
-Stopped at: Completed Phase 1 (Plugin Foundation) -- all 7 plans done
+Stopped at: Completed 02-01-PLAN.md (Greenfield onboarding workflow)
 Resume file: None

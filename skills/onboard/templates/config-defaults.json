@@ -1,0 +1,20 @@
+{
+  "config_version": 1,
+  "mode": "guided",
+  "tips": true,
+  "verification": true,
+  "cost_tracking": true,
+  "doc_sync": true,
+  "max_retry_cycles": 3,
+  "language": "en",
+  "agents": {
+    "interviewer": { "model": "inherit" },
+    "planner": { "model": "inherit" },
+    "researcher": { "model": "inherit" },
+    "mapper": { "model": "haiku" },
+    "builder": { "model": "inherit" },
+    "verifier": { "model": "haiku" },
+    "debugger": { "model": "inherit" },
+    "syncer": { "model": "haiku" }
+  }
+}

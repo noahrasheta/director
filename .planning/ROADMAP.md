@@ -72,15 +72,11 @@ Plans:
   3. The gameplan is presented to the user for review before any execution begins
   4. Running `/director:blueprint` on an existing gameplan updates it rather than replacing it
   5. Running `/director:blueprint "add payment processing"` uses the inline text to focus the update
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 03-01: Vision-to-Goals decomposition
-- [ ] 03-02: Goals-to-Steps with dependency ordering
-- [ ] 03-03: Steps-to-Tasks with complexity and verification criteria
-- [ ] 03-04: Ready-work filtering and gameplan presentation
-- [ ] 03-05: Gameplan storage (GAMEPLAN.md and goals/ hierarchy)
-- [ ] 03-06: Gameplan update mode and inline context
+- [ ] 03-01-PLAN.md -- Blueprint skill rewrite: new gameplan creation with two-phase conversation flow
+- [ ] 03-02-PLAN.md -- Blueprint update mode with delta summary and inline context support
 
 ### Phase 4: Execution
 **Goal**: Users can build their project one task at a time, with each task getting fresh AI context, producing an atomic commit, and keeping documentation in sync
@@ -226,7 +222,7 @@ Note: Phases 5, 6, 7, and 8 all depend on Phase 4 and can potentially be worked 
 |-------|----------------|--------|-----------|
 | 1. Plugin Foundation | 7/7 | Complete | 2026-02-08 |
 | 2. Onboarding | 2/2 | Complete | 2026-02-08 |
-| 3. Planning | 0/6 | Not started | - |
+| 3. Planning | 0/2 | Not started | - |
 | 4. Execution | 0/7 | Not started | - |
 | 5. Verification | 0/6 | Not started | - |
 | 6. Progress & Continuity | 0/5 | Not started | - |
@@ -237,4 +233,4 @@ Note: Phases 5, 6, 7, and 8 all depend on Phase 4 and can potentially be worked 
 
 ---
 *Roadmap created: 2026-02-07*
-*Last updated: 2026-02-08 — Phase 2 complete*
+*Last updated: 2026-02-08 -- Phase 3 planned*

@@ -48,15 +48,15 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Execution
 
-- [ ] **EXEC-01**: `/director:build` identifies the next ready task (all dependencies satisfied)
-- [ ] **EXEC-02**: Each task gets a fresh AI agent window with targeted context (VISION.md, relevant STEP.md, task file, recent git history)
-- [ ] **EXEC-03**: Context is assembled with XML boundary tags for AI parsing accuracy (invisible to user)
-- [ ] **EXEC-04**: Each task produces exactly one atomic git commit, independently revertable
-- [ ] **EXEC-05**: Git operations shown as "Progress saved. You can type `/director:undo` to go back."
-- [ ] **EXEC-06**: After each task, documentation sync agent verifies `.director/` docs match codebase state
-- [ ] **EXEC-07**: Documentation sync catches changes made outside Director's workflow
-- [ ] **EXEC-08**: After each task, reports what was built in plain language
-- [ ] **EXEC-09**: Lead agent can spawn sub-agents for research, exploration, and verification within a task
+- [x] **EXEC-01**: `/director:build` identifies the next ready task (all dependencies satisfied)
+- [x] **EXEC-02**: Each task gets a fresh AI agent window with targeted context (VISION.md, relevant STEP.md, task file, recent git history)
+- [x] **EXEC-03**: Context is assembled with XML boundary tags for AI parsing accuracy (invisible to user)
+- [x] **EXEC-04**: Each task produces exactly one atomic git commit, independently revertable
+- [x] **EXEC-05**: Git operations shown as "Progress saved. You can type `/director:undo` to go back."
+- [x] **EXEC-06**: After each task, documentation sync agent verifies `.director/` docs match codebase state
+- [x] **EXEC-07**: Documentation sync catches changes made outside Director's workflow
+- [x] **EXEC-08**: After each task, reports what was built in plain language
+- [x] **EXEC-09**: Lead agent can spawn sub-agents for research, exploration, and verification within a task
 
 ### Verification
 
@@ -193,15 +193,15 @@ Deferred to future release. Tracked but not in current roadmap.
 | PLAN-07 | Phase 3 | Complete |
 | PLAN-08 | Phase 3 | Complete |
 | PLAN-09 | Phase 3 | Complete |
-| EXEC-01 | Phase 4 | Pending |
-| EXEC-02 | Phase 4 | Pending |
-| EXEC-03 | Phase 4 | Pending |
-| EXEC-04 | Phase 4 | Pending |
-| EXEC-05 | Phase 4 | Pending |
-| EXEC-06 | Phase 4 | Pending |
-| EXEC-07 | Phase 4 | Pending |
-| EXEC-08 | Phase 4 | Pending |
-| EXEC-09 | Phase 4 | Pending |
+| EXEC-01 | Phase 4 | Complete |
+| EXEC-02 | Phase 4 | Complete |
+| EXEC-03 | Phase 4 | Complete |
+| EXEC-04 | Phase 4 | Complete |
+| EXEC-05 | Phase 4 | Complete |
+| EXEC-06 | Phase 4 | Complete |
+| EXEC-07 | Phase 4 | Complete |
+| EXEC-08 | Phase 4 | Complete |
+| EXEC-09 | Phase 4 | Complete |
 | VRFY-01 | Phase 5 | Pending |
 | VRFY-02 | Phase 5 | Pending |
 | VRFY-03 | Phase 5 | Pending |

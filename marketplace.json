@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "plugins": [
+    {
+      "name": "director",
+      "description": "Opinionated orchestration framework for vibe coders. Guides the entire build process from vision to working product.",
+      "version": "0.1.0",
+      "source": {
+        "type": "github",
+        "url": "https://github.com/noahrasheta/director"
+      },
+      "homepage": "https://director.cc",
+      "author": "Noah Rasheta",
+      "license": "MIT",
+      "keywords": ["orchestration", "vibe-coding", "workflow", "planning", "ai-agents"],
+      "min_claude_code_version": "1.0.33"
+    }
+  ]
+}

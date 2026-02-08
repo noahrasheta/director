@@ -5,32 +5,32 @@
 See: .planning/PROJECT.md (updated 2026-02-07)
 
 **Core value:** Vibe coders can go from idea to working product through a guided, plain-language workflow (Blueprint / Build / Inspect) that gives them professional development structure without requiring them to think like a developer.
-**Current focus:** Phase 1 - Plugin Foundation
+**Current focus:** Phase 2 - Onboarding
 
 ## Current Position
 
-Phase: 1 of 10 (Plugin Foundation)
-Plan: 6 of 7 in current phase
-Status: In progress
-Last activity: 2026-02-08 -- Completed 01-05-PLAN.md and 01-06-PLAN.md
+Phase: 1 of 10 (Plugin Foundation) -- COMPLETE
+Plan: 7 of 7 in current phase
+Status: Phase complete
+Last activity: 2026-02-08 -- Completed 01-07-PLAN.md
 
-Progress: [██████░░░░] ~64%
+Progress: [███████░░░] ~70% of Phase 1 milestone
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 6
+- Total plans completed: 7
 - Average duration: ~3m
-- Total execution time: ~18.5 minutes
+- Total execution time: ~21.5 minutes
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-plugin-foundation | 6/7 | ~18.5m | ~3m |
+| 01-plugin-foundation | 7/7 | ~21.5m | ~3m |
 
 **Recent Trend:**
-- Last 5 plans: 01-02 (4m), 01-03 (2m 31s), 01-04 (3m 15s), 01-05 (3m 28s), 01-06 (3m)
+- Last 5 plans: 01-03 (2m 31s), 01-04 (3m 15s), 01-05 (3m 28s), 01-06 (3m), 01-07 (3m)
 - Trend: stable
 
 *Updated after each plan completion*
@@ -68,6 +68,9 @@ Recent decisions affecting current work:
 - [01-06]: Builder is the only agent with memory: project in Phase 1 (others deferred to Phase 2)
 - [01-06]: Verifier uses hard deny (disallowedTools); syncer uses soft instruction for scope restriction
 - [01-06]: Debugger has full write access to apply fixes directly during verification cycles
+- [01-07]: Marketplace manifest uses GitHub source type with min_claude_code_version 1.0.33
+- [01-07]: README targets vibe coders, not developers -- consistent with Director's audience
+- [01-07]: Plugin verified working: all 11 commands register, all 8 agents load, routing works
 
 ### Pending Todos
 
@@ -82,5 +85,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-08
-Stopped at: Completed 01-06-PLAN.md (Write-and-Verify Agent Definitions)
+Stopped at: Completed Phase 1 (Plugin Foundation) -- all 7 plans done
 Resume file: None

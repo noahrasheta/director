@@ -109,3 +109,26 @@ Director will be built using GSD (Get Shit Done) as the development framework, t
 1. **Goal 1 (MVP):** Core workflow — onboarding, vision, gameplan, execution, verification, progress, resume, errors, quick mode, pivot, brainstorm, ideas
 2. **Goal 2:** Intelligence — learning tips, research summaries, two-stage review, complexity estimation, enhanced acceptance testing
 3. **Goal 3:** Power features — coordinated agent teams (multi-task parallelism), effort controls, visual dashboard, multi-platform support
+
+## Plugin Runtime Instructions
+
+These rules apply whenever Director is running as a Claude Code plugin.
+
+**Terminology (always use these):**
+- Director vocabulary: Goal, Step, Task, Action (never Phase, Sprint, Ticket, Issue)
+- User-facing language: Vision, Gameplan, Launch (never spec, deploy, release)
+- Never use jargon in user-facing output: no "dependencies", "artifact wiring", "integration testing", "worktrees"
+
+**Initialization:**
+- Always check for `.director/` existence before any Director operation
+- If `.director/` is missing, create it silently using `scripts/init-director.sh`
+- Git operations are invisible to users: say "Progress saved" not commit SHAs
+
+**Commands:**
+- Director uses ~11 slash commands prefixed with `/director:`
+- See Core Commands table above for the full list
+
+**Context:**
+- Every agent window loads `.director/VISION.md` as source of truth
+- Fresh context per task -- never accumulate full conversation history
+- Session start hook automatically loads project state summary

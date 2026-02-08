@@ -121,14 +121,13 @@ Plans:
   3. State persists automatically to `.director/STATE.md` -- no explicit pause command needed
   4. Running `/director:resume` after any break reads project state and responds in plain language: "Welcome back. Last time, you finished building the login page. Next up: the user profile page."
   5. API cost tracking is visible per goal, step, and task
-**Plans**: TBD
+**Plans**: 4 plans
 
 Plans:
-- [ ] 06-01: Goal and step progress display
-- [ ] 06-02: Task status indicators and blocked-reason display
-- [ ] 06-03: STATE.md automatic persistence
-- [ ] 06-04: Resume command with plain-language context restoration
-- [ ] 06-05: API cost tracking per goal/step/task
+- [ ] 06-01-PLAN.md -- STATE.md format redesign, session lifecycle hooks, and config updates
+- [ ] 06-02-PLAN.md -- Syncer expansion for rich STATE.md management and cost tracking
+- [ ] 06-03-PLAN.md -- Status skill rewrite with progress bars, step counts, and cost display
+- [ ] 06-04-PLAN.md -- Resume skill rewrite with context restoration and external change detection
 
 ### Phase 7: Quick Mode & Ideas
 **Goal**: Users can make small changes without full planning and capture ideas without interrupting their flow
@@ -217,7 +216,7 @@ Note: Phases 5, 6, 7, and 8 all depend on Phase 4 and can potentially be worked 
 | 3. Planning | 2/2 | Complete | 2026-02-08 |
 | 4. Execution | 2/2 | Complete | 2026-02-08 |
 | 5. Verification | 3/3 | Complete | 2026-02-08 |
-| 6. Progress & Continuity | 0/5 | Not started | - |
+| 6. Progress & Continuity | 0/4 | Not started | - |
 | 7. Quick Mode & Ideas | 0/4 | Not started | - |
 | 8. Pivot & Brainstorm | 0/7 | Not started | - |
 | 9. Command Intelligence | 0/6 | Not started | - |
@@ -225,4 +224,4 @@ Note: Phases 5, 6, 7, and 8 all depend on Phase 4 and can potentially be worked 
 
 ---
 *Roadmap created: 2026-02-07*
-*Last updated: 2026-02-08 -- Phase 5 complete*
+*Last updated: 2026-02-08 -- Phase 6 planned*

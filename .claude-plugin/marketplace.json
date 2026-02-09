@@ -12,7 +12,7 @@
       "author": {
         "name": "Noah Rasheta"
       },
-      "source": "./plugins/director",
+      "source": "./",
       "homepage": "https://director.cc",
       "repository": "https://github.com/noahrasheta/director",
       "license": "MIT",

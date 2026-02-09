@@ -119,7 +119,7 @@ These rules apply whenever Director is running as a Claude Code plugin.
 
 **Initialization:**
 - Always check for `.director/` existence before any Director operation
-- If `.director/` is missing, create it silently using `scripts/init-director.sh`
+- If `.director/` is missing, create it silently using `plugins/director/scripts/init-director.sh`
 - Git operations are invisible to users: say "Progress saved" not commit SHAs
 
 **Commands:**

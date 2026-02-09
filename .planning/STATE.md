@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-07)
 
 **Core value:** Vibe coders can go from idea to working product through a guided, plain-language workflow (Blueprint / Build / Inspect) that gives them professional development structure without requiring them to think like a developer.
-**Current focus:** Phase 5 - Verification
+**Current focus:** Phase 6 - Progress & Continuity
 
 ## Current Position
 
-Phase: 5 of 10 (Verification) -- COMPLETE
-Plan: 3 of 3 in current phase
-Status: Phase complete, verified
-Last activity: 2026-02-08 -- Phase 5 verified (5/5 must-haves passed, 11/11 requirements satisfied)
+Phase: 6 of 10 (Progress & Continuity)
+Plan: 1 of 4 in current phase
+Status: In progress
+Last activity: 2026-02-08 -- Completed 06-01-PLAN.md (STATE.md format redesign, session lifecycle hooks)
 
-Progress: [████████████████] 100% (16/16 plans)
+Progress: [███████░░░░░░░░░] 43% (17/40 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 16
-- Average duration: ~2m 45s
-- Total execution time: ~44.1 minutes
+- Total plans completed: 17
+- Average duration: ~2m 42s
+- Total execution time: ~46.1 minutes
 
 **By Phase:**
 
@@ -32,9 +32,10 @@ Progress: [████████████████] 100% (16/16 plans)
 | 03-planning | 2/2 | 4m 43s | 2m 22s |
 | 04-execution | 2/2 | ~5m 30s | ~2m 45s |
 | 05-verification | 3/3 | 5m 51s | 1m 57s |
+| 06-progress-continuity | 1/4 | 2m | 2m |
 
 **Recent Trend:**
-- Last 5 plans: 03-02 (1m 52s), 04-02 (2m 43s), 05-01 (1m 20s), 05-02 (2m 9s), 05-03 (2m 22s)
+- Last 5 plans: 04-02 (2m 43s), 05-01 (1m 20s), 05-02 (2m 9s), 05-03 (2m 22s), 06-01 (2m)
 - Trend: stable, consistently under 3m
 
 *Updated after each plan completion*
@@ -110,6 +111,9 @@ Recent decisions affecting current work:
 - [05-03]: Tier 2 behavioral checklist always runs for inspect regardless of scope (build only triggers at boundaries)
 - [05-03]: Focused scope searches GAMEPLAN/step/task files for matching text and stops with helpful message if no match
 - [05-03]: Checklist is guidance, not a gate -- user can stop without completing it
+- [06-01]: Keep flat-array hooks.json format rather than migrating to nested event-keyed format (existing format works since Phase 1)
+- [06-01]: cost_rate defaults to $10/1M tokens for Opus-class models, stored in config-defaults.json
+- [06-01]: SessionEnd hook only updates timestamps (lightweight), never recalculates progress
 
 ### Pending Todos
 
@@ -124,5 +128,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-08
-Stopped at: Phase 5 (Verification) complete and verified -- 5/5 must-haves passed, 11/11 VRFY requirements satisfied
+Stopped at: Completed 06-01-PLAN.md (STATE.md format redesign, session lifecycle hooks)
 Resume file: None

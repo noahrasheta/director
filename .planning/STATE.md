@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-02-07)
 ## Current Position
 
 Phase: 6 of 10 (Progress & Continuity)
-Plan: 2 of 4 in current phase
+Plan: 3 of 4 in current phase
 Status: In progress
-Last activity: 2026-02-08 -- Completed 06-02-PLAN.md (syncer expansion with cost tracking and activity logging)
+Last activity: 2026-02-08 -- Completed 06-03-PLAN.md (status skill rewrite with progress display)
 
-Progress: [████████░░░░░░░░] 45% (18/40 plans)
+Progress: [████████░░░░░░░░] 47% (19/40 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 18
-- Average duration: ~2m 40s
-- Total execution time: ~48.1 minutes
+- Total plans completed: 19
+- Average duration: ~2m 37s
+- Total execution time: ~49.6 minutes
 
 **By Phase:**
 
@@ -32,10 +32,10 @@ Progress: [████████░░░░░░░░] 45% (18/40 plans)
 | 03-planning | 2/2 | 4m 43s | 2m 22s |
 | 04-execution | 2/2 | ~5m 30s | ~2m 45s |
 | 05-verification | 3/3 | 5m 51s | 1m 57s |
-| 06-progress-continuity | 2/4 | 4m | 2m |
+| 06-progress-continuity | 3/4 | 5m 30s | 1m 50s |
 
 **Recent Trend:**
-- Last 5 plans: 05-01 (1m 20s), 05-02 (2m 9s), 05-03 (2m 22s), 06-01 (2m), 06-02 (2m)
+- Last 5 plans: 05-02 (2m 9s), 05-03 (2m 22s), 06-01 (2m), 06-02 (2m), 06-03 (1m 30s)
 - Trend: stable, consistently under 3m
 
 *Updated after each plan completion*
@@ -117,6 +117,8 @@ Recent decisions affecting current work:
 - [06-02]: Cost formula uses (context_chars / 4) * 2.5 for estimated tokens (input + output/reasoning)
 - [06-02]: Idempotent cost tracking via task file path in Recent Activity entries (prevents double-counting on retries)
 - [06-02]: Decisions extraction uses phrase detection from builder output (no structured output required)
+- [06-03]: File system is authoritative over STATE.md for progress counts (ground truth via .done.md counting)
+- [06-03]: Blocked step detection reads first pending task's Needs First section (consistent with build skill algorithm)
 
 ### Pending Todos
 
@@ -131,5 +133,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-08
-Stopped at: Completed 06-02-PLAN.md (syncer expansion with cost tracking and activity logging)
+Stopped at: Completed 06-03-PLAN.md (status skill rewrite with progress display)
 Resume file: None

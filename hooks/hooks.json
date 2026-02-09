@@ -1,16 +1,26 @@
 {
-  "hooks": [
-    {
-      "event": "SessionStart",
-      "matcher": "startup",
-      "command": "${CLAUDE_PLUGIN_ROOT}/scripts/session-start.sh",
-      "timeout": 5,
-      "statusMessage": "Loading Director..."
-    },
-    {
-      "event": "SessionEnd",
-      "command": "${CLAUDE_PLUGIN_ROOT}/scripts/state-save.sh",
-      "timeout": 5
-    }
-  ]
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/session-start.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/state-save.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
 }

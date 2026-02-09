@@ -2,27 +2,23 @@
 
 **Date:** [YYYY-MM-DD]
 
----
+## Summary
 
-## Context
+### Key Ideas
+- [Idea 1 -- one sentence each]
+- [Idea 2]
+- [Idea 3]
 
-_What prompted this brainstorm -- the question, idea, or problem being explored._
+### Decisions Made
+- [Decision 1 -- if any decisions emerged during the session]
 
-## Discussion
+### Open Questions
+- [Question 1 -- unresolved items worth revisiting]
 
-_Key points explored during the session. Captures the flow of the conversation, important insights, and reasoning._
+## Highlights
 
-## Ideas Generated
+[Key excerpts from the conversation that capture important insights, reasoning, or context. Not the full transcript -- just the parts worth revisiting.]
 
-- _Idea 1_
-- _Idea 2_
-- _Idea 3_
+## Suggested Next Action
 
-## Suggested Next Steps
-
-_What to do with these ideas:_
-
-- **Save as idea** -- Add to IDEAS.md for later consideration
-- **Create a task** -- Turn into a planned step in the gameplan
-- **Trigger a pivot** -- If this changes the project direction, use `/director:pivot`
-- **Keep for reference** -- Just a good conversation to have on file
+[ONE action that fits best: save as idea, quick task, blueprint update, pivot, or "Session saved -- pick it back up anytime."]

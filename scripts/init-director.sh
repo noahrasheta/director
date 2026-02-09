@@ -48,19 +48,36 @@ _No goals defined yet. Run `/director:onboard` to get started._
 GAMEPLAN_EOF
 
 # Create STATE.md with initial state
-cat > .director/STATE.md << 'STATE_EOF'
+# NOTE: Uses unquoted heredoc so date commands get evaluated at init time
+cat > .director/STATE.md << STATE_EOF
 # Project State
 
 **Status:** Not started
+**Last updated:** $(date '+%Y-%m-%d %H:%M')
+**Last session:** $(date '+%Y-%m-%d')
+
+## Current Position
+
 **Current goal:** None
 **Current step:** None
 **Current task:** None
+**Position:** Not started
 
 ## Progress
 
-No tasks completed yet. Run `/director:onboard` to begin.
+No goals defined yet. Run \`/director:onboard\` to begin.
 
-## History
+## Recent Activity
+
+No activity yet.
+
+## Decisions Log
+
+No decisions recorded yet.
+
+## Cost Summary
+
+**Total:** 0 tokens (\$0.00)
 STATE_EOF
 
 # Create IDEAS.md

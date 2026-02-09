@@ -6,6 +6,7 @@
   "cost_tracking": true,
   "doc_sync": true,
   "max_retry_cycles": 3,
+  "cost_rate": 10.00,
   "language": "en",
   "agents": {
     "interviewer": { "model": "inherit" },

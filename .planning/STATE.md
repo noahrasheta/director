@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-07)
 
 **Core value:** Vibe coders can go from idea to working product through a guided, plain-language workflow (Blueprint / Build / Inspect) that gives them professional development structure without requiring them to think like a developer.
-**Current focus:** Phase 7.1 - User Decisions Context -- In progress
+**Current focus:** Phase 7.1 - User Decisions Context -- Complete
 
 ## Current Position
 
 Phase: 7.1 of 10 (User Decisions Context)
-Plan: 2 of 3 in current phase
-Status: In progress
-Last activity: 2026-02-09 -- Completed 07.1-02-PLAN.md (build skill decisions pipeline)
+Plan: 3 of 3 in current phase
+Status: Phase complete
+Last activity: 2026-02-09 -- Completed 07.1-03-PLAN.md (blueprint decision capture)
 
-Progress: [█████████░░░░░░░] 60% (25/42 plans)
+Progress: [██████████░░░░░░] 62% (26/42 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 25
-- Average duration: ~2m 23s
-- Total execution time: ~59.5 minutes
+- Total plans completed: 26
+- Average duration: ~2m 21s
+- Total execution time: ~61m 08s
 
 **By Phase:**
 
@@ -34,10 +34,10 @@ Progress: [█████████░░░░░░░] 60% (25/42 plans)
 | 05-verification | 3/3 | 5m 51s | 1m 57s |
 | 06-progress-continuity | 4/4 | 7m | 1m 45s |
 | 07-quick-mode-ideas | 3/3 | 5m 43s | 1m 54s |
-| 07.1-user-decisions-context | 2/3 | 2m 35s | 1m 18s |
+| 07.1-user-decisions-context | 3/3 | 4m 13s | 1m 24s |
 
 **Recent Trend:**
-- Last 5 plans: 07-01 (2m 16s), 07-02 (1m 26s), 07-03 (2m 01s), 07.1-01 (1m 34s), 07.1-02 (1m 01s)
+- Last 5 plans: 07-02 (1m 26s), 07-03 (2m 01s), 07.1-01 (1m 34s), 07.1-02 (1m 01s), 07.1-03 (1m 38s)
 - Trend: stable, consistently under 2m 30s
 
 *Updated after each plan completion*
@@ -148,6 +148,11 @@ Recent decisions affecting current work:
 - [07.1-02]: Decisions extraction reuses STEP.md content already loaded in Step 5b (no additional file read)
 - [07.1-02]: Instructions template reinforces decision rules as dual reinforcement alongside <decisions> tag
 - [07.1-02]: Context budget character count updated in both Step 5f and cost_data to include decisions
+- [07.1-03]: Decision capture is passive -- extracted from natural conversation, never an interrogation step
+- [07.1-03]: Cross-cutting decisions are duplicated into every relevant step (no inheritance mechanism)
+- [07.1-03]: Capture happens after hierarchy approval and before file writing
+- [07.1-03]: Update mode freezes completed-step decisions, merges new decisions into modified steps
+- [07.1-03]: Planner does not write decisions -- notes preferences for blueprint skill to capture
 
 ### Pending Todos
 
@@ -162,5 +167,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-09
-Stopped at: Completed 07.1-02-PLAN.md (build skill decisions pipeline)
+Stopped at: Completed 07.1-03-PLAN.md (blueprint decision capture) -- Phase 7.1 complete
 Resume file: None

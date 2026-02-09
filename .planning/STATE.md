@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-07)
 
 **Core value:** Vibe coders can go from idea to working product through a guided, plain-language workflow (Blueprint / Build / Inspect) that gives them professional development structure without requiring them to think like a developer.
-**Current focus:** Phase 9 - Command Intelligence -- Complete
+**Current focus:** Phase 10 - Distribution -- In progress
 
 ## Current Position
 
-Phase: 9 of 10 (Command Intelligence)
-Plan: 3 of 3 in current phase
-Status: Phase complete
-Last activity: 2026-02-09 -- Completed 09-03-PLAN.md (inline text audit, resume arguments, error messaging, reference docs)
+Phase: 10 of 10 (Distribution)
+Plan: 1 of 3 in current phase
+Status: In progress
+Last activity: 2026-02-09 -- Completed 10-01-PLAN.md (marketplace manifest fix, version bump, changelog)
 
-Progress: [██████████████░░] 86% (36/42 plans)
+Progress: [██████████████░░] 88% (37/42 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 36
-- Average duration: ~2m 10s
-- Total execution time: ~78m 02s
+- Total plans completed: 37
+- Average duration: ~2m 08s
+- Total execution time: ~79m 13s
 
 **By Phase:**
 
@@ -37,9 +37,10 @@ Progress: [██████████████░░] 86% (36/42 plans)
 | 07.1-user-decisions-context | 3/3 | 4m 13s | 1m 24s |
 | 08-pivot-brainstorm | 7/7 | 10m 08s | 1m 27s |
 | 09-command-intelligence | 3/3 | 6m 46s | 2m 15s |
+| 10-distribution | 1/3 | 1m 11s | 1m 11s |
 
 **Recent Trend:**
-- Last 5 plans: 08-03 (1m 47s), 08-04 (2m 02s), 09-02 (1m 12s), 09-01 (2m 57s), 09-03 (2m 37s)
+- Last 5 plans: 08-04 (2m 02s), 09-02 (1m 12s), 09-01 (2m 57s), 09-03 (2m 37s), 10-01 (1m 11s)
 - Trend: stable, consistently under 3m
 
 *Updated after each plan completion*
@@ -55,7 +56,8 @@ Progress: [██████████████░░] 86% (36/42 plans)
 Decisions are logged in PROJECT.md Key Decisions table.
 Recent decisions affecting current work:
 
-- [Roadmap]: 10 phases derived from 88 requirements across 9 categories, with FLEX split into Quick/Ideas (Phase 7) and Pivot/Brainstorm (Phase 8) for cleaner delivery boundaries
+- [Roadmap]: 11 phases derived from 88 requirements across 9 categories, with FLEX split into Quick/Ideas (Phase 7) and Pivot/Brainstorm (Phase 8) for cleaner delivery boundaries
+- [Roadmap]: Phase 11 added: Landing Page — design and create the director.cc homepage
 - [Roadmap]: Phases 5-8 all depend on Phase 4, enabling potential parallel work after execution engine is built
 - [Roadmap]: Phase 7.1 inserted to close gap where user intent gets lost between blueprint interview and task execution
 - [01-01]: Plugin manifest uses name "director" to namespace all skills as /director:*
@@ -195,6 +197,9 @@ Recent decisions affecting current work:
 - [09-03]: Resume $ARGUMENTS is a soft focus hint -- influences recap highlighting and next-action suggestion without changing core flow
 - [09-03]: Audit confirmed 11/12 commands already had $ARGUMENTS support; resume was the only gap
 - [09-03]: Idea skill was the only lightweight command missing Language Reminders section
+- [10-01]: marketplace.json lives at .claude-plugin/marketplace.json with official schema (name/owner/plugins, source.source/source.repo)
+- [10-01]: Version bumped directly to 1.0.0 with no intermediate releases
+- [10-01]: CHANGELOG groups features by capability area (Core Workflow, Flexibility, Intelligence, Distribution)
 
 ### Pending Todos
 
@@ -209,6 +214,6 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-09
-Stopped at: Phase 9 complete -- all 3 plans executed and verified
+Stopped at: Completed 10-01-PLAN.md (marketplace manifest, version bump, changelog)
 Resume file: None
-Next: Phase 10 (Documentation & Polish) -- `/gsd:discuss-phase 10`
+Next: Plan 10-02 (install flow and README) then 10-03 (final polish)

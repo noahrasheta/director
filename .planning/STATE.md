@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-07)
 
 **Core value:** Vibe coders can go from idea to working product through a guided, plain-language workflow (Blueprint / Build / Inspect) that gives them professional development structure without requiring them to think like a developer.
-**Current focus:** Phase 7 - Quick Mode & Ideas -- In progress
+**Current focus:** Phase 7 - Quick Mode & Ideas -- Complete
 
 ## Current Position
 
 Phase: 7 of 10 (Quick Mode & Ideas)
-Plan: 2 of 3 in current phase
-Status: In progress
-Last activity: 2026-02-08 -- Completed 07-01-PLAN.md (quick mode execution pipeline with complexity analysis)
+Plan: 3 of 3 in current phase
+Status: Phase complete
+Last activity: 2026-02-08 -- Completed 07-03-PLAN.md (ideas viewer with conversational routing)
 
-Progress: [████████░░░░░░░░] 52% (22/42 plans)
+Progress: [████████░░░░░░░░] 55% (23/42 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 22
-- Average duration: ~2m 30s
-- Total execution time: ~55 minutes
+- Total plans completed: 23
+- Average duration: ~2m 29s
+- Total execution time: ~57 minutes
 
 **By Phase:**
 
@@ -33,10 +33,10 @@ Progress: [████████░░░░░░░░] 52% (22/42 plans)
 | 04-execution | 2/2 | ~5m 30s | ~2m 45s |
 | 05-verification | 3/3 | 5m 51s | 1m 57s |
 | 06-progress-continuity | 4/4 | 7m | 1m 45s |
-| 07-quick-mode-ideas | 2/3 | 3m 42s | 1m 51s |
+| 07-quick-mode-ideas | 3/3 | 5m 43s | 1m 54s |
 
 **Recent Trend:**
-- Last 5 plans: 06-02 (2m), 06-03 (1m 30s), 06-04 (1m 28s), 07-02 (1m 26s), 07-01 (2m 16s)
+- Last 5 plans: 06-03 (1m 30s), 06-04 (1m 28s), 07-01 (2m 16s), 07-02 (1m 26s), 07-03 (2m 01s)
 - Trend: stable, consistently under 2m 30s
 
 *Updated after each plan completion*
@@ -137,6 +137,9 @@ Recent decisions affecting current work:
 - [07-02]: IDEAS.md insertion anchored to `_Captured ideas_` description line (shared contract between idea skill, ideas skill, and init template)
 - [07-02]: Idea text preserved exactly as typed -- no reformatting, summarizing, or editing
 - [07-02]: Single-line confirmation ("Got it -- saved to your ideas list.") with no follow-up questions or suggestions
+- [07-03]: Brainstorm route keeps idea in IDEAS.md (exploration is not action); quick and blueprint routes remove it
+- [07-03]: Quick route executes inline via builder (same flow as quick skill); blueprint/brainstorm direct user to run command
+- [07-03]: $ARGUMENTS support enables direct idea matching (e.g., /director:ideas "dark mode" jumps to matching idea)
 
 ### Pending Todos
 
@@ -151,5 +154,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-08
-Stopped at: Completed 07-01-PLAN.md (quick mode execution pipeline with complexity analysis)
+Stopped at: Completed 07-03-PLAN.md (ideas viewer with conversational routing) -- Phase 7 complete
 Resume file: None

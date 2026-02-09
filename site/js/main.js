@@ -143,3 +143,41 @@ if (terminal) {
 
   document.getElementById('replayBtn')?.addEventListener('click', () => anim.run());
 }
+
+/* --------------------------------------------------------------------------
+   Scroll Reveal
+   -------------------------------------------------------------------------- */
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.section').forEach(el => {
+  if (el.id !== 'hero') {
+    revealObserver.observe(el);
+  }
+});
+
+/* --------------------------------------------------------------------------
+   Scroll Spy — Active Nav Highlighting
+   -------------------------------------------------------------------------- */
+
+const navLinks = document.querySelectorAll('.nav-links a');
+const sections = document.querySelectorAll('section[id]');
+
+const spyObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
+      });
+    }
+  });
+}, { threshold: 0.3, rootMargin: '-80px 0px -50% 0px' });
+
+sections.forEach(section => spyObserver.observe(section));

@@ -671,6 +671,118 @@ a {
 }
 
 /* --------------------------------------------------------------------------
+   Scroll Reveal
+   -------------------------------------------------------------------------- */
+
+.section {
+  opacity: 0;
+  transform: translateY(2rem);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.section.visible, #hero {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Get Started Section
+   -------------------------------------------------------------------------- */
+
+#get-started {
+  text-align: center;
+}
+
+#get-started .install-block {
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   Newsletter Section
+   -------------------------------------------------------------------------- */
+
+.newsletter-form {
+  display: flex;
+  gap: 0.75rem;
+  max-width: 28rem;
+  margin: 1.5rem auto 0 auto;
+}
+
+.newsletter-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+
+.newsletter-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.newsletter-input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.newsletter-btn {
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+
+.footer {
+  padding: 3rem 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.footer .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.footer-logo img {
+  height: 1.25rem;
+  opacity: 0.6;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.8125rem;
+}
+
+.footer-links a, .footer-links span {
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: var(--color-text-secondary);
+}
+
+.footer-credit {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+/* --------------------------------------------------------------------------
    Mobile Overrides
    -------------------------------------------------------------------------- */
 
@@ -707,5 +819,9 @@ a {
 
   .command-name {
     min-width: auto;
+  }
+
+  .newsletter-form {
+    flex-direction: column;
   }
 }

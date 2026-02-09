@@ -58,7 +58,7 @@
       <div class="hero-ctas">
         <div class="install-block">
           <code class="install-command" id="installCmd">/plugin marketplace add noahrasheta/director && /plugin install director@director-marketplace</code>
-          <button class="copy-btn" onclick="copyInstall()" aria-label="Copy install command">
+          <button class="copy-btn" onclick="copyCmd(this)" aria-label="Copy install command">
             <span class="copy-icon">Copy</span>
             <span class="copy-success" hidden>Copied!</span>
           </button>
@@ -199,8 +199,20 @@
   </section>
 
   <section id="get-started" class="section">
-    <div class="container">
-      <!-- Content in plan 03 -->
+    <div class="container container--narrow">
+      <h2 class="section-title">Get Started</h2>
+      <p class="section-subtitle">Install Director in Claude Code and build your first project in minutes.</p>
+      <div class="hero-ctas">
+        <div class="install-block">
+          <code class="install-command" id="installCmd2">/plugin marketplace add noahrasheta/director && /plugin install director@director-marketplace</code>
+          <button class="copy-btn" onclick="copyCmd(this)" aria-label="Copy install command">
+            <span class="copy-icon">Copy</span>
+            <span class="copy-success" hidden>Copied!</span>
+          </button>
+        </div>
+        <a href="https://github.com/noahrasheta/director" class="btn btn--secondary" target="_blank" rel="noopener">View on GitHub</a>
+      </div>
+      <p class="hero-prereq">Requires <a href="https://claude.ai/code">Claude Code</a> v1.0.33+</p>
     </div>
   </section>
 
@@ -284,23 +296,45 @@
   </section>
 
   <section id="newsletter" class="section">
-    <div class="container">
-      <!-- Content in plan 03 -->
+    <div class="container container--narrow">
+      <h2 class="section-title">Stay in the loop</h2>
+      <p class="section-subtitle">Get occasional updates on Director and other tools for vibe coders. No spam, unsubscribe anytime.</p>
+      <!-- Replace PLACEHOLDER with your Buttondown username -->
+      <form
+        action="https://buttondown.com/api/emails/embed-subscribe/PLACEHOLDER"
+        method="post"
+        class="newsletter-form"
+      >
+        <input type="hidden" name="embed" value="1" />
+        <input
+          type="email"
+          name="email"
+          placeholder="your@email.com"
+          required
+          class="newsletter-input"
+        />
+        <button type="submit" class="btn btn--primary newsletter-btn">Subscribe</button>
+      </form>
     </div>
   </section>
 
-  <footer id="footer" class="section">
+  <footer id="footer" class="footer">
     <div class="container">
-      <!-- Content in plan 03 -->
+      <a href="#hero" class="footer-logo"><img src="assets/director-logo.png" alt="Director" /></a>
+      <div class="footer-links">
+        <a href="https://github.com/noahrasheta/director" target="_blank" rel="noopener">GitHub</a>
+        <span>MIT License</span>
+      </div>
+      <p class="footer-credit">Built by Noah Rasheta &middot; &copy; 2026</p>
     </div>
   </footer>
 
   <script>
-    async function copyInstall() {
-      const text = document.getElementById('installCmd').textContent.trim();
+    async function copyCmd(btn) {
+      const code = btn.closest('.install-block').querySelector('.install-command');
+      const text = code.textContent.trim();
       try {
         await navigator.clipboard.writeText(text);
-        const btn = document.querySelector('.copy-btn');
         btn.querySelector('.copy-icon').hidden = true;
         btn.querySelector('.copy-success').hidden = false;
         setTimeout(() => {
@@ -309,7 +343,7 @@
         }, 2000);
       } catch (err) {
         const range = document.createRange();
-        range.selectNodeContents(document.getElementById('installCmd'));
+        range.selectNodeContents(code);
         window.getSelection().removeAllRanges();
         window.getSelection().addRange(range);
       }

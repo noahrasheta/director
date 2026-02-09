@@ -23,7 +23,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 8: Pivot & Brainstorm** - Context-heavy workflows for requirement changes and open-ended exploration
 - [x] **Phase 9: Command Intelligence** - Context-aware routing, error handling, terminology enforcement, help, and undo
 - [x] **Phase 10: Distribution** - Self-hosted plugin marketplace, installation flow, and versioning
-- [ ] **Phase 11: Landing Page** - Design and create the director.cc homepage
+- [x] **Phase 11: Landing Page** - Design and create the director.cc homepage
 
 ## Phase Details
 
@@ -224,7 +224,7 @@ Plans:
 Plans:
 - [x] 11-01-PLAN.md -- Site foundation (directory structure, assets, design system) and hero section with sticky navigation
 - [x] 11-02-PLAN.md -- Content sections: Problem, terminal walkthrough animation, Features, Why Director, Commands
-- [ ] 11-03-PLAN.md -- Bottom sections (Get Started CTA, newsletter, footer), scroll behaviors, deployment workflow
+- [x] 11-03-PLAN.md -- Bottom sections (Get Started CTA, newsletter, footer), scroll behaviors, deployment workflow
 
 ## Progress
 
@@ -246,8 +246,8 @@ Note: Phases 5, 6, 7, and 8 all depend on Phase 4 and can potentially be worked 
 | 8. Pivot & Brainstorm | 7/7 | Complete | 2026-02-09 |
 | 9. Command Intelligence | 3/3 | Complete | 2026-02-09 |
 | 10. Distribution | 3/3 | Complete | 2026-02-09 |
-| 11. Landing Page | 2/3 | In progress | - |
+| 11. Landing Page | 3/3 | Complete | 2026-02-09 |
 
 ---
 *Roadmap created: 2026-02-07*
-*Last updated: 2026-02-09 -- Completed 11-01 (site foundation and hero section)*
+*Last updated: 2026-02-09 -- Completed 11-03 (bottom sections, deployment) -- All phases complete*

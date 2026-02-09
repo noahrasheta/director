@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-07)
 
 **Core value:** Vibe coders can go from idea to working product through a guided, plain-language workflow (Blueprint / Build / Inspect) that gives them professional development structure without requiring them to think like a developer.
-**Current focus:** Phase 11 - Landing Page -- In progress
+**Current focus:** Phase 11 - Landing Page -- Complete
 
 ## Current Position
 
 Phase: 11 of 11 (Landing Page)
-Plan: 2 of 3 in current phase
-Status: In progress
-Last activity: 2026-02-09 -- Completed 11-02-PLAN.md (content sections: Problem, terminal walkthrough, Features, Why, Commands)
+Plan: 3 of 3 in current phase
+Status: Phase complete
+Last activity: 2026-02-09 -- Completed 11-03-PLAN.md (bottom sections, scroll behaviors, deployment, hero messaging update)
 
-Progress: [████████████████] 97% (41/42 plans)
+Progress: [████████████████] 100% (42/42 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 41
-- Average duration: ~2m 08s
-- Total execution time: ~87m 46s
+- Total plans completed: 42
+- Average duration: ~2m 10s
+- Total execution time: ~91m 33s
 
 **By Phase:**
 
@@ -38,11 +38,11 @@ Progress: [████████████████] 97% (41/42 plans)
 | 08-pivot-brainstorm | 7/7 | 10m 08s | 1m 27s |
 | 09-command-intelligence | 3/3 | 6m 46s | 2m 15s |
 | 10-distribution | 3/3 | 3m 59s | 1m 20s |
-| 11-landing-page | 2/3 | 5m 45s | 2m 53s |
+| 11-landing-page | 3/3 | 9m 32s | 3m 11s |
 
 **Recent Trend:**
-- Last 5 plans: 10-01 (1m 11s), 10-02 (1m 39s), 10-03 (1m 9s), 11-01 (2m 55s), 11-02 (2m 50s)
-- Trend: stable, consistently under 3m
+- Last 5 plans: 10-02 (1m 39s), 10-03 (1m 9s), 11-01 (2m 55s), 11-02 (2m 50s), 11-03 (3m 47s)
+- Trend: stable, consistently under 4m
 
 *Updated after each plan completion*
 
@@ -216,6 +216,10 @@ Recent decisions affecting current work:
 - [11-02]: Terminal animation uses 3-act narrative (onboard/blueprint/build) with ~14 lines total
 - [11-02]: Unicode symbols for loop/feature icons instead of SVGs or emoji for cross-platform consistency
 - [11-02]: Commands grouped by Blueprint/Build/Inspect/Other categories matching Director's core loop
+- [11-03]: Hero tagline updated to three-part "You have the vision. AI has the skills. /director is the structure between them."
+- [11-03]: Buttondown newsletter uses PLACEHOLDER username (developer replaces post-deployment)
+- [11-03]: OG image as SVG source + HTML canvas generator for PNG export
+- [11-03]: GitHub Actions deploy-pages@v4 workflow deploys site/ to GitHub Pages on push to main
 
 ### Pending Todos
 
@@ -230,6 +234,6 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-09
-Stopped at: Completed 11-02-PLAN.md (content sections: Problem, terminal walkthrough, Features, Why, Commands)
+Stopped at: Completed 11-03-PLAN.md (bottom sections, scroll behaviors, deployment, hero messaging update)
 Resume file: None
-Next: 11-03-PLAN.md (bottom sections: Get Started CTA, newsletter, footer, deployment)
+Next: All phases complete -- milestone ready for /gsd:complete-milestone

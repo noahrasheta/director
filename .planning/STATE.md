@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-02-07)
 ## Current Position
 
 Phase: 7.1 of 10 (User Decisions Context)
-Plan: 1 of 3 in current phase
+Plan: 2 of 3 in current phase
 Status: In progress
-Last activity: 2026-02-09 -- Completed 07.1-01-PLAN.md (decisions schema and consumer awareness)
+Last activity: 2026-02-09 -- Completed 07.1-02-PLAN.md (build skill decisions pipeline)
 
-Progress: [█████████░░░░░░░] 57% (24/42 plans)
+Progress: [█████████░░░░░░░] 60% (25/42 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 24
-- Average duration: ~2m 26s
-- Total execution time: ~58.5 minutes
+- Total plans completed: 25
+- Average duration: ~2m 23s
+- Total execution time: ~59.5 minutes
 
 **By Phase:**
 
@@ -34,10 +34,10 @@ Progress: [█████████░░░░░░░] 57% (24/42 plans)
 | 05-verification | 3/3 | 5m 51s | 1m 57s |
 | 06-progress-continuity | 4/4 | 7m | 1m 45s |
 | 07-quick-mode-ideas | 3/3 | 5m 43s | 1m 54s |
-| 07.1-user-decisions-context | 1/3 | 1m 34s | 1m 34s |
+| 07.1-user-decisions-context | 2/3 | 2m 35s | 1m 18s |
 
 **Recent Trend:**
-- Last 5 plans: 06-04 (1m 28s), 07-01 (2m 16s), 07-02 (1m 26s), 07-03 (2m 01s), 07.1-01 (1m 34s)
+- Last 5 plans: 07-01 (2m 16s), 07-02 (1m 26s), 07-03 (2m 01s), 07.1-01 (1m 34s), 07.1-02 (1m 01s)
 - Trend: stable, consistently under 2m 30s
 
 *Updated after each plan completion*
@@ -145,6 +145,9 @@ Recent decisions affecting current work:
 - [07.1-01]: Builder is the only agent that receives <decisions> context (Yes in profiles table)
 - [07.1-01]: <decisions> tag positioned between <current_step> and <task> in assembly order
 - [07.1-01]: Decisions are never truncated (added as rule 5 alongside task and vision)
+- [07.1-02]: Decisions extraction reuses STEP.md content already loaded in Step 5b (no additional file read)
+- [07.1-02]: Instructions template reinforces decision rules as dual reinforcement alongside <decisions> tag
+- [07.1-02]: Context budget character count updated in both Step 5f and cost_data to include decisions
 
 ### Pending Todos
 
@@ -159,5 +162,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-09
-Stopped at: Completed 07.1-01-PLAN.md (decisions schema and consumer awareness)
+Stopped at: Completed 07.1-02-PLAN.md (build skill decisions pipeline)
 Resume file: None

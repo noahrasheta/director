@@ -270,7 +270,149 @@ Store the summary internally for use in Step 6 (impact analysis).
 
 ---
 
-<!-- Steps 6-9 will be added in plans 08-03 and 08-04 -->
+## Step 6: Impact analysis
+
+Now that you have an accurate picture of the current state (from Step 5), analyze every item in the gameplan against the new direction captured in Step 2.
+
+### 6a: Read the full gameplan structure
+
+Build a complete inventory of everything that exists:
+
+1. Read `.director/GAMEPLAN.md` for the overview, goal list, and current focus.
+2. Scan the `.director/goals/` directory. For each goal directory:
+   - Read `GOAL.md` for the goal definition and status.
+   - Read each `STEP.md` for step descriptions, tasks, and status.
+   - Read all task files in each step's `tasks/` directory.
+3. Build a list of every goal, step, and task with its current status (done, in progress, or pending).
+
+### 6b: Identify completed work
+
+Any goal, step, or task marked as done or complete is **FROZEN**. This is the same rule as blueprint update mode:
+
+- Completed items are NEVER removed from the gameplan.
+- Completed items are NEVER reordered or modified.
+- If the pivot makes completed work irrelevant, it stays in the gameplan and gets cleanup tasks (see 6d below).
+
+### 6c: Classify every item against the new direction
+
+For each goal, step, and task in the gameplan, assign one of four classifications:
+
+**Still relevant:** No change needed -- this work contributes to the new direction as-is. The goal/step/task can remain exactly where it is.
+
+**Needs modification:** The work is still useful but needs adjustments to fit the new direction. Note what specifically needs to change and why.
+
+**No longer needed:** This pending work does not contribute to the new direction. It will be proposed for removal in the delta summary. (This classification applies only to PENDING items. For completed work that is now irrelevant, see 6d below.)
+
+**New work required:** The new direction requires goals, steps, or tasks that do not exist yet. These will be generated in 6e below.
+
+### 6d: Handle completed work that is now irrelevant
+
+When completed work no longer aligns with the new direction, do NOT propose removal. Instead:
+
+1. Flag it explicitly in your analysis.
+2. Propose adding cleanup tasks to the new gameplan that give the user the option to remove or repurpose the completed work.
+3. Frame it conversationally: "The old login page is built but no longer needed. I'll add a cleanup task to remove it when you're ready."
+
+Per locked decision: "Director flags it and adds cleanup tasks to the new gameplan (not removed automatically)." The user decides if and when cleanup happens.
+
+### 6e: Generate new items for the new direction
+
+For goals, steps, and tasks that the new direction requires but do not exist yet, generate them following the same planning rules as blueprint:
+
+**Rule 1: Goals are outcomes, not activities.** "Users can..." not "Build..." or "Implement..."
+
+**Rule 2: Steps are verifiable chunks of work.** Each step delivers something the user can see or interact with.
+
+**Rule 3: Tasks are single-sitting work units.** Each task includes What To Do, Why It Matters, Size, Done When, and Needs First.
+
+**Rule 4: Order by what's needed first.** Express prerequisites in plain language ("Needs the user database set up first"), never as task IDs.
+
+**Rule 5: Use ready-work filtering.** Mark tasks as "Ready" only when everything they need is already complete.
+
+**Rule 6: Prefer vertical slices over horizontal layers.** Build complete features one at a time.
+
+Generate new items at whatever granularity matches the pivot scope:
+- Strategic pivots may need entirely new goals with steps and tasks.
+- Tactical pivots may only need new steps or tasks within existing goals.
+
+---
+
+## Step 7: Generate and present delta summary
+
+Take the impact analysis from Step 6 and present it as a clear, reviewable delta summary. The user must see exactly what will change before anything is modified.
+
+### 7a: Scale granularity to pivot scope
+
+The level of detail in the delta depends on the type of pivot:
+
+**Strategic pivots (direction change):** Present at goal-level granularity first. Show which goals are being added, modified, removed, or kept. Then expand each modified or new goal to show its steps. This gives the user the big picture before the details.
+
+**Tactical pivots (approach change):** Present at step-level and task-level granularity directly. The goals likely remain the same -- the changes are in how the goals are achieved.
+
+### 7b: Present the delta summary
+
+Use the same delta format established in blueprint update mode:
+
+> Here's what would change:
+>
+> **Added:**
+> - [New goal/step/task with explanation of why it is needed for the new direction]
+>
+> **Changed:**
+> - [Modified item: was X, now Y, because of the pivot]
+>
+> **Removed:**
+> - [Pending item removed with reasoning -- only pending items, never completed work]
+>
+> **Reordered:**
+> - [Item moved: was in Step X, now in Step Y, because of the pivot]
+>
+> **Already done (keeping as-is):**
+> - [Completed items preserved -- even if now irrelevant, they stay in the gameplan]
+
+Every removal must be explicitly stated with reasoning. No silent deletions. The user must be able to see exactly what is being removed and why.
+
+The "Already done" section ALWAYS appears, even if just to say "Nothing completed yet." This reassures the user that their completed work is safe.
+
+**If completed work is now irrelevant to the new direction**, add an additional section:
+
+> **Completed but no longer needed:**
+> - [Completed item] -- I'll add a cleanup task for this.
+
+This makes it clear that the completed work stays in the gameplan but has been identified as potentially unnecessary. The cleanup tasks proposed in Step 6d appear in the "Added" section above.
+
+### 7c: Present the full updated gameplan outline
+
+After the delta summary, show what the entire gameplan would look like after the pivot. Use the same format as blueprint (goals, steps, tasks with one-line descriptions and size indicators):
+
+> Here's what the updated gameplan would look like:
+>
+> **Goal 1: [Goal Name]** [done/updated/new]
+>   Step 1: [Step name] [done/updated/new]
+>     - [Task name] (size) -- Done/Ready/Needs [capability]
+>
+> **Goal 2: [Goal Name]** [updated/new]
+>   Step 1: [Step name] [new]
+>     - [Task name] (size) -- Ready
+>     - [Task name] (size) -- Needs [capability]
+>
+> Does this look right? I won't make any changes until you say so.
+
+### 7d: Wait for explicit approval
+
+**IMPORTANT: Do NOT write any files until the user explicitly approves.** This is the same approval pattern as blueprint update mode. The delta summary and gameplan outline are a PROPOSAL -- the user must confirm before anything changes.
+
+If the user gives feedback:
+- Wants to keep something that was proposed for removal: adjust the delta and re-present.
+- Wants to add something not in the proposal: incorporate it and re-present.
+- Wants to modify the new items: adjust and re-present.
+- Has questions about specific changes: explain the reasoning and wait for a decision.
+
+Iterate until the user says the delta looks right. Only then proceed to Step 8 (applying changes).
+
+---
+
+<!-- Steps 8-9 will be added in plan 08-04 -->
 
 ---
 

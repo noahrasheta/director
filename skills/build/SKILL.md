@@ -172,7 +172,18 @@ Verify your work matches the acceptance criteria before committing.
 Follow reference/terminology.md and reference/plain-language-guide.md for user-facing output.
 Create exactly one git commit when finished with a plain-language message describing what was built.
 After committing, spawn director-verifier to check for stubs and orphans. Fix any "needs attention" issues and amend your commit.
-After verification passes, spawn director-syncer with the task context and a summary of what changed. The syncer will update STATE.md and rename the task file to .done.md.
+After verification passes, spawn director-syncer with the task context, a summary of what changed, AND a cost_data section. The cost_data section must include:
+- context_chars: the total character count of the assembled context from Step 5 (vision + step + task + git log + instructions)
+- goal: the name of the current goal being worked on
+
+Format the cost_data as:
+<cost_data>
+Context size: [N] characters
+Estimated tokens: [N / 4 * 2.5, rounded to nearest thousand]
+Goal: [current goal name from Step 4]
+</cost_data>
+
+The syncer uses this data to calculate and accumulate token cost estimates per goal in STATE.md.
 [If $ARGUMENTS was non-empty and provided extra context: "Additional context from user: [arguments]"]
 </instructions>
 ```
@@ -189,6 +200,8 @@ If the estimated total exceeds 60,000 tokens, apply truncation in this order:
 2. **Remove reference doc instructions** from the instructions section -- keep only the file path references so the builder can still read them on demand.
 3. **Summarize STEP.md** content instead of including the full text. Write a 2-3 sentence summary of what the step delivers and what tasks it contains.
 4. **Never truncate the task file or VISION.md.** These are essential for correct execution.
+
+Store the total character count of the assembled context (before any truncation). This value is needed for cost tracking in the syncer context (see the cost_data section in the instructions template above).
 
 Note the budget status internally but do NOT show it to the user. If truncation was applied, proceed silently.
 

@@ -8,7 +8,7 @@
     {
       "name": "director",
       "description": "Opinionated orchestration for vibe coders. Guides the entire build process from idea to working product -- from capturing your vision, to planning your build, to verifying it works.",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": {
         "name": "Noah Rasheta"
       },

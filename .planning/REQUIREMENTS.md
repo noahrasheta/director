@@ -9,42 +9,42 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Plugin Foundation
 
-- [ ] **PLUG-01**: Plugin manifest registers Director with Claude Code (name, version, description, command prefix `/director`)
-- [ ] **PLUG-02**: Plugin creates `.director/` folder structure on initialization (VISION.md, GAMEPLAN.md, STATE.md, IDEAS.md, config.json, brainstorms/, goals/)
-- [ ] **PLUG-03**: Plugin initializes Git repo if none exists, abstracted behind "Progress saved" language
-- [ ] **PLUG-04**: Plugin stores configuration in `.director/config.json` with sensible defaults (guided mode, tips on, max 3 retry cycles, cost tracking on)
-- [ ] **PLUG-05**: Plugin registers ~11 slash commands under `/director:` prefix
-- [ ] **PLUG-06**: Plugin registers ~8 specialized agents (interviewer, planner, researcher, mapper, builder, verifier, debugger, syncer)
-- [ ] **PLUG-07**: Plugin includes templates for all `.director/` artifacts (VISION.md, STEP.md, GOAL.md, task files, etc.)
-- [ ] **PLUG-08**: Plugin includes reference docs loaded into agent context (terminology, verification patterns, plain-language guidelines)
-- [ ] **PLUG-09**: Plugin uses hybrid formatting — Markdown user-facing, XML boundary tags at agent context assembly, JSON for machine state
-- [ ] **PLUG-10**: Plugin is installable via self-hosted plugin marketplace
+- [x] **PLUG-01**: Plugin manifest registers Director with Claude Code (name, version, description, command prefix `/director`)
+- [x] **PLUG-02**: Plugin creates `.director/` folder structure on initialization (VISION.md, GAMEPLAN.md, STATE.md, IDEAS.md, config.json, brainstorms/, goals/)
+- [x] **PLUG-03**: Plugin initializes Git repo if none exists, abstracted behind "Progress saved" language
+- [x] **PLUG-04**: Plugin stores configuration in `.director/config.json` with sensible defaults (guided mode, tips on, max 3 retry cycles, cost tracking on)
+- [x] **PLUG-05**: Plugin registers ~11 slash commands under `/director:` prefix
+- [x] **PLUG-06**: Plugin registers ~8 specialized agents (interviewer, planner, researcher, mapper, builder, verifier, debugger, syncer)
+- [x] **PLUG-07**: Plugin includes templates for all `.director/` artifacts (VISION.md, STEP.md, GOAL.md, task files, etc.)
+- [x] **PLUG-08**: Plugin includes reference docs loaded into agent context (terminology, verification patterns, plain-language guidelines)
+- [x] **PLUG-09**: Plugin uses hybrid formatting — Markdown user-facing, XML boundary tags at agent context assembly, JSON for machine state
+- [x] **PLUG-10**: Plugin is installable via self-hosted plugin marketplace
 
 ### Onboarding
 
-- [ ] **ONBR-01**: `/director:onboard` detects whether project is new or existing
-- [ ] **ONBR-02**: For new projects, conducts structured interview one question at a time, multiple choice when possible
-- [ ] **ONBR-03**: Interview adapts questions based on previous answers (doesn't ask about deployment framework if user already chose one)
-- [ ] **ONBR-04**: Interview surfaces decisions the user may not have considered (authentication, deployment target, tech stack, data storage)
-- [ ] **ONBR-05**: Interview gauges how much preparation the user has already done
-- [ ] **ONBR-06**: Uses `[UNCLEAR]` markers for ambiguous answers, flags for clarification before proceeding
-- [ ] **ONBR-07**: Generates VISION.md — plain-language summary of project purpose, target users, key features, tech stack, deployment plan, success criteria
-- [ ] **ONBR-08**: For existing projects, spawns parallel sub-agents to map codebase (architecture, tech stack, file structure, concerns)
-- [ ] **ONBR-09**: For existing projects, presents mapping findings in plain language
-- [ ] **ONBR-10**: For existing projects, uses delta format (ADDED/MODIFIED/REMOVED) for desired changes
-- [ ] **ONBR-11**: Initializes project structure (`.director/` folder, Git repo, initial config)
+- [x] **ONBR-01**: `/director:onboard` detects whether project is new or existing
+- [x] **ONBR-02**: For new projects, conducts structured interview one question at a time, multiple choice when possible
+- [x] **ONBR-03**: Interview adapts questions based on previous answers (doesn't ask about deployment framework if user already chose one)
+- [x] **ONBR-04**: Interview surfaces decisions the user may not have considered (authentication, deployment target, tech stack, data storage)
+- [x] **ONBR-05**: Interview gauges how much preparation the user has already done
+- [x] **ONBR-06**: Uses `[UNCLEAR]` markers for ambiguous answers, flags for clarification before proceeding
+- [x] **ONBR-07**: Generates VISION.md — plain-language summary of project purpose, target users, key features, tech stack, deployment plan, success criteria
+- [x] **ONBR-08**: For existing projects, spawns parallel sub-agents to map codebase (architecture, tech stack, file structure, concerns)
+- [x] **ONBR-09**: For existing projects, presents mapping findings in plain language
+- [x] **ONBR-10**: For existing projects, uses delta format (ADDED/MODIFIED/REMOVED) for desired changes
+- [x] **ONBR-11**: Initializes project structure (`.director/` folder, Git repo, initial config)
 
 ### Planning
 
-- [ ] **PLAN-01**: `/director:blueprint` reads VISION.md and breaks the vision into Goals (major milestones like v1, v2)
-- [ ] **PLAN-02**: Each Goal is broken into Steps ordered by dependencies ("Needs X first")
-- [ ] **PLAN-03**: Each Step generates specific, actionable Tasks
-- [ ] **PLAN-04**: Each Task includes: plain-language description, why it matters, complexity indicator (small/medium/large), verification criteria, dependencies
-- [ ] **PLAN-05**: Ready-work filtering shows only tasks where all dependencies are satisfied
-- [ ] **PLAN-06**: Gameplan is presented for user review before execution begins
-- [ ] **PLAN-07**: Gameplan is stored at `.director/GAMEPLAN.md`
-- [ ] **PLAN-08**: `/director:blueprint` can update existing gameplan (not just create new ones)
-- [ ] **PLAN-09**: Inline context support — `/director:blueprint "add payment processing"` focuses the update
+- [x] **PLAN-01**: `/director:blueprint` reads VISION.md and breaks the vision into Goals (major milestones like v1, v2)
+- [x] **PLAN-02**: Each Goal is broken into Steps ordered by dependencies ("Needs X first")
+- [x] **PLAN-03**: Each Step generates specific, actionable Tasks
+- [x] **PLAN-04**: Each Task includes: plain-language description, why it matters, complexity indicator (small/medium/large), verification criteria, dependencies
+- [x] **PLAN-05**: Ready-work filtering shows only tasks where all dependencies are satisfied
+- [x] **PLAN-06**: Gameplan is presented for user review before execution begins
+- [x] **PLAN-07**: Gameplan is stored at `.director/GAMEPLAN.md`
+- [x] **PLAN-08**: `/director:blueprint` can update existing gameplan (not just create new ones)
+- [x] **PLAN-09**: Inline context support — `/director:blueprint "add payment processing"` focuses the update
 
 ### Execution
 
@@ -118,9 +118,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Distribution
 
-- [ ] **DIST-01**: Self-hosted plugin marketplace with marketplace.json manifest
-- [ ] **DIST-02**: Users can add the marketplace and install Director via Claude Code's plugin system
-- [ ] **DIST-03**: Plugin versioning and update mechanism
+- [x] **DIST-01**: Self-hosted plugin marketplace with marketplace.json manifest
+- [x] **DIST-02**: Users can add the marketplace and install Director via Claude Code's plugin system
+- [x] **DIST-03**: Plugin versioning and update mechanism
 
 ## v2 Requirements
 
@@ -163,16 +163,16 @@ Deferred to future release. Tracked but not in current roadmap.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| PLUG-01 | Phase 1 | Pending |
-| PLUG-02 | Phase 1 | Pending |
-| PLUG-03 | Phase 1 | Pending |
-| PLUG-04 | Phase 1 | Pending |
-| PLUG-05 | Phase 1 | Pending |
-| PLUG-06 | Phase 1 | Pending |
-| PLUG-07 | Phase 1 | Pending |
-| PLUG-08 | Phase 1 | Pending |
-| PLUG-09 | Phase 1 | Pending |
-| PLUG-10 | Phase 1 | Pending |
+| PLUG-01 | Phase 1 | Complete |
+| PLUG-02 | Phase 1 | Complete |
+| PLUG-03 | Phase 1 | Complete |
+| PLUG-04 | Phase 1 | Complete |
+| PLUG-05 | Phase 1 | Complete |
+| PLUG-06 | Phase 1 | Complete |
+| PLUG-07 | Phase 1 | Complete |
+| PLUG-08 | Phase 1 | Complete |
+| PLUG-09 | Phase 1 | Complete |
+| PLUG-10 | Phase 1 | Complete |
 | ONBR-01 | Phase 2 | Complete |
 | ONBR-02 | Phase 2 | Complete |
 | ONBR-03 | Phase 2 | Complete |
@@ -248,9 +248,9 @@ Deferred to future release. Tracked but not in current roadmap.
 | CMDI-07 | Phase 9 | Complete |
 | CMDI-08 | Phase 9 | Complete |
 | CMDI-09 | Phase 9 | Complete |
-| DIST-01 | Phase 10 | Pending |
-| DIST-02 | Phase 10 | Pending |
-| DIST-03 | Phase 10 | Pending |
+| DIST-01 | Phase 10 | Complete |
+| DIST-02 | Phase 10 | Complete |
+| DIST-03 | Phase 10 | Complete |
 
 **Coverage:**
 - v1 requirements: 88 total
@@ -259,4 +259,4 @@ Deferred to future release. Tracked but not in current roadmap.
 
 ---
 *Requirements defined: 2026-02-07*
-*Last updated: 2026-02-09 after Phase 8 completion*
+*Last updated: 2026-02-09 after Phase 10 completion*

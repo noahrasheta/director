@@ -22,7 +22,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 7.1: User Decisions Context** - Decisions artifact in STEP.md flows into builder context (INSERTED)
 - [x] **Phase 8: Pivot & Brainstorm** - Context-heavy workflows for requirement changes and open-ended exploration
 - [x] **Phase 9: Command Intelligence** - Context-aware routing, error handling, terminology enforcement, help, and undo
-- [ ] **Phase 10: Distribution** - Self-hosted plugin marketplace, installation flow, and versioning
+- [x] **Phase 10: Distribution** - Self-hosted plugin marketplace, installation flow, and versioning
 - [ ] **Phase 11: Landing Page** - Design and create the director.cc homepage
 
 ## Phase Details
@@ -212,9 +212,9 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 10-01-PLAN.md -- Marketplace manifest fix (correct schema and location) and version bump to 1.0.0
-- [ ] 10-02-PLAN.md -- Self-check script and session-start update notification
-- [ ] 10-03-PLAN.md -- README rewrite as install-focused landing page
+- [x] 10-01-PLAN.md -- Marketplace manifest fix (correct schema and location) and version bump to 1.0.0
+- [x] 10-02-PLAN.md -- Self-check script and session-start update notification
+- [x] 10-03-PLAN.md -- README rewrite as install-focused landing page
 
 ### Phase 11: Landing Page
 **Goal**: director.cc has a compelling landing page that communicates what Director is, who it's for, and how to get started
@@ -243,9 +243,9 @@ Note: Phases 5, 6, 7, and 8 all depend on Phase 4 and can potentially be worked 
 | 7.1. User Decisions Context | 3/3 | Complete | 2026-02-09 |
 | 8. Pivot & Brainstorm | 7/7 | Complete | 2026-02-09 |
 | 9. Command Intelligence | 3/3 | Complete | 2026-02-09 |
-| 10. Distribution | 0/3 | Not started | - |
+| 10. Distribution | 3/3 | Complete | 2026-02-09 |
 | 11. Landing Page | 0/? | Not started | - |
 
 ---
 *Roadmap created: 2026-02-07*
-*Last updated: 2026-02-09 -- Phase 10 planned (3 plans, 2 waves)*
+*Last updated: 2026-02-09 -- Phase 10 complete (3 plans executed)*

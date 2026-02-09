@@ -5,11 +5,11 @@
 See: .planning/PROJECT.md (updated 2026-02-07)
 
 **Core value:** Vibe coders can go from idea to working product through a guided, plain-language workflow (Blueprint / Build / Inspect) that gives them professional development structure without requiring them to think like a developer.
-**Current focus:** Phase 10 - Distribution -- Complete
+**Current focus:** Phase 10 - Distribution -- Complete. Next: Phase 11 - Landing Page
 
 ## Current Position
 
-Phase: 10 of 10 (Distribution)
+Phase: 10 of 11 (Distribution)
 Plan: 3 of 3 in current phase
 Status: Phase complete
 Last activity: 2026-02-09 -- Completed 10-03-PLAN.md (README install-focused landing page)

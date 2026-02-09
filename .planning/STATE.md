@@ -12,16 +12,16 @@ See: .planning/PROJECT.md (updated 2026-02-07)
 Phase: 7 of 10 (Quick Mode & Ideas)
 Plan: 2 of 3 in current phase
 Status: In progress
-Last activity: 2026-02-08 -- Completed 07-02-PLAN.md (idea capture rewrite with newest-first insertion)
+Last activity: 2026-02-08 -- Completed 07-01-PLAN.md (quick mode execution pipeline with complexity analysis)
 
-Progress: [████████░░░░░░░░] 50% (21/42 plans)
+Progress: [████████░░░░░░░░] 52% (22/42 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 21
+- Total plans completed: 22
 - Average duration: ~2m 30s
-- Total execution time: ~52.5 minutes
+- Total execution time: ~55 minutes
 
 **By Phase:**
 
@@ -33,11 +33,11 @@ Progress: [████████░░░░░░░░] 50% (21/42 plans)
 | 04-execution | 2/2 | ~5m 30s | ~2m 45s |
 | 05-verification | 3/3 | 5m 51s | 1m 57s |
 | 06-progress-continuity | 4/4 | 7m | 1m 45s |
-| 07-quick-mode-ideas | 1/3 | 1m 26s | 1m 26s |
+| 07-quick-mode-ideas | 2/3 | 3m 42s | 1m 51s |
 
 **Recent Trend:**
-- Last 5 plans: 06-01 (2m), 06-02 (2m), 06-03 (1m 30s), 06-04 (1m 28s), 07-02 (1m 26s)
-- Trend: stable, consistently under 2m
+- Last 5 plans: 06-02 (2m), 06-03 (1m 30s), 06-04 (1m 28s), 07-02 (1m 26s), 07-01 (2m 16s)
+- Trend: stable, consistently under 2m 30s
 
 *Updated after each plan completion*
 
@@ -129,6 +129,11 @@ Recent decisions affecting current work:
 - [06-04]: Same-day Last session uses under-2-hours tone since field stores dates not times
 - [06-04]: Skip external changes section entirely for short breaks with no changes (reduces noise)
 - [06-04]: Lockfiles only flagged if corresponding manifest also changed
+- [07-01]: Quick mode does not require vision or gameplan -- works on bare .director/ projects
+- [07-01]: Scope-based complexity detection uses semantic patterns (architectural language, multi-system, cross-cutting) not file counting
+- [07-01]: Builder instructions explicitly override default commit format with [quick] prefix; skill has fallback amend
+- [07-01]: Verification and doc sync are builder-internal via instructions, not separate skill steps
+- [07-01]: Post-task summary adapts verbosity: one-liner for trivial, paragraph for substantial
 - [07-02]: IDEAS.md insertion anchored to `_Captured ideas_` description line (shared contract between idea skill, ideas skill, and init template)
 - [07-02]: Idea text preserved exactly as typed -- no reformatting, summarizing, or editing
 - [07-02]: Single-line confirmation ("Got it -- saved to your ideas list.") with no follow-up questions or suggestions
@@ -146,5 +151,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-08
-Stopped at: Completed 07-02-PLAN.md (idea capture rewrite with newest-first insertion)
+Stopped at: Completed 07-01-PLAN.md (quick mode execution pipeline with complexity analysis)
 Resume file: None

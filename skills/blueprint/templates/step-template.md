@@ -16,3 +16,14 @@ _What needs to be done before this step can start? Write in plain language._
 
 _Example: "The database needs to be set up first (Step 1)."_
 _If nothing is needed, write: "Nothing -- this step can start right away."_
+
+## Decisions
+
+### Locked
+_Choices the user explicitly made -- follow these exactly._
+
+### Flexible
+_Areas where the builder can use its best judgment._
+
+### Deferred
+_Ideas mentioned but explicitly set aside -- do not implement._

@@ -85,6 +85,7 @@ cat > .director/IDEAS.md << 'IDEAS_EOF'
 # Ideas
 
 _Captured ideas that aren't in the gameplan yet. Add with `/director:idea "..."`_
+
 IDEAS_EOF
 
 # Create config.json with opinionated defaults

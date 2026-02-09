@@ -19,6 +19,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 5: Verification** - Three-tier verification: structural code reading, behavioral checklists, and auto-fix
 - [x] **Phase 6: Progress & Continuity** - Status display, state persistence, session resume, and cost tracking
 - [ ] **Phase 7: Quick Mode & Ideas** - Lightweight escape hatches for small changes and idea capture
+- [ ] **Phase 7.1: User Decisions Context** - Decisions artifact in STEP.md flows into builder context (INSERTED)
 - [ ] **Phase 8: Pivot & Brainstorm** - Context-heavy workflows for requirement changes and open-ended exploration
 - [ ] **Phase 9: Command Intelligence** - Context-aware routing, error handling, terminology enforcement, help, and undo
 - [ ] **Phase 10: Distribution** - Self-hosted plugin marketplace, installation flow, and versioning
@@ -145,6 +146,22 @@ Plans:
 - [ ] 07-02-PLAN.md -- Idea capture rewrite: newest-first insertion in IDEAS.md and init script template update
 - [ ] 07-03-PLAN.md -- Ideas viewer skill: numbered display, conversational routing, and idea removal
 
+### Phase 7.1: User Decisions Context (INSERTED)
+**Goal**: When a task executes in a fresh agent window, the builder knows what the user decided, what it can decide on its own, and what's out of scope -- without needing the original conversation
+**Depends on**: Phase 7
+**Requirements**: None (gap closure -- no new FLEX/CMDI requirements, modifies existing artifacts)
+**Success Criteria** (what must be TRUE):
+  1. STEP.md includes a Decisions section with three categories: Locked (user explicitly decided -- non-negotiable), Flexible (AI can decide -- user has no preference), and Deferred (out of scope for this step)
+  2. The build skill's context assembly includes decisions from the current step's STEP.md, wrapped in XML boundary tags, with instructions for the builder to honor Locked, exercise judgment on Flexible, and ignore Deferred
+  3. Blueprint skill captures user decisions at step granularity during the planning conversation, flowing preferences about implementation approach, tech choices, and design direction into relevant STEP.md Decisions sections
+  4. Backward-compatible -- if STEP.md has no Decisions section, the build skill skips it gracefully with no errors
+**Plans**: 3 plans
+
+Plans:
+- [ ] 07.1-01-PLAN.md -- STEP.md template update with Decisions section, builder agent and context reference updates
+- [ ] 07.1-02-PLAN.md -- Build skill context assembly update with decisions extraction and loading
+- [ ] 07.1-03-PLAN.md -- Blueprint skill decision capture and planner agent awareness
+
 ### Phase 8: Pivot & Brainstorm
 **Goal**: Users can change direction mid-project without losing valid work, and explore ideas freely with full project context
 **Depends on**: Phase 4
@@ -204,9 +221,9 @@ Plans:
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10
+Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 7.1 -> 8 -> 9 -> 10
 
-Note: Phases 5, 6, 7, and 8 all depend on Phase 4 and can potentially be worked in parallel. Phase 9 depends on all command phases (2-8). Phase 10 depends on Phase 9.
+Note: Phases 5, 6, 7, and 8 all depend on Phase 4 and can potentially be worked in parallel. Phase 7.1 depends on Phase 7 (needs blueprint and build skills functional). Phase 9 depends on all command phases (2-8). Phase 10 depends on Phase 9.
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -217,10 +234,11 @@ Note: Phases 5, 6, 7, and 8 all depend on Phase 4 and can potentially be worked 
 | 5. Verification | 3/3 | Complete | 2026-02-08 |
 | 6. Progress & Continuity | 4/4 | Complete | 2026-02-08 |
 | 7. Quick Mode & Ideas | 0/3 | Not started | - |
+| 7.1. User Decisions Context | 0/3 | Not started | - |
 | 8. Pivot & Brainstorm | 0/7 | Not started | - |
 | 9. Command Intelligence | 0/6 | Not started | - |
 | 10. Distribution | 0/3 | Not started | - |
 
 ---
 *Roadmap created: 2026-02-07*
-*Last updated: 2026-02-08 -- Phase 7 planned*
+*Last updated: 2026-02-08 -- Phase 7.1 planned (3 plans in 2 waves)*

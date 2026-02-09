@@ -150,20 +150,170 @@ Every 4-6 exchanges, check in with the user during a natural pause.
 
 ---
 
-<!-- Steps 5-6 will be added in plan 08-07 -->
+## Step 5: Session ending and file save
+
+This step is triggered when:
+- The user says "done", "that's it", "wrap up", "we're good", or similar wrap-up signal
+- OR a periodic check-in from Step 4 receives a wrap-up response
+
+### 5a: Generate session summary
+
+Review the entire conversation and generate a structured summary following the template at `skills/brainstorm/templates/brainstorm-session.md`.
+
+**Key Ideas:** Extract 3-7 key ideas discussed. Each should be one sentence. Capture the idea itself, not just the topic. For example, "WebSocket-based real-time editing using Yjs as the CRDT library" -- not just "Real-time editing."
+
+**Decisions Made:** If any decisions emerged during the session (the user said "let's do X" or "I think Y is the way to go"), capture them here. If no decisions were made during the session, omit this section entirely -- do not include it with a "none" placeholder.
+
+**Open Questions:** Unresolved items worth revisiting. Questions that came up but were not answered, or areas that need more thought. If there are no open questions, omit this section entirely.
+
+**Highlights:** Key excerpts and insights from the conversation. Not the full transcript -- just the parts worth revisiting. Include important reasoning, context, and aha moments. Write this as a narrative paragraph or short paragraphs, not bullet points. This section captures the "why" behind the ideas -- the thinking that led to them.
+
+**Suggested Next Action:** Leave this blank for now. It will be populated in Step 6.
+
+### 5b: Determine filename
+
+Derive a topic slug for the session file:
+
+- If `$ARGUMENTS` was provided: derive a 2-4 word kebab-case slug from the arguments. For example, "what about real-time collab?" becomes `real-time-collab`.
+- If no `$ARGUMENTS`: derive a 2-4 word kebab-case slug from the first or primary topic discussed during the session.
+
+Full filename: `.director/brainstorms/YYYY-MM-DD-<topic-slug>.md` using today's date.
+
+### 5c: Handle filename collisions
+
+Before writing, check if a file with that name already exists:
+
+```bash
+ls .director/brainstorms/YYYY-MM-DD-<topic-slug>.md 2>/dev/null
+```
+
+If the file exists, append a counter: `YYYY-MM-DD-<topic-slug>-2.md`. If that also exists, try `-3.md`, and so on. This prevents overwriting previous brainstorm sessions on the same topic.
+
+### 5d: Write the session file
+
+Write the session file using the Write tool. Fill in the template format from `skills/brainstorm/templates/brainstorm-session.md` with the generated summary content.
+
+The file structure:
+
+```markdown
+# Brainstorm: [Topic]
+
+**Date:** [YYYY-MM-DD]
+
+## Summary
+
+### Key Ideas
+- [Idea 1 -- one sentence each]
+- [Idea 2]
+- [Idea 3]
+
+### Decisions Made
+- [Decision 1 -- only if decisions emerged]
+
+### Open Questions
+- [Question 1 -- only if unresolved items exist]
+
+## Highlights
+
+[Narrative paragraphs capturing key reasoning, context, and insights from the conversation.]
+
+## Suggested Next Action
+
+[Populated in Step 6 before presenting to the user.]
+```
+
+Omit the "Decisions Made" section if no decisions were made. Omit the "Open Questions" section if there are no open questions.
+
+After writing the file, proceed immediately to Step 6 to populate the suggested next action and tell the user.
+
+---
+
+## Step 6: Suggest next action and wrap up
+
+Analyze the discussion content to determine the single best next action.
+
+| Discussion Content | Suggested Action | Example Phrasing |
+|-------------------|------------------|-------------------|
+| Concrete small change the user wants to make | Quick task | "That sounds like a quick change. Want me to handle it with `/director:quick`?" |
+| New feature or capability that needs planning | Blueprint update | "This would fit nicely into your gameplan. Want to update it with `/director:blueprint`?" |
+| Direction change -- user expressed intent to change what they are building | Pivot | "This changes where your project is heading. Want to run `/director:pivot` to update everything?" |
+| Half-formed idea worth saving | Save as idea | "Interesting thought. I'll save it to your ideas list for later." |
+| Pure exploration, no clear action needed | Session saved | "Session saved. Pick it back up anytime." |
+
+### Routing rules
+
+- **Default to "Session saved"** when there is no clear action. Brainstorm sessions are valuable even without producing work. Do NOT pressure the user to take action.
+- **Only suggest pivot** if the user explicitly expressed intent to change direction during the session. Exploring a "what if" scenario is not the same as wanting to pivot.
+- **Suggest the LEAST disruptive action** that fits. If the user was exploring casually, "Session saved" is better than suggesting a blueprint update.
+- **Suggest ONE action only.** Do not present a menu of options.
+
+### Populating the session file
+
+Before presenting the suggestion to the user, update the "Suggested Next Action" section in the session file you wrote in Step 5d. Use the Write tool to update the file with the chosen action phrasing (e.g., "This would fit nicely into your gameplan. Want to update it with `/director:blueprint`?" or "Session saved -- pick it back up anytime.").
+
+### Presenting the suggestion
+
+Present the suggestion conversationally. Then wait for the user's response.
+
+### Implementing the response
+
+After suggesting ONE action, wait for the user's response.
+
+**If user accepts "save as idea":** Write the idea directly to `.director/IDEAS.md` using the same insertion mechanic as the idea skill:
+
+1. Read `.director/IDEAS.md`.
+2. Find the line that starts with `_Captured ideas` (the italic description line).
+3. Insert the new idea on the NEXT line after the description line, pushing existing ideas down.
+4. Format: `- **[YYYY-MM-DD HH:MM]** -- [idea text]`
+5. Write the updated file back.
+6. Confirm: "Saved to your ideas list."
+
+Do NOT suggest running `/director:idea` -- that adds friction. Write directly.
+
+**If user accepts "quick task":** Tell the user to run the command:
+
+> "Run `/director:quick "[specific task description]"` to get it done."
+
+Do NOT execute the quick task inline. Brainstorm context is too heavy for a clean quick task execution.
+
+**If user accepts "blueprint update":** Tell the user to run the command:
+
+> "Run `/director:blueprint "[specific focus]"` to add it to your gameplan."
+
+Do NOT execute the blueprint update inline.
+
+**If user accepts "pivot":** Tell the user to run the command:
+
+> "Run `/director:pivot "[specific change description]"` to update everything."
+
+Do NOT execute the pivot inline.
+
+**If user accepts "session saved" or says nothing:** No further action needed.
+
+**If user declines or wants something different:** Accommodate their preference. If they want a different route, follow the mechanics for that route above.
+
+### Final confirmation
+
+After routing is complete, confirm the session was saved:
+
+> "Session saved to your brainstorms folder."
+
+Do NOT show the file path. The user just needs to know it is saved.
 
 ---
 
 ## Language Reminders
 
-- Use Director's vocabulary: Goal, Step, Task (never Phase, Sprint, Ticket)
-- Use plain language: Vision, Gameplan, Launch (never spec, deploy, release)
-- Explain outcomes, not mechanisms
-- Conversational tone -- suggest, don't command
-- Never blame the user for missing setup
-- Match the user's energy and communication style
-- See `reference/plain-language-guide.md` for the full seven rules
-- See `reference/terminology.md` for the complete word list
+Throughout the entire brainstorm flow, follow these rules:
+
+- **Use Director's vocabulary:** Goal/Step/Task (not milestone/phase/ticket), Vision (not spec), Gameplan (not roadmap/backlog), Launch (not deploy/release)
+- **Never mention git, commits, branches, SHAs, or diffs to the user.** Say "Progress saved" not "Changes committed."
+- **File operations are invisible.** Never show file paths in user-facing output. Say "Session saved to your brainstorms folder" not "Wrote .director/brainstorms/2026-02-08-dark-mode.md."
+- **Be conversational, match the user's energy.** If they are excited, be excited. If they are analytical, be analytical. If they are brief, be brief.
+- **Never blame the user.** "Let me try that differently" not "Your question was unclear."
+- **Never push toward action.** Ideas are valuable even without a next step. "Session saved" is a complete ending.
+- **Changing direction is learning, not failure.** If the session leads to a pivot, frame it positively.
+- **Follow `reference/terminology.md` and `reference/plain-language-guide.md`** for all user-facing messages.
 
 ---
 

@@ -193,15 +193,12 @@ Plans:
   3. All error messages use plain language with what went wrong, why, and what to do next -- never blaming the user, never using jargon
   4. Director uses its own terminology throughout (Goal, Step, Task, Vision, Gameplan, Launch, "Needs X first") and never leaks developer jargon
   5. Running `/director:undo` reverts the last task's commit, shown as "Going back to before that task"
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 09-01: Context-aware command routing and state detection
-- [ ] 09-02: Out-of-sequence redirection for all commands
-- [ ] 09-03: Inline context support across all commands
-- [ ] 09-04: Plain-language error handling and terminology enforcement
-- [ ] 09-05: Help command with examples
-- [ ] 09-06: Undo command with plain-language feedback
+- [ ] 09-01-PLAN.md -- Undo skill creation and help skill update with all 12 commands + topic-specific mode
+- [ ] 09-02-PLAN.md -- Routing audit and standardization across key-entry commands (build, blueprint, inspect, pivot, onboard)
+- [ ] 09-03-PLAN.md -- Inline text for resume, error messaging audit, and terminology reference updates
 
 ### Phase 10: Distribution
 **Goal**: Users can discover, install, and update Director through Claude Code's plugin marketplace
@@ -236,9 +233,9 @@ Note: Phases 5, 6, 7, and 8 all depend on Phase 4 and can potentially be worked 
 | 7. Quick Mode & Ideas | 3/3 | Complete | 2026-02-08 |
 | 7.1. User Decisions Context | 3/3 | Complete | 2026-02-09 |
 | 8. Pivot & Brainstorm | 7/7 | Complete | 2026-02-09 |
-| 9. Command Intelligence | 0/6 | Not started | - |
+| 9. Command Intelligence | 0/3 | Not started | - |
 | 10. Distribution | 0/3 | Not started | - |
 
 ---
 *Roadmap created: 2026-02-07*
-*Last updated: 2026-02-09 -- Phase 8 complete (7/7 plans)*
+*Last updated: 2026-02-09 -- Phase 9 planned (3 plans in 1 wave)*

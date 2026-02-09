@@ -174,7 +174,7 @@ Follow with: `Want to keep building? Just say go, or run /director:build.`
 
 If `.director/goals/` is empty or contains no goal directories, and GAMEPLAN.md has no real goal content (only template text):
 
-> "No goals in your gameplan yet. Run `/director:blueprint` to create one."
+> "No goals in your gameplan yet. Director needs goals to track your progress. Want to create some with `/director:blueprint`?"
 
 **Stop here.**
 

@@ -42,6 +42,7 @@ Project
 | **"Needs X first"** | Has dependency on X, Blocked by X | Plain English |
 | **"Progress saved"** | Committed, Pushed | Abstracts git entirely |
 | **"Going back"** | Reverted, Rolled back | Plain English |
+| **"Undo"** | Revert, Rollback, Git reset | "Going back to before that task" |
 | **"Needs attention"** | Has issues, Failing, Error state | Plain English |
 | **"Ready"** | No blockers, Can start, Unblocked | Plain English |
 
@@ -55,7 +56,7 @@ These terms are developer jargon. If you find yourself writing any of these in o
 dependency, artifact, integration, prerequisite, blocker (use "needs X first"), worktree, CI/CD, pipeline, deployment pipeline, build step, compile, transpile, lint, minify
 
 **Git/version control terms:**
-repository, branch, merge, commit, SHA, hash, diff, rebase, pull request, staging area, working tree, HEAD, checkout
+repository, branch, merge, commit, SHA, hash, diff, rebase, revert, rollback, reset, pull request, staging area, working tree, HEAD, checkout
 
 **Backend/architecture terms:**
 schema, migration, endpoint, route, middleware, ORM, query, mutation, resolver, microservice, monolith, payload, serialization, runtime, stack trace, exception
@@ -76,7 +77,7 @@ file, page, button, form, link, menu, sidebar, header, footer, modal, popup, not
 login, signup, dashboard, settings, profile, admin, payment, checkout, cart, upload, download
 
 **Concepts:**
-database, API, server, website, app, plugin, update, error, warning, loading, saving
+database, API, server, website, app, plugin, update, error, warning, loading, saving, undo, go back
 
 ---
 
@@ -119,6 +120,14 @@ database, API, server, website, app, plugin, update, error, warning, loading, sa
 
 ### Good (conversational suggestion)
 > Ready to get started? I can help you set up your project and figure out what to build first.
+
+---
+
+### Bad (exposing git internals)
+> Commit abc123 has been reverted. HEAD now points to def456.
+
+### Good (abstracted)
+> Done -- went back to before the login page task. Your project is back to where it was.
 
 ---
 

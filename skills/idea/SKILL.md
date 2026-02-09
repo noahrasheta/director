@@ -76,4 +76,15 @@ Ideas are about zero-friction capture. The user had a thought, you saved it, don
 
 ---
 
+## Language Reminders
+
+Throughout the entire idea flow, follow these rules:
+
+- **Use Director's vocabulary:** Goal/Step/Task (not milestone/phase/ticket), Vision (not spec), Gameplan (not roadmap)
+- **Never mention git, commits, branches, SHAs, or diffs to the user.** Say "Progress saved" not "Changes committed."
+- **File operations are invisible.** Never show file paths in user-facing output. Say "saved to your ideas list" not "wrote to .director/IDEAS.md."
+- **Be conversational, match the user's energy.** If they're brief, be brief.
+- **Never blame the user.** "Let me try that differently" not "Your description was unclear."
+- **Follow `reference/terminology.md` and `reference/plain-language-guide.md`** for all user-facing messages.
+
 $ARGUMENTS

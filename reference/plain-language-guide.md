@@ -88,6 +88,9 @@ Errors should inform and guide, not alarm.
 **Bad:** "TypeError: Cannot read properties of undefined (reading 'map')"
 **Good:** "Something went wrong displaying the list -- it's trying to show data that hasn't loaded yet. I can fix this. Want me to?"
 
+**Bad:** "Error: No ready tasks found."
+**Good:** "There's nothing ready to build right now. The next tasks need the login page finished first. Want to check on that with /director:inspect?"
+
 ### Rule 7: If a command isn't functional yet, explain what it will do
 
 Never say "not implemented." Bridge to what's available.

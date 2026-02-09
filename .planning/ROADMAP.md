@@ -2,7 +2,7 @@
 
 ## Overview
 
-Director delivers a complete vibe coding workflow in 10 phases, starting with the plugin foundation and progressing through each layer of the core loop (onboard, plan, build, verify), then adding progress tracking, lightweight escape hatches (quick mode, idea capture), heavy context-aware workflows (pivot, brainstorm), command intelligence polish, and finally distribution. Each phase delivers a coherent, independently verifiable capability that builds on the previous phase. The full roadmap covers 88 v1 requirements.
+Director delivers a complete vibe coding workflow in 11 phases, starting with the plugin foundation and progressing through each layer of the core loop (onboard, plan, build, verify), then adding progress tracking, lightweight escape hatches (quick mode, idea capture), heavy context-aware workflows (pivot, brainstorm), command intelligence polish, distribution, and a landing page. Each phase delivers a coherent, independently verifiable capability that builds on the previous phase. The full roadmap covers 88 v1 requirements.
 
 ## Phases
 
@@ -23,6 +23,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 8: Pivot & Brainstorm** - Context-heavy workflows for requirement changes and open-ended exploration
 - [x] **Phase 9: Command Intelligence** - Context-aware routing, error handling, terminology enforcement, help, and undo
 - [ ] **Phase 10: Distribution** - Self-hosted plugin marketplace, installation flow, and versioning
+- [ ] **Phase 11: Landing Page** - Design and create the director.cc homepage
 
 ## Phase Details
 
@@ -208,19 +209,27 @@ Plans:
   1. A self-hosted plugin marketplace exists with a valid `marketplace.json` manifest
   2. A user can add the marketplace URL in Claude Code and install Director as a plugin without manual file copying
   3. Plugin updates are versioned and users can update to the latest version through Claude Code's plugin system
+**Plans**: 3 plans
+
+Plans:
+- [ ] 10-01-PLAN.md -- Marketplace manifest fix (correct schema and location) and version bump to 1.0.0
+- [ ] 10-02-PLAN.md -- Self-check script and session-start update notification
+- [ ] 10-03-PLAN.md -- README rewrite as install-focused landing page
+
+### Phase 11: Landing Page
+**Goal**: director.cc has a compelling landing page that communicates what Director is, who it's for, and how to get started
+**Depends on**: Phase 10
 **Plans**: TBD
 
 Plans:
-- [ ] 10-01: Marketplace manifest and hosting
-- [ ] 10-02: Installation and discovery flow
-- [ ] 10-03: Versioning and update mechanism
+- [ ] TBD (run /gsd:plan-phase 11 to break down)
 
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 7.1 -> 8 -> 9 -> 10
+Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 7.1 -> 8 -> 9 -> 10 -> 11
 
-Note: Phases 5, 6, 7, and 8 all depend on Phase 4 and can potentially be worked in parallel. Phase 7.1 depends on Phase 7 (needs blueprint and build skills functional). Phase 9 depends on all command phases (2-8). Phase 10 depends on Phase 9.
+Note: Phases 5, 6, 7, and 8 all depend on Phase 4 and can potentially be worked in parallel. Phase 7.1 depends on Phase 7 (needs blueprint and build skills functional). Phase 9 depends on all command phases (2-8). Phase 10 depends on Phase 9. Phase 11 depends on Phase 10.
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -235,7 +244,8 @@ Note: Phases 5, 6, 7, and 8 all depend on Phase 4 and can potentially be worked 
 | 8. Pivot & Brainstorm | 7/7 | Complete | 2026-02-09 |
 | 9. Command Intelligence | 3/3 | Complete | 2026-02-09 |
 | 10. Distribution | 0/3 | Not started | - |
+| 11. Landing Page | 0/? | Not started | - |
 
 ---
 *Roadmap created: 2026-02-07*
-*Last updated: 2026-02-09 -- Phase 9 complete (3/3 plans)*
+*Last updated: 2026-02-09 -- Phase 10 planned (3 plans, 2 waves)*

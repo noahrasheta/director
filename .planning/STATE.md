@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-07)
 
 **Core value:** Vibe coders can go from idea to working product through a guided, plain-language workflow (Blueprint / Build / Inspect) that gives them professional development structure without requiring them to think like a developer.
-**Current focus:** Phase 7 - Quick Mode & Ideas -- Complete
+**Current focus:** Phase 7.1 - User Decisions Context -- In progress
 
 ## Current Position
 
-Phase: 7 of 10 (Quick Mode & Ideas)
-Plan: 3 of 3 in current phase
-Status: Phase complete
-Last activity: 2026-02-08 -- Completed 07-03-PLAN.md (ideas viewer with conversational routing)
+Phase: 7.1 of 10 (User Decisions Context)
+Plan: 1 of 3 in current phase
+Status: In progress
+Last activity: 2026-02-09 -- Completed 07.1-01-PLAN.md (decisions schema and consumer awareness)
 
-Progress: [████████░░░░░░░░] 55% (23/42 plans)
+Progress: [█████████░░░░░░░] 57% (24/42 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 23
-- Average duration: ~2m 29s
-- Total execution time: ~57 minutes
+- Total plans completed: 24
+- Average duration: ~2m 26s
+- Total execution time: ~58.5 minutes
 
 **By Phase:**
 
@@ -34,9 +34,10 @@ Progress: [████████░░░░░░░░] 55% (23/42 plans)
 | 05-verification | 3/3 | 5m 51s | 1m 57s |
 | 06-progress-continuity | 4/4 | 7m | 1m 45s |
 | 07-quick-mode-ideas | 3/3 | 5m 43s | 1m 54s |
+| 07.1-user-decisions-context | 1/3 | 1m 34s | 1m 34s |
 
 **Recent Trend:**
-- Last 5 plans: 06-03 (1m 30s), 06-04 (1m 28s), 07-01 (2m 16s), 07-02 (1m 26s), 07-03 (2m 01s)
+- Last 5 plans: 06-04 (1m 28s), 07-01 (2m 16s), 07-02 (1m 26s), 07-03 (2m 01s), 07.1-01 (1m 34s)
 - Trend: stable, consistently under 2m 30s
 
 *Updated after each plan completion*
@@ -140,6 +141,10 @@ Recent decisions affecting current work:
 - [07-03]: Brainstorm route keeps idea in IDEAS.md (exploration is not action); quick and blueprint routes remove it
 - [07-03]: Quick route executes inline via builder (same flow as quick skill); blueprint/brainstorm direct user to run command
 - [07-03]: $ARGUMENTS support enables direct idea matching (e.g., /director:ideas "dark mode" jumps to matching idea)
+- [07.1-01]: Decisions section goes LAST in STEP.md template (after Needs First)
+- [07.1-01]: Builder is the only agent that receives <decisions> context (Yes in profiles table)
+- [07.1-01]: <decisions> tag positioned between <current_step> and <task> in assembly order
+- [07.1-01]: Decisions are never truncated (added as rule 5 alongside task and vision)
 
 ### Pending Todos
 
@@ -153,6 +158,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-02-08
-Stopped at: Completed 07-03-PLAN.md (ideas viewer with conversational routing) -- Phase 7 complete
+Last session: 2026-02-09
+Stopped at: Completed 07.1-01-PLAN.md (decisions schema and consumer awareness)
 Resume file: None

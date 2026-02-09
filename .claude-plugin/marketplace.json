@@ -1,0 +1,26 @@
+{
+  "name": "director-marketplace",
+  "description": "Plugin marketplace for Director -- orchestration for vibe coders",
+  "owner": {
+    "name": "Noah Rasheta"
+  },
+  "plugins": [
+    {
+      "name": "director",
+      "description": "Opinionated orchestration for vibe coders. Guides the entire build process from idea to working product -- from capturing your vision, to planning your build, to verifying it works.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Noah Rasheta"
+      },
+      "source": {
+        "source": "github",
+        "repo": "noahrasheta/director"
+      },
+      "homepage": "https://director.cc",
+      "repository": "https://github.com/noahrasheta/director",
+      "license": "MIT",
+      "keywords": ["orchestration", "vibe-coding", "workflow", "planning", "ai-agents"],
+      "category": "productivity"
+    }
+  ]
+}

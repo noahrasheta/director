@@ -1,7 +1,7 @@
 {
   "name": "director",
   "description": "Opinionated, spec-driven orchestration framework for vibe coders. Guides the entire build process from vision to working product.",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": {
     "name": "Noah Rasheta"
   },

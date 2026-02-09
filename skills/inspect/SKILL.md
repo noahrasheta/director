@@ -24,7 +24,21 @@ If it does NOT exist, run the initialization script silently:
 !`bash ${CLAUDE_PLUGIN_ROOT}/scripts/init-director.sh`
 ```
 
-Continue to Step 2.
+Continue to Step 1b.
+
+## Step 1b: Vision check
+
+Read `.director/VISION.md`. Check whether it has real content beyond the default template.
+
+**Template detection:** If the file contains placeholder text like `> This file will be populated when you run /director:onboard`, or italic prompts like `_What are you calling this project?_`, or headings with no substantive content beneath them (just blank lines, template markers, or italic instructions), the project has NOT been onboarded yet.
+
+If VISION.md is template-only, say:
+
+> "There's nothing to check yet -- we need to set up your project first. Want to start with `/director:onboard`?"
+
+Wait for the user's response. If they agree, proceed as if they ran `/director:onboard`.
+
+**Stop here if no vision.**
 
 ## Step 2: Check for completed work
 

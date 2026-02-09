@@ -106,15 +106,15 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### UX & Command Intelligence
 
-- [ ] **CMDI-01**: Context-aware routing — every command detects project state and redirects if invoked out of sequence
-- [ ] **CMDI-02**: `/director:build` with no `.director/` → routes to onboard
-- [ ] **CMDI-03**: `/director:onboard` on already-onboarded project → shows status, suggests next action
-- [ ] **CMDI-04**: Every command accepts optional inline text to focus or accelerate the interaction
-- [ ] **CMDI-05**: All error messages in plain language with what went wrong, why, and recommended action
-- [ ] **CMDI-06**: Never uses jargon in user-facing output (no "artifact wiring", "dependencies", "worktrees", "integration testing")
-- [ ] **CMDI-07**: Uses Director's terminology throughout (Goal, Step, Task, Vision, Gameplan, Launch, "Needs X first")
-- [ ] **CMDI-08**: `/director:help` shows available commands with examples
-- [ ] **CMDI-09**: `/director:undo` reverts the last task's commit, shown as "Going back to before that task"
+- [x] **CMDI-01**: Context-aware routing — every command detects project state and redirects if invoked out of sequence
+- [x] **CMDI-02**: `/director:build` with no `.director/` → routes to onboard
+- [x] **CMDI-03**: `/director:onboard` on already-onboarded project → shows status, suggests next action
+- [x] **CMDI-04**: Every command accepts optional inline text to focus or accelerate the interaction
+- [x] **CMDI-05**: All error messages in plain language with what went wrong, why, and recommended action
+- [x] **CMDI-06**: Never uses jargon in user-facing output (no "artifact wiring", "dependencies", "worktrees", "integration testing")
+- [x] **CMDI-07**: Uses Director's terminology throughout (Goal, Step, Task, Vision, Gameplan, Launch, "Needs X first")
+- [x] **CMDI-08**: `/director:help` shows available commands with examples
+- [x] **CMDI-09**: `/director:undo` reverts the last task's commit, shown as "Going back to before that task"
 
 ### Distribution
 
@@ -239,15 +239,15 @@ Deferred to future release. Tracked but not in current roadmap.
 | FLEX-15 | Phase 8 | Complete |
 | FLEX-16 | Phase 8 | Complete |
 | FLEX-17 | Phase 8 | Complete |
-| CMDI-01 | Phase 9 | Pending |
-| CMDI-02 | Phase 9 | Pending |
-| CMDI-03 | Phase 9 | Pending |
-| CMDI-04 | Phase 9 | Pending |
-| CMDI-05 | Phase 9 | Pending |
-| CMDI-06 | Phase 9 | Pending |
-| CMDI-07 | Phase 9 | Pending |
-| CMDI-08 | Phase 9 | Pending |
-| CMDI-09 | Phase 9 | Pending |
+| CMDI-01 | Phase 9 | Complete |
+| CMDI-02 | Phase 9 | Complete |
+| CMDI-03 | Phase 9 | Complete |
+| CMDI-04 | Phase 9 | Complete |
+| CMDI-05 | Phase 9 | Complete |
+| CMDI-06 | Phase 9 | Complete |
+| CMDI-07 | Phase 9 | Complete |
+| CMDI-08 | Phase 9 | Complete |
+| CMDI-09 | Phase 9 | Complete |
 | DIST-01 | Phase 10 | Pending |
 | DIST-02 | Phase 10 | Pending |
 | DIST-03 | Phase 10 | Pending |

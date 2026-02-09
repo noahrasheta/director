@@ -21,7 +21,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 7: Quick Mode & Ideas** - Lightweight escape hatches for small changes and idea capture
 - [x] **Phase 7.1: User Decisions Context** - Decisions artifact in STEP.md flows into builder context (INSERTED)
 - [x] **Phase 8: Pivot & Brainstorm** - Context-heavy workflows for requirement changes and open-ended exploration
-- [ ] **Phase 9: Command Intelligence** - Context-aware routing, error handling, terminology enforcement, help, and undo
+- [x] **Phase 9: Command Intelligence** - Context-aware routing, error handling, terminology enforcement, help, and undo
 - [ ] **Phase 10: Distribution** - Self-hosted plugin marketplace, installation flow, and versioning
 
 ## Phase Details
@@ -198,7 +198,7 @@ Plans:
 Plans:
 - [x] 09-01-PLAN.md -- Undo skill creation and help skill update with all 12 commands + topic-specific mode
 - [x] 09-02-PLAN.md -- Routing audit and standardization across key-entry commands (build, blueprint, inspect, pivot, onboard)
-- [ ] 09-03-PLAN.md -- Inline text for resume, error messaging audit, and terminology reference updates
+- [x] 09-03-PLAN.md -- Inline text for resume, error messaging audit, and terminology reference updates
 
 ### Phase 10: Distribution
 **Goal**: Users can discover, install, and update Director through Claude Code's plugin marketplace
@@ -233,9 +233,9 @@ Note: Phases 5, 6, 7, and 8 all depend on Phase 4 and can potentially be worked 
 | 7. Quick Mode & Ideas | 3/3 | Complete | 2026-02-08 |
 | 7.1. User Decisions Context | 3/3 | Complete | 2026-02-09 |
 | 8. Pivot & Brainstorm | 7/7 | Complete | 2026-02-09 |
-| 9. Command Intelligence | 2/3 | In progress | - |
+| 9. Command Intelligence | 3/3 | Complete | 2026-02-09 |
 | 10. Distribution | 0/3 | Not started | - |
 
 ---
 *Roadmap created: 2026-02-07*
-*Last updated: 2026-02-09 -- Phase 9 in progress (2/3 plans complete)*
+*Last updated: 2026-02-09 -- Phase 9 complete (3/3 plans)*

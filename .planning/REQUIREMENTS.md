@@ -89,20 +89,20 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **FLEX-01**: `/director:quick "..."` executes small changes without full planning workflow
 - [x] **FLEX-02**: Quick mode analyzes complexity before executing — recommends guided mode when request is complex
 - [x] **FLEX-03**: Quick mode still uses atomic commits and documentation sync
-- [ ] **FLEX-04**: `/director:pivot` starts focused conversation about what changed
-- [ ] **FLEX-05**: Pivot maps current codebase against new direction
-- [ ] **FLEX-06**: Pivot generates updated gameplan that supersedes the old one
-- [ ] **FLEX-07**: Pivot updates all relevant documentation (VISION.md, GAMEPLAN.md, architecture docs)
-- [ ] **FLEX-08**: Pivot preserves completed work that's still relevant
-- [ ] **FLEX-09**: Pivot uses delta format showing impact in plain language ("3 tasks no longer needed, 2 new tasks required, everything else stays the same")
+- [x] **FLEX-04**: `/director:pivot` starts focused conversation about what changed
+- [x] **FLEX-05**: Pivot maps current codebase against new direction
+- [x] **FLEX-06**: Pivot generates updated gameplan that supersedes the old one
+- [x] **FLEX-07**: Pivot updates all relevant documentation (VISION.md, GAMEPLAN.md, architecture docs)
+- [x] **FLEX-08**: Pivot preserves completed work that's still relevant
+- [x] **FLEX-09**: Pivot uses delta format showing impact in plain language ("3 tasks no longer needed, 2 new tasks required, everything else stays the same")
 - [x] **FLEX-10**: `/director:idea "..."` saves idea to IDEAS.md instantly
 - [x] **FLEX-11**: Ideas stored separately from active gameplan
 - [x] **FLEX-12**: When acting on an idea, Director analyzes complexity and routes: quick task, needs planning, or too complex for now
-- [ ] **FLEX-13**: `/director:brainstorm` loads full project context (VISION.md, GAMEPLAN.md, STATE.md, codebase awareness)
-- [ ] **FLEX-14**: Brainstorm uses one question at a time, multiple choice when possible, follows user's lead
-- [ ] **FLEX-15**: Brainstorm considers impact on existing codebase and gameplan when exploring changes
-- [ ] **FLEX-16**: At brainstorm end, suggests appropriate next action (save idea, create task, trigger pivot, or just save conversation)
-- [ ] **FLEX-17**: Brainstorm sessions saved to `.director/brainstorms/YYYY-MM-DD-<topic>.md`
+- [x] **FLEX-13**: `/director:brainstorm` loads full project context (VISION.md, GAMEPLAN.md, STATE.md, codebase awareness)
+- [x] **FLEX-14**: Brainstorm uses one question at a time, multiple choice when possible, follows user's lead
+- [x] **FLEX-15**: Brainstorm considers impact on existing codebase and gameplan when exploring changes
+- [x] **FLEX-16**: At brainstorm end, suggests appropriate next action (save idea, create task, trigger pivot, or just save conversation)
+- [x] **FLEX-17**: Brainstorm sessions saved to `.director/brainstorms/YYYY-MM-DD-<topic>.md`
 
 ### UX & Command Intelligence
 
@@ -202,17 +202,17 @@ Deferred to future release. Tracked but not in current roadmap.
 | EXEC-07 | Phase 4 | Complete |
 | EXEC-08 | Phase 4 | Complete |
 | EXEC-09 | Phase 4 | Complete |
-| VRFY-01 | Phase 5 | Pending |
-| VRFY-02 | Phase 5 | Pending |
-| VRFY-03 | Phase 5 | Pending |
-| VRFY-04 | Phase 5 | Pending |
-| VRFY-05 | Phase 5 | Pending |
-| VRFY-06 | Phase 5 | Pending |
-| VRFY-07 | Phase 5 | Pending |
-| VRFY-08 | Phase 5 | Pending |
-| VRFY-09 | Phase 5 | Pending |
-| VRFY-10 | Phase 5 | Pending |
-| VRFY-11 | Phase 5 | Pending |
+| VRFY-01 | Phase 5 | Complete |
+| VRFY-02 | Phase 5 | Complete |
+| VRFY-03 | Phase 5 | Complete |
+| VRFY-04 | Phase 5 | Complete |
+| VRFY-05 | Phase 5 | Complete |
+| VRFY-06 | Phase 5 | Complete |
+| VRFY-07 | Phase 5 | Complete |
+| VRFY-08 | Phase 5 | Complete |
+| VRFY-09 | Phase 5 | Complete |
+| VRFY-10 | Phase 5 | Complete |
+| VRFY-11 | Phase 5 | Complete |
 | PROG-01 | Phase 6 | Complete |
 | PROG-02 | Phase 6 | Complete |
 | PROG-03 | Phase 6 | Complete |
@@ -225,20 +225,20 @@ Deferred to future release. Tracked but not in current roadmap.
 | FLEX-01 | Phase 7 | Complete |
 | FLEX-02 | Phase 7 | Complete |
 | FLEX-03 | Phase 7 | Complete |
-| FLEX-04 | Phase 8 | Pending |
-| FLEX-05 | Phase 8 | Pending |
-| FLEX-06 | Phase 8 | Pending |
-| FLEX-07 | Phase 8 | Pending |
-| FLEX-08 | Phase 8 | Pending |
-| FLEX-09 | Phase 8 | Pending |
+| FLEX-04 | Phase 8 | Complete |
+| FLEX-05 | Phase 8 | Complete |
+| FLEX-06 | Phase 8 | Complete |
+| FLEX-07 | Phase 8 | Complete |
+| FLEX-08 | Phase 8 | Complete |
+| FLEX-09 | Phase 8 | Complete |
 | FLEX-10 | Phase 7 | Complete |
 | FLEX-11 | Phase 7 | Complete |
 | FLEX-12 | Phase 7 | Complete |
-| FLEX-13 | Phase 8 | Pending |
-| FLEX-14 | Phase 8 | Pending |
-| FLEX-15 | Phase 8 | Pending |
-| FLEX-16 | Phase 8 | Pending |
-| FLEX-17 | Phase 8 | Pending |
+| FLEX-13 | Phase 8 | Complete |
+| FLEX-14 | Phase 8 | Complete |
+| FLEX-15 | Phase 8 | Complete |
+| FLEX-16 | Phase 8 | Complete |
+| FLEX-17 | Phase 8 | Complete |
 | CMDI-01 | Phase 9 | Pending |
 | CMDI-02 | Phase 9 | Pending |
 | CMDI-03 | Phase 9 | Pending |
@@ -259,4 +259,4 @@ Deferred to future release. Tracked but not in current roadmap.
 
 ---
 *Requirements defined: 2026-02-07*
-*Last updated: 2026-02-08 after Phase 3 completion*
+*Last updated: 2026-02-09 after Phase 8 completion*

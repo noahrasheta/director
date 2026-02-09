@@ -20,7 +20,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 6: Progress & Continuity** - Status display, state persistence, session resume, and cost tracking
 - [x] **Phase 7: Quick Mode & Ideas** - Lightweight escape hatches for small changes and idea capture
 - [x] **Phase 7.1: User Decisions Context** - Decisions artifact in STEP.md flows into builder context (INSERTED)
-- [ ] **Phase 8: Pivot & Brainstorm** - Context-heavy workflows for requirement changes and open-ended exploration
+- [x] **Phase 8: Pivot & Brainstorm** - Context-heavy workflows for requirement changes and open-ended exploration
 - [ ] **Phase 9: Command Intelligence** - Context-aware routing, error handling, terminology enforcement, help, and undo
 - [ ] **Phase 10: Distribution** - Self-hosted plugin marketplace, installation flow, and versioning
 
@@ -175,13 +175,13 @@ Plans:
 **Plans**: 7 plans
 
 Plans:
-- [ ] 08-01-PLAN.md -- Pivot conversation flow: init routing, direction capture, scope detection
-- [ ] 08-02-PLAN.md -- Pivot state assessment: in-progress work check, conditional mapper spawning
-- [ ] 08-03-PLAN.md -- Pivot impact analysis: gameplan classification, delta summary, approval gate
-- [ ] 08-04-PLAN.md -- Pivot apply changes: doc updates, file operations, STATE.md, wrap-up
-- [ ] 08-05-PLAN.md -- Brainstorm template update, init, context loading, session open
-- [ ] 08-06-PLAN.md -- Brainstorm exploration loop: adaptive context loading, code awareness
-- [ ] 08-07-PLAN.md -- Brainstorm session save, exit routing, IDEAS.md integration
+- [x] 08-01-PLAN.md -- Pivot conversation flow: init routing, direction capture, scope detection
+- [x] 08-02-PLAN.md -- Pivot state assessment: in-progress work check, conditional mapper spawning
+- [x] 08-03-PLAN.md -- Pivot impact analysis: gameplan classification, delta summary, approval gate
+- [x] 08-04-PLAN.md -- Pivot apply changes: doc updates, file operations, STATE.md, wrap-up
+- [x] 08-05-PLAN.md -- Brainstorm template update, init, context loading, session open
+- [x] 08-06-PLAN.md -- Brainstorm exploration loop: adaptive context loading, code awareness
+- [x] 08-07-PLAN.md -- Brainstorm session save, exit routing, IDEAS.md integration
 
 ### Phase 9: Command Intelligence
 **Goal**: Every command is smart about project state -- it redirects when invoked out of sequence, speaks plain English, and provides undo capability
@@ -235,10 +235,10 @@ Note: Phases 5, 6, 7, and 8 all depend on Phase 4 and can potentially be worked 
 | 6. Progress & Continuity | 4/4 | Complete | 2026-02-08 |
 | 7. Quick Mode & Ideas | 3/3 | Complete | 2026-02-08 |
 | 7.1. User Decisions Context | 3/3 | Complete | 2026-02-09 |
-| 8. Pivot & Brainstorm | 0/7 | Not started | - |
+| 8. Pivot & Brainstorm | 7/7 | Complete | 2026-02-09 |
 | 9. Command Intelligence | 0/6 | Not started | - |
 | 10. Distribution | 0/3 | Not started | - |
 
 ---
 *Roadmap created: 2026-02-07*
-*Last updated: 2026-02-09 -- Phase 8 planned (7 plans in 4 waves)*
+*Last updated: 2026-02-09 -- Phase 8 complete (7/7 plans)*

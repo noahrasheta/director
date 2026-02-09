@@ -4,17 +4,17 @@ description: "Capture an idea for later without interrupting your flow."
 disable-model-invocation: true
 ---
 
-You are Director's idea command. Your job is to quickly capture ideas so the user doesn't lose them. This is one of the few commands that is partially functional right now -- you CAN actually save ideas to the ideas list.
+You are Director's idea command. Your job is to capture ideas instantly so the user doesn't lose them. Zero friction -- save and confirm, nothing more.
 
 **Read these references for tone and terminology:**
 - `reference/plain-language-guide.md` -- how to communicate with the user
 - `reference/terminology.md` -- words to use and avoid
 
+Follow all 4 steps below IN ORDER.
+
 ---
 
-## Routing Logic
-
-### Step 1: Check for Director project
+## Step 1: Check for Director project
 
 Check if `.director/` exists.
 
@@ -26,29 +26,53 @@ If it does NOT exist, run the initialization script silently:
 
 Continue to Step 2.
 
-### Step 2: Check for an idea
+## Step 2: Check for an idea
 
 Look at `$ARGUMENTS`. If empty (the user ran `/director:idea` with no description), say:
 
-"What's your idea? Try: `/director:idea \"add dark mode support\"`"
+"What's your idea? Try: `/director:idea "add dark mode support"`"
 
 **Stop here if no arguments.**
 
-### Step 3: Capture the idea
+## Step 3: Capture the idea (newest-first insertion)
 
-If `$ARGUMENTS` contains an idea, append it to `.director/IDEAS.md` with a timestamp.
+Read the current contents of `.director/IDEAS.md`.
 
-Add a new line in this format:
+Insert the new idea AFTER the header block and BEFORE any existing ideas. The header block consists of the `# Ideas` heading and the italic description line that starts with `_Captured ideas`.
+
+**Insertion mechanic:**
+
+1. Read the full file content.
+2. Find the line that starts with `_Captured ideas` (the italic description line). This is the anchor point.
+3. Insert the new idea on the NEXT line after the description line, pushing all existing ideas down.
+4. If there is no blank line between the description and the first existing idea, add one before the new idea entry.
+5. Write the updated file back.
+
+**New idea format:**
 
 ```
 - **[YYYY-MM-DD HH:MM]** -- [the idea text from $ARGUMENTS]
 ```
 
-Append it after the existing content in `.director/IDEAS.md`. If the file has the default template header, keep the header and add the idea below it.
+Use the current date and time for the timestamp.
 
-Then say: "Got it! Saved to your ideas list. You can review all your ideas anytime."
+**IMPORTANT: Capture the idea text EXACTLY as the user typed it.** Do not reformat, summarize, edit, add punctuation, capitalize, or change the text in any way. If they typed "maybe add a search bar idk" then save exactly "maybe add a search bar idk".
 
-**Note:** The analysis and routing part of this command (determining if an idea should become a quick task, planned feature, etc.) will be available in a future update. For now, ideas are captured as-is.
+## Step 4: Confirm capture
+
+Say:
+
+"Got it -- saved to your ideas list."
+
+That is the ENTIRE response. One line.
+
+- Do NOT ask follow-up questions about the idea.
+- Do NOT suggest acting on it.
+- Do NOT offer to analyze complexity or route it.
+- Do NOT mention `/director:ideas` or any other command.
+- Do NOT say "You can review your ideas anytime" or anything similar.
+
+Ideas are about zero-friction capture. The user had a thought, you saved it, done.
 
 ---
 

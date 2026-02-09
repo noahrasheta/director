@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-02-07)
 ## Current Position
 
 Phase: 8 of 10 (Pivot & Brainstorm)
-Plan: 4 of 7 in current phase
+Plan: 5 of 7 in current phase
 Status: In progress
-Last activity: 2026-02-09 -- Completed 08-06-PLAN.md (brainstorm exploration loop with adaptive context loading)
+Last activity: 2026-02-09 -- Completed 08-07-PLAN.md (brainstorm session save and exit routing)
 
-Progress: [███████████░░░░░] 71% (30/42 plans)
+Progress: [████████████░░░░] 74% (31/42 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 30
-- Average duration: ~2m 13s
-- Total execution time: ~66m 27s
+- Total plans completed: 31
+- Average duration: ~2m 11s
+- Total execution time: ~67m 27s
 
 **By Phase:**
 
@@ -35,10 +35,10 @@ Progress: [███████████░░░░░] 71% (30/42 plans)
 | 06-progress-continuity | 4/4 | 7m | 1m 45s |
 | 07-quick-mode-ideas | 3/3 | 5m 43s | 1m 54s |
 | 07.1-user-decisions-context | 3/3 | 4m 13s | 1m 24s |
-| 08-pivot-brainstorm | 4/7 | 5m 19s | 1m 20s |
+| 08-pivot-brainstorm | 5/7 | 6m 19s | 1m 16s |
 
 **Recent Trend:**
-- Last 5 plans: 07.1-03 (1m 38s), 08-01 (1m 14s), 08-05 (1m 27s), 08-02 (1m 34s), 08-06 (1m 04s)
+- Last 5 plans: 08-01 (1m 14s), 08-05 (1m 27s), 08-02 (1m 34s), 08-06 (1m 04s), 08-07 (1m 00s)
 - Trend: stable, consistently under 2m 30s
 
 *Updated after each plan completion*
@@ -171,6 +171,11 @@ Recent decisions affecting current work:
 - [08-06]: NEVER pre-load everything -- conversation drives what gets loaded
 - [08-06]: Feasibility concerns are information, not gates -- present gently without blocking exploration
 - [08-06]: Check-ins happen at natural pauses (topic conclusions, shorter responses, topic shifts), not on a rigid schedule
+- [08-07]: Session saved is always a valid ending -- brainstorm does not force action
+- [08-07]: Save-as-idea writes directly to IDEAS.md (not suggesting /director:idea) to reduce friction
+- [08-07]: Quick/blueprint/pivot routes direct user to run the command (not executing inline) -- brainstorm context too heavy
+- [08-07]: Filename collisions handled with counter suffix (-2, -3) rather than timestamp component
+- [08-07]: Decisions Made and Open Questions sections omitted entirely when empty (no placeholders)
 
 ### Pending Todos
 
@@ -185,5 +190,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-09
-Stopped at: Completed 08-06-PLAN.md (brainstorm exploration loop with adaptive context loading)
+Stopped at: Completed 08-07-PLAN.md (brainstorm session save and exit routing)
 Resume file: None

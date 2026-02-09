@@ -19,7 +19,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 5: Verification** - Three-tier verification: structural code reading, behavioral checklists, and auto-fix
 - [x] **Phase 6: Progress & Continuity** - Status display, state persistence, session resume, and cost tracking
 - [x] **Phase 7: Quick Mode & Ideas** - Lightweight escape hatches for small changes and idea capture
-- [ ] **Phase 7.1: User Decisions Context** - Decisions artifact in STEP.md flows into builder context (INSERTED)
+- [x] **Phase 7.1: User Decisions Context** - Decisions artifact in STEP.md flows into builder context (INSERTED)
 - [ ] **Phase 8: Pivot & Brainstorm** - Context-heavy workflows for requirement changes and open-ended exploration
 - [ ] **Phase 9: Command Intelligence** - Context-aware routing, error handling, terminology enforcement, help, and undo
 - [ ] **Phase 10: Distribution** - Self-hosted plugin marketplace, installation flow, and versioning
@@ -158,9 +158,9 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 07.1-01-PLAN.md -- STEP.md template update with Decisions section, builder agent and context reference updates
-- [ ] 07.1-02-PLAN.md -- Build skill context assembly update with decisions extraction and loading
-- [ ] 07.1-03-PLAN.md -- Blueprint skill decision capture and planner agent awareness
+- [x] 07.1-01-PLAN.md -- STEP.md template update with Decisions section, builder agent and context reference updates
+- [x] 07.1-02-PLAN.md -- Build skill context assembly update with decisions extraction and loading
+- [x] 07.1-03-PLAN.md -- Blueprint skill decision capture and planner agent awareness
 
 ### Phase 8: Pivot & Brainstorm
 **Goal**: Users can change direction mid-project without losing valid work, and explore ideas freely with full project context
@@ -234,11 +234,11 @@ Note: Phases 5, 6, 7, and 8 all depend on Phase 4 and can potentially be worked 
 | 5. Verification | 3/3 | Complete | 2026-02-08 |
 | 6. Progress & Continuity | 4/4 | Complete | 2026-02-08 |
 | 7. Quick Mode & Ideas | 3/3 | Complete | 2026-02-08 |
-| 7.1. User Decisions Context | 0/3 | Not started | - |
+| 7.1. User Decisions Context | 3/3 | Complete | 2026-02-09 |
 | 8. Pivot & Brainstorm | 0/7 | Not started | - |
 | 9. Command Intelligence | 0/6 | Not started | - |
 | 10. Distribution | 0/3 | Not started | - |
 
 ---
 *Roadmap created: 2026-02-07*
-*Last updated: 2026-02-08 -- Phase 7 complete (3 plans executed)*
+*Last updated: 2026-02-09 -- Phase 7.1 complete (3 plans executed)*

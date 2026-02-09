@@ -74,15 +74,15 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Progress & Continuity
 
-- [ ] **PROG-01**: `/director:status` shows goal progress ("Goal 1: 4 of 6 steps complete")
-- [ ] **PROG-02**: `/director:status` shows step progress ("Step 2: 3 of 7 tasks complete")
-- [ ] **PROG-03**: Status indicators per task: Ready / In Progress / Complete / Needs Attention
-- [ ] **PROG-04**: Shows what's ready to work on next and what's blocked (with plain-language reasons)
-- [ ] **PROG-05**: State stored in `.director/STATE.md` (machine-readable) with human-friendly CLI display
-- [ ] **PROG-06**: API cost tracking per goal/step/task
-- [ ] **PROG-07**: Automatic state persistence — no explicit pause command needed
-- [ ] **PROG-08**: `/director:resume` reads project state, shows what was last completed, identifies what's next
-- [ ] **PROG-09**: Plain-language resume: "Welcome back. Last time, you finished building the login page. Next up: the user profile page."
+- [x] **PROG-01**: `/director:status` shows goal progress ("Goal 1: 4 of 6 steps complete")
+- [x] **PROG-02**: `/director:status` shows step progress ("Step 2: 3 of 7 tasks complete")
+- [x] **PROG-03**: Status indicators per task: Ready / In Progress / Complete / Needs Attention
+- [x] **PROG-04**: Shows what's ready to work on next and what's blocked (with plain-language reasons)
+- [x] **PROG-05**: State stored in `.director/STATE.md` (machine-readable) with human-friendly CLI display
+- [x] **PROG-06**: API cost tracking per goal/step/task
+- [x] **PROG-07**: Automatic state persistence — no explicit pause command needed
+- [x] **PROG-08**: `/director:resume` reads project state, shows what was last completed, identifies what's next
+- [x] **PROG-09**: Plain-language resume: "Welcome back. Last time, you finished building the login page. Next up: the user profile page."
 
 ### Flexibility
 
@@ -213,15 +213,15 @@ Deferred to future release. Tracked but not in current roadmap.
 | VRFY-09 | Phase 5 | Pending |
 | VRFY-10 | Phase 5 | Pending |
 | VRFY-11 | Phase 5 | Pending |
-| PROG-01 | Phase 6 | Pending |
-| PROG-02 | Phase 6 | Pending |
-| PROG-03 | Phase 6 | Pending |
-| PROG-04 | Phase 6 | Pending |
-| PROG-05 | Phase 6 | Pending |
-| PROG-06 | Phase 6 | Pending |
-| PROG-07 | Phase 6 | Pending |
-| PROG-08 | Phase 6 | Pending |
-| PROG-09 | Phase 6 | Pending |
+| PROG-01 | Phase 6 | Complete |
+| PROG-02 | Phase 6 | Complete |
+| PROG-03 | Phase 6 | Complete |
+| PROG-04 | Phase 6 | Complete |
+| PROG-05 | Phase 6 | Complete |
+| PROG-06 | Phase 6 | Complete |
+| PROG-07 | Phase 6 | Complete |
+| PROG-08 | Phase 6 | Complete |
+| PROG-09 | Phase 6 | Complete |
 | FLEX-01 | Phase 7 | Pending |
 | FLEX-02 | Phase 7 | Pending |
 | FLEX-03 | Phase 7 | Pending |

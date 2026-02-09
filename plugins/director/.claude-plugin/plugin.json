@@ -6,13 +6,5 @@
     "name": "Noah Rasheta"
   },
   "homepage": "https://director.cc",
-  "repository": "https://github.com/noahrasheta/director",
-  "license": "MIT",
-  "keywords": [
-    "orchestration",
-    "vibe-coding",
-    "workflow",
-    "planning",
-    "ai-agents"
-  ]
+  "license": "MIT"
 }

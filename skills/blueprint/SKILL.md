@@ -227,6 +227,45 @@ Wait for explicit approval. If the user gives feedback, adjust and re-present. I
 
 ---
 
+## Capture Step-Level Decisions
+
+After the user approves the full hierarchy outline and before writing files, extract decisions from the conversation.
+
+### What counts as a decision
+
+A decision is a statement the user made about HOW something should be built. Look for:
+
+- **Technology choices:** "use Supabase", "stick with REST", "use Tailwind"
+- **Design direction:** "keep the UI simple", "no animations", "single-page layout"
+- **Implementation approach:** "server-side rendering", "use existing auth library"
+- **Scope boundaries:** "skip dark mode for now", "don't worry about mobile yet"
+
+What is NOT a decision (these belong in vision or task descriptions):
+- General project descriptions ("it's a task management app")
+- Feature requests ("I want users to be able to share lists")
+- Goal definitions ("users can manage their accounts")
+
+### How to capture decisions
+
+1. Review the entire conversation (both Phase 1 goal discussion and Phase 2 hierarchy discussion) for statements matching the categories above.
+
+2. For each decision found, determine which step it most affects. If a decision is cross-cutting (e.g., "use PostgreSQL for everything"), assign it to EVERY step where it is relevant. Duplicate the decision into each affected step rather than creating an inheritance mechanism.
+
+3. Categorize each decision:
+   - **Locked:** User said "use X" or "I want Y" or "make sure Z" -- an explicit directive about how to build something.
+   - **Flexible:** User said "I don't care about X" or "whatever works" or simply did not express a preference on a choice point that the planner surfaced. Include brief context when available (e.g., "Styling approach -- user has no preference").
+   - **Deferred:** User said "not now" or "save for later" or "skip X for now" -- explicit scope boundary.
+
+4. Associate each decision with the step(s) it affects.
+
+### Important rules
+
+- Do NOT ask the user to enumerate their decisions. Extract them passively from the natural conversation. This should be invisible to the user -- they see their gameplan written, and the decisions they expressed are captured without any additional interaction.
+- Do NOT create Flexible items for every conceivable choice. Only include Flexible items where the conversation specifically surfaced a choice point and the user expressed no preference. Silence on a topic is not a Flexible decision -- it just means the builder has normal discretion.
+- If a step has no relevant decisions from the conversation, OMIT the Decisions section entirely from that step's STEP.md. Do not write empty categories.
+
+---
+
 ## Write Gameplan
 
 After the user approves the full outline, write all gameplan files.
@@ -299,7 +338,20 @@ For each goal, step, and task in the approved outline:
 
   [What needs to be done before this step can start? Plain language.]
   [If nothing: "Nothing -- this step can start right away."]
+
+  ## Decisions
+
+  ### Locked
+  - [Decision from conversation]
+
+  ### Flexible
+  - [Area where builder can choose -- with context]
+
+  ### Deferred
+  - [Item explicitly set aside]
   ```
+
+  **Note:** Only include the Decisions section if the "Capture Step-Level Decisions" step identified relevant decisions for this step. Omit the entire section (including the ## Decisions heading) if there are no decisions. Only include categories (Locked, Flexible, Deferred) that have items -- omit empty categories.
 
 **Task directories and files:**
 - Create directory: `.director/goals/NN-goal/NN-step/tasks/`
@@ -512,6 +564,21 @@ After the user approves the full updated outline, write the updated gameplan fil
 - **Removed items:** Delete the files and directories. But NEVER delete files for completed items -- if something is marked done, it stays regardless of what the updated plan says.
 
 Use the same file templates and directory structure as new gameplan mode. Use Bash for `mkdir -p` to create directories and the Write tool for file content. Do NOT narrate each file path or operation to the user.
+
+### Update Decisions in Modified Steps
+
+When running in update mode:
+
+1. **Completed steps:** Their Decisions sections are FROZEN. Do not modify, add, or remove decisions in completed steps, just as completed steps' tasks and content are frozen.
+
+2. **Modified/pending steps:** Review the update conversation for new decisions. Merge new decisions with any existing decisions in the step's current STEP.md:
+   - Add new Locked/Flexible/Deferred items from the update conversation.
+   - If the user contradicted a previous decision (e.g., was "use SQLite", now says "switch to PostgreSQL"), update the Locked decision to reflect the new choice.
+   - If the user deferred something that was previously Locked, move it to Deferred.
+
+3. **New steps:** Capture decisions from the update conversation the same way as new gameplan mode.
+
+Apply the same passive extraction approach -- do NOT ask the user to enumerate decisions for the update. Extract from the natural conversation.
 
 ### Update Mode Wrap-Up
 

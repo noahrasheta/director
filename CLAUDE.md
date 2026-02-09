@@ -35,7 +35,7 @@ Director is a Claude Code plugin structured around three core loops:
 
 ### Project State Storage
 
-All state lives in `.director/` (similar to GSD's `.planning/`):
+All state lives in `.director/`:
 
 ```
 .director/
@@ -72,14 +72,14 @@ All state lives in `.director/` (similar to GSD's `.planning/`):
 | `/director:idea "..."` | Capture idea for later |
 | `/director:help` | Show commands with examples |
 
-### Key Patterns Adopted from Competitors
+### Key Design Patterns
 
-- **Fresh agent windows per task** (GSD + Autospec) — prevents quality degradation, 80%+ cost savings
-- **Goal-backward verification** (GSD) — verify outcomes, not task completion
-- **Delta specs** (OpenSpec) — ADDED/MODIFIED/REMOVED for changes
-- **Ready-work filtering** (Beads) — only show tasks with all dependencies satisfied
-- **Interview-based vision capture** (Superpowers) — one question at a time, multiple choice when possible
-- **[UNCLEAR] markers** (Spec-Kit) — flag ambiguity before proceeding
+- **Fresh agent windows per task** — prevents quality degradation, 80%+ cost savings
+- **Goal-backward verification** — verify outcomes, not task completion
+- **Delta specs** — ADDED/MODIFIED/REMOVED for changes
+- **Ready-work filtering** — only show tasks with all dependencies satisfied
+- **Interview-based vision capture** — one question at a time, multiple choice when possible
+- **[UNCLEAR] markers** — flag ambiguity before proceeding
 - **Documentation auto-sync** — after every task, verify `.director/` docs match codebase state
 
 ## Repository Contents
@@ -102,9 +102,7 @@ Reference material lives in `docs/resources/`.
 
 - **`docs/design/docs-notes.md`** is a living document for future user guide material. During brainstorming sessions, whenever a workflow explanation, command usage example, FAQ-style answer, or conceptual insight is generated that would help new users understand Director, append it to `docs/design/docs-notes.md` under the appropriate section. Don't wait for the user to ask — if the conversation produces user-guide-worthy content, capture it.
 
-## Build Strategy
-
-Director will be built using GSD (Get Shit Done) as the development framework, then dogfood itself once MVP is functional. Development phases:
+## Development Roadmap
 
 1. **Goal 1 (MVP):** Core workflow — onboarding, vision, gameplan, execution, verification, progress, resume, errors, quick mode, pivot, brainstorm, ideas
 2. **Goal 2:** Intelligence — learning tips, research summaries, two-stage review, complexity estimation, enhanced acceptance testing

@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-07)
 
 **Core value:** Vibe coders can go from idea to working product through a guided, plain-language workflow (Blueprint / Build / Inspect) that gives them professional development structure without requiring them to think like a developer.
-**Current focus:** Phase 6 - Progress & Continuity -- COMPLETE
+**Current focus:** Phase 7 - Quick Mode & Ideas -- In progress
 
 ## Current Position
 
-Phase: 6 of 10 (Progress & Continuity)
-Plan: 4 of 4 in current phase
-Status: Phase complete
-Last activity: 2026-02-08 -- Completed 06-04-PLAN.md (resume skill rewrite with context restoration)
+Phase: 7 of 10 (Quick Mode & Ideas)
+Plan: 2 of 3 in current phase
+Status: In progress
+Last activity: 2026-02-08 -- Completed 07-02-PLAN.md (idea capture rewrite with newest-first insertion)
 
-Progress: [████████░░░░░░░░] 50% (20/40 plans)
+Progress: [████████░░░░░░░░] 50% (21/42 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 20
-- Average duration: ~2m 33s
-- Total execution time: ~51.1 minutes
+- Total plans completed: 21
+- Average duration: ~2m 30s
+- Total execution time: ~52.5 minutes
 
 **By Phase:**
 
@@ -33,14 +33,19 @@ Progress: [████████░░░░░░░░] 50% (20/40 plans)
 | 04-execution | 2/2 | ~5m 30s | ~2m 45s |
 | 05-verification | 3/3 | 5m 51s | 1m 57s |
 | 06-progress-continuity | 4/4 | 7m | 1m 45s |
+| 07-quick-mode-ideas | 1/3 | 1m 26s | 1m 26s |
 
 **Recent Trend:**
-- Last 5 plans: 05-03 (2m 22s), 06-01 (2m), 06-02 (2m), 06-03 (1m 30s), 06-04 (1m 28s)
-- Trend: stable, consistently under 3m
+- Last 5 plans: 06-01 (2m), 06-02 (2m), 06-03 (1m 30s), 06-04 (1m 28s), 07-02 (1m 26s)
+- Trend: stable, consistently under 2m
 
 *Updated after each plan completion*
 
 ## Accumulated Context
+
+### Roadmap Evolution
+
+- Phase 7.1 inserted after Phase 7: User decisions context -- Decisions artifact in STEP.md flows into builder context (INSERTED)
 
 ### Decisions
 
@@ -49,6 +54,7 @@ Recent decisions affecting current work:
 
 - [Roadmap]: 10 phases derived from 88 requirements across 9 categories, with FLEX split into Quick/Ideas (Phase 7) and Pivot/Brainstorm (Phase 8) for cleaner delivery boundaries
 - [Roadmap]: Phases 5-8 all depend on Phase 4, enabling potential parallel work after execution engine is built
+- [Roadmap]: Phase 7.1 inserted to close gap where user intent gets lost between blueprint interview and task execution
 - [01-01]: Plugin manifest uses name "director" to namespace all skills as /director:*
 - [01-01]: Only plugin.json inside .claude-plugin/; all other components at plugin root
 - [01-01]: Config defaults are opinionated (guided mode, tips/verification/cost-tracking/doc-sync all on)
@@ -123,6 +129,9 @@ Recent decisions affecting current work:
 - [06-04]: Same-day Last session uses under-2-hours tone since field stores dates not times
 - [06-04]: Skip external changes section entirely for short breaks with no changes (reduces noise)
 - [06-04]: Lockfiles only flagged if corresponding manifest also changed
+- [07-02]: IDEAS.md insertion anchored to `_Captured ideas_` description line (shared contract between idea skill, ideas skill, and init template)
+- [07-02]: Idea text preserved exactly as typed -- no reformatting, summarizing, or editing
+- [07-02]: Single-line confirmation ("Got it -- saved to your ideas list.") with no follow-up questions or suggestions
 
 ### Pending Todos
 
@@ -137,5 +146,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-08
-Stopped at: Completed 06-04-PLAN.md (resume skill rewrite with context restoration)
+Stopped at: Completed 07-02-PLAN.md (idea capture rewrite with newest-first insertion)
 Resume file: None

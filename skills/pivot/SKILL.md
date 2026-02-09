@@ -412,7 +412,226 @@ Iterate until the user says the delta looks right. Only then proceed to Step 8 (
 
 ---
 
-<!-- Steps 8-9 will be added in plan 08-04 -->
+## Step 8: Apply approved changes
+
+After the user explicitly approves the delta summary from Step 7, apply all changes. Work through each sub-step in order.
+
+### 8a: Update VISION.md (strategic pivots only)
+
+**If the pivot is strategic (detected in Step 3):**
+
+Rewrite `.director/VISION.md` with the updated vision reflecting the new direction. But do NOT write it immediately -- present the updated vision to the user for review first.
+
+Present the full updated VISION.md content:
+
+> "Here's the updated vision for your project:"
+
+Then show the complete VISION.md using the same document structure as the onboard template:
+- Project name
+- Purpose
+- Target users
+- Key features (use delta format labels where helpful: Existing / Adding / Changing / Removing)
+- Tech stack
+- Deployment
+- Success criteria
+
+Wait for the user's approval. If they give feedback, adjust the vision and re-present:
+
+> "How does that look? I won't save it until you're happy with it."
+
+Iterate until the user confirms. Only then write the updated content to `.director/VISION.md`.
+
+**If the pivot is tactical (detected in Step 3):**
+
+Skip this step entirely. VISION.md stays as-is -- only the gameplan needs updating.
+
+### 8b: Update GAMEPLAN.md
+
+Rewrite `.director/GAMEPLAN.md` with the updated gameplan. Use the same structure as the blueprint skill:
+
+```markdown
+# Gameplan
+
+## Overview
+
+[2-3 sentence summary reflecting the current vision and approach]
+
+## Goals
+
+1. **Goal 1: [Goal Name]** -- [One-line description]
+2. **Goal 2: [Goal Name]** -- [One-line description]
+3. **Goal 3: [Goal Name]** -- [One-line description]
+
+## Current Focus
+
+**Current Goal:** [First goal with ready work]
+**Current Step:** [First step with ready tasks]
+**Next Up:** [What comes after the current step]
+```
+
+Point the Current Focus section at the first ready task in the updated gameplan -- this is the task the user will pick up next with `/director:build`.
+
+### 8c: Update goal, step, and task files
+
+Apply changes to the `.director/goals/` directory structure based on the approved delta from Step 7.
+
+**Completed items (FROZEN):**
+Do NOT touch files for completed goals, steps, or tasks. Leave them exactly as they are on disk. This is non-negotiable -- even if the pivot makes them irrelevant, their files stay untouched.
+
+**Modified items:**
+Overwrite the existing `GOAL.md`, `STEP.md`, or task file with updated content. Keep the same directory location and file name unless the item was also reordered.
+
+**New items:**
+Create new directories and files following the same naming conventions as blueprint:
+- Zero-padded numbers with kebab-case slugs: `03-payment-flow/`, `02-api-setup/`
+- Use `mkdir -p` via Bash for directories
+- Use the Write tool for file content
+
+Follow the same file templates as blueprint:
+
+**GOAL.md:**
+```markdown
+# Goal N: [Goal Name]
+
+## What Success Looks Like
+
+[What "done" means for this goal]
+
+## Steps
+
+1. **Step 1: [Step Name]** -- [What this delivers]
+2. **Step 2: [Step Name]** -- [What this delivers]
+
+## Status
+
+**Progress:** Not started
+**Steps complete:** 0 of [total steps]
+```
+
+**STEP.md:**
+```markdown
+# Step N: [Step Name]
+
+## What This Delivers
+
+[What will be working when this step is done]
+
+## Tasks
+
+- [ ] Task 1: [Task Name]
+- [ ] Task 2: [Task Name]
+
+## Needs First
+
+[What needs to be done before this step can start, in plain language]
+
+## Decisions
+
+[Only if decisions were captured -- see 8d below]
+```
+
+**Task files (NN-task-slug.md):**
+```markdown
+# Task: [Task Name]
+
+## What To Do
+
+[Clear description of what this task accomplishes]
+
+## Why It Matters
+
+[How this connects to the bigger picture]
+
+## Size
+
+**Estimate:** [small | medium | large]
+
+[Brief explanation of scope]
+
+## Done When
+
+- [ ] [First observable criteria]
+- [ ] [Second observable criteria]
+- [ ] [Third observable criteria]
+
+## Needs First
+
+[What needs to be done before this task can start, in plain language]
+```
+
+**Removed pending items:**
+Delete the files and directories for pending items that were approved for removal in the delta. Use Bash for `rm -rf` on directories.
+
+**NEVER delete files for completed items.** If something has a `.done.md` file or its Status shows complete, it stays on disk regardless of the pivot.
+
+Do NOT narrate file paths, `mkdir` commands, or directory structures to the user. File operations are invisible.
+
+### 8d: Handle decisions in modified and new steps
+
+**Completed steps (FROZEN):**
+Do not modify their Decisions sections. Completed steps are untouchable -- their decisions are part of the historical record.
+
+**Modified pending steps:**
+Review the pivot conversation (Steps 2, 6, and 7) for new decisions that affect these steps. Merge new decisions with existing ones:
+- Add new **Locked** items from the pivot context (e.g., user said "switch to GraphQL" during the pivot conversation).
+- Update contradicted decisions: if a previous Locked decision said "use REST" and the pivot says "switch to GraphQL", update the Locked item to reflect the new choice.
+- Move newly deferred items: if the user said "skip dark mode for now" during the pivot, add it to **Deferred**.
+- Preserve existing decisions that are still relevant and were not contradicted.
+
+**New steps:**
+Capture decisions from the pivot conversation using the same passive extraction approach as blueprint. Look for:
+- Technology choices mentioned during the pivot
+- Design direction stated in the conversation
+- Implementation approach decisions
+- Scope boundaries ("not now", "skip for now", "save for later")
+
+Only include the Decisions section if relevant decisions exist. Omit it entirely when there are no decisions for a step. Only include categories (Locked, Flexible, Deferred) that have items.
+
+### 8e: Update STATE.md
+
+Update `.director/STATE.md` directly. Do NOT spawn the syncer -- pivot is a meta-operation that changes the entire gameplan structure, not a single build task. The syncer expects task-specific context (`<task>` and `<changes>` tags) that does not apply here.
+
+**Recalculate progress:**
+Scan the updated `.director/goals/` directory structure:
+- Count total task files (both `.md` and `.done.md`) across all goals and steps
+- Count completed task files (`.done.md` only)
+- Update progress counts and percentages in STATE.md
+
+**Update current position:**
+Set the current position to point to the first ready task in the updated gameplan. This is the task that `/director:build` will pick up next.
+
+**Add a Recent Activity entry:**
+Add an entry for the pivot itself:
+
+```
+- **[YYYY-MM-DD]** -- Pivot: [brief description of what changed]
+```
+
+Use today's date and a concise description drawn from the pivot conversation (e.g., "Switched from REST to GraphQL API" or "Refocused on enterprise users with 3 new goals").
+
+**If the pivot is strategic:** Also update the "Current focus" description to reflect the new direction.
+
+---
+
+## Step 9: Wrap-up
+
+Tell the user conversationally what happened. Keep it brief and forward-looking -- this is a summary, not a report.
+
+> "Your gameplan is updated. [Brief summary of the key changes]."
+
+The summary should describe what changed at a high level. Examples:
+
+- "Switched to GraphQL across the API steps and added 2 new tasks for schema migration."
+- "The vision now focuses on enterprise teams, and the gameplan has 3 new goals to match."
+- "Dropped the mobile app steps and simplified the remaining web-only tasks."
+
+Do NOT list file paths, directory structures, technical details, or counts of files written. The user just needs to know what changed about their project, not what happened on disk.
+
+Then suggest the next action:
+
+> "Ready to keep building? You can pick up where things left off with `/director:build`."
+
+Wait for the user's response. Do not auto-execute the next command.
 
 ---
 
@@ -420,13 +639,16 @@ Iterate until the user says the delta looks right. Only then proceed to Step 8 (
 
 Throughout the entire pivot flow, follow these rules:
 
-- **Use Director's vocabulary:** Vision (not spec), Gameplan (not roadmap), Goal/Step/Task (not milestone/phase/ticket)
-- **Explain outcomes, not mechanisms:** "Your gameplan is updated" not "Writing GAMEPLAN.md to .director/GAMEPLAN.md"
-- **Be conversational, not imperative:** "Want to keep building?" not "Run /director:build"
-- **Never blame the user:** "We need to figure out X" not "You forgot to specify X"
-- **Celebrate naturally:** "Nice -- that's a solid new direction" not forced enthusiasm
-- **Match the user's energy:** If they're excited about the change, be excited. If they're stressed, be calm and reassuring.
-- **Never use developer jargon in output:** No dependencies, artifacts, integration, repositories, branches, commits, schemas, endpoints, middleware, migration, blocker, prerequisite. Use plain language equivalents.
-- **Pivots are normal:** Changing direction is a sign of learning, not failure. Frame it positively.
+- **Use Director's vocabulary:** Vision (not spec), Gameplan (not roadmap), Goal/Step/Task (not milestone/phase/ticket). Never say milestone, sprint, phase, ticket, or issue.
+- **Explain outcomes, not mechanisms:** "Your gameplan is updated" not "Writing GAMEPLAN.md to .director/GAMEPLAN.md". "Your vision is saved" not "Wrote 45 lines to VISION.md".
+- **Be conversational, not imperative:** "Want to keep building?" not "Run /director:build". "Ready to pick up where you left off?" not "Execute /director:build to continue".
+- **Never blame the user:** "We need to figure out X" not "You forgot to specify X". "Let's work through this" not "You should have planned for this".
+- **Celebrate naturally:** "Nice -- that's a solid new direction" not forced enthusiasm. Match the moment.
+- **Match the user's energy:** If they're excited about the change, be excited. If they're stressed, be calm and reassuring. If they're unsure, be supportive.
+- **Never use developer jargon in output:** No dependencies, artifacts, integration, repositories, branches, commits, schemas, endpoints, middleware, migration, blocker, prerequisite, deploy, release. Use plain language equivalents.
+- **File operations are invisible:** Never show file paths, directory structures, mkdir commands, or file counts in user-facing output. Say "Your gameplan is updated" not "Created 5 directories and 12 files in .director/goals/".
+- **Git operations are invisible:** Say "Progress saved" not "Changes committed". Never mention SHAs, branches, diffs, or commits.
+- **Pivots are normal:** Changing direction is a sign of learning, not failure. Frame it positively. "Good call" not "At least we caught it". Never suggest the user should have known better or planned differently.
+- **Follow terminology.md and plain-language-guide.md** for all user-facing messages. These references define the complete word list and tone guidance.
 
 $ARGUMENTS

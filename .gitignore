@@ -16,3 +16,4 @@ node_modules/
 # Project docs (not distributed with plugin)
 CLAUDE.md
 docs/
+site/

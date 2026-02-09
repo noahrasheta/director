@@ -172,16 +172,16 @@ Plans:
   3. All relevant documentation (VISION.md, GAMEPLAN.md, architecture docs) is updated by pivot
   4. Running `/director:brainstorm` loads full project context (VISION.md, GAMEPLAN.md, STATE.md, codebase awareness) and explores ideas one question at a time with multiple choice when possible
   5. At the end of a brainstorm, Director suggests the appropriate next action (save idea, create task, trigger pivot, or just save conversation) and saves the session to `.director/brainstorms/YYYY-MM-DD-<topic>.md`
-**Plans**: TBD
+**Plans**: 7 plans
 
 Plans:
-- [ ] 08-01: Pivot conversation flow and direction capture
-- [ ] 08-02: Codebase mapping against new direction
-- [ ] 08-03: Delta impact analysis and gameplan regeneration
-- [ ] 08-04: Pivot documentation updates
-- [ ] 08-05: Brainstorm context loading and exploration flow
-- [ ] 08-06: Brainstorm codebase impact consideration
-- [ ] 08-07: Brainstorm session routing and file saving
+- [ ] 08-01-PLAN.md -- Pivot conversation flow: init routing, direction capture, scope detection
+- [ ] 08-02-PLAN.md -- Pivot state assessment: in-progress work check, conditional mapper spawning
+- [ ] 08-03-PLAN.md -- Pivot impact analysis: gameplan classification, delta summary, approval gate
+- [ ] 08-04-PLAN.md -- Pivot apply changes: doc updates, file operations, STATE.md, wrap-up
+- [ ] 08-05-PLAN.md -- Brainstorm template update, init, context loading, session open
+- [ ] 08-06-PLAN.md -- Brainstorm exploration loop: adaptive context loading, code awareness
+- [ ] 08-07-PLAN.md -- Brainstorm session save, exit routing, IDEAS.md integration
 
 ### Phase 9: Command Intelligence
 **Goal**: Every command is smart about project state -- it redirects when invoked out of sequence, speaks plain English, and provides undo capability
@@ -241,4 +241,4 @@ Note: Phases 5, 6, 7, and 8 all depend on Phase 4 and can potentially be worked 
 
 ---
 *Roadmap created: 2026-02-07*
-*Last updated: 2026-02-09 -- Phase 7.1 complete (3 plans executed)*
+*Last updated: 2026-02-09 -- Phase 8 planned (7 plans in 4 waves)*

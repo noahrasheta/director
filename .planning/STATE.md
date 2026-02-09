@@ -12,16 +12,16 @@ See: .planning/PROJECT.md (updated 2026-02-07)
 Phase: 9 of 10 (Command Intelligence)
 Plan: 2 of 3 in current phase
 Status: In progress
-Last activity: 2026-02-09 -- Completed 09-02-PLAN.md (routing consistency audit)
+Last activity: 2026-02-09 -- Completed 09-01-PLAN.md (undo skill and help update)
 
-Progress: [█████████████░░░] 81% (34/42 plans)
+Progress: [█████████████░░░] 83% (35/42 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 34
-- Average duration: ~2m 07s
-- Total execution time: ~72m 28s
+- Total plans completed: 35
+- Average duration: ~2m 09s
+- Total execution time: ~75m 25s
 
 **By Phase:**
 
@@ -36,10 +36,10 @@ Progress: [█████████████░░░] 81% (34/42 plans)
 | 07-quick-mode-ideas | 3/3 | 5m 43s | 1m 54s |
 | 07.1-user-decisions-context | 3/3 | 4m 13s | 1m 24s |
 | 08-pivot-brainstorm | 7/7 | 10m 08s | 1m 27s |
-| 09-command-intelligence | 1/3 | 1m 12s | 1m 12s |
+| 09-command-intelligence | 2/3 | 4m 09s | 2m 05s |
 
 **Recent Trend:**
-- Last 5 plans: 08-06 (1m 04s), 08-07 (1m 00s), 08-03 (1m 47s), 08-04 (2m 02s), 09-02 (1m 12s)
+- Last 5 plans: 08-07 (1m 00s), 08-03 (1m 47s), 08-04 (2m 02s), 09-02 (1m 12s), 09-01 (2m 57s)
 - Trend: stable, consistently under 2m 30s
 
 *Updated after each plan completion*
@@ -186,6 +186,9 @@ Recent decisions affecting current work:
 - [08-04]: Completed work files are never deleted -- even if irrelevant to new direction, files stay on disk
 - [08-04]: Decisions in modified steps use merge pattern: add new Locked, update contradicted, move deferred, preserve valid
 - [08-04]: Wrap-up is conversational and brief -- describes changes at project level, not file-system level
+- [09-01]: Undo log commits use "Log undo:" prefix so subsequent undos detect bookkeeping vs real tasks
+- [09-01]: Topic-specific help content embedded inline in SKILL.md (no import mechanism for skills)
+- [09-01]: Post-undo safety check for orphaned .done.md files handles edge case of failed amend-commits
 - [09-02]: Inspect vision check uses Step 1b numbering to preserve existing step numbers
 - [09-02]: No changes needed to build/blueprint/pivot/onboard -- all already consistent with four-step routing
 - [09-02]: Brainstorm routing phrasing left as-is (not a key-entry command per locked decision)
@@ -203,6 +206,6 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-09
-Stopped at: Completed 09-02-PLAN.md (routing consistency audit)
+Stopped at: Completed 09-01-PLAN.md (undo skill and help update)
 Resume file: None
 Next: 09-03-PLAN.md (inline text audit)

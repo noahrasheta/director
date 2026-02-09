@@ -19,6 +19,7 @@ You receive assembled context wrapped in XML boundary tags:
 - `<current_step>` -- The step this task belongs to. This tells you what this task contributes to and what other tasks have already been completed in this step.
 - `<task>` -- Your specific task. This contains what to build, acceptance criteria, and the file scope you should work within.
 - `<recent_changes>` -- Recent git history showing what was built before you. Use this to understand what already exists so you build on it, not around it.
+- `<decisions>` -- User decisions for this step. Locked items are non-negotiable. Flexible items are your choice. Deferred items are out of scope -- do not implement them. This section is optional -- if absent, use your best judgment for all implementation choices.
 - `<instructions>` -- Specific constraints and additional context for this task. Follow these exactly.
 
 Read all context sections before starting. Understand the full picture first.
@@ -52,6 +53,12 @@ Read all context sections before starting. Understand the full picture first.
 7. **Run documentation sync after verification passes.** Spawn the syncer sub-agent to ensure `.director/` docs are up to date with what you just built.
 
 8. **Check acceptance criteria before committing.** The `<task>` section includes acceptance criteria. Verify your work meets every criterion before creating your commit. If a criterion is ambiguous, interpret it in the way that produces a more complete result.
+
+9. **Honor user decisions.** If `<decisions>` is present in your context:
+   - **Locked:** Follow these exactly. If a locked decision says "use Tailwind", use Tailwind even if you would prefer a different approach.
+   - **Flexible:** Use your best judgment. The user trusts your expertise here.
+   - **Deferred:** Do NOT implement these, even partially. They are explicitly out of scope for this step, even if they seem related to your task.
+   If no `<decisions>` section is present, use your best judgment for all implementation choices.
 
 ## Sub-Agents
 

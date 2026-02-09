@@ -51,6 +51,7 @@ These are the standard tags used when assembling agent context. Each tag wraps a
 | `<vision>` | Contents of `.director/VISION.md` | Always -- every agent context |
 | `<gameplan>` | Contents of `.director/GAMEPLAN.md` | When agent needs project-wide view (planner, inspector) |
 | `<current_step>` | Contents of relevant `STEP.md` | Always during build -- scopes agent to current step |
+| `<decisions>` | User decisions from STEP.md Decisions section | During build, if STEP.md has a Decisions section |
 | `<task>` | Task description, acceptance criteria, file scope | Always during build -- the specific work to do |
 | `<recent_changes>` | Recent git log summary (plain language) | Always -- provides continuity between fresh contexts |
 | `<instructions>` | Task-specific constraints and rules | Always -- guardrails for the agent |
@@ -76,6 +77,25 @@ Build a platform where creators can share short-form content...
 Build the main user-facing features: feed, posting, profiles...
 [Full contents of relevant STEP.md]
 </current_step>
+
+<decisions>
+These are the user's decisions for this step. Follow them exactly:
+
+### Locked
+- Use Supabase for the database
+- Keep the API RESTful, no GraphQL
+
+### Flexible
+- Styling approach -- user has no preference
+
+### Deferred
+- Dark mode support -- saving for later
+
+RULES:
+- Locked items are non-negotiable -- follow them exactly as stated.
+- Flexible items are your choice -- use your best judgment.
+- Deferred items are out of scope -- do NOT implement them, even partially.
+</decisions>
 
 <task>
 ## Build the user profile page
@@ -162,6 +182,7 @@ When context exceeds the budget:
 2. **Reference docs second** -- Include only the reference doc sections relevant to the task
 3. **Step context third** -- Summarize rather than include full STEP.md
 4. **Never truncate task or vision** -- These are essential for correct execution
+5. **Never truncate decisions** -- User decisions are essential for correct execution. The `<decisions>` section is small (typically under 100 tokens) and must always be included in full.
 
 ---
 
@@ -228,15 +249,15 @@ Load current state: !cat .director/STATE.md
 
 Different agents need different context combinations. These profiles define what each agent type receives.
 
-| Agent | Vision | Gameplan | Step | Task | Recent Changes | Instructions | State |
-|----|----|----|----|----|----|----|---|
-| Builder | Yes | No | Yes | Yes | Yes | Yes | No |
-| Planner | Yes | Yes | No | No | Yes | Yes | Yes |
-| Verifier | Yes | No | Yes | Yes | Yes | Yes | No |
-| Interviewer | Yes | No | No | No | No | Yes | No |
-| Inspector | Yes | Yes | No | No | Yes | Yes | Yes |
-| Syncer | Yes | No | Yes | No | Yes | Yes | No |
-| Mapper | No | No | No | No | No | Yes | No |
-| Researcher | Yes | No | Yes | Yes | No | Yes | No |
+| Agent | Vision | Gameplan | Step | Task | Recent Changes | Instructions | State | Decisions |
+|----|----|----|----|----|----|----|---|---|
+| Builder | Yes | No | Yes | Yes | Yes | Yes | No | Yes |
+| Planner | Yes | Yes | No | No | Yes | Yes | Yes | No |
+| Verifier | Yes | No | Yes | Yes | Yes | Yes | No | No |
+| Interviewer | Yes | No | No | No | No | Yes | No | No |
+| Inspector | Yes | Yes | No | No | Yes | Yes | Yes | No |
+| Syncer | Yes | No | Yes | No | Yes | Yes | No | No |
+| Mapper | No | No | No | No | No | Yes | No | No |
+| Researcher | Yes | No | Yes | Yes | No | Yes | No | No |
 
 These profiles are guidelines. Specific tasks may require additional or fewer context sections.

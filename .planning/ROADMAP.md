@@ -18,7 +18,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 4: Execution** - Fresh-context task execution with atomic commits and documentation sync
 - [x] **Phase 5: Verification** - Three-tier verification: structural code reading, behavioral checklists, and auto-fix
 - [x] **Phase 6: Progress & Continuity** - Status display, state persistence, session resume, and cost tracking
-- [ ] **Phase 7: Quick Mode & Ideas** - Lightweight escape hatches for small changes and idea capture
+- [x] **Phase 7: Quick Mode & Ideas** - Lightweight escape hatches for small changes and idea capture
 - [ ] **Phase 7.1: User Decisions Context** - Decisions artifact in STEP.md flows into builder context (INSERTED)
 - [ ] **Phase 8: Pivot & Brainstorm** - Context-heavy workflows for requirement changes and open-ended exploration
 - [ ] **Phase 9: Command Intelligence** - Context-aware routing, error handling, terminology enforcement, help, and undo
@@ -142,9 +142,9 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 07-01-PLAN.md -- Quick skill rewrite: scope-based complexity analysis and full execution pipeline with [quick] commits
+- [x] 07-01-PLAN.md -- Quick skill rewrite: scope-based complexity analysis and full execution pipeline with [quick] commits
 - [x] 07-02-PLAN.md -- Idea capture rewrite: newest-first insertion in IDEAS.md and init script template update
-- [ ] 07-03-PLAN.md -- Ideas viewer skill: numbered display, conversational routing, and idea removal
+- [x] 07-03-PLAN.md -- Ideas viewer skill: numbered display, conversational routing, and idea removal
 
 ### Phase 7.1: User Decisions Context (INSERTED)
 **Goal**: When a task executes in a fresh agent window, the builder knows what the user decided, what it can decide on its own, and what's out of scope -- without needing the original conversation
@@ -233,7 +233,7 @@ Note: Phases 5, 6, 7, and 8 all depend on Phase 4 and can potentially be worked 
 | 4. Execution | 2/2 | Complete | 2026-02-08 |
 | 5. Verification | 3/3 | Complete | 2026-02-08 |
 | 6. Progress & Continuity | 4/4 | Complete | 2026-02-08 |
-| 7. Quick Mode & Ideas | 1/3 | In progress | - |
+| 7. Quick Mode & Ideas | 3/3 | Complete | 2026-02-08 |
 | 7.1. User Decisions Context | 0/3 | Not started | - |
 | 8. Pivot & Brainstorm | 0/7 | Not started | - |
 | 9. Command Intelligence | 0/6 | Not started | - |
@@ -241,4 +241,4 @@ Note: Phases 5, 6, 7, and 8 all depend on Phase 4 and can potentially be worked 
 
 ---
 *Roadmap created: 2026-02-07*
-*Last updated: 2026-02-08 -- Phase 7.1 planned (3 plans in 2 waves)*
+*Last updated: 2026-02-08 -- Phase 7 complete (3 plans executed)*

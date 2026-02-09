@@ -86,18 +86,18 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Flexibility
 
-- [ ] **FLEX-01**: `/director:quick "..."` executes small changes without full planning workflow
-- [ ] **FLEX-02**: Quick mode analyzes complexity before executing — recommends guided mode when request is complex
-- [ ] **FLEX-03**: Quick mode still uses atomic commits and documentation sync
+- [x] **FLEX-01**: `/director:quick "..."` executes small changes without full planning workflow
+- [x] **FLEX-02**: Quick mode analyzes complexity before executing — recommends guided mode when request is complex
+- [x] **FLEX-03**: Quick mode still uses atomic commits and documentation sync
 - [ ] **FLEX-04**: `/director:pivot` starts focused conversation about what changed
 - [ ] **FLEX-05**: Pivot maps current codebase against new direction
 - [ ] **FLEX-06**: Pivot generates updated gameplan that supersedes the old one
 - [ ] **FLEX-07**: Pivot updates all relevant documentation (VISION.md, GAMEPLAN.md, architecture docs)
 - [ ] **FLEX-08**: Pivot preserves completed work that's still relevant
 - [ ] **FLEX-09**: Pivot uses delta format showing impact in plain language ("3 tasks no longer needed, 2 new tasks required, everything else stays the same")
-- [ ] **FLEX-10**: `/director:idea "..."` saves idea to IDEAS.md instantly
-- [ ] **FLEX-11**: Ideas stored separately from active gameplan
-- [ ] **FLEX-12**: When acting on an idea, Director analyzes complexity and routes: quick task, needs planning, or too complex for now
+- [x] **FLEX-10**: `/director:idea "..."` saves idea to IDEAS.md instantly
+- [x] **FLEX-11**: Ideas stored separately from active gameplan
+- [x] **FLEX-12**: When acting on an idea, Director analyzes complexity and routes: quick task, needs planning, or too complex for now
 - [ ] **FLEX-13**: `/director:brainstorm` loads full project context (VISION.md, GAMEPLAN.md, STATE.md, codebase awareness)
 - [ ] **FLEX-14**: Brainstorm uses one question at a time, multiple choice when possible, follows user's lead
 - [ ] **FLEX-15**: Brainstorm considers impact on existing codebase and gameplan when exploring changes
@@ -222,18 +222,18 @@ Deferred to future release. Tracked but not in current roadmap.
 | PROG-07 | Phase 6 | Complete |
 | PROG-08 | Phase 6 | Complete |
 | PROG-09 | Phase 6 | Complete |
-| FLEX-01 | Phase 7 | Pending |
-| FLEX-02 | Phase 7 | Pending |
-| FLEX-03 | Phase 7 | Pending |
+| FLEX-01 | Phase 7 | Complete |
+| FLEX-02 | Phase 7 | Complete |
+| FLEX-03 | Phase 7 | Complete |
 | FLEX-04 | Phase 8 | Pending |
 | FLEX-05 | Phase 8 | Pending |
 | FLEX-06 | Phase 8 | Pending |
 | FLEX-07 | Phase 8 | Pending |
 | FLEX-08 | Phase 8 | Pending |
 | FLEX-09 | Phase 8 | Pending |
-| FLEX-10 | Phase 7 | Pending |
-| FLEX-11 | Phase 7 | Pending |
-| FLEX-12 | Phase 7 | Pending |
+| FLEX-10 | Phase 7 | Complete |
+| FLEX-11 | Phase 7 | Complete |
+| FLEX-12 | Phase 7 | Complete |
 | FLEX-13 | Phase 8 | Pending |
 | FLEX-14 | Phase 8 | Pending |
 | FLEX-15 | Phase 8 | Pending |

@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-02-07)
 ## Current Position
 
 Phase: 8 of 10 (Pivot & Brainstorm)
-Plan: 3 of 7 in current phase
+Plan: 4 of 7 in current phase
 Status: In progress
-Last activity: 2026-02-09 -- Completed 08-02-PLAN.md (pivot in-progress work check + conditional mapper spawning)
+Last activity: 2026-02-09 -- Completed 08-06-PLAN.md (brainstorm exploration loop with adaptive context loading)
 
-Progress: [███████████░░░░░] 69% (29/42 plans)
+Progress: [███████████░░░░░] 71% (30/42 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 29
-- Average duration: ~2m 15s
-- Total execution time: ~65m 23s
+- Total plans completed: 30
+- Average duration: ~2m 13s
+- Total execution time: ~66m 27s
 
 **By Phase:**
 
@@ -35,10 +35,10 @@ Progress: [███████████░░░░░] 69% (29/42 plans)
 | 06-progress-continuity | 4/4 | 7m | 1m 45s |
 | 07-quick-mode-ideas | 3/3 | 5m 43s | 1m 54s |
 | 07.1-user-decisions-context | 3/3 | 4m 13s | 1m 24s |
-| 08-pivot-brainstorm | 3/7 | 4m 15s | 1m 25s |
+| 08-pivot-brainstorm | 4/7 | 5m 19s | 1m 20s |
 
 **Recent Trend:**
-- Last 5 plans: 07.1-02 (1m 01s), 07.1-03 (1m 38s), 08-01 (1m 14s), 08-05 (1m 27s), 08-02 (1m 34s)
+- Last 5 plans: 07.1-03 (1m 38s), 08-01 (1m 14s), 08-05 (1m 27s), 08-02 (1m 34s), 08-06 (1m 04s)
 - Trend: stable, consistently under 2m 30s
 
 *Updated after each plan completion*
@@ -167,6 +167,10 @@ Recent decisions affecting current work:
 - [08-02]: Mapper spawning is conditional based on staleness heuristics, not triggered on every pivot
 - [08-02]: When staleness indicators conflict, lean toward skipping mapper (trust docs, correct later)
 - [08-02]: Mapper findings presented conversationally before impact analysis begins
+- [08-06]: Adaptive context loading uses three tiers: GAMEPLAN.md for plan discussions, codebase files via Read/Glob/Grep for code discussions, step/task files for planned work discussions
+- [08-06]: NEVER pre-load everything -- conversation drives what gets loaded
+- [08-06]: Feasibility concerns are information, not gates -- present gently without blocking exploration
+- [08-06]: Check-ins happen at natural pauses (topic conclusions, shorter responses, topic shifts), not on a rigid schedule
 
 ### Pending Todos
 
@@ -181,5 +185,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-09
-Stopped at: Completed 08-02-PLAN.md (pivot in-progress work check + conditional mapper spawning)
+Stopped at: Completed 08-06-PLAN.md (brainstorm exploration loop with adaptive context loading)
 Resume file: None

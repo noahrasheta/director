@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-02-07)
 ## Current Position
 
 Phase: 6 of 10 (Progress & Continuity)
-Plan: 3 of 4 in current phase
-Status: In progress
-Last activity: 2026-02-08 -- Completed 06-03-PLAN.md (status skill rewrite with progress display)
+Plan: 4 of 4 in current phase
+Status: Phase complete
+Last activity: 2026-02-08 -- Completed 06-04-PLAN.md (resume skill rewrite with context restoration)
 
-Progress: [████████░░░░░░░░] 47% (19/40 plans)
+Progress: [████████░░░░░░░░] 50% (20/40 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 19
-- Average duration: ~2m 37s
-- Total execution time: ~49.6 minutes
+- Total plans completed: 20
+- Average duration: ~2m 33s
+- Total execution time: ~51.1 minutes
 
 **By Phase:**
 
@@ -32,10 +32,10 @@ Progress: [████████░░░░░░░░] 47% (19/40 plans)
 | 03-planning | 2/2 | 4m 43s | 2m 22s |
 | 04-execution | 2/2 | ~5m 30s | ~2m 45s |
 | 05-verification | 3/3 | 5m 51s | 1m 57s |
-| 06-progress-continuity | 3/4 | 5m 30s | 1m 50s |
+| 06-progress-continuity | 4/4 | 7m | 1m 45s |
 
 **Recent Trend:**
-- Last 5 plans: 05-02 (2m 9s), 05-03 (2m 22s), 06-01 (2m), 06-02 (2m), 06-03 (1m 30s)
+- Last 5 plans: 05-03 (2m 22s), 06-01 (2m), 06-02 (2m), 06-03 (1m 30s), 06-04 (1m 28s)
 - Trend: stable, consistently under 3m
 
 *Updated after each plan completion*
@@ -119,6 +119,10 @@ Recent decisions affecting current work:
 - [06-02]: Decisions extraction uses phrase detection from builder output (no structured output required)
 - [06-03]: File system is authoritative over STATE.md for progress counts (ground truth via .done.md counting)
 - [06-03]: Blocked step detection reads first pending task's Needs First section (consistent with build skill algorithm)
+- [06-04]: Default to 1-7 days tone when Last session is missing or unparseable (safest middle ground)
+- [06-04]: Same-day Last session uses under-2-hours tone since field stores dates not times
+- [06-04]: Skip external changes section entirely for short breaks with no changes (reduces noise)
+- [06-04]: Lockfiles only flagged if corresponding manifest also changed
 
 ### Pending Todos
 
@@ -133,5 +137,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-08
-Stopped at: Completed 06-03-PLAN.md (status skill rewrite with progress display)
+Stopped at: Completed 06-04-PLAN.md (resume skill rewrite with context restoration)
 Resume file: None

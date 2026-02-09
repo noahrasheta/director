@@ -282,7 +282,7 @@ a {
 
 .install-command {
   color: var(--color-text-primary);
-  white-space: nowrap;
+  white-space: pre-line;
   overflow-x: auto;
 }
 

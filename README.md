@@ -10,20 +10,14 @@ Requires [Claude Code](https://claude.ai/code) v1.0.33 or later.
 
 ### Quick Install
 
+In Claude Code, run these two commands:
+
 ```
-/plugin marketplace add noahrasheta/director && /plugin install director@director-marketplace
+/plugin marketplace add https://github.com/noahrasheta/director.git
+/plugin install director@director-marketplace
 ```
 
 Then run `/director:onboard` to get started.
-
-### Step by Step
-
-1. Open Claude Code
-2. Run `/plugin marketplace add noahrasheta/director`
-3. Run `/plugin install director@director-marketplace`
-4. Run `/director:onboard` to set up your first project
-
-Both methods install the same plugin.
 
 ## What Director Does
 

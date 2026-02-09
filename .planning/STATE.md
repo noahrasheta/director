@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-02-07)
 ## Current Position
 
 Phase: 11 of 11 (Landing Page)
-Plan: 1 of 3 in current phase
+Plan: 2 of 3 in current phase
 Status: In progress
-Last activity: 2026-02-09 -- Completed 11-01-PLAN.md (site foundation and hero section)
+Last activity: 2026-02-09 -- Completed 11-02-PLAN.md (content sections: Problem, terminal walkthrough, Features, Why, Commands)
 
-Progress: [████████████████] 95% (40/42 plans)
+Progress: [████████████████] 97% (41/42 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 40
-- Average duration: ~2m 07s
-- Total execution time: ~84m 56s
+- Total plans completed: 41
+- Average duration: ~2m 08s
+- Total execution time: ~87m 46s
 
 **By Phase:**
 
@@ -38,10 +38,10 @@ Progress: [████████████████] 95% (40/42 plans)
 | 08-pivot-brainstorm | 7/7 | 10m 08s | 1m 27s |
 | 09-command-intelligence | 3/3 | 6m 46s | 2m 15s |
 | 10-distribution | 3/3 | 3m 59s | 1m 20s |
-| 11-landing-page | 1/3 | 2m 55s | 2m 55s |
+| 11-landing-page | 2/3 | 5m 45s | 2m 53s |
 
 **Recent Trend:**
-- Last 5 plans: 09-03 (2m 37s), 10-01 (1m 11s), 10-02 (1m 39s), 10-03 (1m 9s), 11-01 (2m 55s)
+- Last 5 plans: 10-01 (1m 11s), 10-02 (1m 39s), 10-03 (1m 9s), 11-01 (2m 55s), 11-02 (2m 50s)
 - Trend: stable, consistently under 3m
 
 *Updated after each plan completion*
@@ -213,6 +213,9 @@ Recent decisions affecting current work:
 - [11-01]: Copy-to-clipboard uses Clipboard API with text selection fallback for non-HTTPS
 - [11-01]: clamp() responsive typography scaling without media queries
 - [11-01]: Site lives in site/ directory (separate from docs/ which has design documents)
+- [11-02]: Terminal animation uses 3-act narrative (onboard/blueprint/build) with ~14 lines total
+- [11-02]: Unicode symbols for loop/feature icons instead of SVGs or emoji for cross-platform consistency
+- [11-02]: Commands grouped by Blueprint/Build/Inspect/Other categories matching Director's core loop
 
 ### Pending Todos
 
@@ -227,6 +230,6 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-09
-Stopped at: Completed 11-01-PLAN.md (site foundation and hero section)
+Stopped at: Completed 11-02-PLAN.md (content sections: Problem, terminal walkthrough, Features, Why, Commands)
 Resume file: None
-Next: 11-02-PLAN.md (content sections: Problem, terminal walkthrough, Features, Why, Commands)
+Next: 11-03-PLAN.md (bottom sections: Get Started CTA, newsletter, footer, deployment)

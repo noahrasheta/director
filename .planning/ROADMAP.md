@@ -223,7 +223,7 @@ Plans:
 
 Plans:
 - [x] 11-01-PLAN.md -- Site foundation (directory structure, assets, design system) and hero section with sticky navigation
-- [ ] 11-02-PLAN.md -- Content sections: Problem, terminal walkthrough animation, Features, Why Director, Commands
+- [x] 11-02-PLAN.md -- Content sections: Problem, terminal walkthrough animation, Features, Why Director, Commands
 - [ ] 11-03-PLAN.md -- Bottom sections (Get Started CTA, newsletter, footer), scroll behaviors, deployment workflow
 
 ## Progress
@@ -246,7 +246,7 @@ Note: Phases 5, 6, 7, and 8 all depend on Phase 4 and can potentially be worked 
 | 8. Pivot & Brainstorm | 7/7 | Complete | 2026-02-09 |
 | 9. Command Intelligence | 3/3 | Complete | 2026-02-09 |
 | 10. Distribution | 3/3 | Complete | 2026-02-09 |
-| 11. Landing Page | 1/3 | In progress | - |
+| 11. Landing Page | 2/3 | In progress | - |
 
 ---
 *Roadmap created: 2026-02-07*

@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-02-07)
 ## Current Position
 
 Phase: 8 of 10 (Pivot & Brainstorm)
-Plan: 5 of 7 in current phase
+Plan: 3 of 7 in current phase
 Status: In progress
-Last activity: 2026-02-09 -- Completed 08-05-PLAN.md (brainstorm template + opening steps)
+Last activity: 2026-02-09 -- Completed 08-02-PLAN.md (pivot in-progress work check + conditional mapper spawning)
 
-Progress: [██████████░░░░░░] 67% (28/42 plans)
+Progress: [███████████░░░░░] 69% (29/42 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 28
-- Average duration: ~2m 16s
-- Total execution time: ~63m 49s
+- Total plans completed: 29
+- Average duration: ~2m 15s
+- Total execution time: ~65m 23s
 
 **By Phase:**
 
@@ -35,10 +35,10 @@ Progress: [██████████░░░░░░] 67% (28/42 plans)
 | 06-progress-continuity | 4/4 | 7m | 1m 45s |
 | 07-quick-mode-ideas | 3/3 | 5m 43s | 1m 54s |
 | 07.1-user-decisions-context | 3/3 | 4m 13s | 1m 24s |
-| 08-pivot-brainstorm | 2/7 | 2m 41s | 1m 21s |
+| 08-pivot-brainstorm | 3/7 | 4m 15s | 1m 25s |
 
 **Recent Trend:**
-- Last 5 plans: 07.1-01 (1m 34s), 07.1-02 (1m 01s), 07.1-03 (1m 38s), 08-01 (1m 14s), 08-05 (1m 27s)
+- Last 5 plans: 07.1-02 (1m 01s), 07.1-03 (1m 38s), 08-01 (1m 14s), 08-05 (1m 27s), 08-02 (1m 34s)
 - Trend: stable, consistently under 2m 30s
 
 *Updated after each plan completion*
@@ -163,6 +163,10 @@ Recent decisions affecting current work:
 - [08-05]: Open-ended entry is minimal: just "What are you thinking about?" with no qualifiers or examples
 - [08-05]: Topic-specific entry echoes user's exact words from $ARGUMENTS rather than rephrasing
 - [08-05]: Tone guidance prioritizes exploration over action: ideas are valuable even without a next step
+- [08-02]: Pivot checks for uncommitted changes before proceeding and offers to complete current task or stash
+- [08-02]: Mapper spawning is conditional based on staleness heuristics, not triggered on every pivot
+- [08-02]: When staleness indicators conflict, lean toward skipping mapper (trust docs, correct later)
+- [08-02]: Mapper findings presented conversationally before impact analysis begins
 
 ### Pending Todos
 
@@ -177,5 +181,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-09
-Stopped at: Completed 08-05-PLAN.md (brainstorm template + opening steps)
+Stopped at: Completed 08-02-PLAN.md (pivot in-progress work check + conditional mapper spawning)
 Resume file: None

@@ -44,6 +44,20 @@ If it contains "NO_PROJECT" (no `.director/` folder exists), say:
 
 **Stop here if no project.**
 
+## Step 1b: Handle inline context
+
+If `$ARGUMENTS` is non-empty, store it as focus context for use in Steps 3 and 6.
+
+The inline text influences the resume experience:
+- In Step 3 (reconstruct last session): when summarizing what was accomplished, highlight any work related to the user's focus text.
+- In Step 6 (suggest next action): when suggesting the next task, if there is a pending task matching the focus text, suggest that task specifically. If no match, acknowledge the focus: "You mentioned [arguments] -- the next ready task is [task name], which [explain how it relates or doesn't]."
+
+Examples:
+- `/director:resume "authentication"` -- highlights auth-related work in the recap and suggests auth-related next tasks
+- `/director:resume "let's finish the dashboard"` -- focuses the next-action suggestion on dashboard tasks
+
+If $ARGUMENTS text does not match any task, step, or recent activity: acknowledge it and proceed normally. Do NOT ask for clarification -- the text is a hint, not a command. Say something like: "You want to focus on [arguments] -- let me catch you up."
+
 ## Step 2: Calculate break length and select tone
 
 Parse the `**Last session:**` field from `<project_state>`. This field contains a date (e.g., `2026-02-08`). Calculate the time elapsed between that date and today.
@@ -158,6 +172,8 @@ For very long breaks (over 7 days):
 If there is no next task (all tasks complete or no gameplan):
 - All complete: "Everything in the gameplan is built! You might want to run `/director:inspect` to verify everything works together, or `/director:blueprint` to plan what's next."
 - No gameplan: "No gameplan yet. Want to create one with `/director:blueprint`?"
+
+**If focus context was provided in Step 1b:** Adjust the next-action suggestion to reference the user's focus. If a ready task matches the focus text, lead with that task. If no match, present the default next task and briefly note how the user's focus relates to the current plan position.
 
 ## Step 7: Assemble and present
 

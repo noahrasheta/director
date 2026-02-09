@@ -516,6 +516,161 @@ a {
 }
 
 /* --------------------------------------------------------------------------
+   Features Section
+   -------------------------------------------------------------------------- */
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.feature-card {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  padding: 2rem;
+  transition: border-color 0.2s;
+}
+
+.feature-card:hover {
+  border-color: var(--color-border-accent);
+}
+
+.feature-card__icon {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-accent);
+}
+
+.feature-card__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.feature-card__subtitle {
+  font-size: 0.875rem;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.feature-card__desc {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  font-size: 0.9375rem;
+  margin-bottom: 1rem;
+}
+
+.feature-card__commands {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+/* Supporting Features */
+
+.supporting-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.supporting-item {
+  padding: 1.25rem;
+  border-left: 2px solid var(--color-accent-subtle);
+}
+
+.supporting-item__title {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 0.25rem;
+  font-size: 0.9375rem;
+}
+
+.supporting-item__desc {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   Why Director Section
+   -------------------------------------------------------------------------- */
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.why-item {
+  padding: 1.5rem 0;
+}
+
+.why-item__title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.why-item__desc {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   Commands Section
+   -------------------------------------------------------------------------- */
+
+.commands-group {
+  margin-bottom: 2rem;
+}
+
+.commands-group__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  margin-bottom: 0.75rem;
+}
+
+.commands-list {
+  list-style: none;
+  padding: 0;
+}
+
+.commands-list li {
+  display: flex;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--color-bg-overlay);
+}
+
+.commands-list li:last-child {
+  border-bottom: none;
+}
+
+.command-name {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  min-width: 14rem;
+}
+
+.command-desc {
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+}
+
+/* --------------------------------------------------------------------------
    Mobile Overrides
    -------------------------------------------------------------------------- */
 
@@ -531,5 +686,26 @@ a {
 
   .loop-item {
     text-align: left;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .supporting-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .commands-list li {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .command-name {
+    min-width: auto;
   }
 }

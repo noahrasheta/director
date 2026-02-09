@@ -138,13 +138,12 @@ Plans:
   2. Quick mode analyzes complexity before executing -- if the request is too complex, it recommends switching to guided mode instead of proceeding
   3. Running `/director:idea "add dark mode support"` saves the idea to `.director/IDEAS.md` instantly, separate from the active gameplan
   4. When the user decides to act on a saved idea, Director analyzes complexity and routes appropriately: quick task, needs planning, or too complex for now
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 07-01: Quick mode execution with atomic commits
-- [ ] 07-02: Quick mode complexity analysis and escalation
-- [ ] 07-03: Idea capture to IDEAS.md
-- [ ] 07-04: Idea analysis and routing
+- [ ] 07-01-PLAN.md -- Quick skill rewrite: scope-based complexity analysis and full execution pipeline with [quick] commits
+- [ ] 07-02-PLAN.md -- Idea capture rewrite: newest-first insertion in IDEAS.md and init script template update
+- [ ] 07-03-PLAN.md -- Ideas viewer skill: numbered display, conversational routing, and idea removal
 
 ### Phase 8: Pivot & Brainstorm
 **Goal**: Users can change direction mid-project without losing valid work, and explore ideas freely with full project context
@@ -217,11 +216,11 @@ Note: Phases 5, 6, 7, and 8 all depend on Phase 4 and can potentially be worked 
 | 4. Execution | 2/2 | Complete | 2026-02-08 |
 | 5. Verification | 3/3 | Complete | 2026-02-08 |
 | 6. Progress & Continuity | 4/4 | Complete | 2026-02-08 |
-| 7. Quick Mode & Ideas | 0/4 | Not started | - |
+| 7. Quick Mode & Ideas | 0/3 | Not started | - |
 | 8. Pivot & Brainstorm | 0/7 | Not started | - |
 | 9. Command Intelligence | 0/6 | Not started | - |
 | 10. Distribution | 0/3 | Not started | - |
 
 ---
 *Roadmap created: 2026-02-07*
-*Last updated: 2026-02-08 -- Phase 6 complete*
+*Last updated: 2026-02-08 -- Phase 7 planned*

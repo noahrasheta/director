@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-07)
 
 **Core value:** Vibe coders can go from idea to working product through a guided, plain-language workflow (Blueprint / Build / Inspect) that gives them professional development structure without requiring them to think like a developer.
-**Current focus:** Phase 10 - Distribution -- Complete. Next: Phase 11 - Landing Page
+**Current focus:** Phase 11 - Landing Page -- In progress
 
 ## Current Position
 
-Phase: 10 of 11 (Distribution)
-Plan: 3 of 3 in current phase
-Status: Phase complete
-Last activity: 2026-02-09 -- Completed 10-03-PLAN.md (README install-focused landing page)
+Phase: 11 of 11 (Landing Page)
+Plan: 1 of 3 in current phase
+Status: In progress
+Last activity: 2026-02-09 -- Completed 11-01-PLAN.md (site foundation and hero section)
 
-Progress: [███████████████░] 93% (39/42 plans)
+Progress: [████████████████] 95% (40/42 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 39
-- Average duration: ~2m 06s
-- Total execution time: ~82m 01s
+- Total plans completed: 40
+- Average duration: ~2m 07s
+- Total execution time: ~84m 56s
 
 **By Phase:**
 
@@ -38,9 +38,10 @@ Progress: [███████████████░] 93% (39/42 plans)
 | 08-pivot-brainstorm | 7/7 | 10m 08s | 1m 27s |
 | 09-command-intelligence | 3/3 | 6m 46s | 2m 15s |
 | 10-distribution | 3/3 | 3m 59s | 1m 20s |
+| 11-landing-page | 1/3 | 2m 55s | 2m 55s |
 
 **Recent Trend:**
-- Last 5 plans: 09-01 (2m 57s), 09-03 (2m 37s), 10-01 (1m 11s), 10-02 (1m 39s), 10-03 (1m 9s)
+- Last 5 plans: 09-03 (2m 37s), 10-01 (1m 11s), 10-02 (1m 39s), 10-03 (1m 9s), 11-01 (2m 55s)
 - Trend: stable, consistently under 3m
 
 *Updated after each plan completion*
@@ -206,6 +207,12 @@ Recent decisions affecting current work:
 - [10-03]: Both install paths reference "director-marketplace" matching marketplace.json
 - [10-03]: Command count updated to 12 (undo added to Other group)
 - [10-03]: "How It Works" renamed to "What Director Does" and moved before Commands
+- [11-01]: Electric blue #3B82F6 as accent color (4.6:1 contrast against dark bg, trust/technology association)
+- [11-01]: Inter + JetBrains Mono typography pairing (geometric sans-serif + clean monospace)
+- [11-01]: Near-black #0A0A0A background with three-layer depth system (bg/elevated/surface)
+- [11-01]: Copy-to-clipboard uses Clipboard API with text selection fallback for non-HTTPS
+- [11-01]: clamp() responsive typography scaling without media queries
+- [11-01]: Site lives in site/ directory (separate from docs/ which has design documents)
 
 ### Pending Todos
 
@@ -220,6 +227,6 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-09
-Stopped at: Completed 10-03-PLAN.md (README install-focused landing page) -- Phase 10 complete
+Stopped at: Completed 11-01-PLAN.md (site foundation and hero section)
 Resume file: None
-Next: Phase 11 (Landing Page) -- director.cc homepage
+Next: 11-02-PLAN.md (content sections: Problem, terminal walkthrough, Features, Why, Commands)

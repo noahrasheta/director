@@ -144,7 +144,133 @@ Wait for the user's response. Once they choose, acknowledge it and continue to S
 
 ---
 
-<!-- Steps 4-9 will be added in plans 08-02 through 08-04 -->
+## Step 4: In-progress work check
+
+Before mapping or analyzing impact, make sure the project is in a clean state. Pivoting from a messy workspace leads to confusion about what is current vs in-progress.
+
+### 4a: Check for uncommitted changes
+
+Run:
+
+```bash
+git status --porcelain
+```
+
+**If the output is empty:** The project is in a clean state. Continue silently to Step 5.
+
+**If there are uncommitted changes:** The user has work in progress. Say something like:
+
+> "I noticed some unsaved work in your project. It's easier to change direction from a clean state. Want to wrap up what you're working on first?"
+
+Offer two options conversationally:
+
+1. **Save the current work** -- commit what's there so it is preserved and revertable:
+
+   ```bash
+   git add -A && git commit -m "Save work in progress"
+   ```
+
+   After committing, tell the user: "Saved. You can always go back to this with `/director:undo` if you change your mind."
+
+2. **Set it aside temporarily** -- stash the changes so they can be restored later:
+
+   ```bash
+   git stash -m "Work in progress before pivot"
+   ```
+
+   After stashing, tell the user: "Set aside for now. Your changes are safe and can be brought back later."
+
+Wait for the user's choice and handle it. Do NOT proceed until `git status --porcelain` returns empty.
+
+### 4b: Why clean state matters
+
+Per locked decision: complete current task first, then pivot from clean commit state. The user can `/director:undo` after if they want to abandon that task. This ensures:
+
+- Atomic commits stay clean (no pivot changes mixed with task work)
+- The user can revert the task independently if the pivot makes it irrelevant
+- Impact analysis sees the actual committed state, not a half-finished task
+
+---
+
+## Step 5: Assess and map current state
+
+Before analyzing the impact of the pivot, you need an accurate picture of what the project looks like right now. Sometimes the existing documentation is enough; other times you need a fresh scan of the codebase.
+
+### 5a: Read current state
+
+Read `.director/STATE.md` to understand:
+
+- Current progress (which goals, steps, and tasks are complete)
+- Recent activity (what was built recently)
+- Last session date (how long since the project was active)
+
+Also read `.director/GAMEPLAN.md` to understand the current plan structure.
+
+### 5b: Decide whether to spawn the mapper
+
+The mapper agent does a full codebase scan. This is useful when the documentation might not reflect reality, but unnecessary when the project state is well-tracked and current. Use these heuristics:
+
+**Spawn the mapper if ANY of these are true:**
+
+- STATE.md Recent Activity shows many completed tasks since the last mapping -- more than a full step's worth of work has been done, meaning the codebase has evolved significantly beyond what any prior mapping captured
+- STATE.md Last Session date is weeks or more in the past -- a significant time gap means external changes, forgotten context, or manual edits outside Director are possible
+- The user explicitly mentioned working outside Director during the conversation -- phrases like "I've been building stuff manually", "I changed things directly", "I worked on it without Director" indicate the docs may be out of sync with reality
+- The pivot is strategic (direction change) AND the user needs to understand what currently exists before deciding what to keep -- when the entire direction is shifting, a concrete inventory of what is built matters more than what is planned
+
+**Skip the mapper if ANY of these are true:**
+
+- Last session was recent (within a day or two) -- the project state is fresh and well-tracked
+- Only a few tasks have been completed since the last mapping -- the documentation is still accurate
+- The pivot is about future direction ("I want to change what I'm building next"), not about what currently exists -- knowing what is built matters less than deciding what to build
+- The user's pivot description already provides enough context about the current state -- they clearly know what exists and are focused on what to change
+
+Staleness is a judgment call, not a precise calculation. When multiple indicators conflict, lean toward skipping the mapper -- it is better to trust the docs and correct course later than to waste time on an unnecessary scan.
+
+### 5c: Spawn mapper (when stale)
+
+If you decided to spawn the mapper, tell the user:
+
+> "Let me check what your project looks like right now."
+
+Then spawn `director-mapper` using the Task tool:
+
+```
+<instructions>
+Map this codebase with a focus on what currently exists.
+The user is considering a change in direction: [pivot context from Step 2].
+Report your findings using your standard output format.
+</instructions>
+```
+
+Run the mapper in the foreground -- wait for it to complete before continuing.
+
+When the mapper returns, present its findings conversationally:
+
+> "Here's what your project looks like right now:"
+
+Then present the mapper's findings formatted naturally -- not as a raw dump, but woven into the conversation. Highlight the parts most relevant to the pivot the user described.
+
+Store the mapper findings internally for use in Step 6 (impact analysis).
+
+### 5d: Summarize from docs (when fresh)
+
+If you decided to skip the mapper, summarize the current state from STATE.md and GAMEPLAN.md. Present it as:
+
+> "Based on where things stand:"
+
+Then provide a brief, conversational summary covering:
+
+- Which goals are complete and what they delivered
+- Where the project is right now (current goal, current step, current task)
+- What is in progress or coming up next
+
+Keep it concise -- the user likely already knows this. The summary is to establish shared context before impact analysis, not to teach the user about their own project.
+
+Store the summary internally for use in Step 6 (impact analysis).
+
+---
+
+<!-- Steps 6-9 will be added in plans 08-03 and 08-04 -->
 
 ---
 

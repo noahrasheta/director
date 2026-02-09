@@ -304,3 +304,55 @@ a {
   border-color: var(--color-accent);
   background: var(--color-accent-subtle);
 }
+
+/* --------------------------------------------------------------------------
+   Hero Section
+   -------------------------------------------------------------------------- */
+
+.hero-content {
+  text-align: center;
+  padding-top: clamp(4rem, 10vw, 8rem);
+  padding-bottom: var(--section-padding);
+}
+
+.hero-title {
+  margin-bottom: 1.5rem;
+}
+
+.hero-subtitle {
+  max-width: 40rem;
+  margin: 0 auto 2.5rem auto;
+}
+
+.hero-ctas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hero-prereq {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-top: 1.5rem;
+}
+
+.hero-prereq a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.hero-prereq a:hover {
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   Mobile Overrides
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .install-block {
+    overflow-x: auto;
+    max-width: 100%;
+  }
+}

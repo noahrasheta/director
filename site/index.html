@@ -41,14 +41,31 @@
         <span class="nav-toggle-bar"></span>
       </button>
       <ul class="nav-links">
-        <!-- Links populated in Task 2 -->
+        <li><a href="#problem">Problem</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#why">Why</a></li>
+        <li><a href="#commands">Commands</a></li>
+        <li><a href="#get-started">Get Started</a></li>
       </ul>
     </div>
   </nav>
 
   <section id="hero" class="section">
-    <div class="container">
-      <!-- Content populated in Task 2 -->
+    <div class="container hero-content">
+      <h1 class="hero-title">You have the ideas.<br>Now you have the structure.</h1>
+      <p class="hero-subtitle">Director is an orchestration plugin for Claude Code that turns solo builders into vibe coders. From vision to shipped product — guided every step.</p>
+      <div class="hero-ctas">
+        <div class="install-block">
+          <code class="install-command" id="installCmd">/plugin marketplace add noahrasheta/director && /plugin install director@director-marketplace</code>
+          <button class="copy-btn" onclick="copyInstall()" aria-label="Copy install command">
+            <span class="copy-icon">Copy</span>
+            <span class="copy-success" hidden>Copied!</span>
+          </button>
+        </div>
+        <a href="https://github.com/noahrasheta/director" class="btn btn--secondary" target="_blank" rel="noopener">View on GitHub</a>
+      </div>
+      <p class="hero-prereq">Requires <a href="https://claude.ai/code">Claude Code</a> v1.0.33+</p>
     </div>
   </section>
 
@@ -100,6 +117,30 @@
     </div>
   </footer>
 
+  <script>
+    async function copyInstall() {
+      const text = document.getElementById('installCmd').textContent.trim();
+      try {
+        await navigator.clipboard.writeText(text);
+        const btn = document.querySelector('.copy-btn');
+        btn.querySelector('.copy-icon').hidden = true;
+        btn.querySelector('.copy-success').hidden = false;
+        setTimeout(() => {
+          btn.querySelector('.copy-icon').hidden = false;
+          btn.querySelector('.copy-success').hidden = true;
+        }, 2000);
+      } catch (err) {
+        const range = document.createRange();
+        range.selectNodeContents(document.getElementById('installCmd'));
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+      }
+    }
+
+    document.querySelector('.nav-toggle')?.addEventListener('click', () => {
+      document.querySelector('.nav-links')?.classList.toggle('open');
+    });
+  </script>
   <script src="js/main.js"></script>
 </body>
 </html>

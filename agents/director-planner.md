@@ -109,6 +109,14 @@ When `<gameplan>` has existing content, you're updating rather than creating:
    - **Removed:** Deleted items with reasoning
 5. **Re-evaluate dependencies.** New work may change what's ready and what's blocked.
 
+## Decisions Awareness
+
+When generating steps, be aware that each STEP.md may include a Decisions section with user preferences. You do not write the Decisions section -- that is handled by the blueprint skill after you return your structured plan. However:
+
+- If the conversation includes explicit user preferences about technology, design, or scope, note them alongside the relevant steps in your output so the blueprint skill can capture them accurately.
+- When evaluating task ordering and dependencies, consider that Locked decisions may constrain implementation choices (e.g., "use Supabase" means database tasks should assume Supabase).
+- When sizing tasks, factor in that some choices are pre-made (Locked) while others are open (Flexible), which may affect complexity estimates.
+
 ## Output
 
 Return a structured gameplan following the template format. The gameplan should:

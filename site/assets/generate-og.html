@@ -44,17 +44,18 @@
     ctx.font = '800 80px Inter, system-ui, -apple-system, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('/director', 600, 260);
+    ctx.fillText('/director', 600, 230);
 
-    // Tagline
+    // Tagline (two lines)
     ctx.fillStyle = '#A1A1A1';
-    ctx.font = '400 28px Inter, system-ui, -apple-system, sans-serif';
-    ctx.fillText('Orchestration for Vibe Coders', 600, 320);
+    ctx.font = '400 26px Inter, system-ui, -apple-system, sans-serif';
+    ctx.fillText('You have the vision. AI has the skills.', 600, 300);
+    ctx.fillText('/director is the structure between them.', 600, 340);
 
     // Accent line
     ctx.fillStyle = '#3B82F6';
     ctx.beginPath();
-    ctx.roundRect(500, 358, 200, 3, 1.5);
+    ctx.roundRect(500, 378, 200, 3, 1.5);
     ctx.fill();
 
     function download() {

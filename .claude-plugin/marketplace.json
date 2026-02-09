@@ -13,8 +13,8 @@
         "name": "Noah Rasheta"
       },
       "source": {
-        "source": "github",
-        "repo": "noahrasheta/director"
+        "source": "url",
+        "url": "https://github.com/noahrasheta/director.git"
       },
       "homepage": "https://director.cc",
       "repository": "https://github.com/noahrasheta/director",

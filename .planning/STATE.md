@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-07)
 
 **Core value:** Vibe coders can go from idea to working product through a guided, plain-language workflow (Blueprint / Build / Inspect) that gives them professional development structure without requiring them to think like a developer.
-**Current focus:** Phase 7.1 - User Decisions Context -- Complete
+**Current focus:** Phase 8 - Pivot & Brainstorm -- In progress
 
 ## Current Position
 
-Phase: 7.1 of 10 (User Decisions Context)
-Plan: 3 of 3 in current phase
-Status: Phase complete
-Last activity: 2026-02-09 -- Completed 07.1-03-PLAN.md (blueprint decision capture)
+Phase: 8 of 10 (Pivot & Brainstorm)
+Plan: 1 of 7 in current phase
+Status: In progress
+Last activity: 2026-02-09 -- Completed 08-01-PLAN.md (pivot init, routing, scope detection)
 
-Progress: [██████████░░░░░░] 62% (26/42 plans)
+Progress: [██████████░░░░░░] 64% (27/42 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 26
-- Average duration: ~2m 21s
-- Total execution time: ~61m 08s
+- Total plans completed: 27
+- Average duration: ~2m 18s
+- Total execution time: ~62m 22s
 
 **By Phase:**
 
@@ -35,9 +35,10 @@ Progress: [██████████░░░░░░] 62% (26/42 plans)
 | 06-progress-continuity | 4/4 | 7m | 1m 45s |
 | 07-quick-mode-ideas | 3/3 | 5m 43s | 1m 54s |
 | 07.1-user-decisions-context | 3/3 | 4m 13s | 1m 24s |
+| 08-pivot-brainstorm | 1/7 | 1m 14s | 1m 14s |
 
 **Recent Trend:**
-- Last 5 plans: 07-02 (1m 26s), 07-03 (2m 01s), 07.1-01 (1m 34s), 07.1-02 (1m 01s), 07.1-03 (1m 38s)
+- Last 5 plans: 07-03 (2m 01s), 07.1-01 (1m 34s), 07.1-02 (1m 01s), 07.1-03 (1m 38s), 08-01 (1m 14s)
 - Trend: stable, consistently under 2m 30s
 
 *Updated after each plan completion*
@@ -153,6 +154,10 @@ Recent decisions affecting current work:
 - [07.1-03]: Capture happens after hierarchy approval and before file writing
 - [07.1-03]: Update mode freezes completed-step decisions, merges new decisions into modified steps
 - [07.1-03]: Planner does not write decisions -- notes preferences for blueprint skill to capture
+- [08-01]: Pivot conversation runs inline (no interviewer agent spawning), consistent with onboard/blueprint patterns
+- [08-01]: Scope detection uses signal heuristic with explicit A/B fallback to user when ambiguous
+- [08-01]: Template detection patterns in pivot match build and blueprint skills exactly
+- [08-01]: Pivot-positive framing in language reminders: changing direction is learning, not failure
 
 ### Pending Todos
 
@@ -167,5 +172,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-09
-Stopped at: Completed 07.1-03-PLAN.md (blueprint decision capture) -- Phase 7.1 complete
+Stopped at: Completed 08-01-PLAN.md (pivot init, routing, scope detection)
 Resume file: None

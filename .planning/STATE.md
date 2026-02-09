@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-02-07)
 ## Current Position
 
 Phase: 8 of 10 (Pivot & Brainstorm)
-Plan: 1 of 7 in current phase
+Plan: 5 of 7 in current phase
 Status: In progress
-Last activity: 2026-02-09 -- Completed 08-01-PLAN.md (pivot init, routing, scope detection)
+Last activity: 2026-02-09 -- Completed 08-05-PLAN.md (brainstorm template + opening steps)
 
-Progress: [██████████░░░░░░] 64% (27/42 plans)
+Progress: [██████████░░░░░░] 67% (28/42 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 27
-- Average duration: ~2m 18s
-- Total execution time: ~62m 22s
+- Total plans completed: 28
+- Average duration: ~2m 16s
+- Total execution time: ~63m 49s
 
 **By Phase:**
 
@@ -35,10 +35,10 @@ Progress: [██████████░░░░░░] 64% (27/42 plans)
 | 06-progress-continuity | 4/4 | 7m | 1m 45s |
 | 07-quick-mode-ideas | 3/3 | 5m 43s | 1m 54s |
 | 07.1-user-decisions-context | 3/3 | 4m 13s | 1m 24s |
-| 08-pivot-brainstorm | 1/7 | 1m 14s | 1m 14s |
+| 08-pivot-brainstorm | 2/7 | 2m 41s | 1m 21s |
 
 **Recent Trend:**
-- Last 5 plans: 07-03 (2m 01s), 07.1-01 (1m 34s), 07.1-02 (1m 01s), 07.1-03 (1m 38s), 08-01 (1m 14s)
+- Last 5 plans: 07.1-01 (1m 34s), 07.1-02 (1m 01s), 07.1-03 (1m 38s), 08-01 (1m 14s), 08-05 (1m 27s)
 - Trend: stable, consistently under 2m 30s
 
 *Updated after each plan completion*
@@ -158,6 +158,11 @@ Recent decisions affecting current work:
 - [08-01]: Scope detection uses signal heuristic with explicit A/B fallback to user when ambiguous
 - [08-01]: Template detection patterns in pivot match build and blueprint skills exactly
 - [08-01]: Pivot-positive framing in language reminders: changing direction is learning, not failure
+- [08-05]: Brainstorm does not require a gameplan -- works with just a vision (differs from pivot)
+- [08-05]: Template detection reuses build skill pattern (placeholder text and italic prompts)
+- [08-05]: Open-ended entry is minimal: just "What are you thinking about?" with no qualifiers or examples
+- [08-05]: Topic-specific entry echoes user's exact words from $ARGUMENTS rather than rephrasing
+- [08-05]: Tone guidance prioritizes exploration over action: ideas are valuable even without a next step
 
 ### Pending Todos
 
@@ -172,5 +177,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-09
-Stopped at: Completed 08-01-PLAN.md (pivot init, routing, scope detection)
+Stopped at: Completed 08-05-PLAN.md (brainstorm template + opening steps)
 Resume file: None

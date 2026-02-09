@@ -14,6 +14,7 @@ STATUS=$(grep -m1 '^\*\*Status:\*\*' .director/STATE.md 2>/dev/null | sed 's/\*\
 CURRENT_GOAL=$(grep -m1 '^\*\*Current goal:\*\*' .director/STATE.md 2>/dev/null | sed 's/\*\*Current goal:\*\* //' || echo "None")
 CURRENT_STEP=$(grep -m1 '^\*\*Current step:\*\*' .director/STATE.md 2>/dev/null | sed 's/\*\*Current step:\*\* //' || echo "None")
 CURRENT_TASK=$(grep -m1 '^\*\*Current task:\*\*' .director/STATE.md 2>/dev/null | sed 's/\*\*Current task:\*\* //' || echo "None")
+LAST_SESSION=$(grep -m1 '^\*\*Last session:\*\*' .director/STATE.md 2>/dev/null | sed 's/\*\*Last session:\*\* //' || echo "unknown")
 
 # Check if config exists and read mode
 MODE="guided"
@@ -23,5 +24,5 @@ fi
 
 # Output compact JSON for Claude context
 cat << EOF
-{"director":{"status":"${STATUS}","goal":"${CURRENT_GOAL}","step":"${CURRENT_STEP}","task":"${CURRENT_TASK}","mode":"${MODE}"}}
+{"director":{"status":"${STATUS}","goal":"${CURRENT_GOAL}","step":"${CURRENT_STEP}","task":"${CURRENT_TASK}","mode":"${MODE}","last_session":"${LAST_SESSION}"}}
 EOF

@@ -136,6 +136,33 @@ Read the `STEP.md` from the ready task's step directory. Wrap its full contents:
 </current_step>
 ```
 
+### 5b-2: Decisions
+
+Check the STEP.md content (already read in Step 5b) for a `## Decisions` heading.
+
+**If a `## Decisions` heading exists:**
+
+Extract everything from `## Decisions` through the end of the STEP.md content. Wrap it in a `<decisions>` tag:
+
+```
+<decisions>
+These are the user's decisions for this step. Follow them exactly:
+
+[Extracted Decisions content from STEP.md -- includes Locked, Flexible, and Deferred subsections]
+
+RULES:
+- Locked items are non-negotiable -- follow them exactly as stated.
+- Flexible items are your choice -- use your best judgment.
+- Deferred items are out of scope -- do NOT implement them, even partially.
+</decisions>
+```
+
+Position the `<decisions>` section between `<current_step>` and `<task>` in the assembled context. This ordering follows the context assembly tag rule: vision first, then scoping (step, decisions, task), then context (changes), then instructions last.
+
+**If no `## Decisions` heading exists in the STEP.md content:**
+
+Skip this section entirely. Do NOT include an empty `<decisions>` tag or any placeholder. The builder operates with full AI discretion when no decisions are present. This ensures backward compatibility with STEP.md files from Phases 1-7 that have no Decisions section.
+
 ### 5c: Task
 
 Read the ready task file. Wrap its full contents:
@@ -170,10 +197,11 @@ Write task-specific instructions and wrap them:
 Complete only this task. Do not modify files outside the listed scope unless absolutely necessary.
 Verify your work matches the acceptance criteria before committing.
 Follow reference/terminology.md and reference/plain-language-guide.md for user-facing output.
+Honor all Locked decisions exactly. Use your judgment on Flexible items. Do NOT implement anything listed as Deferred.
 Create exactly one git commit when finished with a plain-language message describing what was built.
 After committing, spawn director-verifier to check for stubs and orphans. Fix any "needs attention" issues and amend your commit.
 After verification passes, spawn director-syncer with the task context, a summary of what changed, AND a cost_data section. The cost_data section must include:
-- context_chars: the total character count of the assembled context from Step 5 (vision + step + task + git log + instructions)
+- context_chars: the total character count of the assembled context from Step 5 (vision + step + decisions + task + git log + instructions)
 - goal: the name of the current goal being worked on
 
 Format the cost_data as:
@@ -200,8 +228,9 @@ If the estimated total exceeds 60,000 tokens, apply truncation in this order:
 2. **Remove reference doc instructions** from the instructions section -- keep only the file path references so the builder can still read them on demand.
 3. **Summarize STEP.md** content instead of including the full text. Write a 2-3 sentence summary of what the step delivers and what tasks it contains.
 4. **Never truncate the task file or VISION.md.** These are essential for correct execution.
+5. **Never truncate the `<decisions>` section.** User decisions are essential for correct task execution and are typically under 100 tokens.
 
-Store the total character count of the assembled context (before any truncation). This value is needed for cost tracking in the syncer context (see the cost_data section in the instructions template above).
+Store the total character count of the assembled context (before any truncation) -- this includes vision + step + decisions + task + git log + instructions. This value is needed for cost tracking in the syncer context (see the cost_data section in the instructions template above).
 
 Note the budget status internally but do NOT show it to the user. If truncation was applied, proceed silently.
 

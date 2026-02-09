@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-02-07)
 ## Current Position
 
 Phase: 8 of 10 (Pivot & Brainstorm)
-Plan: 6 of 7 in current phase
-Status: In progress
-Last activity: 2026-02-09 -- Completed 08-03-PLAN.md (pivot impact analysis and delta summary with approval)
+Plan: 7 of 7 in current phase
+Status: Phase complete
+Last activity: 2026-02-09 -- Completed 08-04-PLAN.md (pivot apply changes and wrap-up)
 
-Progress: [████████████░░░░] 76% (32/42 plans)
+Progress: [████████████░░░░] 79% (33/42 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 32
+- Total plans completed: 33
 - Average duration: ~2m 10s
-- Total execution time: ~69m 14s
+- Total execution time: ~71m 16s
 
 **By Phase:**
 
@@ -35,10 +35,10 @@ Progress: [████████████░░░░] 76% (32/42 plans)
 | 06-progress-continuity | 4/4 | 7m | 1m 45s |
 | 07-quick-mode-ideas | 3/3 | 5m 43s | 1m 54s |
 | 07.1-user-decisions-context | 3/3 | 4m 13s | 1m 24s |
-| 08-pivot-brainstorm | 6/7 | 8m 06s | 1m 21s |
+| 08-pivot-brainstorm | 7/7 | 10m 08s | 1m 27s |
 
 **Recent Trend:**
-- Last 5 plans: 08-05 (1m 27s), 08-02 (1m 34s), 08-06 (1m 04s), 08-07 (1m 00s), 08-03 (1m 47s)
+- Last 5 plans: 08-02 (1m 34s), 08-06 (1m 04s), 08-07 (1m 00s), 08-03 (1m 47s), 08-04 (2m 02s)
 - Trend: stable, consistently under 2m 30s
 
 *Updated after each plan completion*
@@ -180,6 +180,11 @@ Recent decisions affecting current work:
 - [08-03]: Delta granularity scales with pivot scope: goal-level for strategic pivots, step/task-level for tactical pivots
 - [08-03]: Completed but no longer needed section appears conditionally, with cleanup tasks in Added section
 - [08-03]: Approval gate iterates until user confirms -- same pattern as blueprint update mode
+- [08-04]: VISION.md update for strategic pivots has its own approval gate separate from the delta approval in Step 7
+- [08-04]: Pivot updates STATE.md directly rather than spawning the syncer (meta-operation, not a build task)
+- [08-04]: Completed work files are never deleted -- even if irrelevant to new direction, files stay on disk
+- [08-04]: Decisions in modified steps use merge pattern: add new Locked, update contradicted, move deferred, preserve valid
+- [08-04]: Wrap-up is conversational and brief -- describes changes at project level, not file-system level
 
 ### Pending Todos
 
@@ -194,5 +199,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-09
-Stopped at: Completed 08-03-PLAN.md (pivot impact analysis and delta summary with approval)
+Stopped at: Completed 08-04-PLAN.md (pivot apply changes and wrap-up) -- Phase 8 complete
 Resume file: None

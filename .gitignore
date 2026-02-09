@@ -12,3 +12,7 @@ node_modules/
 
 # Development planning (internal)
 .planning/
+
+# Project docs (not distributed with plugin)
+CLAUDE.md
+docs/

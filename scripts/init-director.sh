@@ -98,16 +98,38 @@ cat > .director/config.json << 'CONFIG_EOF'
   "cost_tracking": true,
   "doc_sync": true,
   "max_retry_cycles": 3,
+  "cost_rate": 10.00,
   "language": "en",
+  "model_profile": "balanced",
   "agents": {
-    "interviewer": "inherit",
-    "planner": "inherit",
-    "researcher": "inherit",
-    "mapper": "haiku",
-    "builder": "inherit",
-    "verifier": "haiku",
-    "debugger": "inherit",
-    "syncer": "haiku"
+    "interviewer": { "model": "inherit" },
+    "planner": { "model": "inherit" },
+    "researcher": { "model": "inherit" },
+    "mapper": { "model": "haiku" },
+    "builder": { "model": "inherit" },
+    "verifier": { "model": "haiku" },
+    "debugger": { "model": "inherit" },
+    "syncer": { "model": "haiku" },
+    "deep-researcher": { "model": "inherit" },
+    "deep-mapper": { "model": "inherit" },
+    "synthesizer": { "model": "inherit" }
+  },
+  "model_profiles": {
+    "quality": {
+      "deep-researcher": "opus",
+      "deep-mapper": "sonnet",
+      "synthesizer": "sonnet"
+    },
+    "balanced": {
+      "deep-researcher": "sonnet",
+      "deep-mapper": "haiku",
+      "synthesizer": "sonnet"
+    },
+    "budget": {
+      "deep-researcher": "haiku",
+      "deep-mapper": "haiku",
+      "synthesizer": "haiku"
+    }
   }
 }
 CONFIG_EOF

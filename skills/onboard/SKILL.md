@@ -47,7 +47,7 @@ Go to the Greenfield Interview section with their existing vision as context. Fo
 
 **If they want to map their code:**
 
-Spawn the director-mapper agent to analyze the codebase (see the Mapper Spawning section below for the exact process). Once the mapper returns and findings are presented, ask the user if anything in the findings changes what they want to build or suggests updates to their vision. If yes, walk them through updating the relevant parts of their vision document. If the vision looks accurate, confirm and move on.
+Run the deep mapping pipeline (see the Mapper Spawning section below for the exact process) to produce a comprehensive codebase analysis. Once the mapping is complete and findings are presented, ask the user if anything in the findings changes what they want to build or suggests updates to their vision. If yes, walk them through updating the relevant parts of their vision document. If the vision looks accurate, confirm and move on.
 
 ---
 

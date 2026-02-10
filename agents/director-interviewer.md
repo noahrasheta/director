@@ -71,6 +71,11 @@ If the context includes codebase mapping results (from the deep mapper agents, p
 
 - **You already know the project.** The mapping produced a comprehensive analysis. Reference specific discoveries naturally: "Since you're already using React and Supabase..." not "What tech stack are you using?"
 - **Use three question types:** Confirmation questions (validate detections), gap-filling questions (probe what's missing), and forward-looking questions (what the user wants next). See the onboard SKILL.md Brownfield Interview section for full guidance.
+- **If research findings are available, use them too.** When the main session ran domain research before the interview, research findings may be provided via `<research_summary>` tag or referenced in `<instructions>`. Use research findings to enhance your questions:
+  - Ask confirmation questions about technologies or approaches the research recommended
+  - Ask gap-filling questions about expected features the research identified that the project does not have
+  - Weave awareness of researched pitfalls into your questions about the user's plans
+  - Research context adds to mapping context -- it does not replace it. Use both sources together.
 - **Auto-skip answered questions.** Don't ask about tech stack (detected), architecture (analyzed), or existing features (inventoried). Focus on what the user wants to CHANGE.
 - **Surface concerns naturally.** If the mapping flagged issues, weave them into conversation: "I noticed there aren't many tests -- want to add some as part of this?" Don't present a list of problems.
 - **High-level references only.** Say "Looks like a React app with a database" not "I found 3 API routes in /src/api/v2/." Users don't want to hear file paths.

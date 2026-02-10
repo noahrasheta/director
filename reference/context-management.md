@@ -57,6 +57,23 @@ These are the standard tags used when assembling agent context. Each tag wraps a
 | `<instructions>` | Task-specific constraints and rules | Always -- guardrails for the agent |
 | `<project_state>` | Contents of `.director/STATE.md` | When agent needs progress awareness (status, resume) |
 
+### Deep Context Tags (v1.1)
+
+These tags were added in v1.1 for the deep context system. They carry research and codebase analysis produced by deep researcher and deep mapper agents.
+
+| Tag | Content | When Included |
+|----|----|----|
+| `<research>` | Contents of a specific `.director/research/` file | When agent needs domain knowledge for current task |
+| `<codebase>` | Contents of a specific `.director/codebase/` file | When agent needs codebase awareness for current task |
+| `<research_summary>` | Contents of `.director/research/SUMMARY.md` | When agent needs broad research overview |
+| `<codebase_summary>` | Contents of `.director/codebase/SUMMARY.md` | When agent needs broad codebase overview |
+
+**Usage notes:**
+- `<research>` and `<codebase>` carry individual files (e.g., STACK.md, ARCHITECTURE.md) when the task relates to a specific domain
+- `<research_summary>` and `<codebase_summary>` carry synthesized overviews when the agent needs broad awareness without full detail
+- A single agent context may include both a summary tag AND a specific file tag if the task spans domains
+- Deep context tags follow the same nesting rules as standard tags (no nesting, top-level only)
+
 ### Tag Nesting Rules
 
 - Tags are **not nested** -- they sit side by side at the top level of the assembled context
@@ -172,6 +189,7 @@ Assembled context (all XML-wrapped sections combined) should stay under 30% of t
 | Recent changes | 3-5% | Most recent N commits; truncate if needed |
 | Instructions | 1-2% | Short, specific constraints |
 | Reference docs | 5-10% | Only include docs the agent needs |
+| Deep context (research + codebase) | 3-8% | Only when agent needs research or codebase awareness; prefer summaries over full files |
 | **Total** | **~20-30%** | Leave 70%+ for execution |
 
 ### Truncation Strategy
@@ -183,6 +201,16 @@ When context exceeds the budget:
 3. **Step context third** -- Summarize rather than include full STEP.md
 4. **Never truncate task or vision** -- These are essential for correct execution
 5. **Never truncate decisions** -- User decisions are essential for correct execution. The `<decisions>` section is small (typically under 100 tokens) and must always be included in full.
+
+### Deep Context Truncation
+
+When deep context tags (`<research>`, `<codebase>`, `<research_summary>`, `<codebase_summary>`) push context over budget, apply these rules in order:
+
+1. **Summaries over specifics** -- Replace individual `<research>` or `<codebase>` files with the corresponding summary tag. Summaries are smaller and usually sufficient.
+2. **Codebase before research** -- Codebase analysis is less critical than research for most tasks, since the builder agent can explore the codebase directly using tools.
+3. **Drop unrelated domains** -- If the task is about UI, drop `STACK.md` from codebase context. If the task is about architecture, drop `TESTING.md`. Only include files relevant to the task domain.
+4. **Never drop research during planning** -- When the planner is creating a gameplan, research context is essential. Truncate other sections (git log, step context) before removing research.
+5. **Never drop codebase during build** -- When the builder is implementing a task in an existing project, codebase context helps maintain consistency. Truncate other sections first.
 
 ---
 
@@ -249,15 +277,24 @@ Load current state: !cat .director/STATE.md
 
 Different agents need different context combinations. These profiles define what each agent type receives.
 
-| Agent | Vision | Gameplan | Step | Task | Recent Changes | Instructions | State | Decisions |
-|----|----|----|----|----|----|----|---|---|
-| Builder | Yes | No | Yes | Yes | Yes | Yes | No | Yes |
-| Planner | Yes | Yes | No | No | Yes | Yes | Yes | No |
-| Verifier | Yes | No | Yes | Yes | Yes | Yes | No | No |
-| Interviewer | Yes | No | No | No | No | Yes | No | No |
-| Inspector | Yes | Yes | No | No | Yes | Yes | Yes | No |
-| Syncer | Yes | No | Yes | No | Yes | Yes | No | No |
-| Mapper | No | No | No | No | No | Yes | No | No |
-| Researcher | Yes | No | Yes | Yes | No | Yes | No | No |
+| Agent | Vision | Gameplan | Step | Task | Recent Changes | Instructions | State | Decisions | Research | Codebase |
+|----|----|----|----|----|----|----|---|---|---|---|
+| Builder | Yes | No | Yes | Yes | Yes | Yes | No | Yes | As needed | As needed |
+| Planner | Yes | Yes | No | No | Yes | Yes | Yes | No | Summary | Summary |
+| Verifier | Yes | No | Yes | Yes | Yes | Yes | No | No | No | No |
+| Interviewer | Yes | No | No | No | No | Yes | No | No | No | No |
+| Inspector | Yes | Yes | No | No | Yes | Yes | Yes | No | Summary | Summary |
+| Syncer | Yes | No | Yes | No | Yes | Yes | No | No | No | No |
+| Mapper | No | No | No | No | No | Yes | No | No | No | No |
+| Researcher | Yes | No | Yes | Yes | No | Yes | No | No | No | No |
+| Deep Researcher | Yes | No | No | No | No | Yes | No | No | No | No |
+| Deep Mapper | Optional | No | No | No | No | Yes | No | No | No | No |
+| Synthesizer | No | No | No | No | No | Yes | No | No | Reads directly | No |
+
+**Research and Codebase column values:**
+- **Yes / As needed** -- Include the specific file(s) relevant to the task domain (e.g., `<research>` with STACK.md for a setup task, `<codebase>` with CONVENTIONS.md for a build task)
+- **Summary** -- Include only the summary file (`<research_summary>` or `<codebase_summary>`) for broad awareness
+- **Reads directly** -- Agent reads files from disk using tools rather than receiving them in assembled context
+- **No** -- Never include this context type for this agent
 
 These profiles are guidelines. Specific tasks may require additional or fewer context sections.

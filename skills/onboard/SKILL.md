@@ -175,50 +175,201 @@ Then proceed to Generate Vision Document.
 
 ## Brownfield
 
-This section handles projects that already have code. The flow is: map the codebase, present findings, get confirmation, then run an adapted interview focused on what the user wants to change.
+This section handles projects that already have code. The flow is: map the codebase with multiple focused agents, synthesize the findings, present a summary to the user, then run an adapted interview focused on what the user wants to change.
+
+### Greenfield Detection
+
+Before mapping, verify this is actually a brownfield project. If the project has no meaningful source files -- only `.director/` and maybe a README -- skip the entire mapping pipeline and redirect to the Greenfield Interview section. Say something like:
+
+> "I don't see much code here yet. Let's start fresh -- I'll ask you some questions about what you want to build."
+
+Then proceed directly to Handle Initial Context from Arguments and the Greenfield Interview. Do NOT create `.director/codebase/` or spawn any mapper agents for greenfield projects.
+
+### Codebase Size Assessment
+
+Before spawning mappers, do a quick size check:
+
+```bash
+# Count source files (excluding common non-source directories)
+find . -type f \( -name "*.ts" -o -name "*.tsx" -o -name "*.js" -o -name "*.jsx" -o -name "*.py" -o -name "*.rb" -o -name "*.go" -o -name "*.rs" -o -name "*.java" -o -name "*.swift" -o -name "*.vue" -o -name "*.svelte" \) -not -path "*/node_modules/*" -not -path "*/.git/*" -not -path "*/.director/*" -not -path "*/vendor/*" -not -path "*/dist/*" -not -path "*/build/*" | wc -l
+```
+
+If the codebase has more than 500 source files, add a sampling note to each mapper's instructions: "This is a large codebase. Focus on the main source directories first. Sample representative files rather than reading everything. Note what you skipped."
+
+### Model Profile Resolution
+
+Read `.director/config.json` and resolve the model for each agent:
+
+1. Read the `model_profile` field (defaults to "balanced")
+2. Look up the profile in `model_profiles` to get base model assignments for `deep-mapper` and `synthesizer`
+3. For the `quality` profile, override the arch and concerns mappers to use the most capable model available (since these are the highest-complexity analyses)
+
+The resolution produces a model assignment for each mapper and the synthesizer. If config.json is missing the `model_profile` or `model_profiles` fields, fall back to "balanced" defaults (deep-mapper gets haiku, synthesizer gets sonnet).
 
 ### Mapper Spawning
 
-Tell the user you're going to look at their code. Then spawn the director-mapper agent using the Task tool. Pass it these instructions wrapped in XML boundary tags:
+Ensure `.director/codebase/` directory exists before spawning mappers. Create it if it doesn't exist:
 
+```bash
+mkdir -p .director/codebase
+```
+
+Tell the user you're mapping their codebase. Show a single message:
+
+> "Mapping your codebase..."
+
+Then spawn 4 director-deep-mapper agents IN PARALLEL using 4 simultaneous Task tool calls. Each agent gets different instructions specifying its focus area. The instructions are wrapped in XML boundary tags. All 4 Task tool calls go in a SINGLE message so they run in parallel. Do NOT wait for one mapper to finish before spawning the next.
+
+**Agent 1 (tech focus):**
 ```
 <instructions>
-Map this codebase completely. Report your findings using your standard output format:
-- What you found (1-2 sentence summary)
-- Built with (tech stack in plain language)
-- What it can do (feature inventory as user capabilities)
-- How it's organized (project structure overview)
-- Things worth noting (observations about codebase health)
+Focus area: tech
+
+Analyze the technology stack and external integrations of this codebase. Write your findings to:
+- .director/codebase/STACK.md (using the template at skills/onboard/templates/codebase/STACK.md)
+- .director/codebase/INTEGRATIONS.md (using the template at skills/onboard/templates/codebase/INTEGRATIONS.md)
+
+Follow your standard mapping process for the tech focus area. Include file paths in backticks for every finding.
+
+Return only a brief confirmation when done. Do NOT return document contents.
 </instructions>
 ```
 
-Run the mapper in the foreground (not background) -- the user needs the results before the interview can begin.
+**Agent 2 (arch focus):**
+```
+<instructions>
+Focus area: arch
 
-### Findings Presentation
+Analyze the architecture patterns and file structure of this codebase. Write your findings to:
+- .director/codebase/ARCHITECTURE.md (using the template at skills/onboard/templates/codebase/ARCHITECTURE.md)
+- .director/codebase/STRUCTURE.md (using the template at skills/onboard/templates/codebase/STRUCTURE.md)
 
-Once the mapper returns, present the findings to the user in plain language. Format the output conversationally:
+STRUCTURE.md must include a prescriptive "Where to Add New Code" section telling agents exactly where to place new files for each type of addition (new feature, new API route, new component, new test, etc.).
 
-> "Here's what I see in your project:"
+Follow your standard mapping process for the arch focus area. Include file paths in backticks for every finding.
 
-Then present the mapper findings organized under clear headings. Use the mapper's own structure (What I found, Built with, What it can do, How it's organized, Things worth noting) but present it as a natural summary, not a report.
+Return only a brief confirmation when done. Do NOT return document contents.
+</instructions>
+```
 
-After presenting, ask the user to confirm or correct:
+**Agent 3 (quality focus):**
+```
+<instructions>
+Focus area: quality
+
+Analyze the coding conventions and testing patterns of this codebase. Write your findings to:
+- .director/codebase/CONVENTIONS.md (using the template at skills/onboard/templates/codebase/CONVENTIONS.md)
+- .director/codebase/TESTING.md (using the template at skills/onboard/templates/codebase/TESTING.md)
+
+CONVENTIONS.md must use prescriptive voice throughout. Say "Use camelCase for functions" not "Some functions use camelCase." Every convention must be a clear instruction for builder agents.
+
+Follow your standard mapping process for the quality focus area. Include file paths in backticks for every finding.
+
+Return only a brief confirmation when done. Do NOT return document contents.
+</instructions>
+```
+
+**Agent 4 (concerns focus):**
+```
+<instructions>
+Focus area: concerns
+
+Analyze technical debt, known issues, and fragile areas of this codebase. Write your findings to:
+- .director/codebase/CONCERNS.md (using the template at skills/onboard/templates/codebase/CONCERNS.md)
+
+Be specific about the impact of each concern and suggest a fix approach. Prioritize concerns by severity.
+
+Follow your standard mapping process for the concerns focus area. Include file paths in backticks for every finding.
+
+Return only a brief confirmation when done. Do NOT return document contents.
+</instructions>
+```
+
+If any mapper fails or times out, note the failure but continue with whatever mappers succeeded. The synthesizer can work with partial input. If ALL mappers fail, fall back to the v1.0 director-mapper agent for a basic overview instead.
+
+### Synthesizer Spawning
+
+After ALL 4 mappers have completed (or failed), spawn the director-synthesizer agent. This runs SEQUENTIALLY after the mappers (not in parallel with them).
+
+```
+<instructions>
+Mode: codebase
+
+Read all codebase analysis files from .director/codebase/ (STACK.md, INTEGRATIONS.md, ARCHITECTURE.md, STRUCTURE.md, CONVENTIONS.md, TESTING.md, CONCERNS.md). Synthesize them into a unified summary.
+
+Write your output to .director/codebase/SUMMARY.md using the template at skills/onboard/templates/codebase/SUMMARY.md.
+
+Cross-reference findings across all files. If different mappers found related information about the same files or patterns, connect them. Resolve any contradictions.
+
+Return only a brief confirmation when done. Do NOT return document contents.
+</instructions>
+```
+
+### Summary Presentation
+
+After the synthesizer completes, read `.director/codebase/SUMMARY.md` yourself (the main session agent). Format a structured ~20-30 line user-facing overview from the SUMMARY.md content.
+
+The overview should be organized into sections with 2-3 bullets each, roughly following this structure:
+
+> "Here's what I found in your project:"
+>
+> **What this project is**
+> [1-2 sentence plain-language summary from SUMMARY.md "What This Project Is" section]
+>
+> **Built with**
+> - [Main language/framework]
+> - [Database/storage]
+> - [Key libraries or services]
+>
+> **What it can do**
+> - [User capability 1]
+> - [User capability 2]
+> - [User capability 3]
+>
+> **How it's organized**
+> - [Brief structure description -- "The code is split into X main areas: ..."]
+>
+> **Things worth noting**
+> - [Top concern or observation]
+> - [Another notable finding]
+> - [Testing status if relevant]
+
+Keep references HIGH-LEVEL. Say "Looks like a React project with a database" not "I found 3 API routes in /src/api/v2." Present findings as collaborative observations, not judgments.
+
+This is a SUMMARY ONLY interaction. Do NOT offer drill-down or ask if they want more detail. The detailed files exist in `.director/codebase/` for agents only.
+
+After presenting the overview, ask the user to confirm or correct:
 
 > "Does this look right? Anything I missed or got wrong?"
 
-Wait for the user to respond. Incorporate any corrections they provide into your understanding of the project before moving on to the interview.
+Wait for the user to respond. Incorporate corrections into your understanding before moving on to the interview.
+
+Then proceed to the Brownfield Interview section below.
 
 ### Brownfield Interview
 
-After the user confirms the mapping, conduct a modified interview. This follows the same rules as the greenfield interview (one question at a time, multiple choice, confirm understanding, flag ambiguity), but with key adaptations for existing projects:
+After the user confirms the mapping summary, conduct a modified interview. This follows the same rules as the greenfield interview (one question at a time, multiple choice, confirm understanding, flag ambiguity), but with key adaptations for existing projects.
 
-**What to skip (the mapper already answered these):**
-- Do NOT ask "What are you building?" -- the mapper already described it
-- Do NOT ask about tech stack -- the mapper already identified it (unless the user wants to change it)
-- Do NOT ask about project architecture -- the mapper already analyzed it
+Use the mapping summary you already read to inform your questions:
+
+**Auto-skip rules (based on mapping results):**
+- If SUMMARY.md identified the tech stack clearly: do NOT ask about tech stack unless you need to confirm a specific choice
+- If SUMMARY.md identified clear architecture: do NOT ask about project structure
+- If deployment config was detected: do NOT ask about hosting
+
+**Confirmation questions (ask these based on what mapping found):**
+- For each major technology detected: "I see you're using [tech] -- keeping that?"
+- For detected patterns: "Looks like you're using [pattern] for [purpose] -- that working well?"
+
+**Gap-filling questions (ask about what mapping DIDN'T find):**
+- If no tests detected: "I didn't find tests -- is that something you want to add this time around?"
+- If no auth detected: "I don't see authentication set up yet -- will users need to log in?"
+- If concerns found: "There are some [concern type] I noticed -- want to address those in this round of work?"
+
+**Tone rule:** Present findings as a knowledgeable collaborator, not someone reading a report. "Looks like a React project with a database" not "I found 3 API routes in /src/api/v2."
 
 **What to focus on:**
-- Acknowledge what already exists -- start from what the mapper found, not from scratch
+- Acknowledge what already exists -- start from what the mapping found, not from scratch
 - Ask what they want to CHANGE, not what they want to BUILD -- the project exists, focus on what's next
 - Present findings as observations -- "Here's what I see" not "Here's what you have"
 - Identify gaps between what exists and what the user wants -- those gaps become the vision
@@ -232,10 +383,10 @@ This is the core question. The project exists -- what's the delta? Ask something
 Skip if the answer is obvious from the existing code (e.g., the app clearly has user accounts and a specific audience). Only ask if the target audience is unclear or might be changing.
 
 **3. New features needed**
-What capabilities should be added that don't exist yet? Start by asking for the top priorities. Compare against what the mapper found -- don't ask about features that already work.
+What capabilities should be added that don't exist yet? Start by asking for the top priorities. Compare against what the mapping found -- don't ask about features that already work.
 
 **4. Tech stack changes**
-Only ask if the user mentioned wanting to change something, or if the mapper found concerning patterns (e.g., very outdated versions). Frame it as: "The project is using [tech]. Are you happy with that, or is there anything you'd like to switch?"
+Only ask if the user mentioned wanting to change something, or if the mapping found concerning patterns (e.g., very outdated versions). Frame it as: "The project is using [tech]. Are you happy with that, or is there anything you'd like to switch?"
 
 **5. What does "done" look like for this round of work?**
 This is about the current set of changes, not the entire project. What would make them say this round of improvements is complete? Push for specifics.
@@ -246,7 +397,7 @@ Ask if they've already decided on approaches for any of the changes they describ
 **7. Anything you're unsure about?**
 Same as greenfield -- give space for unknowns and concerns. Mark unresolved items with [UNCLEAR].
 
-Target 5-10 questions total for brownfield (shorter than greenfield since much is already known from the mapper).
+Target 5-10 questions total for brownfield (shorter than greenfield since much is already known from the mapping).
 
 ### Brownfield Interview Wrap-Up
 

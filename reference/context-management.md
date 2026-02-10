@@ -67,6 +67,7 @@ These tags were added in v1.1 for the deep context system. They carry research a
 | `<codebase>` | Contents of a specific `.director/codebase/` file | When agent needs codebase awareness for current task |
 | `<research_summary>` | Contents of `.director/research/SUMMARY.md` | When agent needs broad research overview |
 | `<codebase_summary>` | Contents of `.director/codebase/SUMMARY.md` | When agent needs broad codebase overview |
+| `<step_research>` | Contents of a step's RESEARCH.md file (from step-level research) | When planner needs step-specific technical research during task planning |
 
 **Usage notes:**
 - `<research>` and `<codebase>` carry individual files (e.g., STACK.md, ARCHITECTURE.md) when the task relates to a specific domain
@@ -296,5 +297,7 @@ Different agents need different context combinations. These profiles define what
 - **Summary** -- Include only the summary file (`<research_summary>` or `<codebase_summary>`) for broad awareness
 - **Reads directly** -- Agent reads files from disk using tools rather than receiving them in assembled context
 - **No** -- Never include this context type for this agent
+
+**Note on Deep Researcher:** Deep Researcher can also be spawned by the blueprint skill for step-level research. When spawned for step-level research, it receives step context and user decisions via `<instructions>` rather than assembled context tags. Output goes to the step directory (e.g., `.director/goals/NN-goal/NN-step/RESEARCH.md`) instead of `.director/research/`.
 
 These profiles are guidelines. Specific tasks may require additional or fewer context sections.

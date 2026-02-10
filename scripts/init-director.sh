@@ -101,6 +101,9 @@ cat > .director/config.json << 'CONFIG_EOF'
   "cost_rate": 10.00,
   "language": "en",
   "model_profile": "balanced",
+  "workflow": {
+    "step_research": true
+  },
   "agents": {
     "interviewer": { "model": "inherit" },
     "planner": { "model": "inherit" },

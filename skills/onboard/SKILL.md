@@ -344,7 +344,15 @@ After presenting the overview, ask the user to confirm or correct:
 
 Wait for the user to respond. Incorporate corrections into your understanding before moving on to the interview.
 
-Then proceed to the Brownfield Interview section below.
+### Research Opt-in (Brownfield)
+
+After the user confirms the mapping summary, offer domain research.
+
+You already have the codebase SUMMARY.md in memory from the Summary Presentation step. This provides the project context that researchers need (what the project is, what technologies it uses, its architecture).
+
+Proceed to the Research Pipeline section below. When the pipeline asks for project context, use the codebase SUMMARY.md contents (NOT VISION.md, which does not exist yet for brownfield projects).
+
+After the research pipeline completes (or is declined), proceed to the Brownfield Interview.
 
 ### Brownfield Interview
 
@@ -356,7 +364,13 @@ This follows the same core rules as the greenfield interview (one question at a 
 
 1. **You already have the SUMMARY.md in memory** from reading it in the Summary Presentation step. Use its contents to inform every question. You do NOT need to read the individual codebase files -- the summary has everything you need for interview purposes.
 
-2. **Three question types to use:**
+2. **If research was completed, you also have research findings in memory** from the Research Pipeline. Use research findings to enhance your questions:
+   - If research recommended specific technologies or approaches, ask confirmation questions about whether the user wants to adopt them
+   - If research flagged expected features the user has not built, ask gap-filling questions about those features
+   - If research identified pitfalls relevant to the user's plans, weave awareness of them into your questions
+   - Research context ADDS to mapping context -- it does not replace it. Use both.
+
+3. **Three question types to use:**
 
    **Confirmation questions** -- Validate something the mapping detected. These are quick yes/no checks that build trust and catch misdetections.
    - "I see you're using [detected tech] -- keeping that, or thinking of switching?"
@@ -373,14 +387,14 @@ This follows the same core rules as the greenfield interview (one question at a 
    - "What would make this round of work feel complete?"
    - "Are there any decisions you've already made about the changes?"
 
-3. **Auto-skip rules.** Do NOT ask questions the mapping already definitively answered:
+4. **Auto-skip rules.** Do NOT ask questions the mapping already definitively answered:
    - Do NOT ask "What are you building?" -- the mapping summary already describes the project
    - Do NOT ask "What tech stack are you using?" -- the mapping detected it (ask a confirmation question instead if you want to verify)
    - Do NOT ask about project architecture -- the mapping analyzed it
    - Do NOT ask about existing features -- the mapping inventoried them
    - Do NOT ask "Who is it for?" IF the answer is obvious from the codebase (user auth patterns, public-facing UI, etc.)
 
-4. **High-level references only.** When referencing mapping discoveries in questions, use plain language:
+5. **High-level references only.** When referencing mapping discoveries in questions, use plain language:
    - GOOD: "I see you're using React with a database"
    - BAD: "I found React 18.2.0 in package.json and Prisma ORM connecting to PostgreSQL via `src/lib/db.ts`"
    - GOOD: "There are some areas of the code that look like they could use attention"
@@ -428,6 +442,199 @@ When you've covered the relevant sections:
 > "Got it. Let me put together a vision document that captures where your project is and where you want to take it."
 
 Then proceed to Generate Brownfield Vision.
+
+---
+
+## Research Pipeline
+
+This section is referenced from both the Brownfield and Greenfield flows. Do not execute this section independently -- it is always triggered by an opt-in prompt from one of those flows.
+
+### Opt-in Pitch
+
+Offer research to the user. Adapt the phrasing to the conversation tone:
+
+> "Want me to research best practices for this kind of project? Takes about a minute."
+
+If the user declines, say something like:
+
+> "No problem. You can always explore this later."
+
+Then return to the calling flow and continue with the next step. Do NOT ask twice or make the user feel like they are missing out.
+
+If the user accepts, continue with the pipeline below.
+
+### Directory Setup
+
+Ensure `.director/research/` directory exists before spawning researchers:
+
+```bash
+mkdir -p .director/research
+```
+
+### Model Profile Resolution
+
+Read `.director/config.json` and resolve the model for each agent:
+
+1. Read the `model_profile` field (defaults to "balanced")
+2. Look up the profile in `model_profiles` to get model for `deep-researcher` and `synthesizer`
+
+If config.json is missing the `model_profile` or `model_profiles` fields, fall back to "balanced" defaults.
+
+### Researcher Spawning
+
+Show a single progress message:
+
+> "Researching your project's ecosystem..."
+
+Then spawn 4 director-deep-researcher agents IN PARALLEL using 4 simultaneous Task tool calls. Each agent gets different instructions specifying its domain. All 4 Task tool calls go in a SINGLE message so they run in parallel. Do NOT wait for one researcher to finish before spawning the next.
+
+The project context passed to researchers depends on how this pipeline was triggered:
+- **From Brownfield flow:** Pass the contents of `.director/codebase/SUMMARY.md`
+- **From Greenfield flow:** Pass the contents of `.director/VISION.md`
+
+**Agent 1 (stack domain):**
+```
+<instructions>
+Domain: stack
+
+<project_context>
+[Contents of VISION.md for greenfield, or codebase SUMMARY.md for brownfield]
+</project_context>
+
+Research the recommended technology stack for this project. Investigate libraries, frameworks, databases, hosting options, and key supporting tools that would work well for this type of project.
+
+Write your findings to .director/research/STACK.md using the template at skills/onboard/templates/research/STACK.md.
+
+Use WebFetch to check official documentation for current versions and best practices. Verify recommendations against authoritative sources.
+
+Return only a brief confirmation when done. Do NOT include file contents in your response.
+</instructions>
+```
+
+**Agent 2 (features domain):**
+```
+<instructions>
+Domain: features
+
+<project_context>
+[Contents of VISION.md for greenfield, or codebase SUMMARY.md for brownfield]
+</project_context>
+
+Research features for this type of product. Investigate table stakes (what users expect), differentiators (what sets this product apart), and anti-features (what to avoid). Flag expected features the user may not have mentioned.
+
+Write your findings to .director/research/FEATURES.md using the template at skills/onboard/templates/research/FEATURES.md.
+
+Use WebFetch to check current product landscapes and feature expectations. Verify recommendations against authoritative sources.
+
+Return only a brief confirmation when done. Do NOT include file contents in your response.
+</instructions>
+```
+
+**Agent 3 (architecture domain):**
+```
+<instructions>
+Domain: architecture
+
+<project_context>
+[Contents of VISION.md for greenfield, or codebase SUMMARY.md for brownfield]
+</project_context>
+
+Research architecture patterns for this type of project. Investigate system structure, component boundaries, data flow patterns, and how similar projects are typically organized.
+
+Write your findings to .director/research/ARCHITECTURE.md using the template at skills/onboard/templates/research/ARCHITECTURE.md.
+
+Use WebFetch to check current architecture guides and best practices. Verify recommendations against authoritative sources.
+
+Return only a brief confirmation when done. Do NOT include file contents in your response.
+</instructions>
+```
+
+**Agent 4 (pitfalls domain):**
+```
+<instructions>
+Domain: pitfalls
+
+<project_context>
+[Contents of VISION.md for greenfield, or codebase SUMMARY.md for brownfield]
+</project_context>
+
+Research common mistakes and pitfalls for this type of project. Investigate stack-specific pitfalls AND broader domain pitfalls -- things that are harder than they look, common causes of rewrites, and what trips up builders working on this type of project.
+
+Write your findings to .director/research/PITFALLS.md using the template at skills/onboard/templates/research/PITFALLS.md.
+
+Use WebFetch to check current documentation for known issues and common mistakes. Verify findings against authoritative sources.
+
+Return only a brief confirmation when done. Do NOT include file contents in your response.
+</instructions>
+```
+
+### Synthesizer Spawning
+
+After ALL 4 researchers have completed (or failed), spawn the director-synthesizer agent. This runs SEQUENTIALLY after the researchers (not in parallel with them).
+
+```
+<instructions>
+Mode: research
+
+Read all 4 research files from .director/research/:
+- STACK.md
+- FEATURES.md
+- ARCHITECTURE.md
+- PITFALLS.md
+
+Synthesize them into a unified summary.
+
+Write your output to .director/research/SUMMARY.md using the template at skills/onboard/templates/research/SUMMARY.md.
+
+The "Implications for Gameplan" section is critical -- recommend how to structure goals and steps based on the combined research. The "Don't Hand-Roll" section must identify problems with existing library solutions.
+
+Cross-reference findings across all files. If STACK.md recommends a technology and PITFALLS.md warns about it, connect them. If FEATURES.md lists a capability and ARCHITECTURE.md shows how to structure it, link them.
+
+Return only a brief confirmation when done. Do NOT return document contents.
+</instructions>
+```
+
+### Research Summary Presentation
+
+After the synthesizer returns, read `.director/research/SUMMARY.md` yourself (the main session agent). Format a structured ~20-30 line user-facing overview from the SUMMARY.md Executive Summary and Key Findings sections.
+
+The overview should follow this structure:
+
+> "Here's what the research suggests:"
+>
+> **Recommended approach**
+> - [Core technology recommendation with brief rationale]
+> - [Architecture pattern recommendation]
+>
+> **Features to consider**
+> - [Must-have feature 1 -- why users expect it]
+> - [Must-have feature 2]
+> - [Nice-to-have if particularly relevant]
+>
+> **Things to watch out for**
+> - [Top pitfall with prevention note]
+> - [Second pitfall if relevant]
+
+Keep it concise and plain-language. Do NOT show:
+- The "Don't Hand-Roll" warnings (agents-only content)
+- The full gameplan implications (agents-only content)
+- Confidence levels or source attributions
+
+After the summary, add a brief gameplan link:
+
+> "Research suggests a good build order -- I'll use that for your gameplan."
+> [1-2 lines explaining why, e.g., "Setting up user accounts first makes sense because most of your other features need to know who's logged in."]
+
+This is a SUMMARY ONLY interaction. Do NOT offer drill-down.
+
+### Researcher Failure Handling
+
+If any researcher agent fails or times out:
+
+1. Check which domains completed by looking for files in `.director/research/`
+2. If 3 of 4 researchers succeeded: proceed with partial results. Tell the synthesizer which files are available. Note the gap in the user-facing summary.
+3. If 2 or fewer researchers succeeded: tell the user research had limited results but share what was found.
+4. If ALL researchers failed: tell the user research could not complete and move on gracefully. Research is opt-in, so this is graceful degradation, not a failure.
 
 ---
 

@@ -1,5 +1,5 @@
 ---
-name: brainstorm
+name: director:brainstorm
 description: "Think out loud with full project context. Explore ideas one question at a time."
 disable-model-invocation: true
 ---

@@ -1,5 +1,5 @@
 ---
-name: onboard
+name: director:onboard
 description: "Set up a new project or map an existing one. Creates your vision document through a guided interview."
 ---
 

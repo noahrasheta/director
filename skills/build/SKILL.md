@@ -1,5 +1,5 @@
 ---
-name: build
+name: director:build
 description: "Work on the next ready task in your project. Picks up where you left off automatically."
 disable-model-invocation: true
 ---

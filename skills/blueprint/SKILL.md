@@ -1,5 +1,5 @@
 ---
-name: blueprint
+name: director:blueprint
 description: "Create, view, or update your project gameplan. Breaks your vision into Goals, Steps, and Tasks."
 ---
 

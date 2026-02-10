@@ -1,5 +1,5 @@
 ---
-name: ideas
+name: director:ideas
 description: "Review your saved ideas and decide what to do with them."
 disable-model-invocation: true
 ---

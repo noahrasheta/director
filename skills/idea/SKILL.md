@@ -1,5 +1,5 @@
 ---
-name: idea
+name: director:idea
 description: "Capture an idea for later without interrupting your flow."
 disable-model-invocation: true
 ---

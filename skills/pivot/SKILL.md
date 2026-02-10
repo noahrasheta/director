@@ -1,5 +1,5 @@
 ---
-name: pivot
+name: director:pivot
 description: "Handle a change in direction for your project. Maps impact and updates your gameplan."
 disable-model-invocation: true
 ---

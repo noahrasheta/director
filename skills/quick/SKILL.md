@@ -1,5 +1,5 @@
 ---
-name: quick
+name: director:quick
 description: "Make a fast change without full planning. Best for small, focused tasks."
 disable-model-invocation: true
 ---

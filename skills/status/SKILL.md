@@ -1,5 +1,5 @@
 ---
-name: status
+name: director:status
 description: "See your project progress at a glance."
 disable-model-invocation: true
 ---

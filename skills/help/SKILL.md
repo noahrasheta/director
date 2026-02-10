@@ -1,5 +1,5 @@
 ---
-name: help
+name: director:help
 description: "Show Director commands with examples. Use when the user asks what Director can do, how to use it, or needs guidance."
 ---
 

@@ -1,5 +1,5 @@
 ---
-name: resume
+name: director:resume
 description: "Pick up where you left off after a break. Restores your context automatically."
 disable-model-invocation: true
 ---

@@ -1,5 +1,5 @@
 ---
-name: inspect
+name: director:inspect
 description: "Check that what was built actually works. Runs verification on your project."
 disable-model-invocation: true
 ---

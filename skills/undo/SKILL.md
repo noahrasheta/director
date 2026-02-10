@@ -1,5 +1,5 @@
 ---
-name: undo
+name: director:undo
 description: "Go back to before the last task. Reverts the most recent change Director made."
 disable-model-invocation: true
 ---

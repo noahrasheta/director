@@ -266,6 +266,158 @@ What is NOT a decision (these belong in vision or task descriptions):
 
 ---
 
+## Step-Level Research
+
+After capturing step-level decisions and before writing gameplan files, run step-level research for steps that need it. This investigates the technical domain of each qualifying step and produces a RESEARCH.md in the step directory for the planner to use when writing task files.
+
+### Skip Conditions
+
+Skip this entire section if ANY of the following are true:
+
+- `workflow.step_research` is `false` in `.director/config.json` (read with fallback: default to `true` if the field doesn't exist -- backward compatibility for projects initialized before this feature)
+- `$ARGUMENTS` includes `--skip-research`
+- This is update mode and no pending/new steps have changed (all steps are either frozen/completed or unchanged)
+
+Force fresh research for all pending steps if `$ARGUMENTS` includes `--research` (delete existing RESEARCH.md files for pending steps and re-research).
+
+### Assess Step Complexity
+
+For each step in the approved outline, determine whether it needs research. This is a judgment call -- not every step warrants investigation.
+
+**Research likely NEEDED when:**
+- Step involves technology the project hasn't used before
+- Step includes Large-sized tasks
+- Step involves third-party integrations or APIs
+- Onboarding research flagged this domain for deeper investigation
+- All technology choices are Flexible (no locked decisions guiding approach)
+
+**Research likely NOT needed when:**
+- Step is pure UI work with the project's established framework
+- Step extends patterns already in use
+- All tasks are Small with clear approaches
+- Onboarding research thoroughly covered this domain
+- Step is configuration/setup with known tools
+
+Note which steps need research. If none do, skip directly to Write Gameplan.
+
+### Brief User Message
+
+If any steps need research, show ONE brief message:
+
+> "Let me look into the technical details for a couple of these steps..."
+
+Do NOT list which steps are being researched or explain the research process. This runs silently.
+
+### Create Step Directories
+
+Before spawning researchers, create directories for steps that need research:
+
+```bash
+mkdir -p .director/goals/NN-goal/NN-step/
+```
+
+This ensures researchers have a target directory for writing RESEARCH.md.
+
+### Model Profile Resolution
+
+Read `.director/config.json` and resolve the model for `deep-researcher`:
+
+1. Read the `model_profile` field (defaults to "balanced")
+2. Look up the profile in `model_profiles` to get the model for `deep-researcher`
+3. Fall back to "balanced" defaults if config is missing these fields
+
+### Smart Reuse Check
+
+Before spawning a researcher for a step, check if `RESEARCH.md` already exists in the step directory:
+
+- **If exists AND `--research` flag is NOT set:** Read the Reuse Metadata section of the existing RESEARCH.md. Compare current step scope (name, deliverables, planned tasks) and current decisions (Locked, Flexible, Deferred) against what's recorded in the metadata.
+  - If substantively the same: skip research for this step. "Substantively the same" means: step name and deliverables match, locked decisions haven't changed, no new flexible areas that were previously absent.
+  - If changed significantly: delete old RESEARCH.md, mark for re-research.
+- **If exists AND `--research` flag IS set:** Delete old RESEARCH.md, mark for re-research.
+- **If does not exist:** Mark for research.
+
+### Research Spawning
+
+For each goal, spawn researchers for ALL steps that need research within that goal IN PARALLEL using the Task tool. All researcher Task tool calls for steps within the same goal go in a SINGLE message so they execute in parallel.
+
+Each researcher spawn uses these instructions:
+
+```
+<instructions>
+Scope: step-level
+
+<vision>
+[Full VISION.md contents]
+</vision>
+
+<step_context>
+Step name: [step name from approved outline]
+What this delivers: [from step description]
+Tasks planned: [brief task list from outline]
+</step_context>
+
+<decisions>
+Locked:
+- [locked decisions for this step, from Capture Step-Level Decisions]
+
+Flexible:
+- [flexible areas for this step]
+
+Deferred:
+- [deferred items for this step -- DO NOT research these]
+</decisions>
+
+<onboarding_research>
+[If .director/research/SUMMARY.md exists and is relevant to this step's domain, include relevant sections here. If it doesn't exist or isn't relevant, omit this tag entirely.]
+</onboarding_research>
+
+Research the technical domain for this step. Focus on:
+- Libraries and tools needed for the specific work in this step
+- Architecture patterns for this step's deliverables
+- Common pitfalls when building what this step delivers
+- Problems with existing solutions (don't hand-roll)
+
+For Locked decisions: investigate the chosen approach deeply.
+For Flexible areas: rank 2-3 options with tradeoffs.
+Do NOT research Deferred items.
+
+Write your findings to [step directory path]/RESEARCH.md using the
+step research template at skills/blueprint/templates/step-research.md.
+
+Return only a brief confirmation when done. Do NOT include file
+contents in your response.
+</instructions>
+```
+
+The step context is passed INLINE via instructions, NOT read from disk. This is because STEP.md files haven't been written to disk yet during initial blueprint -- they're written during Write Gameplan. The researcher receives all step information via the `<step_context>` and `<decisions>` tags in instructions.
+
+### Failure Handling
+
+If a researcher fails or returns an error:
+- Log the failure silently
+- Continue with remaining steps -- one step's research failure should not block the entire blueprint
+- Note in the Write Gameplan phase that this step has no RESEARCH.md (the planner proceeds without it)
+
+### Conflict Detection
+
+After ALL researchers for a goal complete, read each newly-written RESEARCH.md and check the "Conflicts with User Decisions" section.
+
+If any HIGH-severity conflicts are found, present them ONE AT A TIME to the user:
+
+> "While looking into [step name], I noticed something about your choice of [decision]: [conflict in plain language]. Want to keep your original choice, or would you like to change it?"
+
+Wait for user response:
+- If they keep the decision: note "User confirmed despite conflict" in the RESEARCH.md Metadata section and proceed.
+- If they update the decision: note the change, update the decision context, and re-research the step if the changed decision significantly affects the research domain.
+
+If no HIGH-severity conflicts: proceed silently to Write Gameplan.
+
+Conflict criteria (strict -- avoid being too aggressive):
+- A conflict is ONLY: deprecation, security vulnerability, incompatibility between locked choices, or a major pitfall with no reasonable mitigation
+- A concern is NOT a conflict: alternative approaches exist, newer versions available, stylistic preferences differ from recommendation
+
+---
+
 ## Write Gameplan
 
 After the user approves the full outline, write all gameplan files.
@@ -384,6 +536,17 @@ For each goal, step, and task in the approved outline:
   [What needs to be done before this task can start?]
   [If nothing: "Nothing -- this can start right away."]
   ```
+
+**Research-informed task writing:**
+
+When writing task files for a step, check if a `RESEARCH.md` exists in the step directory (produced by Step-Level Research above). If it exists, read it and use the research findings to:
+- Improve task descriptions with specific library/tool mentions from the Stack section
+- Add relevant pitfalls to the "Done When" criteria
+- Adjust task sizing based on research complexity findings
+- Include "Don't Hand-Roll" items as constraints in relevant tasks
+- Prefer the recommended approach for Flexible decision areas
+
+The planner reads RESEARCH.md on demand -- it is NOT force-injected into context. This keeps context manageable and lets the planner decide which sections are relevant for each task.
 
 **Directory naming conventions:**
 - Use zero-padded numbers with kebab-case slugs: `01-user-accounts/`, `02-habit-tracking/`
@@ -562,6 +725,16 @@ After the user approves the full updated outline, write the updated gameplan fil
 - **Modified items:** Overwrite the existing GOAL.md, STEP.md, or task file with updated content.
 - **New items:** Create new directories and files following the same naming conventions (zero-padded numbers, kebab-case slugs).
 - **Removed items:** Delete the files and directories. But NEVER delete files for completed items -- if something is marked done, it stays regardless of what the updated plan says.
+
+**Step-Level Research in Update Mode:**
+
+Before writing updated files, step-level research runs for pending/new steps following the same logic as initial blueprint (see Step-Level Research section above). The following rules apply:
+- **Completed steps:** FROZEN -- their RESEARCH.md files are not touched, no re-research.
+- **Unchanged pending steps:** Smart reuse applies -- if RESEARCH.md exists and inputs match, skip research.
+- **Modified pending steps:** Re-research if inputs (step scope or decisions) changed significantly.
+- **New steps:** Research from scratch if complexity warrants it.
+- `--research` flag forces fresh research for all pending/new steps (not completed steps).
+- `--skip-research` flag skips all step-level research during this update.
 
 Use the same file templates and directory structure as new gameplan mode. Use Bash for `mkdir -p` to create directories and the Write tool for file content. Do NOT narrate each file path or operation to the user.
 

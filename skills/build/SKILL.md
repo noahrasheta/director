@@ -427,7 +427,7 @@ After presenting the post-task summary:
 1. List all files in the current step's `tasks/` directory.
 2. Count total `.md` files (both regular and `.done.md`) and count `.done.md` files specifically.
 3. If NOT all task files end in `.done.md`: the step is incomplete.
-   > "Next up: [next task name from the first non-.done.md file]. Want to keep building?"
+   > "Next up: [next task name from the first non-.done.md file]. Ready when you are — `/clear` then `/director:build` to keep going."
    Stop here.
 
 4. If ALL task files end in `.done.md`: the step is complete.
@@ -460,6 +460,8 @@ Wait for the user's response. Interpret their natural-language answers to determ
 
 **If ALL items pass:**
 > "[Outcome statement]! That's [step name] done -- you're [X] of [Y] steps through [goal name]."
+>
+> "Ready when you are — `/clear` then `/director:build` to start the next step."
 
 **If SOME items fail (lead with wins):**
 > "[N] of [M] checks passed! [Items that failed] need attention:
@@ -500,6 +502,8 @@ Wait for the user's response. Process results the same as the step-level checkli
 
 **If all pass:**
 > "That's a big milestone -- [goal name] is done! [Total progress: X of Y goals complete]. [What's next: brief description of next goal, or 'Your project is complete!' if all goals done]."
+>
+> If there is a next goal: "Ready when you are — `/clear` then `/director:build` to start the next goal."
 
 **If some fail:** Lead with wins, flag issues, offer auto-fix if applicable.
 

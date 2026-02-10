@@ -348,56 +348,78 @@ Then proceed to the Brownfield Interview section below.
 
 ### Brownfield Interview
 
-After the user confirms the mapping summary, conduct a modified interview. This follows the same rules as the greenfield interview (one question at a time, multiple choice, confirm understanding, flag ambiguity), but with key adaptations for existing projects.
+After the user confirms the mapping summary, conduct an interview that builds on what the mapping discovered. You already know a lot about this project from the mapping -- use that knowledge. The interview should feel like talking to someone who's been looking through the project, not someone asking basic questions from a script.
 
-Use the mapping summary you already read to inform your questions:
+This follows the same core rules as the greenfield interview (one question at a time, multiple choice when possible, confirm understanding, flag ambiguity with [UNCLEAR]), but the content is fundamentally different because the mapping gives you a head start.
 
-**Auto-skip rules (based on mapping results):**
-- If SUMMARY.md identified the tech stack clearly: do NOT ask about tech stack unless you need to confirm a specific choice
-- If SUMMARY.md identified clear architecture: do NOT ask about project structure
-- If deployment config was detected: do NOT ask about hosting
+### Using Mapping Context
 
-**Confirmation questions (ask these based on what mapping found):**
-- For each major technology detected: "I see you're using [tech] -- keeping that?"
-- For detected patterns: "Looks like you're using [pattern] for [purpose] -- that working well?"
+1. **You already have the SUMMARY.md in memory** from reading it in the Summary Presentation step. Use its contents to inform every question. You do NOT need to read the individual codebase files -- the summary has everything you need for interview purposes.
 
-**Gap-filling questions (ask about what mapping DIDN'T find):**
-- If no tests detected: "I didn't find tests -- is that something you want to add this time around?"
-- If no auth detected: "I don't see authentication set up yet -- will users need to log in?"
-- If concerns found: "There are some [concern type] I noticed -- want to address those in this round of work?"
+2. **Three question types to use:**
 
-**Tone rule:** Present findings as a knowledgeable collaborator, not someone reading a report. "Looks like a React project with a database" not "I found 3 API routes in /src/api/v2."
+   **Confirmation questions** -- Validate something the mapping detected. These are quick yes/no checks that build trust and catch misdetections.
+   - "I see you're using [detected tech] -- keeping that, or thinking of switching?"
+   - "Looks like [feature] is already working -- is that right?"
+   - "The project seems to be for [detected audience] -- is that who you have in mind?"
 
-**What to focus on:**
-- Acknowledge what already exists -- start from what the mapping found, not from scratch
-- Ask what they want to CHANGE, not what they want to BUILD -- the project exists, focus on what's next
-- Present findings as observations -- "Here's what I see" not "Here's what you have"
-- Identify gaps between what exists and what the user wants -- those gaps become the vision
+   **Gap-filling questions** -- Probe things the mapping did NOT find or flagged as concerns. These surface intentional gaps vs. forgotten pieces.
+   - "I didn't find any tests -- is that intentional, or something you want to add?"
+   - "There's no authentication set up -- will users need to log in?"
+   - "I noticed [concern in plain language] -- is that something you want to address?"
 
-**Brownfield interview sections (7 sections, adapted from the 8 greenfield sections):**
+   **Forward-looking questions** -- Ask about the user's plans for the project, which the mapping can't detect.
+   - "What do you want to change or add next?"
+   - "What would make this round of work feel complete?"
+   - "Are there any decisions you've already made about the changes?"
 
-**1. What do you want to change or add?**
-This is the core question. The project exists -- what's the delta? Ask something like: "Now that I've seen what you have, what do you want to change or add next?" This replaces the greenfield "What are you building?" section.
+3. **Auto-skip rules.** Do NOT ask questions the mapping already definitively answered:
+   - Do NOT ask "What are you building?" -- the mapping summary already describes the project
+   - Do NOT ask "What tech stack are you using?" -- the mapping detected it (ask a confirmation question instead if you want to verify)
+   - Do NOT ask about project architecture -- the mapping analyzed it
+   - Do NOT ask about existing features -- the mapping inventoried them
+   - Do NOT ask "Who is it for?" IF the answer is obvious from the codebase (user auth patterns, public-facing UI, etc.)
 
-**2. Who is this for?**
-Skip if the answer is obvious from the existing code (e.g., the app clearly has user accounts and a specific audience). Only ask if the target audience is unclear or might be changing.
+4. **High-level references only.** When referencing mapping discoveries in questions, use plain language:
+   - GOOD: "I see you're using React with a database"
+   - BAD: "I found React 18.2.0 in package.json and Prisma ORM connecting to PostgreSQL via `src/lib/db.ts`"
+   - GOOD: "There are some areas of the code that look like they could use attention"
+   - BAD: "CONCERNS.md lists 4 high-priority items in `src/services/auth.ts`"
 
-**3. New features needed**
-What capabilities should be added that don't exist yet? Start by asking for the top priorities. Compare against what the mapping found -- don't ask about features that already work.
+### Brownfield Interview Sections
 
-**4. Tech stack changes**
-Only ask if the user mentioned wanting to change something, or if the mapping found concerning patterns (e.g., very outdated versions). Frame it as: "The project is using [tech]. Are you happy with that, or is there anything you'd like to switch?"
+**1. Confirm the picture**
+Start by referencing 1-2 key things the mapping found, framed as observations. The mapping gives you context to lead with instead of jumping straight to questions.
 
-**5. What does "done" look like for this round of work?**
-This is about the current set of changes, not the entire project. What would make them say this round of improvements is complete? Push for specifics.
+Say something like: "So from what I can see, you've got [high-level project description]. [One notable thing -- e.g., 'The testing is pretty thin' or 'The architecture looks clean']. Sound right?"
 
-**6. Decisions already made about the changes**
-Ask if they've already decided on approaches for any of the changes they described. Don't redo their decisions.
+This is a warm-up -- the user already confirmed the summary, but this sets the conversational tone.
 
-**7. Anything you're unsure about?**
-Same as greenfield -- give space for unknowns and concerns. Mark unresolved items with [UNCLEAR].
+**2. What's next?**
+Now ask what they want to change or add. This is the core question. The mapping gives you context to respond intelligently to their answer (e.g., if they say "add auth" and the mapping showed no auth exists, you can acknowledge that).
 
-Target 5-10 questions total for brownfield (shorter than greenfield since much is already known from the mapping).
+**3. Gap-filling round**
+Based on what the mapping found (or didn't find), ask 2-3 gap-filling questions. These are things the user might not have thought about:
+- Missing tests -> "Want to add tests as part of this?"
+- No error handling patterns -> "How should the app handle errors?"
+- Outdated dependencies -> "Some of your libraries are older versions -- want to update them?"
+- No deployment config -> "Where will this run when it's ready?"
+
+Only ask about gaps that are RELEVANT to what the user just said they want to do. If they want to add a dashboard and the mapping showed no tests, don't ask about tests unless it's relevant to the dashboard work.
+
+**4. Decisions already made**
+Ask if they've already committed to any approaches for the planned changes. Keep this brief.
+
+**5. Concerns check**
+If the mapping flagged notable concerns (surfaced via SUMMARY.md), briefly mention the top 1-2:
+"I noticed [concern in plain language] -- is that something you want to tackle in this round?"
+
+Only surface concerns that are relevant to the user's stated goals. Don't dump all concerns.
+
+**6. Anything you're unsure about?**
+Same as greenfield -- give space for unknowns. Mark unresolved items with [UNCLEAR].
+
+Target 5-8 questions total for brownfield (shorter than greenfield since the mapping provides so much context). Adapt based on the user's preparation level, just like the greenfield interview.
 
 ### Brownfield Interview Wrap-Up
 

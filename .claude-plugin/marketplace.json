@@ -1,8 +1,12 @@
 {
   "name": "director-marketplace",
-  "description": "Plugin marketplace for Director -- orchestration for vibe coders",
   "owner": {
-    "name": "Noah Rasheta"
+    "name": "Noah Rasheta",
+    "email": "noah@rasheta.com"
+  },
+  "metadata": {
+    "description": "Plugin marketplace for Director -- orchestration for vibe coders",
+    "version": "1.0.0"
   },
   "plugins": [
     {

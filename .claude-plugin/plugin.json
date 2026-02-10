@@ -1,0 +1,5 @@
+{
+  "name": "director",
+  "description": "Opinionated orchestration for vibe coders",
+  "version": "1.0.2"
+}

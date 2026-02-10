@@ -31,7 +31,7 @@ Each task gets a fresh AI workspace loaded with just the context it needs. This 
 
 ## Commands
 
-Director gives you 12 commands, organized around three stages of building.
+Director gives you 13 commands, organized around three stages of building.
 
 ### Blueprint -- Plan Your Project
 
@@ -79,6 +79,7 @@ Director gives you 12 commands, organized around three stages of building.
 | `/director:brainstorm` | Think out loud with full project context. Good for exploring ideas before committing to a direction. |
 | `/director:pivot` | Handle a change in direction. When requirements shift, Director helps you adjust the plan without starting over. |
 | `/director:idea "..."` | Capture an idea for later. It gets saved so nothing is lost, even if now is not the right time. |
+| `/director:ideas` | Review your saved ideas. Pick one to build, add to the gameplan, or discard. |
 | `/director:undo` | Go back to before the last task. Reverts the most recent change Director made. |
 | `/director:help` | Show all available commands with examples and your current project status. |
 
@@ -89,6 +90,7 @@ Director gives you 12 commands, organized around three stages of building.
 /director:brainstorm "what about real-time collaboration?"
 /director:pivot
 /director:idea "add dark mode"
+/director:ideas
 /director:undo
 /director:help
 ```

@@ -2,6 +2,19 @@
 
 All notable changes to Director are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## 1.0.2 (2026-02-09)
+
+### Fixed
+
+- Added `director:` prefix to all skill command names for marketplace compatibility
+
+## 1.0.1 (2026-02-09)
+
+### Fixed
+
+- Fixed hooks.json format to match Claude Code expected schema
+- Cleared install cache for fresh plugin resolution
+
 ## 1.0.0 (2026-02-09)
 
 First release of Director -- opinionated orchestration for vibe coders.
@@ -29,7 +42,7 @@ First release of Director -- opinionated orchestration for vibe coders.
 - Inline text support for all commands (focus or accelerate any interaction)
 - Plain-language error messages (what went wrong, why, what to do)
 - Undo capability for reverting the last task
-- 12 slash commands and 8 specialized agents
+- 13 slash commands and 8 specialized agents
 
 **Distribution**
 - Self-hosted plugin marketplace

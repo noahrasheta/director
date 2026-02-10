@@ -691,7 +691,7 @@ Show the full document content. Wait for the user to review it.
 
 If the user requests changes, make them and present the updated version. Keep iterating until the user confirms it looks right.
 
-Then proceed to Save and Next Steps.
+Then proceed to Save Vision.
 
 ---
 
@@ -759,13 +759,13 @@ Show the full document content. Wait for the user to review it.
 
 If the user requests changes, make them and present the updated version. Keep iterating until the user confirms it looks right.
 
-Then proceed to Save and Next Steps.
+Then proceed to Save Vision.
 
 ---
 
-## Save and Next Steps
+## Save Vision
 
-Once the user approves the vision document, write it to `.director/VISION.md` using the Write tool.
+Once the user approves the vision document (from either Generate Vision Document or Generate Brownfield Vision), write it to `.director/VISION.md` using the Write tool.
 
 **Keep the tone conversational during file operations.** Do not narrate the technical details of what you're doing. Do not mention file paths as the primary communication.
 
@@ -773,7 +773,26 @@ Say something like:
 
 > "Your vision is saved. You can always come back and update it by running `/director:onboard` again."
 
-Then suggest the next step:
+**For greenfield projects:** After saving, proceed to Research Opt-in (Greenfield) below.
+**For brownfield projects:** After saving, proceed to Next Steps below.
+
+---
+
+## Research Opt-in (Greenfield)
+
+After the vision is saved, offer domain research to greenfield users.
+
+The VISION.md has been written to disk and captures the full project definition. This provides the context researchers need to investigate the project's ecosystem.
+
+Proceed to the Research Pipeline section. When the pipeline asks for project context, use the VISION.md contents.
+
+After the research pipeline completes (or is declined), proceed to Next Steps.
+
+---
+
+## Next Steps
+
+Suggest the next step:
 
 > "Ready to create a gameplan? That's where we break this down into goals and steps. You can do that with `/director:blueprint`."
 

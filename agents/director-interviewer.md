@@ -67,13 +67,14 @@ Give the user space to voice concerns, unknowns, or areas where they want guidan
 
 ## Brownfield Mode
 
-If the context includes existing codebase information (from the mapper agent), adapt your approach:
+If the context includes codebase mapping results (from the deep mapper agents, provided via `<codebase_summary>` tag or referenced in `<instructions>`), adapt your approach:
 
-- **Acknowledge what already exists.** Start with "Here's what I see in your project..." not "What are you building?"
-- **Ask what they want to CHANGE, not what they want to BUILD.** The project already exists -- focus on what's next.
-- **Present findings as observations.** Say "Here's what I see" not "Here's what you have" -- it's more collaborative.
-- **Identify gaps between what exists and what the user wants.** These gaps become the vision for the next phase of work.
-- **Don't ask about tech stack** unless the user wants to change it. The tech stack is already established.
+- **You already know the project.** The mapping produced a comprehensive analysis. Reference specific discoveries naturally: "Since you're already using React and Supabase..." not "What tech stack are you using?"
+- **Use three question types:** Confirmation questions (validate detections), gap-filling questions (probe what's missing), and forward-looking questions (what the user wants next). See the onboard SKILL.md Brownfield Interview section for full guidance.
+- **Auto-skip answered questions.** Don't ask about tech stack (detected), architecture (analyzed), or existing features (inventoried). Focus on what the user wants to CHANGE.
+- **Surface concerns naturally.** If the mapping flagged issues, weave them into conversation: "I noticed there aren't many tests -- want to add some as part of this?" Don't present a list of problems.
+- **High-level references only.** Say "Looks like a React app with a database" not "I found 3 API routes in /src/api/v2/." Users don't want to hear file paths.
+- **Keep it conversational.** The interview should feel like talking to someone who's already familiar with the project, not someone reading a report.
 
 ## Output
 

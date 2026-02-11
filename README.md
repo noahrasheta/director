@@ -2,7 +2,7 @@
 
 **Opinionated orchestration for vibe coders.**
 
-Director is a Claude Code plugin for solo builders who use AI to build software. It guides the entire process -- from capturing your vision, to planning your build, to verifying it works. You think about what to build; Director handles the how.
+Director is a Claude Code plugin for solo builders who use AI to build software. It guides the entire process -- from capturing your vision, to researching your domain, to planning your build, to verifying it works. You think about what to build; Director handles the how.
 
 ## Install
 
@@ -23,21 +23,30 @@ Then run `/director:onboard` to get started.
 
 Director follows a three-part loop:
 
-- **Blueprint** -- Capture your vision and create a gameplan (goals, steps, and tasks).
-- **Build** -- Execute tasks one at a time with fresh AI context, so quality stays high.
+- **Blueprint** -- Capture your vision and create a gameplan (goals, steps, and tasks). Director researches your domain and analyzes your codebase to make informed plans.
+- **Build** -- Execute tasks one at a time with fresh AI context loaded with relevant research and codebase knowledge, so quality stays high.
 - **Inspect** -- Verify that what you built actually works the way you intended.
 
-Each task gets a fresh AI workspace loaded with just the context it needs. This keeps things fast, accurate, and focused.
+Each task gets a fresh AI workspace loaded with just the context it needs -- including codebase conventions, architecture patterns, and domain research. This keeps things fast, accurate, and focused.
+
+## Deep Context
+
+Director doesn't just plan blindly. During onboarding, it builds deep understanding of your project:
+
+- **Codebase mapping** -- 4 parallel agents analyze your existing code, producing detailed files covering your stack, architecture, conventions, structure, testing patterns, integrations, and concerns. These files guide every downstream agent so they follow your project's patterns.
+- **Domain research** -- 4 parallel researchers investigate your project's ecosystem (stack choices, feature patterns, architecture approaches, common pitfalls) and produce actionable recommendations with a "Don't Hand-Roll" list of problems with existing library solutions.
+- **Step-level research** -- Before planning tasks within each step, a researcher investigates the specific technical domain so task plans are informed by current ecosystem knowledge.
+- **Staleness detection** -- Director alerts you when your codebase or research context is outdated and suggests running `/director:refresh` to update it.
+
+All of this context flows into Blueprint, Build, Brainstorm, Pivot, and Inspect -- so every agent makes context-informed decisions.
 
 ## Commands
-
-Director gives you 13 commands, organized around three stages of building.
 
 ### Blueprint -- Plan Your Project
 
 | Command | What it does |
 |---------|-------------|
-| `/director:onboard` | Set up a new project or map an existing one. Director asks you a few questions to understand what you want to build, then creates a plan. |
+| `/director:onboard` | Set up a new project or map an existing one. Director maps your codebase, asks you a few questions, optionally researches your domain, then creates a plan. |
 | `/director:blueprint` | Create, view, or update your gameplan. Use this to add new goals, rearrange steps, or see the big picture. |
 
 **Examples:**
@@ -50,7 +59,7 @@ Director gives you 13 commands, organized around three stages of building.
 
 | Command | What it does |
 |---------|-------------|
-| `/director:build` | Work on the next ready task. Director picks what to do next, sets up a fresh workspace, and gets to work. |
+| `/director:build` | Work on the next ready task. Director picks what to do next, loads relevant codebase context, and gets to work. |
 | `/director:quick "..."` | Make a fast change without full planning. Good for small tweaks that don't need a whole task. |
 
 **Examples:**
@@ -63,7 +72,7 @@ Director gives you 13 commands, organized around three stages of building.
 
 | Command | What it does |
 |---------|-------------|
-| `/director:inspect` | Verify that what was built actually matches the goal. Director checks outcomes, not just task completion. |
+| `/director:inspect` | Verify that what was built actually matches the goal. Director checks outcomes, not just task completion, using your project's conventions. |
 
 **Example:**
 ```
@@ -76,7 +85,8 @@ Director gives you 13 commands, organized around three stages of building.
 |---------|-------------|
 | `/director:status` | See where you are -- current goal, progress, and what's next. |
 | `/director:resume` | Pick up where you left off after a break. Director restores your context. |
-| `/director:brainstorm` | Think out loud with full project context. Good for exploring ideas before committing to a direction. |
+| `/director:refresh` | Re-scan your codebase and optionally re-run domain research without full re-onboarding. Shows what changed since the last scan. |
+| `/director:brainstorm` | Think out loud with full project context, including research and codebase knowledge. |
 | `/director:pivot` | Handle a change in direction. When requirements shift, Director helps you adjust the plan without starting over. |
 | `/director:idea "..."` | Capture an idea for later. It gets saved so nothing is lost, even if now is not the right time. |
 | `/director:ideas` | Review your saved ideas. Pick one to build, add to the gameplan, or discard. |
@@ -87,6 +97,8 @@ Director gives you 13 commands, organized around three stages of building.
 ```
 /director:status
 /director:resume
+/director:refresh
+/director:refresh research
 /director:brainstorm "what about real-time collaboration?"
 /director:pivot
 /director:idea "add dark mode"
@@ -104,6 +116,8 @@ When you first run a Director command, it creates a `.director/` folder in your 
 - **STATE.md** -- Where you are in the build
 - **IDEAS.md** -- Ideas you have captured for later
 - **config.json** -- Settings (sensible defaults, no editing needed)
+- **codebase/** -- Technical analysis of your existing code (stack, architecture, conventions, structure, testing, integrations, concerns)
+- **research/** -- Domain research for your project (stack choices, features, architecture, pitfalls, summary)
 
 You never need to edit these files directly. Director manages them for you.
 

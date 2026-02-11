@@ -208,7 +208,7 @@ When context exceeds the budget:
 When deep context tags (`<research>`, `<codebase>`, `<research_summary>`, `<codebase_summary>`) push context over budget, apply these rules in order:
 
 1. **Summaries over specifics** -- Replace individual `<research>` or `<codebase>` files with the corresponding summary tag. Summaries are smaller and usually sufficient.
-2. **Codebase before research** -- Codebase analysis is less critical than research for most tasks, since the builder agent can explore the codebase directly using tools.
+2. **Research before codebase** -- Research provides ecosystem knowledge that is less actionable than codebase awareness during execution. Drop research files before codebase files.
 3. **Drop unrelated domains** -- If the task is about UI, drop `STACK.md` from codebase context. If the task is about architecture, drop `TESTING.md`. Only include files relevant to the task domain.
 4. **Never drop research during planning** -- When the planner is creating a gameplan, research context is essential. Truncate other sections (git log, step context) before removing research.
 5. **Never drop codebase during build** -- When the builder is implementing a task in an existing project, codebase context helps maintain consistency. Truncate other sections first.
@@ -301,3 +301,28 @@ Different agents need different context combinations. These profiles define what
 **Note on Deep Researcher:** Deep Researcher can also be spawned by the blueprint skill for step-level research. When spawned for step-level research, it receives step context and user decisions via `<instructions>` rather than assembled context tags. Output goes to the step directory (e.g., `.director/goals/NN-goal/NN-step/RESEARCH.md`) instead of `.director/research/`.
 
 These profiles are guidelines. Specific tasks may require additional or fewer context sections.
+
+### Skill-Level Context Profiles
+
+Different skills pre-load different combinations of research and codebase files. This table documents what each downstream skill loads into its context before execution.
+
+| Skill | Research Files | Codebase Files | Loading Pattern |
+|-------|---------------|----------------|-----------------|
+| Blueprint | SUMMARY.md | None | Loads before goal generation; informs planning |
+| Build | None (baked into task by planner) | 1-2 task-type-specific files | Task-type detection: UI gets CONVENTIONS+STRUCTURE, API gets ARCHITECTURE+CONVENTIONS, testing gets TESTING+CONVENTIONS, general gets CONVENTIONS only |
+| Brainstorm | SUMMARY.md, FEATURES.md | ARCHITECTURE.md, STACK.md | Richest context; loaded in Step 2 alongside VISION.md and STATE.md |
+| Pivot | SUMMARY.md, FEATURES.md | ARCHITECTURE.md, STACK.md | Same as Brainstorm; loaded in Step 5a before impact analysis |
+| Inspect | None | CONVENTIONS.md, TESTING.md | Loaded before spawning verifier; informs verification standards |
+
+**Build task-type file selection:**
+
+| Task Type | Keywords Detected | Files Loaded |
+|-----------|------------------|--------------|
+| UI | page, component, form, layout, button, modal, style, CSS, Tailwind, responsive, visual, screen, view, template, render | CONVENTIONS.md + STRUCTURE.md |
+| API | endpoint, route, API, request, response, database, query, schema, model, migration, REST, GraphQL, server, middleware | ARCHITECTURE.md + CONVENTIONS.md |
+| Testing | test, spec, coverage, assert, expect, mock, fixture, e2e, unit test, integration test | TESTING.md + CONVENTIONS.md |
+| General | No keyword match | CONVENTIONS.md only |
+
+All loading uses `cat ... 2>/dev/null` for graceful fallback. If a file does not exist, it is silently skipped -- no empty XML tags, no warnings to agent or user. Skills work identically whether files exist or not.
+
+Context budget: File selections are designed to stay under the 30% budget naturally (~15-20KB for the heaviest skill, Brainstorm/Pivot). No runtime token counting is needed. If individual files are unusually large, the skill may truncate with a note or skip entirely (Claude's discretion).

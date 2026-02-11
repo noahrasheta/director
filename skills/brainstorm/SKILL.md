@@ -54,7 +54,7 @@ Before loading research and codebase files, check whether the project's context 
 3. Calculate the delta: `current_completed_goals - completed_goals_at_generation`.
 4. If delta >= 2: show a brief, non-blocking alert to the user before proceeding. Something like:
 
-   > "Your project research and codebase analysis were done a while ago -- you've finished [N] goals since then. You might want to run `/director:onboard` to refresh that context. Continuing with what we have for now."
+   > "Your project research and codebase analysis were done a while ago -- you've finished [N] goals since then. You might want to run `/director:refresh` to update them. Continuing with what we have for now."
 
 5. If delta < 2: proceed silently.
 

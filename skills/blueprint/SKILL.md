@@ -77,6 +77,32 @@ If the user wants to defer, note the unresolved items and proceed. Keep them in 
 
 ---
 
+## Load Research Context
+
+Before generating goals, check if domain research exists from onboarding:
+
+Read `.director/research/SUMMARY.md` silently using `cat .director/research/SUMMARY.md 2>/dev/null`.
+
+If the file exists and has content, store its contents internally wrapped in a `<research_summary>` tag:
+
+```
+<research_summary>
+[Contents of SUMMARY.md]
+</research_summary>
+```
+
+This research context informs goal generation and step planning -- use it to:
+- Suggest goals that align with research-recommended architecture patterns
+- Prefer technologies and approaches recommended by the research
+- Incorporate "Don't Hand-Roll" warnings when relevant to goal/step sizing
+- Reference research findings when explaining goal rationale to the user
+
+If the file does not exist or is empty, proceed silently. Do NOT mention missing research to the user or agent. Do NOT include an empty `<research_summary>` tag.
+
+This context is a bonus -- it makes planning smarter when available but changes nothing when absent.
+
+---
+
 ## Phase 1: Generate and Review Goals
 
 Read the full content of VISION.md to understand the project. Then generate goals following the planning rules below.
@@ -606,6 +632,25 @@ Read the current state of the gameplan:
 2. **Scan the `.director/goals/` directory** to understand the full structure: read each GOAL.md, STEP.md, and task files to build a picture of what exists.
 3. **Identify completed work** -- any goals, steps, or tasks that are marked as done or complete in their Status sections. These are FROZEN and will not be touched.
 4. **Identify pending work** -- goals, steps, and tasks that are still in progress or not started. These may be modified, reordered, or removed during the update.
+
+### Load Research Context (Update Mode)
+
+Read `.director/research/SUMMARY.md` silently using `cat .director/research/SUMMARY.md 2>/dev/null`.
+
+If the file exists and has content, store its contents internally wrapped in a `<research_summary>` tag:
+
+```
+<research_summary>
+[Contents of SUMMARY.md]
+</research_summary>
+```
+
+Use research findings to inform re-evaluation of goals -- the same way research informs initial planning:
+- Check whether existing goals align with research-recommended patterns
+- Consider research insights when proposing goal modifications or additions
+- Reference "Don't Hand-Roll" warnings when adjusting task sizing
+
+If the file does not exist or is empty, proceed silently. Do NOT mention missing research to the user or agent. Do NOT include an empty `<research_summary>` tag.
 
 ### Freeze Completed Work
 

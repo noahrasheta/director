@@ -216,6 +216,44 @@ The syncer uses this data to calculate and accumulate token cost estimates per g
 </instructions>
 ```
 
+### 5e-2: Codebase context
+
+Check if `.director/codebase/` directory exists. If it does not, skip this entire section.
+
+If the codebase directory exists, classify the task to determine which codebase files to load. Read the task file content you already loaded in Step 5c. Scan the "What To Do" and "Done When" sections (case-insensitive) for these keyword categories:
+
+**UI keywords:** page, component, form, layout, button, modal, style, CSS, Tailwind, responsive, visual, screen, view, template, render
+- Load `.director/codebase/CONVENTIONS.md` and `.director/codebase/STRUCTURE.md`
+
+**API keywords:** endpoint, route, API, request, response, database, query, schema, model, migration, REST, GraphQL, server, middleware
+- Load `.director/codebase/ARCHITECTURE.md` and `.director/codebase/CONVENTIONS.md`
+
+**Testing keywords:** test, spec, coverage, assert, expect, mock, fixture, e2e, unit test, integration test
+- Load `.director/codebase/TESTING.md` and `.director/codebase/CONVENTIONS.md`
+
+**General (no keyword match):**
+- Load `.director/codebase/CONVENTIONS.md` only
+
+If the task matches multiple categories (e.g., the task mentions both "component" and "API endpoint"), include the union of files from all matching categories. Deduplicate -- CONVENTIONS.md appears once even if matched by multiple categories.
+
+For each selected file, read it silently using `cat [file] 2>/dev/null`. If a file does not exist, skip it silently.
+
+If any codebase files exist and have content, combine them under a single `<codebase>` tag with section headers identifying each file:
+
+```
+<codebase>
+## Conventions
+[Contents of CONVENTIONS.md]
+
+## Structure
+[Contents of STRUCTURE.md]
+</codebase>
+```
+
+Position this section between `<decisions>` (or `<task>` if no decisions) and `<recent_changes>` in the assembled context.
+
+If no codebase files exist or the directory is missing, skip this section entirely. Do NOT include an empty `<codebase>` tag. Do NOT mention missing codebase files. The builder works without codebase context -- it just builds more consistently with it.
+
 ### 5f: Context budget calculation
 
 After assembling all sections, estimate the total token count. Use character count divided by 4 as the approximation.
@@ -227,10 +265,11 @@ If the estimated total exceeds 60,000 tokens, apply truncation in this order:
 1. **Reduce git log** to the last 5 commits instead of 10.
 2. **Remove reference doc instructions** from the instructions section -- keep only the file path references so the builder can still read them on demand.
 3. **Summarize STEP.md** content instead of including the full text. Write a 2-3 sentence summary of what the step delivers and what tasks it contains.
-4. **Never truncate the task file or VISION.md.** These are essential for correct execution.
-5. **Never truncate the `<decisions>` section.** User decisions are essential for correct task execution and are typically under 100 tokens.
+4. **Drop codebase files** from the `<codebase>` section. The builder can explore the codebase directly using tools if needed. Remove the entire `<codebase>` tag.
+5. **Never truncate the task file or VISION.md.** These are essential for correct execution.
+6. **Never truncate the `<decisions>` section.** User decisions are essential for correct task execution and are typically under 100 tokens.
 
-Store the total character count of the assembled context (before any truncation) -- this includes vision + step + decisions + task + git log + instructions. This value is needed for cost tracking in the syncer context (see the cost_data section in the instructions template above).
+Store the total character count of the assembled context (before any truncation) -- this includes vision + step + decisions + codebase + task + git log + instructions. This value is needed for cost tracking in the syncer context (see the cost_data section in the instructions template above).
 
 Note the budget status internally but do NOT show it to the user. If truncation was applied, proceed silently.
 

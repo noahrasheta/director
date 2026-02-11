@@ -208,6 +208,19 @@ Also read `.director/GAMEPLAN.md` to understand the current plan structure.
 
 ### 5a-2: Load research and codebase context
 
+Before loading research and codebase files, check whether the project's context files are still current:
+
+1. Read `.director/config.json` and extract `context_generation.completed_goals_at_generation`. If the `context_generation` field does not exist (backward compatibility with pre-Phase 16 projects), default to 0.
+2. Count the current number of completed goals by scanning `.director/goals/` directories. A goal is "completed" if its GOAL.md Status section shows "Complete" or all its steps' tasks are `.done.md` files.
+3. Calculate the delta: `current_completed_goals - completed_goals_at_generation`.
+4. If delta >= 2: show a brief, non-blocking alert to the user before proceeding. Something like:
+
+   > "Your project research and codebase analysis were done a while ago -- you've finished [N] goals since then. You might want to run `/director:onboard` to refresh that context. Continuing with what we have for now."
+
+5. If delta < 2: proceed silently.
+
+This alert is NON-BLOCKING. After showing it (or skipping it), continue loading the context files below.
+
 Load research and codebase files to enrich the impact analysis that follows:
 
 1. **`.director/research/SUMMARY.md`** -- Read silently using `cat .director/research/SUMMARY.md 2>/dev/null`. If it exists, store its contents internally wrapped in a `<research_summary>` tag. This provides broad ecosystem knowledge: recommended technologies, architecture patterns, and common pitfalls.

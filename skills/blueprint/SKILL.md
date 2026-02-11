@@ -77,6 +77,23 @@ If the user wants to defer, note the unresolved items and proceed. Keep them in 
 
 ---
 
+## Check Context Freshness
+
+Before loading research context, check whether the project's research and codebase analysis files are still current.
+
+1. Read `.director/config.json` and extract `context_generation.completed_goals_at_generation`. If the `context_generation` field does not exist (backward compatibility with pre-Phase 16 projects), default to 0.
+2. Count the current number of completed goals by scanning `.director/goals/` directories. A goal is "completed" if its GOAL.md Status section shows "Complete" or all its steps' tasks are `.done.md` files.
+3. Calculate the delta: `current_completed_goals - completed_goals_at_generation`.
+4. If delta >= 2: show a brief, non-blocking alert to the user before proceeding. Something like:
+
+   > "Your project research and codebase analysis were done a while ago -- you've finished [N] goals since then. You might want to run `/director:onboard` to refresh that context. Continuing with what we have for now."
+
+5. If delta < 2: proceed silently.
+
+This alert is NON-BLOCKING. After showing it (or skipping it), continue to Load Research Context below. The user can choose to act on the suggestion or ignore it.
+
+---
+
 ## Load Research Context
 
 Before generating goals, check if domain research exists from onboarding:
@@ -632,6 +649,17 @@ Read the current state of the gameplan:
 2. **Scan the `.director/goals/` directory** to understand the full structure: read each GOAL.md, STEP.md, and task files to build a picture of what exists.
 3. **Identify completed work** -- any goals, steps, or tasks that are marked as done or complete in their Status sections. These are FROZEN and will not be touched.
 4. **Identify pending work** -- goals, steps, and tasks that are still in progress or not started. These may be modified, reordered, or removed during the update.
+
+### Check Context Freshness (Update Mode)
+
+Before loading research context, check whether the project's research and codebase analysis files are still current. Follow the same logic as the "Check Context Freshness" section in the new gameplan flow:
+
+1. Read `.director/config.json` and extract `context_generation.completed_goals_at_generation` (default to 0 if the field does not exist).
+2. Count current completed goals from `.director/goals/`.
+3. If delta >= 2: show the non-blocking staleness alert.
+4. If delta < 2: proceed silently.
+
+After the check (or skip), continue to Load Research Context below.
 
 ### Load Research Context (Update Mode)
 

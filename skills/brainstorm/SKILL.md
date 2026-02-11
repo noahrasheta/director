@@ -40,12 +40,30 @@ If VISION.md is template-only, say:
 
 ## Step 2: Load initial context
 
-Read these two files to understand the project:
+Read these files to understand the project:
 
 1. **`.director/VISION.md`** -- Understand what the project is about: its purpose, audience, features, and the user's intent.
 2. **`.director/STATE.md`** -- Understand current progress: what's been built, what's in progress, recent activity.
+3. **`.director/research/SUMMARY.md`** -- Read silently using `cat .director/research/SUMMARY.md 2>/dev/null`. If it exists, store its contents internally wrapped in a `<research_summary>` tag. This provides broad ecosystem knowledge: recommended technologies, architecture patterns, and common pitfalls.
+4. **`.director/research/FEATURES.md`** -- Read silently using `cat .director/research/FEATURES.md 2>/dev/null`. If it exists, store its contents internally wrapped in a `<research>` tag with a "## Features Research" header inside. This provides feature landscape context: expected features, nice-to-haves, and competitive considerations.
+5. **`.director/codebase/ARCHITECTURE.md`** -- Read silently using `cat .director/codebase/ARCHITECTURE.md 2>/dev/null`. If it exists, store its contents internally as part of a `<codebase>` tag. This provides knowledge of the project's current architecture patterns and structure.
+6. **`.director/codebase/STACK.md`** -- Read silently using `cat .director/codebase/STACK.md 2>/dev/null`. If it exists, store its contents internally as part of the same `<codebase>` tag, with a section header separating the two files:
 
-Store this context internally. You will use it throughout the session to ground the conversation in the user's actual project.
+   ```
+   <codebase>
+   ## Architecture
+   [Contents of ARCHITECTURE.md]
+
+   ## Stack
+   [Contents of STACK.md]
+   </codebase>
+   ```
+
+For items 3-6: if a file does not exist or is empty, skip it silently. Do NOT include empty XML tags. Do NOT mention missing files to the user or in any agent context. Each file is loaded independently -- if 3 of 4 exist, load those 3.
+
+These files give you deep project awareness for richer brainstorming. Use this context to ground the conversation in what the project actually is, what technologies it uses, and what the ecosystem recommends -- but do NOT proactively dump this information. Let it surface naturally when the user's ideas touch on relevant areas.
+
+Store all loaded context internally. You will use it throughout the session to ground the conversation in the user's actual project.
 
 **Do NOT read any of these yet:**
 - `.director/GAMEPLAN.md`
@@ -53,7 +71,7 @@ Store this context internally. You will use it throughout the session to ground 
 - Codebase source files
 - Any other project files
 
-These are loaded on-demand during the conversation when the discussion touches specific areas. Starting lightweight keeps costs low for casual brainstorming sessions. See Step 4 for when and how to load deeper context.
+These are loaded on-demand during the conversation when the discussion touches specific areas. The research and codebase files give you broad awareness; specific project files add detail when needed. See Step 4 for when and how to load deeper context.
 
 ---
 
@@ -101,7 +119,7 @@ This is the user's brainstorm, not Director's. Follow wherever they go.
 
 ### Adaptive context loading
 
-Start lightweight. The VISION.md and STATE.md you loaded in Step 2 are enough for most high-level conversations. Load deeper context only when the conversation demands it.
+Start with your loaded context. The VISION.md, STATE.md, and any research/codebase files from Step 2 provide a rich baseline for most conversations. Deeper context (GAMEPLAN.md, specific goal/step/task files, source code files) is loaded on-demand when the conversation demands it.
 
 **Load GAMEPLAN.md when the user discusses goals, steps, or task ordering.**
 

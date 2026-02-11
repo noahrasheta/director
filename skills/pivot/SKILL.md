@@ -206,6 +206,29 @@ Read `.director/STATE.md` to understand:
 
 Also read `.director/GAMEPLAN.md` to understand the current plan structure.
 
+### 5a-2: Load research and codebase context
+
+Load research and codebase files to enrich the impact analysis that follows:
+
+1. **`.director/research/SUMMARY.md`** -- Read silently using `cat .director/research/SUMMARY.md 2>/dev/null`. If it exists, store its contents internally wrapped in a `<research_summary>` tag. This provides broad ecosystem knowledge: recommended technologies, architecture patterns, and common pitfalls.
+2. **`.director/research/FEATURES.md`** -- Read silently using `cat .director/research/FEATURES.md 2>/dev/null`. If it exists, store its contents internally wrapped in a `<research>` tag with a "## Features Research" header inside. This provides feature landscape context: expected features, nice-to-haves, and competitive considerations.
+3. **`.director/codebase/ARCHITECTURE.md`** -- Read silently using `cat .director/codebase/ARCHITECTURE.md 2>/dev/null`. If it exists, store its contents internally as part of a `<codebase>` tag. This provides knowledge of the project's current architecture patterns and structure.
+4. **`.director/codebase/STACK.md`** -- Read silently using `cat .director/codebase/STACK.md 2>/dev/null`. If it exists, store its contents internally as part of the same `<codebase>` tag, with a section header separating the two files:
+
+   ```
+   <codebase>
+   ## Architecture
+   [Contents of ARCHITECTURE.md]
+
+   ## Stack
+   [Contents of STACK.md]
+   </codebase>
+   ```
+
+For each file: if it does not exist or is empty, skip it silently. Do NOT include empty XML tags. Do NOT mention missing files to the user or in any agent context. Each file is loaded independently -- if 3 of 4 exist, load those 3.
+
+This research and codebase context enriches the impact analysis in Step 6. Use it to understand what technologies the project relies on, what the ecosystem recommends, and what architectural patterns are in place -- all of which inform how a pivot affects the project.
+
 ### 5b: Decide whether to spawn the mapper
 
 The mapper agent does a full codebase scan. This is useful when the documentation might not reflect reality, but unnecessary when the project state is well-tracked and current. Use these heuristics:
@@ -304,6 +327,8 @@ For each goal, step, and task in the gameplan, assign one of four classification
 **No longer needed:** This pending work does not contribute to the new direction. It will be proposed for removal in the delta summary. (This classification applies only to PENDING items. For completed work that is now irrelevant, see 6d below.)
 
 **New work required:** The new direction requires goals, steps, or tasks that do not exist yet. These will be generated in 6e below.
+
+Use the research and codebase context loaded in Step 5a-2 (when available) to inform your classifications. Research findings help identify whether the new direction aligns with ecosystem recommendations. Codebase awareness helps understand what existing patterns would be affected.
 
 ### 6d: Handle completed work that is now irrelevant
 

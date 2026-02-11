@@ -104,6 +104,10 @@ cat > .director/config.json << 'CONFIG_EOF'
   "workflow": {
     "step_research": true
   },
+  "context_generation": {
+    "completed_goals_at_generation": 0,
+    "generated_at": null
+  },
   "agents": {
     "interviewer": { "model": "inherit" },
     "planner": { "model": "inherit" },

@@ -305,6 +305,12 @@ Return only a brief confirmation when done. Do NOT return document contents.
 </instructions>
 ```
 
+### Record Context Generation Metadata
+
+After the synthesizer completes and before presenting the summary, update `.director/config.json` to record when this context was generated. Read the file, set `context_generation.completed_goals_at_generation` to the current number of completed goals (from STATE.md, typically 0 during initial onboarding), and set `context_generation.generated_at` to today's date (YYYY-MM-DD format). Write the updated file back.
+
+This metadata recording is silent -- no user-facing output.
+
 ### Summary Presentation
 
 After the synthesizer completes, read `.director/codebase/SUMMARY.md` yourself (the main session agent). Format a structured ~20-30 line user-facing overview from the SUMMARY.md content.
@@ -626,6 +632,14 @@ After the summary, add a brief gameplan link:
 > [1-2 lines explaining why, e.g., "Setting up user accounts first makes sense because most of your other features need to know who's logged in."]
 
 This is a SUMMARY ONLY interaction. Do NOT offer drill-down.
+
+### Record Context Generation Metadata (Research)
+
+After presenting the research summary, update `.director/config.json` to record when this context was generated. Read the file, set `context_generation.completed_goals_at_generation` to the current number of completed goals (from STATE.md, typically 0 during initial onboarding), and set `context_generation.generated_at` to today's date (YYYY-MM-DD format). Write the updated file back.
+
+If codebase mapping already set this value earlier in the same onboard session, this update overwrites it with the same or newer data -- that is fine since both events happen during the same session.
+
+This metadata recording is silent -- no user-facing output.
 
 ### Researcher Failure Handling
 

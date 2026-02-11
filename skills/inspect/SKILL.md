@@ -103,13 +103,37 @@ Based on scope, read the relevant files and assemble context for the verifier.
    > "I couldn't find anything matching '[argument]'. Try `/director:inspect` to check the current step, or `/director:inspect all` for everything."
    **Stop here.**
 
+### Codebase standards context
+
+After assembling scope-specific context, also load codebase standards files to inform verification:
+
+1. **`.director/codebase/CONVENTIONS.md`** -- Read silently using `cat .director/codebase/CONVENTIONS.md 2>/dev/null`. If it exists, this tells the verifier what coding patterns and conventions the project follows.
+2. **`.director/codebase/TESTING.md`** -- Read silently using `cat .director/codebase/TESTING.md 2>/dev/null`. If it exists, this tells the verifier what testing patterns and frameworks the project uses.
+
+If either or both files exist, combine them under a single `<codebase>` tag:
+
+```
+<codebase>
+## Conventions
+[Contents of CONVENTIONS.md]
+
+## Testing
+[Contents of TESTING.md]
+</codebase>
+```
+
+If only one file exists, include only that file's content under the `<codebase>` tag with its section header. If neither file exists, skip this section entirely. Do NOT include an empty `<codebase>` tag. Do NOT mention missing files.
+
+Codebase standards context is a bonus for the verifier. When available, it enables convention-aware verification (e.g., checking that new code follows established naming patterns, uses the correct test framework, follows project-specific architectural rules). When not available, verification proceeds with its default structural checks.
+
 ## Step 5: Run Tier 1 structural verification
 
-Spawn `director-verifier` via Task tool with the assembled context:
+Spawn `director-verifier` via Task tool with the assembled context. Include the `<codebase>` tag (if loaded in Step 4) alongside the existing `<task>` and `<instructions>` tags:
 
 ```xml
 <task>[Describe what was built based on the scope -- summarize the completed tasks and what they created]</task>
-<instructions>Check all files created or modified by the completed tasks in scope. Look for stubs, orphans, and wiring issues. For each "Needs attention" issue, classify as auto-fixable or not. Report everything -- the user explicitly asked for this check.</instructions>
+<codebase>[If loaded: conventions and testing standards from Step 4. Omit this tag entirely if no codebase files were loaded.]</codebase>
+<instructions>Check all files created or modified by the completed tasks in scope. Look for stubs, orphans, and wiring issues. When codebase standards are provided, also check whether code follows established conventions and testing patterns. For each "Needs attention" issue, classify as auto-fixable or not. Report everything -- the user explicitly asked for this check.</instructions>
 ```
 
 **IMPORTANT:** Unlike the build pipeline, ALWAYS show results here since the user asked.

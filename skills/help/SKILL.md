@@ -21,7 +21,7 @@ If the output was "NO_PROJECT" (no `.director/` exists), show this welcome inste
 
 Look at `$ARGUMENTS`. If the user provided an argument, check whether it matches one of the command names below (case-insensitive, with or without the `/director:` prefix):
 
-**Recognized command names:** onboard, blueprint, build, quick, undo, inspect, status, resume, brainstorm, pivot, idea, ideas, help
+**Recognized command names:** onboard, blueprint, build, quick, undo, inspect, status, resume, refresh, brainstorm, pivot, idea, ideas, help
 
 - **If `$ARGUMENTS` matches a command name:** Show the topic-specific help for that command (see the Topic-Specific Help section below). Do NOT show the full command list.
 - **If `$ARGUMENTS` does not match a command name:** Show the full command list below.
@@ -58,6 +58,7 @@ Look at `$ARGUMENTS`. If the user provided an argument, check whether it matches
 |---------|-------------|---------|
 | `/director:status` | See your progress | `/director:status` |
 | `/director:resume` | Pick up where you left off | `/director:resume` |
+| `/director:refresh` | Re-scan your codebase (and optionally research) | `/director:refresh` or `/director:refresh research` |
 | `/director:brainstorm` | Think out loud with full project context | `/director:brainstorm "what about real-time collab?"` |
 | `/director:pivot` | Handle a change in direction | `/director:pivot` |
 | `/director:idea "..."` | Capture an idea for later | `/director:idea "add dark mode"` |
@@ -185,6 +186,19 @@ When you come back after a break, resume catches you up on where you were, what'
 - `/director:resume` -- Get a summary of where you left off and what to do next
 
 **Tip:** Director tracks how long you've been away and adjusts the recap accordingly -- quick refresher for short breaks, full context for longer ones.
+
+### refresh
+
+**`/director:refresh`** -- Re-scan your codebase and optionally re-run research
+
+Updates your project's codebase analysis by looking at your code again. Useful when you've made significant changes and want Director's downstream commands to have the latest picture. By default, only your codebase is re-scanned. Add "research" to also refresh ecosystem research.
+
+**Examples:**
+- `/director:refresh` -- Re-scan your codebase
+- `/director:refresh research` -- Re-scan codebase and re-run ecosystem research
+- `/director:refresh all` -- Same as research -- re-scan everything
+
+**Tip:** Director will tell you when your context might be outdated. When you see that message, a quick refresh keeps everything current.
 
 ### brainstorm
 

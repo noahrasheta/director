@@ -169,9 +169,9 @@ Create exactly one git commit when finished with this message format:
 
 The [quick] prefix is REQUIRED. Example: "[quick] Change button color to blue"
 
-After committing, spawn director-verifier to check for stubs and orphans. Fix any "needs attention" issues and amend your commit.
+After committing, spawn director:director-verifier to check for stubs and orphans. Fix any "needs attention" issues and amend your commit.
 
-After verification passes, spawn director-syncer with the task context, a summary of what changed, and a cost_data section. The cost_data section must include:
+After verification passes, spawn director:director-syncer with the task context, a summary of what changed, and a cost_data section. The cost_data section must include:
 - context_chars: [TOTAL_CONTEXT_CHARS] (the total character count of assembled context)
 - goal: "Quick task" (quick tasks are not attributed to any specific goal)
 
@@ -197,14 +197,14 @@ Note the total character count internally for cost tracking. Do NOT show budget 
 
 ## Step 6: Spawn builder
 
-Use the Task tool to spawn `director-builder` with the assembled XML context from Step 5 as the task message.
+Use the Task tool to spawn `director:director-builder` with the assembled XML context from Step 5 as the task message.
 
 The builder will:
 - Read the context sections
 - Implement the change according to the `<task>` specification
 - Create a git commit with the `[quick]` prefix
-- Spawn director-verifier to check for stubs and orphans
-- Spawn director-syncer to update `.director/` docs (STATE.md recent activity, cost tracking)
+- Spawn director:director-verifier to check for stubs and orphans
+- Spawn director:director-syncer to update `.director/` docs (STATE.md recent activity, cost tracking)
 
 Wait for the builder to complete and return its output. Then continue to Step 7.
 

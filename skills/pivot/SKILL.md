@@ -268,7 +268,7 @@ If you decided to spawn the mapper, tell the user:
 
 > "Let me check what your project looks like right now."
 
-Then spawn `director-mapper` using the Task tool:
+Then spawn `director:director-mapper` using the Task tool:
 
 ```
 <instructions>

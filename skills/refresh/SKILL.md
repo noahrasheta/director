@@ -80,7 +80,7 @@ If config.json is missing the `model_profile` or `model_profiles` fields, fall b
 mkdir -p .director/codebase
 ```
 
-Spawn 4 director-deep-mapper agents IN PARALLEL using 4 simultaneous Task tool calls. All 4 go in a SINGLE message so they run in parallel.
+Spawn 4 director:director-deep-mapper agents IN PARALLEL using 4 simultaneous Task tool calls. All 4 go in a SINGLE message so they run in parallel.
 
 **Agent 1 (tech focus):**
 ```
@@ -147,11 +147,11 @@ Return only a brief confirmation when done. Do NOT return document contents.
 </instructions>
 ```
 
-If any mapper fails or times out, continue with whatever mappers succeeded. The synthesizer can work with partial input. If ALL mappers fail, fall back to the v1.0 director-mapper agent for a basic overview instead.
+If any mapper fails or times out, continue with whatever mappers succeeded. The synthesizer can work with partial input. If ALL mappers fail, fall back to the v1.0 director:director-mapper agent for a basic overview instead.
 
 ### Synthesizer Spawning
 
-After ALL 4 mappers complete (or fail), spawn the director-synthesizer agent SEQUENTIALLY (not in parallel with mappers).
+After ALL 4 mappers complete (or fail), spawn the director:director-synthesizer agent SEQUENTIALLY (not in parallel with mappers).
 
 ```
 <instructions>
@@ -185,7 +185,7 @@ Read `.director/config.json` and resolve models for `deep-researcher` and `synth
 
 ### Researcher Spawning
 
-Spawn 4 director-deep-researcher agents IN PARALLEL using 4 simultaneous Task tool calls. All 4 go in a SINGLE message.
+Spawn 4 director:director-deep-researcher agents IN PARALLEL using 4 simultaneous Task tool calls. All 4 go in a SINGLE message.
 
 Context for researchers: use `.director/VISION.md` contents as primary context. If VISION.md has only placeholder text, also pass the NEW `.director/codebase/SUMMARY.md` (just produced by the mapping pipeline) so researchers have something substantive.
 
@@ -271,7 +271,7 @@ If any researcher fails or times out: check which domains completed by looking f
 
 ### Synthesizer Spawning (Research)
 
-After ALL 4 researchers complete (or fail), spawn the director-synthesizer agent SEQUENTIALLY.
+After ALL 4 researchers complete (or fail), spawn the director:director-synthesizer agent SEQUENTIALLY.
 
 ```
 <instructions>

@@ -218,7 +218,7 @@ Tell the user you're mapping their codebase. Show a single message:
 
 > "Mapping your codebase..."
 
-Then spawn 4 director-deep-mapper agents IN PARALLEL using 4 simultaneous Task tool calls. Each agent gets different instructions specifying its focus area. The instructions are wrapped in XML boundary tags. All 4 Task tool calls go in a SINGLE message so they run in parallel. Do NOT wait for one mapper to finish before spawning the next.
+Then spawn 4 director:director-deep-mapper agents IN PARALLEL using 4 simultaneous Task tool calls. Each agent gets different instructions specifying its focus area. The instructions are wrapped in XML boundary tags. All 4 Task tool calls go in a SINGLE message so they run in parallel. Do NOT wait for one mapper to finish before spawning the next.
 
 **Agent 1 (tech focus):**
 ```
@@ -285,11 +285,11 @@ Return only a brief confirmation when done. Do NOT return document contents.
 </instructions>
 ```
 
-If any mapper fails or times out, note the failure but continue with whatever mappers succeeded. The synthesizer can work with partial input. If ALL mappers fail, fall back to the v1.0 director-mapper agent for a basic overview instead.
+If any mapper fails or times out, note the failure but continue with whatever mappers succeeded. The synthesizer can work with partial input. If ALL mappers fail, fall back to the v1.0 director:director-mapper agent for a basic overview instead.
 
 ### Synthesizer Spawning
 
-After ALL 4 mappers have completed (or failed), spawn the director-synthesizer agent. This runs SEQUENTIALLY after the mappers (not in parallel with them).
+After ALL 4 mappers have completed (or failed), spawn the director:director-synthesizer agent. This runs SEQUENTIALLY after the mappers (not in parallel with them).
 
 ```
 <instructions>
@@ -492,7 +492,7 @@ Show a single progress message:
 
 > "Researching your project's ecosystem..."
 
-Then spawn 4 director-deep-researcher agents IN PARALLEL using 4 simultaneous Task tool calls. Each agent gets different instructions specifying its domain. All 4 Task tool calls go in a SINGLE message so they run in parallel. Do NOT wait for one researcher to finish before spawning the next.
+Then spawn 4 director:director-deep-researcher agents IN PARALLEL using 4 simultaneous Task tool calls. Each agent gets different instructions specifying its domain. All 4 Task tool calls go in a SINGLE message so they run in parallel. Do NOT wait for one researcher to finish before spawning the next.
 
 The project context passed to researchers depends on how this pipeline was triggered:
 - **From Brownfield flow:** Pass the contents of `.director/codebase/SUMMARY.md`
@@ -576,7 +576,7 @@ Return only a brief confirmation when done. Do NOT include file contents in your
 
 ### Synthesizer Spawning
 
-After ALL 4 researchers have completed (or failed), spawn the director-synthesizer agent. This runs SEQUENTIALLY after the researchers (not in parallel with them).
+After ALL 4 researchers have completed (or failed), spawn the director:director-synthesizer agent. This runs SEQUENTIALLY after the researchers (not in parallel with them).
 
 ```
 <instructions>

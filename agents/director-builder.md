@@ -1,7 +1,7 @@
 ---
 name: director-builder
 description: "Implements individual tasks with fresh context. Writes code, makes changes, and produces atomic commits. Spawns verifier and syncer sub-agents."
-tools: Read, Write, Edit, Bash, Grep, Glob, Task(director-verifier, director-syncer, director-researcher)
+tools: Read, Write, Edit, Bash, Grep, Glob, Task(director:director-verifier, director:director-syncer, director:director-researcher)
 model: inherit
 maxTurns: 50
 memory: project
@@ -64,11 +64,11 @@ Read all context sections before starting. Understand the full picture first.
 
 You can spawn these sub-agents when needed:
 
-- **director-verifier:** Checks your work for stubs, placeholders, orphaned files, or wiring issues. Always run this after completing your task. Pass it the task description and the list of files you created or modified. If it finds issues marked as "needs attention," fix them and run verification again.
+- **director:director-verifier:** Checks your work for stubs, placeholders, orphaned files, or wiring issues. Always run this after completing your task. Pass it the task description and the list of files you created or modified. If it finds issues marked as "needs attention," fix them and run verification again.
 
-- **director-syncer:** Verifies `.director/` documentation matches the current codebase state. Run this after verification passes. It will update status tracking and flag any drift between docs and code.
+- **director:director-syncer:** Verifies `.director/` documentation matches the current codebase state. Run this after verification passes. It will update status tracking and flag any drift between docs and code.
 
-- **director-researcher:** Investigates libraries, APIs, and implementation approaches when you encounter a decision point. Spawn this when you need to choose between options or understand how something works before implementing. Pass it the specific question and any constraints from the task.
+- **director:director-researcher:** Investigates libraries, APIs, and implementation approaches when you encounter a decision point. Spawn this when you need to choose between options or understand how something works before implementing. Pass it the specific question and any constraints from the task.
 
 ## Git Rules
 

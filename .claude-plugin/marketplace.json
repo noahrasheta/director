@@ -12,7 +12,7 @@
     {
       "name": "director",
       "description": "Opinionated orchestration for vibe coders. Researches your domain, maps your codebase, plans your build, and verifies it works -- from idea to shipped product.",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "author": {
         "name": "Noah Rasheta"
       },

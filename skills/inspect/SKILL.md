@@ -128,7 +128,7 @@ Codebase standards context is a bonus for the verifier. When available, it enabl
 
 ## Step 5: Run Tier 1 structural verification
 
-Spawn `director-verifier` via Task tool with the assembled context. Include the `<codebase>` tag (if loaded in Step 4) alongside the existing `<task>` and `<instructions>` tags:
+Spawn `director:director-verifier` via Task tool with the assembled context. Include the `<codebase>` tag (if loaded in Step 4) alongside the existing `<task>` and `<instructions>` tags:
 
 ```xml
 <task>[Describe what was built based on the scope -- summarize the completed tasks and what they created]</task>
@@ -176,7 +176,7 @@ Wait for the user's response.
 
 **If user approves:** Run the auto-fix retry loop:
 
-1. For each auto-fixable issue, spawn `director-debugger` via Task tool with the issue context:
+1. For each auto-fixable issue, spawn `director:director-debugger` via Task tool with the issue context:
 
    ```xml
    <task>[Original task context that was being verified]</task>
@@ -188,7 +188,7 @@ Wait for the user's response.
    > "Investigating... Found the cause... Applying fix (attempt [N] of [max])..."
 
 3. Check the debugger's Status line in its output:
-   - **"Status: Fixed"** -- spawn `director-verifier` again to re-check the specific issue. If re-check passes, commit the fix. Move to the next issue.
+   - **"Status: Fixed"** -- spawn `director:director-verifier` again to re-check the specific issue. If re-check passes, commit the fix. Move to the next issue.
    - **"Status: Needs more work"** -- increment retry counter, try again with context about what was already tried.
    - **"Status: Needs manual attention"** -- report what was tried and suggest what the user can do.
 

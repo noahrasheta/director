@@ -381,9 +381,9 @@ Before spawning a researcher for a step, check if `RESEARCH.md` already exists i
 
 ### Research Spawning
 
-For each goal, spawn a `director-deep-researcher` agent for ALL steps that need research within that goal IN PARALLEL using the Task tool. All researcher Task tool calls for steps within the same goal go in a SINGLE message so they execute in parallel.
+For each goal, spawn a `director:director-deep-researcher` agent for ALL steps that need research within that goal IN PARALLEL using the Task tool. All researcher Task tool calls for steps within the same goal go in a SINGLE message so they execute in parallel.
 
-Each `director-deep-researcher` spawn uses these instructions:
+Each `director:director-deep-researcher` spawn uses these instructions:
 
 ```
 <instructions>

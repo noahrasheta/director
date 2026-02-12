@@ -196,9 +196,9 @@ Based on the analysis, suggest a single route with natural-language reasoning. T
 
    The [quick] prefix is REQUIRED. Example: "[quick] Change button color to blue"
 
-   After committing, spawn director-verifier to check for stubs and orphans. Fix any "needs attention" issues and amend your commit.
+   After committing, spawn director:director-verifier to check for stubs and orphans. Fix any "needs attention" issues and amend your commit.
 
-   After verification passes, spawn director-syncer with the task context, a summary of what changed, and a cost_data section. The cost_data section must include:
+   After verification passes, spawn director:director-syncer with the task context, a summary of what changed, and a cost_data section. The cost_data section must include:
    - context_chars: [TOTAL_CONTEXT_CHARS] (the total character count of assembled context)
    - goal: "Quick task" (quick tasks are not attributed to any specific goal)
 
@@ -213,7 +213,7 @@ Based on the analysis, suggest a single route with natural-language reasoning. T
 
    Replace `[TOTAL_CONTEXT_CHARS]` with the actual total character count of the assembled context.
 
-   d. **Spawn the builder:** Use the Task tool to spawn `director-builder` with the assembled XML context.
+   d. **Spawn the builder:** Use the Task tool to spawn `director:director-builder` with the assembled XML context.
 
    e. **Verify builder results:** After the builder returns, check for a new commit:
 

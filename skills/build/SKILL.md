@@ -199,8 +199,8 @@ Verify your work matches the acceptance criteria before committing.
 Follow reference/terminology.md and reference/plain-language-guide.md for user-facing output.
 Honor all Locked decisions exactly. Use your judgment on Flexible items. Do NOT implement anything listed as Deferred.
 Create exactly one git commit when finished with a plain-language message describing what was built.
-After committing, spawn director-verifier to check for stubs and orphans. Fix any "needs attention" issues and amend your commit.
-After verification passes, spawn director-syncer with the task context, a summary of what changed, AND a cost_data section. The cost_data section must include:
+After committing, spawn director:director-verifier to check for stubs and orphans. Fix any "needs attention" issues and amend your commit.
+After verification passes, spawn director:director-syncer with the task context, a summary of what changed, AND a cost_data section. The cost_data section must include:
 - context_chars: the total character count of the assembled context from Step 5 (vision + step + decisions + task + git log + instructions)
 - goal: the name of the current goal being worked on
 
@@ -297,14 +297,14 @@ This prevents the task's atomic commit from including unrelated changes.
 
 ## Step 7: Spawn builder
 
-Use the Task tool to spawn `director-builder` with the assembled XML context from Step 5 as the task message.
+Use the Task tool to spawn `director:director-builder` with the assembled XML context from Step 5 as the task message.
 
 The builder will:
 - Read the context sections
 - Implement the task according to the `<task>` specification
 - Create a git commit with a plain-language message
-- Spawn director-verifier to check for stubs and orphans, fixing any issues
-- Spawn director-syncer to update `.director/` docs (STATE.md, task file rename)
+- Spawn director:director-verifier to check for stubs and orphans, fixing any issues
+- Spawn director:director-syncer to update `.director/` docs (STATE.md, task file rename)
 
 After the builder completes and returns its output, continue to Step 8.
 
@@ -369,14 +369,14 @@ Wait for the user's response.
 For each auto-fixable "Needs attention" issue, run a fix cycle:
 
 1. Show a progress update: "Investigating the issue..."
-2. Spawn `director-debugger` via Task tool with assembled context:
+2. Spawn `director:director-debugger` via Task tool with assembled context:
    ```xml
    <task>[Original task file content]</task>
    <issues>[The specific issue being fixed, with location and context]</issues>
    <instructions>Fix this issue. This is attempt [N] of [max]. [If retry 2+: "Previous attempt tried [X] but it didn't work. Try a different approach."]</instructions>
    ```
 3. Read the debugger's output text. Find the line starting with `Status:` and match the value after the colon to determine the next action:
-   - **If the value is "Fixed"** -- show "Found the cause... Applying fix (attempt N of max)... Fixed!" Then spawn `director-verifier` via Task tool to re-check the specific area. If re-check passes, run `git add -A && git commit --amend --no-edit` to include the fix in the task commit. Move to the next issue.
+   - **If the value is "Fixed"** -- show "Found the cause... Applying fix (attempt N of max)... Fixed!" Then spawn `director:director-verifier` via Task tool to re-check the specific area. If re-check passes, run `git add -A && git commit --amend --no-edit` to include the fix in the task commit. Move to the next issue.
    - **If the value is "Needs more work"** -- increment the retry counter. If under max retries, show "Trying a different approach (attempt N of max)..." and loop back to step 1.
    - **If the value is "Needs manual attention"** -- stop retrying this issue. Report what the debugger found and suggest next steps.
    - **If no `Status:` line is found in the output** -- treat as "Needs manual attention" (defensive fallback).

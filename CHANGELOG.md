@@ -2,6 +2,31 @@
 
 All notable changes to Director are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## 1.1.2 (2026-02-12)
+
+### Fixed
+
+- Onboard and blueprint now auto-save progress so `/director:build` starts clean without "unsaved changes" warnings
+- Blueprint writes preliminary GAMEPLAN.md as soon as goals are approved (no longer trapped in chat)
+- Onboard recommends clearing context before blueprint; blueprint recommends clearing before build
+- Greenfield projects no longer see alarming "No codebase context yet" message during build
+
+## 1.1.1 (2026-02-11)
+
+### Fixed
+
+- Pass file paths to researcher agents instead of inline content
+- Namespace agent references with `director:` plugin prefix
+- Use owner/repo format for marketplace install command
+
+## 1.1.0 (2026-02-11)
+
+### Added
+
+- Deep Context: codebase mapping pipeline during onboarding for brownfield projects
+- Domain research pipeline with parallel researcher agents
+- Enhanced vision document with research integration
+
 ## 1.0.2 (2026-02-09)
 
 ### Fixed

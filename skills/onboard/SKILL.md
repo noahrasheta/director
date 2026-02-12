@@ -494,18 +494,18 @@ Show a single progress message:
 
 Then spawn 4 director:director-deep-researcher agents IN PARALLEL using 4 simultaneous Task tool calls. Each agent gets different instructions specifying its domain. All 4 Task tool calls go in a SINGLE message so they run in parallel. Do NOT wait for one researcher to finish before spawning the next.
 
-The project context passed to researchers depends on how this pipeline was triggered:
-- **From Brownfield flow:** Pass the contents of `.director/codebase/SUMMARY.md`
-- **From Greenfield flow:** Pass the contents of `.director/VISION.md`
+The project context file depends on how this pipeline was triggered:
+- **From Brownfield flow:** `.director/codebase/SUMMARY.md`
+- **From Greenfield flow:** `.director/VISION.md`
+
+Tell each researcher which file to read for project context. Do NOT embed the file contents in the Task call -- the agents will read the file themselves. This keeps the main context lean.
 
 **Agent 1 (stack domain):**
 ```
 <instructions>
 Domain: stack
 
-<project_context>
-[Contents of VISION.md for greenfield, or codebase SUMMARY.md for brownfield]
-</project_context>
+Read project context from: [.director/VISION.md for greenfield, or .director/codebase/SUMMARY.md for brownfield]
 
 Research the recommended technology stack for this project. Investigate libraries, frameworks, databases, hosting options, and key supporting tools that would work well for this type of project.
 
@@ -522,9 +522,7 @@ Return only a brief confirmation when done. Do NOT include file contents in your
 <instructions>
 Domain: features
 
-<project_context>
-[Contents of VISION.md for greenfield, or codebase SUMMARY.md for brownfield]
-</project_context>
+Read project context from: [.director/VISION.md for greenfield, or .director/codebase/SUMMARY.md for brownfield]
 
 Research features for this type of product. Investigate table stakes (what users expect), differentiators (what sets this product apart), and anti-features (what to avoid). Flag expected features the user may not have mentioned.
 
@@ -541,9 +539,7 @@ Return only a brief confirmation when done. Do NOT include file contents in your
 <instructions>
 Domain: architecture
 
-<project_context>
-[Contents of VISION.md for greenfield, or codebase SUMMARY.md for brownfield]
-</project_context>
+Read project context from: [.director/VISION.md for greenfield, or .director/codebase/SUMMARY.md for brownfield]
 
 Research architecture patterns for this type of project. Investigate system structure, component boundaries, data flow patterns, and how similar projects are typically organized.
 
@@ -560,9 +556,7 @@ Return only a brief confirmation when done. Do NOT include file contents in your
 <instructions>
 Domain: pitfalls
 
-<project_context>
-[Contents of VISION.md for greenfield, or codebase SUMMARY.md for brownfield]
-</project_context>
+Read project context from: [.director/VISION.md for greenfield, or .director/codebase/SUMMARY.md for brownfield]
 
 Research common mistakes and pitfalls for this type of project. Investigate stack-specific pitfalls AND broader domain pitfalls -- things that are harder than they look, common causes of rewrites, and what trips up builders working on this type of project.
 

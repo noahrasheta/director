@@ -231,6 +231,34 @@ Wait for the user's response. If they give feedback (add a goal, remove one, ren
 
 ---
 
+## Save Goals Early
+
+Once the user approves the goals (before generating Steps and Tasks), write an early version of GAMEPLAN.md immediately. This persists the high-level structure so the user can find it outside the chat.
+
+Write `.director/GAMEPLAN.md` with the approved goals:
+
+```markdown
+# Gameplan
+
+## Overview
+
+[A brief summary of what this project is building and how we're approaching it. 2-3 sentences drawn from the vision.]
+
+## Goals
+
+1. **Goal 1: [Goal Name]** -- [One-line description]
+2. **Goal 2: [Goal Name]** -- [One-line description]
+3. **Goal 3: [Goal Name]** -- [One-line description]
+
+## Current Focus
+
+Steps and tasks are being planned...
+```
+
+This is a SILENT operation -- do NOT tell the user you wrote the file. The full gameplan (with steps and tasks) will overwrite this file later in "Write Gameplan." The purpose is to persist the goal structure early so it's not trapped in the chat window.
+
+---
+
 ## Phase 2: Generate Full Hierarchy
 
 After the user approves the goals, generate Steps and Tasks for each goal.
@@ -603,9 +631,22 @@ The planner reads RESEARCH.md on demand -- it is NOT force-injected into context
 
 ---
 
+## Save Progress
+
+After all files are written, save progress by committing all `.director/` changes:
+
+```bash
+git add .director/
+git commit -m "blueprint: create gameplan with [N] goals, [M] steps, [T] tasks"
+```
+
+This is a SILENT operation -- the user does not see git commands or commit details. If the commit fails (e.g., nothing to commit, git not initialized), proceed silently. The important thing is that the files were written; the commit is a convenience to prevent "unsaved changes" warnings in `/director:build`.
+
+---
+
 ## Conversational Wrap-Up
 
-After all files are written, tell the user conversationally:
+After files are written and progress is saved, tell the user conversationally:
 
 > "Your gameplan is saved. I created [N] goals with [M] steps and [T] tasks total. You can browse the full plan in `.director/goals/` if you're curious, but Director handles everything from here."
 
@@ -615,9 +656,9 @@ Do NOT list file paths, directory structures, or technical details. The user jus
 
 ## Suggest Next Step
 
-After the wrap-up, suggest the next action:
+After the wrap-up, suggest the next action. Blueprint consumes significant context (goal discussion, hierarchy review, research, file writing), so recommend clearing context before building.
 
-> "Ready to start building? You can do that with `/director:build`."
+> "Ready to start building? Run `/clear`, then `/director:build` to kick things off fresh."
 
 Wait for the user's response. Do not auto-execute the next command.
 
@@ -826,9 +867,20 @@ When running in update mode:
 
 Apply the same passive extraction approach -- do NOT ask the user to enumerate decisions for the update. Extract from the natural conversation.
 
+### Save Progress (Update Mode)
+
+After all updated files are written, save progress by committing all `.director/` changes:
+
+```bash
+git add .director/
+git commit -m "blueprint: update gameplan -- [brief summary of changes]"
+```
+
+This is a SILENT operation -- the user does not see git commands or commit details. If the commit fails, proceed silently. The important thing is that the files were written; the commit prevents "unsaved changes" warnings in `/director:build`.
+
 ### Update Mode Wrap-Up
 
-After all files are written, tell the user conversationally:
+After files are written and progress is saved, tell the user conversationally:
 
 > "Your gameplan is updated. [Brief summary of what changed -- e.g., 'Added 2 new steps for payment processing and moved the settings page after the dashboard.']"
 
@@ -836,9 +888,9 @@ Do NOT list file paths, directory structures, or technical details.
 
 ### Suggest Next Step (Update Mode)
 
-After the wrap-up, suggest the next action:
+After the wrap-up, suggest the next action. Blueprint updates consume significant context, so recommend clearing context before building.
 
-> "Ready to keep building? You can pick up where you left off with `/director:build`."
+> "Ready to keep building? Run `/clear`, then `/director:build` to pick up where you left off."
 
 Wait for the user's response. Do not auto-execute the next command.
 

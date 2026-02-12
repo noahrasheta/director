@@ -798,11 +798,26 @@ After the research pipeline completes (or is declined), proceed to Next Steps.
 
 ---
 
+## Save Progress
+
+After all onboarding files are written (vision, optional research, optional codebase mapping), save progress by committing all `.director/` changes:
+
+```bash
+git add .director/
+git commit -m "onboard: capture project vision and setup"
+```
+
+This is a SILENT operation -- the user does not see git commands or commit details. If the commit fails (e.g., nothing to commit, git not initialized), proceed silently. The important thing is that the files were written; the commit prevents "unsaved changes" warnings in later commands.
+
+---
+
 ## Next Steps
 
-Suggest the next step:
+Suggest the next step. Onboarding consumes significant context (interview, optional mapping, optional research, vision generation), so recommend clearing context before starting the gameplan.
 
-> "Ready to create a gameplan? That's where we break this down into goals and steps. You can do that with `/director:blueprint`."
+> "That's the vision locked in. Next step is creating a gameplan -- that's where we break this down into goals and steps."
+>
+> "Since we covered a lot of ground here, it's best to start fresh for planning. Run `/clear`, then `/director:blueprint`."
 
 Wait for the user to respond. Do not auto-execute the next command.
 

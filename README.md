@@ -13,7 +13,7 @@ Requires [Claude Code](https://claude.ai/code) v1.0.33 or later.
 In Claude Code, run these two commands:
 
 ```
-/plugin marketplace add https://github.com/noahrasheta/director.git
+/plugin marketplace add noahrasheta/director
 /plugin install director@director-marketplace
 ```
 

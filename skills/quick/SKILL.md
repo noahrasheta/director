@@ -247,7 +247,26 @@ git commit --amend --no-edit
 
 This keeps everything in a single atomic `[quick]` commit.
 
-**If no `.director/` changes:** Continue to Step 8.
+**If no `.director/` changes:** Continue to 7c.
+
+### 7c: Check for drift
+
+Review the syncer's output for any drift it flagged (discrepancies between VISION.md and what was actually built).
+
+**If drift was flagged:**
+
+Present it to the user:
+
+> "I noticed something while syncing: [syncer's drift report]. Want to update your vision?"
+
+Wait for the user's response. If they confirm, apply the changes and amend-commit:
+
+```bash
+git add .director/
+git commit --amend --no-edit
+```
+
+**If no drift:** Continue to Step 8.
 
 ## Step 8: Post-task summary
 

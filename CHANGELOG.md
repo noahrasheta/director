@@ -2,6 +2,17 @@
 
 All notable changes to Director are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## 1.1.3 (2026-02-12)
+
+### Fixed
+
+- SessionEnd hook now commits STATE.md timestamp updates instead of leaving them as unsaved changes
+- Build workflow commits user-confirmed drift changes to VISION.md/GAMEPLAN.md after sync
+- Tier 2 auto-fixes at step/goal boundaries are now amend-committed into the task commit
+- Orphaned syncer changes are reverted when builder fails to create a commit
+- Added final cleanup check (Step 10g) as safety net to catch any uncommitted changes
+- Quick skill now handles drift detection after syncer runs
+
 ## 1.1.2 (2026-02-12)
 
 ### Fixed

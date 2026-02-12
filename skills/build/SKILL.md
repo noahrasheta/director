@@ -329,10 +329,18 @@ Run `git log --oneline -1` and compare it to the most recent commit from before 
 1. Run `git status --porcelain` to check for modified files.
 
 2. **If files were modified but not committed:**
+   First, check if the syncer left orphaned `.director/` changes by running `git status --porcelain .director/`. If there are `.director/` changes, revert them silently so they don't trigger "unsaved changes" next time:
+   ```bash
+   git checkout -- .director/ 2>/dev/null || true
+   ```
    Tell the user: "The task was partially completed. Some changes were made but not finished. You can run `/director:build` again to pick up where things left off, or take a look at what was started."
    **Stop here.** Do NOT create a commit for partial work.
 
 3. **If no files were modified:**
+   First, check if the syncer left orphaned `.director/` changes by running `git status --porcelain .director/`. If there are `.director/` changes, revert them silently:
+   ```bash
+   git checkout -- .director/ 2>/dev/null || true
+   ```
    Tell the user: "The task didn't get started. This might be a tricky one -- want to try again, or take a different approach?"
    **Stop here.**
 
@@ -428,6 +436,13 @@ Present it to the user in plain language:
 
 Wait for the user's response before making any changes to VISION.md or GAMEPLAN.md. Per the locked decision: doc sync shows findings in plain language and asks the user to confirm before applying. STATE.md updates and .done.md renames are routine (applied automatically via amend-commit). But VISION.md or GAMEPLAN.md drift requires explicit user confirmation.
 
+**If the user confirms drift changes:** Apply the changes to VISION.md and/or GAMEPLAN.md, then amend-commit to keep everything in one atomic commit:
+
+```bash
+git add .director/
+git commit --amend --no-edit
+```
+
 **If no drift:** Continue silently to Step 10.
 
 ## Step 10: Post-task summary and boundary check
@@ -512,7 +527,11 @@ Wait for the user's response. Interpret their natural-language answers to determ
 > "[N] of [M] checks passed! [Items that failed] need attention:
 > - [Issue description with why it matters]"
 
-If failed items are auto-fixable, offer auto-fix (same consent flow as 8c/8d).
+If failed items are auto-fixable, offer auto-fix (same consent flow as 8c/8d). After any auto-fix completes, amend-commit the changes:
+```bash
+git add -A
+git commit --amend --no-edit
+```
 If not auto-fixable, describe the issue and suggest what to do.
 
 The checklist is guidance, not a gate. If the user wants to continue building without completing the checklist, let them.
@@ -550,9 +569,32 @@ Wait for the user's response. Process results the same as the step-level checkli
 >
 > If there is a next goal: "Ready when you are — `/clear` then `/director:build` to start the next goal."
 
-**If some fail:** Lead with wins, flag issues, offer auto-fix if applicable.
+**If some fail:** Lead with wins, flag issues, offer auto-fix if applicable. After any auto-fix completes, amend-commit the changes:
+```bash
+git add -A
+git commit --amend --no-edit
+```
 
 **IMPORTANT:** The celebration message comes AFTER Tier 2 results are in, not before. Celebrate the outcome ("User authentication is working!"), not just the task completion.
+
+### 10g: Final cleanup check
+
+After ALL post-task activities are complete (summary, boundary checks, Tier 2 verification, any auto-fixes), run a final check:
+
+```bash
+git status --porcelain
+```
+
+**If there are any uncommitted changes:** Stage and amend-commit them silently to ensure nothing is left dirty:
+
+```bash
+git add -A
+git commit --amend --no-edit
+```
+
+**If clean:** No action needed.
+
+This is a safety net -- it catches any changes that slipped through earlier steps (drift fixes, Tier 2 auto-fixes, state updates). The user should never see "unsaved changes" from a previous Director session.
 
 ---
 

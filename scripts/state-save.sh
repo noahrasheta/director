@@ -29,4 +29,8 @@ if grep -q '^\*\*Last session:\*\*' .director/STATE.md; then
   fi
 fi
 
+# Commit the timestamp updates so they don't appear as unsaved changes next session
+git add .director/STATE.md 2>/dev/null
+git commit -q -m "session: update timestamps" 2>/dev/null || true
+
 exit 0

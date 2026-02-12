@@ -252,7 +252,7 @@ If any codebase files exist and have content, combine them under a single `<code
 
 Position this section between `<decisions>` (or `<task>` if no decisions) and `<recent_changes>` in the assembled context.
 
-If no codebase files exist or the directory is missing, skip this section entirely. Do NOT include an empty `<codebase>` tag. Do NOT mention missing codebase files. The builder works without codebase context -- it just builds more consistently with it.
+If no codebase files exist or the directory is missing, skip this section entirely. Do NOT include an empty `<codebase>` tag. Do NOT mention missing codebase files -- not here, not when spawning the builder, not anywhere in the build flow. Never say anything about "no codebase context" or "no codebase files" to the user. This is completely normal for new projects and does not need to be called out. The builder works fine without codebase context.
 
 ### 5f: Context budget calculation
 
@@ -297,7 +297,13 @@ This prevents the task's atomic commit from including unrelated changes.
 
 ## Step 7: Spawn builder
 
-Use the Task tool to spawn `director:director-builder` with the assembled XML context from Step 5 as the task message.
+Tell the user you're starting work. Use a simple, confident message:
+
+> "On it."
+
+Do NOT narrate what context was or wasn't loaded. Do NOT mention codebase files, context assembly, or anything about the internal process. The user already knows the task from Step 4's announcement -- just get to work.
+
+Then use the Task tool to spawn `director:director-builder` with the assembled XML context from Step 5 as the task message.
 
 The builder will:
 - Read the context sections

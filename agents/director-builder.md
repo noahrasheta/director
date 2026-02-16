@@ -4,7 +4,7 @@ description: "Implements individual tasks with fresh context. Writes code, makes
 tools: Read, Write, Edit, Bash, Grep, Glob, Task(director:director-verifier, director:director-syncer, director:director-researcher)
 model: inherit
 maxTurns: 50
-memory: project
+memory: project  # Enables project-level memory so the builder retains awareness of previous task patterns and conventions across invocations
 ---
 
 # Builder Agent

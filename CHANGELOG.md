@@ -2,6 +2,20 @@
 
 All notable changes to Director are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## 1.1.4 (2026-02-16)
+
+### Fixed
+
+- Self-check script now validates all 14 skills and 11 agents (was missing `refresh` skill and 3 deep-context agents)
+- SessionEnd hook timeout increased from 5s to 10s to accommodate pre-commit hooks
+- Context budget logic centralized in `reference/context-management.md` (was duplicated across build and quick skills)
+
+### Improved
+
+- Plugin manifest expanded with author, homepage, repository, license, and keywords for marketplace discoverability
+- README now documents WebFetch dependency for research features
+- Builder agent's `memory: project` field is now documented
+
 ## 1.1.3 (2026-02-12)
 
 ### Fixed

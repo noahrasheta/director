@@ -193,15 +193,22 @@ Assembled context (all XML-wrapped sections combined) should stay under 30% of t
 | Deep context (research + codebase) | 3-8% | Only when agent needs research or codebase awareness; prefer summaries over full files |
 | **Total** | **~20-30%** | Leave 70%+ for execution |
 
+### Budget Threshold
+
+The concrete budget threshold is **60,000 tokens** (30% of a 200,000-token context window). Estimate token count as total character count divided by 4.
+
+Both the build and quick skills use this threshold. If the estimated total exceeds 60,000 tokens, apply the truncation strategy below.
+
 ### Truncation Strategy
 
-When context exceeds the budget:
+When context exceeds the budget, apply these steps in order (stop as soon as you're under budget):
 
-1. **Git log first** -- Reduce to most recent N commits (least critical for task completion)
-2. **Reference docs second** -- Include only the reference doc sections relevant to the task
-3. **Step context third** -- Summarize rather than include full STEP.md
-4. **Never truncate task or vision** -- These are essential for correct execution
-5. **Never truncate decisions** -- User decisions are essential for correct execution. The `<decisions>` section is small (typically under 100 tokens) and must always be included in full.
+1. **Reduce git log** -- Use the last 5 commits instead of 10
+2. **Remove reference doc instructions** -- Keep only file path references so the agent can still read them on demand
+3. **Summarize STEP.md** -- Write a 2-3 sentence summary instead of including the full text
+4. **Drop codebase files** -- Remove the entire `<codebase>` section; the builder can explore the codebase directly using tools if needed
+5. **Never truncate task or vision** -- These are essential for correct execution
+6. **Never truncate decisions** -- User decisions are essential for correct execution. The `<decisions>` section is small (typically under 100 tokens) and must always be included in full.
 
 ### Deep Context Truncation
 

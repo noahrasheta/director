@@ -188,9 +188,9 @@ Replace `[TOTAL_CONTEXT_CHARS]` with the actual total character count of the ass
 
 ### 5e: Context budget
 
-Quick mode contexts are small by nature (no step file, no full task spec). The 60K token budget threshold from the build skill is unlikely to be hit, but if the vision is very long, apply truncation:
+Quick mode contexts are small by nature (no step file, no full task spec). The budget threshold defined in `reference/context-management.md` is unlikely to be hit, but if the vision is very long, apply truncation:
 
-1. If estimated tokens (total chars / 4) exceed 60,000: summarize VISION.md to a 2-3 sentence overview instead of including the full text.
+1. If estimated tokens (total chars / 4) exceed the budget threshold: summarize VISION.md to a 2-3 sentence overview instead of including the full text.
 2. Never truncate the task section -- it's the user's request.
 
 Note the total character count internally for cost tracking. Do NOT show budget details to the user.

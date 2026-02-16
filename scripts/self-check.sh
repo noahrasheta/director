@@ -12,7 +12,7 @@ PLUGIN_ROOT="${CLAUDE_PLUGIN_ROOT:-$(cd "$(dirname "$0")/.." && pwd)}"
 
 ISSUES=()
 
-# --- Check 13 expected skills (each must have SKILL.md) ---
+# --- Check 14 expected skills (each must have SKILL.md) ---
 
 EXPECTED_SKILLS=(
   onboard
@@ -23,6 +23,7 @@ EXPECTED_SKILLS=(
   inspect
   status
   resume
+  refresh
   brainstorm
   pivot
   idea
@@ -36,13 +37,16 @@ for skill in "${EXPECTED_SKILLS[@]}"; do
   fi
 done
 
-# --- Check 8 expected agents (each must have .md in agents/) ---
+# --- Check 11 expected agents (each must have .md in agents/) ---
 
 EXPECTED_AGENTS=(
   director-interviewer
   director-planner
   director-researcher
   director-mapper
+  director-deep-mapper
+  director-deep-researcher
+  director-synthesizer
   director-builder
   director-verifier
   director-debugger

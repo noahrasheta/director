@@ -258,16 +258,7 @@ If no codebase files exist or the directory is missing, skip this section entire
 
 After assembling all sections, estimate the total token count. Use character count divided by 4 as the approximation.
 
-**Budget threshold:** 30% of 200,000 tokens = 60,000 tokens.
-
-If the estimated total exceeds 60,000 tokens, apply truncation in this order:
-
-1. **Reduce git log** to the last 5 commits instead of 10.
-2. **Remove reference doc instructions** from the instructions section -- keep only the file path references so the builder can still read them on demand.
-3. **Summarize STEP.md** content instead of including the full text. Write a 2-3 sentence summary of what the step delivers and what tasks it contains.
-4. **Drop codebase files** from the `<codebase>` section. The builder can explore the codebase directly using tools if needed. Remove the entire `<codebase>` tag.
-5. **Never truncate the task file or VISION.md.** These are essential for correct execution.
-6. **Never truncate the `<decisions>` section.** User decisions are essential for correct task execution and are typically under 100 tokens.
+Follow the budget threshold and truncation strategy defined in `reference/context-management.md` (Budget Threshold and Truncation Strategy sections). Apply truncation steps in order until under budget.
 
 Store the total character count of the assembled context (before any truncation) -- this includes vision + step + decisions + codebase + task + git log + instructions. This value is needed for cost tracking in the syncer context (see the cost_data section in the instructions template above).
 

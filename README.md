@@ -126,6 +126,8 @@ You never need to edit these files directly. Director manages them for you.
 - Claude Code v1.0.33 or later
 - A project you want to build (new or existing)
 
+**Note:** Director's research features (domain analysis during `/director:onboard` and `/director:refresh`) use Claude Code's built-in WebFetch tool to look up documentation and best practices. If WebFetch is unavailable in your environment, research will degrade gracefully -- Director will still work, but research summaries may be less detailed.
+
 ## Links
 
 - **Website:** [director.cc](https://director.cc)

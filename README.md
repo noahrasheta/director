@@ -1,6 +1,6 @@
 # Director
 
-**Opinionated orchestration for vibe coders.**
+**Spec-driven orchestration for vibe coders and solo entrepreneurs.**
 
 Director is a Claude Code plugin for solo builders who use AI to build software. It guides the entire process -- from capturing your vision, to researching your domain, to planning your build, to verifying it works. You think about what to build; Director handles the how.
 

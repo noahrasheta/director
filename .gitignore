@@ -10,6 +10,9 @@ node_modules/
 # Claude Code local settings
 .claude/
 
+# Director project state (local only)
+.director/
+
 # Development planning (internal)
 .planning/
 

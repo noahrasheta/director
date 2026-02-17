@@ -8,6 +8,12 @@ set -euo pipefail
 # Plugin path reference: ${CLAUDE_PLUGIN_ROOT} points to the plugin root directory.
 # This script runs from the user's project root, not the plugin root.
 
+# Verify plugin integrity before any Director operation
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+if ! "${SCRIPT_DIR}/self-check.sh"; then
+  exit 1
+fi
+
 # Idempotent: exit silently if .director/ already exists
 if [ -d ".director" ]; then
   exit 0

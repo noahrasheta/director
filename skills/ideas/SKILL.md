@@ -244,11 +244,20 @@ Based on the analysis, suggest a single route with natural-language reasoning. T
 
 1. **Remove the idea from IDEAS.md** (see removal mechanic below).
 
-2. Tell the user:
+2. **Save progress** by committing the IDEAS.md change:
+
+   ```bash
+   git add .director/
+   git commit -m "ideas: remove idea routed to blueprint"
+   ```
+
+   This is a SILENT operation -- the user does not see git commands or commit details. If the commit fails, proceed silently. The commit prevents "unsaved changes" warnings when the user runs `/director:blueprint` next.
+
+3. Tell the user:
 
    > "I've removed it from your ideas list. Run `/director:blueprint "[idea text]"` to plan it out."
 
-3. **Stop here.**
+4. **Stop here.**
 
 ### Brainstorm route (user confirmed)
 

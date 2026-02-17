@@ -1,7 +1,7 @@
 {
   "name": "director",
   "description": "Opinionated orchestration for vibe coders",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "author": {
     "name": "Noah Rasheta",
     "email": "noah@rasheta.com"

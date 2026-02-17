@@ -326,6 +326,17 @@ Do NOT execute the pivot inline.
 
 **If user declines or wants something different:** Accommodate their preference. If they want a different route, follow the mechanics for that route above.
 
+### Save Progress
+
+After all file writes are complete (session file, suggested next action update, and any IDEAS.md changes), save progress by committing all `.director/` changes:
+
+```bash
+git add .director/
+git commit -m "brainstorm: save session"
+```
+
+This is a SILENT operation -- the user does not see git commands or commit details. If the commit fails (e.g., nothing to commit, git not initialized), proceed silently. The important thing is that the files were written; the commit prevents "unsaved changes" warnings in later commands.
+
 ### Final confirmation
 
 After routing is complete, confirm the session was saved:

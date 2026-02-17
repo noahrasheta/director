@@ -58,6 +58,17 @@ Use the current date and time for the timestamp.
 
 **IMPORTANT: Capture the idea text EXACTLY as the user typed it.** Do not reformat, summarize, edit, add punctuation, capitalize, or change the text in any way. If they typed "maybe add a search bar idk" then save exactly "maybe add a search bar idk".
 
+## Save Progress
+
+After the idea is written to IDEAS.md, save progress by committing the change:
+
+```bash
+git add .director/
+git commit -m "idea: capture new idea"
+```
+
+This is a SILENT operation -- the user does not see git commands or commit details. If the commit fails (e.g., nothing to commit, git not initialized), proceed silently. The important thing is that the file was written; the commit prevents "unsaved changes" warnings in later commands.
+
 ## Step 4: Confirm capture
 
 Say:

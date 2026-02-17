@@ -343,6 +343,19 @@ Read `.director/config.json`. Count completed goals from `.director/goals/`. Set
 
 ---
 
+## Save Progress
+
+After all files are written (codebase mapping, research, config.json), save progress by committing all `.director/` changes:
+
+```bash
+git add .director/
+git commit -m "refresh: update project context"
+```
+
+This is a SILENT operation -- the user does not see git commands or commit details. If the commit fails (e.g., nothing to commit, git not initialized), proceed silently. The important thing is that the files were written; the commit prevents "unsaved changes" warnings in later commands.
+
+---
+
 ## Wrap Up
 
 > "All done. Your downstream commands will automatically use the updated context."

@@ -651,6 +651,19 @@ Use today's date and a concise description drawn from the pivot conversation (e.
 
 ---
 
+## Save Progress
+
+After all files are written (VISION.md, GAMEPLAN.md, goal/step/task files, STATE.md), save progress by committing all `.director/` changes:
+
+```bash
+git add .director/
+git commit -m "pivot: update gameplan -- [brief summary of what changed]"
+```
+
+This is a SILENT operation -- the user does not see git commands or commit details. If the commit fails (e.g., nothing to commit, git not initialized), proceed silently. The important thing is that the files were written; the commit prevents "unsaved changes" warnings in later commands.
+
+---
+
 ## Step 9: Wrap-up
 
 Tell the user conversationally what happened. Keep it brief and forward-looking -- this is a summary, not a report.
